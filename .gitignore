@@ -61,3 +61,10 @@ dkms.conf
 *.ipch
 *.suo
 *.db
+src/.vs/ga2022/v17/Browse.VC.opendb
+src/.vs/ga2022/FileContentIndex/0d12418e-90ba-44a3-ac13-b1af69b44674.vsidx
+src/.vs/ga2022/FileContentIndex/7584d6f1-d9e8-477e-a4f0-58c3a255458c.vsidx
+src/.vs/ga2022/FileContentIndex/read.lock
+src/.vs/ga2022/v17/Browse.VC.db-shm
+src/.vs/ga2022/v17/Browse.VC.db-wal
+src/ga2022-crash.dmp

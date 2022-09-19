@@ -66,7 +66,32 @@ void debug_print(uint32_t type, _Printf_format_string_ const char* format, ...)
 	WriteConsoleA(out, buffer, bytes, &written, NULL);
 }
 
-int debug_backtrace(void** stack, int stack_capacity)
+char** debug_backtrace()
 {
-	return CaptureStackBackTrace(1, stack_capacity, stack, NULL);
+	char** names;
+	int   i;
+	void* stack[100];
+	unsigned short frames;
+	SYMBOL_INFO* symbol;
+	HANDLE         process;
+
+	process = GetCurrentProcess();
+
+	SymInitialize(process, NULL, TRUE);
+
+	frames = CaptureStackBackTrace(0, 100, stack, NULL);
+	names = VirtualAlloc(NULL, sizeof(char*) * (frames-1), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+	char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)];
+	symbol = (SYMBOL_INFO*)buffer;
+	symbol->MaxNameLen = 255;
+	symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
+
+	for (i = 1; i < frames; i++)
+	{
+		SymFromAddr(process, (DWORD64)(stack[i]), 0, symbol);
+		names[i - 1] = VirtualAlloc(NULL, 100, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+		strcpy_s(names[i-1], 100, symbol->Name);
+	}
+
+	return names;
 }
