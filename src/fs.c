@@ -1,4 +1,5 @@
 #include "fs.h"
+#include "lz4/lz4.h"
 
 #include "event.h"
 #include "heap.h"
@@ -9,12 +10,16 @@
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <stdio.h>
+
 
 typedef struct fs_t
 {
 	heap_t* heap;
 	queue_t* file_queue;
 	thread_t* file_thread;
+	queue_t* compression_file_queue;
+	thread_t* compression_file_thread;
 } fs_t;
 
 typedef enum fs_work_op_t
@@ -37,6 +42,7 @@ typedef struct fs_work_t
 } fs_work_t;
 
 static int file_thread_func(void* user);
+static int compress_thread_func(void* user);
 
 fs_t* fs_create(heap_t* heap, int queue_capacity)
 {
@@ -44,6 +50,8 @@ fs_t* fs_create(heap_t* heap, int queue_capacity)
 	fs->heap = heap;
 	fs->file_queue = queue_create(heap, queue_capacity);
 	fs->file_thread = thread_create(file_thread_func, fs);
+	fs->compression_file_queue = queue_create(heap, queue_capacity);
+	fs->compression_file_thread = thread_create(compress_thread_func, fs);
 	return fs;
 }
 
@@ -86,7 +94,7 @@ fs_work_t* fs_write(fs_t* fs, const char* path, const void* buffer, size_t size,
 
 	if (use_compression)
 	{
-		// HOMEWORK 2: Queue file write work on compression queue!
+		queue_push(fs->compression_file_queue, work);
 	}
 	else
 	{
@@ -137,8 +145,9 @@ void fs_work_destroy(fs_work_t* work)
 	}
 }
 
-static void file_read(fs_work_t* work)
+static void file_read(fs_work_t* work, void* user)
 {
+	fs_t* fs = user;
 	wchar_t wide_path[1024];
 	if (MultiByteToWideChar(CP_UTF8, 0, work->path, -1, wide_path, sizeof(wide_path)) <= 0)
 	{
@@ -181,7 +190,7 @@ static void file_read(fs_work_t* work)
 
 	if (work->use_compression)
 	{
-		// HOMEWORK 2: Queue file read work on decompression queue!
+		queue_push(fs->compression_file_queue, work);
 	}
 	else
 	{
@@ -235,10 +244,58 @@ static int file_thread_func(void* user)
 		switch (work->op)
 		{
 		case k_fs_work_op_read:
-			file_read(work);
+			file_read(work, user);
 			break;
 		case k_fs_work_op_write:
 			file_write(work);
+			break;
+		}
+	}
+	return 0;
+}
+
+static int compress_thread_func(void* user)
+{
+	fs_t* fs = user;
+	while (true)
+	{
+		fs_work_t* work = queue_pop(fs->compression_file_queue);
+		if (work == NULL)
+		{
+			break;
+		}
+		int dst_buffer_size;
+		void* dst_buffer;
+		char sub_buff[11];
+		int sep_val = '.';
+
+		switch (work->op) {
+		case k_fs_work_op_read:
+			memcpy(sub_buff, work->buffer, sizeof(char) * 10);
+			sub_buff[10] = '\0';
+			dst_buffer_size = atoi(sub_buff);
+			dst_buffer = heap_alloc(fs->heap, dst_buffer_size, 0);
+			printf("BUFFER SIZE: %i\n", dst_buffer_size);
+			int decompressed_size = LZ4_decompress_safe((char*)work->buffer + 11, dst_buffer, (int)work->size - 11, dst_buffer_size);
+			printf("DECOMPRESSED SIZE: %i\n", decompressed_size);
+			work->buffer = dst_buffer;
+			work->size = decompressed_size;
+			event_signal(work->done);
+			break;
+		case k_fs_work_op_write:
+			dst_buffer_size = LZ4_compressBound((int)work->size);
+			dst_buffer = heap_alloc(fs->heap, dst_buffer_size, 0);
+			int compressed_size = LZ4_compress_default(work->buffer, dst_buffer, (int)work->size, dst_buffer_size);
+			void* dst_plus_size = heap_alloc(fs->heap, compressed_size + 11, 0); //10 is max number of digits in an unsigned int, 11th is for separator
+			_itoa_s((int)work->size, dst_plus_size, compressed_size + 11, 10);
+			char* sep = (char*)dst_plus_size + 10;
+			*sep = sep_val;
+			memcpy((char*)dst_plus_size + 11, dst_buffer, compressed_size);
+			work->buffer = dst_plus_size;
+			work->size = compressed_size + 11;
+			// write the buffer size to the file
+			//WriteFile(dst_buffer, )
+			queue_push(fs->file_queue, work);
 			break;
 		}
 	}
