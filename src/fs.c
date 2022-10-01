@@ -274,10 +274,16 @@ static int compress_thread_func(void* user)
 			memcpy(sub_buff, work->buffer, sizeof(char) * 10);
 			sub_buff[10] = '\0';
 			dst_buffer_size = atoi(sub_buff);
+			if (work->null_terminate) {
+				dst_buffer_size++;
+			}
 			dst_buffer = heap_alloc(fs->heap, dst_buffer_size, 0);
 			printf("BUFFER SIZE: %i\n", dst_buffer_size);
 			int decompressed_size = LZ4_decompress_safe((char*)work->buffer + 11, dst_buffer, (int)work->size - 11, dst_buffer_size);
 			printf("DECOMPRESSED SIZE: %i\n", decompressed_size);
+			if (work->null_terminate) {
+				((char*)dst_buffer)[dst_buffer_size - 1] = '\0';
+			}
 			work->buffer = dst_buffer;
 			work->size = decompressed_size;
 			event_signal(work->done);
