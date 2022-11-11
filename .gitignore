@@ -3,3 +3,4 @@ src/x86/*
 *.vcxproj.filters
 *.vcxproj.user
 src/.vs/*
+src/trace.json
