@@ -1,0 +1,41 @@
+\hypertarget{timeofday_8h_source}{}\doxysection{timeofday.\+h}
+\label{timeofday_8h_source}\index{src/timeofday.h@{src/timeofday.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Date and time support.}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// Defines a structure containing date and time information.}}
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtime__date__time__t}{time\_date\_time\_t}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     uint64\_t seconds\_since\_epoch;}
+\DoxyCodeLine{11     \textcolor{keyword}{union}}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13         uint32\_t packed\_date;}
+\DoxyCodeLine{14         \textcolor{keyword}{struct}}
+\DoxyCodeLine{15         \{}
+\DoxyCodeLine{16             uint32\_t day : 5;}
+\DoxyCodeLine{17             uint32\_t month : 4;}
+\DoxyCodeLine{18             uint32\_t year : 23;}
+\DoxyCodeLine{19         \};}
+\DoxyCodeLine{20     \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keyword}{union}}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24         uint32\_t packed\_time;}
+\DoxyCodeLine{25         \textcolor{keyword}{struct}}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             uint32\_t second : 6;}
+\DoxyCodeLine{28             uint32\_t minute : 6;}
+\DoxyCodeLine{29             uint32\_t hour : 5;}
+\DoxyCodeLine{30         \};}
+\DoxyCodeLine{31     \};}
+\DoxyCodeLine{32 \} \mbox{\hyperlink{structtime__date__time__t}{time\_date\_time\_t}};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{comment}{// Get the current, local date and time.}}
+\DoxyCodeLine{35 \mbox{\hyperlink{structtime__date__time__t}{time\_date\_time\_t}} timeofday\_get();}
+
+\end{DoxyCode}

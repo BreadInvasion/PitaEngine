@@ -1,0 +1,63 @@
+\hypertarget{structlogger__t}{}\doxysection{logger\+\_\+t Struct Reference}
+\label{structlogger__t}\index{logger\_t@{logger\_t}}
+
+
+A structure to define the memory leak logger.  
+
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}} $\ast$ \mbox{\hyperlink{structlogger__t_a9034c9e6cc0585091020d0c72b7a1ef8}{next}}
+\item 
+struct \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}} $\ast$ \mbox{\hyperlink{structlogger__t_a8ae659c072c307df6ba6cbb05c75f1b7}{previous}}
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{structlogger__t_a26fc633cf551a2621e172633486c85ef}{names}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structlogger__t_a577acc86de4f10ce0ea68bd311ac7759}{alloc\+Size}}
+\item 
+void $\ast$ \mbox{\hyperlink{structlogger__t_ab96816d317aa5196e2ef198d9a8d621b}{address}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A structure to define the memory leak logger. 
+
+The struct \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}} is used to define the contents of the memory leak logger, implemented to fulfill the requirements of Homework 1 of the Game Architecture class. This structure contains pointers to become a self-\/contained doubly linked list, as well as functionality to store backtrace entries and the address of the memory allocation being tracked. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structlogger__t_ab96816d317aa5196e2ef198d9a8d621b}\label{structlogger__t_ab96816d317aa5196e2ef198d9a8d621b}} 
+\index{logger\_t@{logger\_t}!address@{address}}
+\index{address@{address}!logger\_t@{logger\_t}}
+\doxysubsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily void$\ast$ address}
+
+address points to the block of allocated memory that this logger is tracking. \mbox{\Hypertarget{structlogger__t_a577acc86de4f10ce0ea68bd311ac7759}\label{structlogger__t_a577acc86de4f10ce0ea68bd311ac7759}} 
+\index{logger\_t@{logger\_t}!allocSize@{allocSize}}
+\index{allocSize@{allocSize}!logger\_t@{logger\_t}}
+\doxysubsubsection{\texorpdfstring{allocSize}{allocSize}}
+{\footnotesize\ttfamily size\+\_\+t alloc\+Size}
+
+alloc\+Size represents the size of the block allocated at address. \mbox{\Hypertarget{structlogger__t_a26fc633cf551a2621e172633486c85ef}\label{structlogger__t_a26fc633cf551a2621e172633486c85ef}} 
+\index{logger\_t@{logger\_t}!names@{names}}
+\index{names@{names}!logger\_t@{logger\_t}}
+\doxysubsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily char$\ast$$\ast$ names}
+
+names stores the backtrace to the memory allocation instance that allocated the block pointed to by address. \mbox{\Hypertarget{structlogger__t_a9034c9e6cc0585091020d0c72b7a1ef8}\label{structlogger__t_a9034c9e6cc0585091020d0c72b7a1ef8}} 
+\index{logger\_t@{logger\_t}!next@{next}}
+\index{next@{next}!logger\_t@{logger\_t}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}}$\ast$ next}
+
+next points to the following \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}} in the list of memory logs. \mbox{\Hypertarget{structlogger__t_a8ae659c072c307df6ba6cbb05c75f1b7}\label{structlogger__t_a8ae659c072c307df6ba6cbb05c75f1b7}} 
+\index{logger\_t@{logger\_t}!previous@{previous}}
+\index{previous@{previous}!logger\_t@{logger\_t}}
+\doxysubsubsection{\texorpdfstring{previous}{previous}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}}$\ast$ previous}
+
+previous points to the previous \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}} in the list of memory logs. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/heap.\+c\end{DoxyCompactItemize}

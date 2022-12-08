@@ -1,0 +1,97 @@
+\hypertarget{vulkan_8h_source}{}\doxysection{vulkan.\+h}
+\label{vulkan_8h_source}\index{src/vulkan/vulkan.h@{src/vulkan/vulkan.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}vk\_platform.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}vulkan\_core.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_ANDROID\_KHR}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}vulkan\_android.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_FUCHSIA}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <zircon/types.h>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}vulkan\_fuchsia.h"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_IOS\_MVK}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}vulkan\_ios.h"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_MACOS\_MVK}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}vulkan\_macos.h"{}}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_METAL\_EXT}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}vulkan\_metal.h"{}}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_VI\_NN}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}vulkan\_vi.h"{}}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_WAYLAND\_KHR}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include "{}vulkan\_wayland.h"{}}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_WIN32\_KHR}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include <windows.h>}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include "{}vulkan\_win32.h"{}}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_XCB\_KHR}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#include <xcb/xcb.h>}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#include "{}vulkan\_xcb.h"{}}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_XLIB\_KHR}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#include <X11/Xlib.h>}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#include "{}vulkan\_xlib.h"{}}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_DIRECTFB\_EXT}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#include <directfb.h>}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#include "{}vulkan\_directfb.h"{}}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_XLIB\_XRANDR\_EXT}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#include <X11/Xlib.h>}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#include <X11/extensions/Xrandr.h>}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#include "{}vulkan\_xlib\_xrandr.h"{}}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_GGP}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#include <ggp\_c/vulkan\_types.h>}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#include "{}vulkan\_ggp.h"{}}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#ifdef VK\_USE\_PLATFORM\_SCREEN\_QNX}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#include <screen/screen.h>}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#include "{}vulkan\_screen.h"{}}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#ifdef VK\_ENABLE\_BETA\_EXTENSIONS}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#include "{}vulkan\_beta.h"{}}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// VULKAN\_H\_}}
+
+\end{DoxyCode}

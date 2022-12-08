@@ -4,7 +4,7 @@
 
 typedef struct queue_t
 {
-	heap_t* heap;
+	heap_t* heap; /**< The heap_t in which the queue is located. */
 	semaphore_t* used_items;
 	semaphore_t* free_items;
 	void** items;

@@ -1,0 +1,64 @@
+\hypertarget{vulkan__ggp_8h_source}{}\doxysection{vulkan\+\_\+ggp.\+h}
+\label{vulkan__ggp_8h_source}\index{src/vulkan/vulkan\_ggp.h@{src/vulkan/vulkan\_ggp.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_GGP\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_GGP\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*}}
+\DoxyCodeLine{11 \textcolor{comment}{** This header is generated from the Khronos Vulkan XML API Registry.}}
+\DoxyCodeLine{12 \textcolor{comment}{**}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VK\_GGP\_stream\_descriptor\_surface 1}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define VK\_GGP\_STREAM\_DESCRIPTOR\_SURFACE\_SPEC\_VERSION 1}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VK\_GGP\_STREAM\_DESCRIPTOR\_SURFACE\_EXTENSION\_NAME "{}VK\_GGP\_stream\_descriptor\_surface"{}}}
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} VkFlags VkStreamDescriptorSurfaceCreateFlagsGGP;}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_stream_descriptor_surface_create_info_g_g_p}{VkStreamDescriptorSurfaceCreateInfoGGP}} \{}
+\DoxyCodeLine{27     VkStructureType                            sType;}
+\DoxyCodeLine{28     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                pNext;}
+\DoxyCodeLine{29     VkStreamDescriptorSurfaceCreateFlagsGGP    flags;}
+\DoxyCodeLine{30     GgpStreamDescriptor                        streamDescriptor;}
+\DoxyCodeLine{31 \} \mbox{\hyperlink{struct_vk_stream_descriptor_surface_create_info_g_g_p}{VkStreamDescriptorSurfaceCreateInfoGGP}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateStreamDescriptorSurfaceGGP)(VkInstance instance, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_stream_descriptor_surface_create_info_g_g_p}{VkStreamDescriptorSurfaceCreateInfoGGP}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkSurfaceKHR* pSurface);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{36 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateStreamDescriptorSurfaceGGP(}
+\DoxyCodeLine{37     VkInstance                                  instance,}
+\DoxyCodeLine{38     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_stream_descriptor_surface_create_info_g_g_p}{VkStreamDescriptorSurfaceCreateInfoGGP}}* pCreateInfo,}
+\DoxyCodeLine{39     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{40     VkSurfaceKHR*                               pSurface);}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define VK\_GGP\_frame\_token 1}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define VK\_GGP\_FRAME\_TOKEN\_SPEC\_VERSION   1}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define VK\_GGP\_FRAME\_TOKEN\_EXTENSION\_NAME "{}VK\_GGP\_frame\_token"{}}}
+\DoxyCodeLine{47 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_present_frame_token_g_g_p}{VkPresentFrameTokenGGP}} \{}
+\DoxyCodeLine{48     VkStructureType    sType;}
+\DoxyCodeLine{49     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{50     GgpFrameToken      frameToken;}
+\DoxyCodeLine{51 \} \mbox{\hyperlink{struct_vk_present_frame_token_g_g_p}{VkPresentFrameTokenGGP}};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{55 \}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

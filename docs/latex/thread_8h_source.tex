@@ -1,0 +1,26 @@
+\hypertarget{thread_8h_source}{}\doxysection{thread.\+h}
+\label{thread_8h_source}\index{src/thread.h@{src/thread.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// Threading support.}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// Handle to a thread.}}
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }thread\_t thread\_t;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// Creates a new thread.}}
+\DoxyCodeLine{11 \textcolor{comment}{// Thread begins running function with data on return.}}
+\DoxyCodeLine{12 thread\_t* thread\_create(\textcolor{keywordtype}{int} (*function)(\textcolor{keywordtype}{void}*), \textcolor{keywordtype}{void}* data);}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// Waits for a thread to complete and destroys it.}}
+\DoxyCodeLine{15 \textcolor{comment}{// Returns the thread's exit code.}}
+\DoxyCodeLine{16 \textcolor{keywordtype}{int} thread\_destroy(thread);}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// Puts the calling thread to sleep for the specified number of milliseconds.}}
+\DoxyCodeLine{19 \textcolor{comment}{// Thread will sleep for *approximately* the specified time.}}
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} thread\_sleep(uint32\_t ms);}
+
+\end{DoxyCode}

@@ -1,0 +1,78 @@
+\hypertarget{ecs_8h_source}{}\doxysection{ecs.\+h}
+\label{ecs_8h_source}\index{src/ecs.h@{src/ecs.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Entity Component System}}
+\DoxyCodeLine{4 \textcolor{comment}{// Framework for game entities and their components.}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// Handle to an entity component system interface.}}
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structecs__t}{ecs\_t}} \mbox{\hyperlink{structecs__t}{ecs\_t}};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// Weak reference to an entity.}}
+\DoxyCodeLine{15 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} entity;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} sequence;}
+\DoxyCodeLine{19 \} \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{comment}{// Working data for an active entity query.}}
+\DoxyCodeLine{22 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structecs__query__t}{ecs\_query\_t}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24     uint64\_t component\_mask;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{int} entity;}
+\DoxyCodeLine{26 \} \mbox{\hyperlink{structecs__query__t}{ecs\_query\_t}};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{// Create an entity component system.}}
+\DoxyCodeLine{29 \mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs\_create(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{// Destroy an entity component system.}}
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} ecs\_destroy(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{comment}{// Per-\/frame entity component system update.}}
+\DoxyCodeLine{35 \textcolor{keywordtype}{void} ecs\_update(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{comment}{// Register a type of component with the entity system.}}
+\DoxyCodeLine{38 \textcolor{keywordtype}{int} ecs\_register\_component\_type(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* name, \textcolor{keywordtype}{size\_t} size\_per\_component, \textcolor{keywordtype}{size\_t} alignment);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{comment}{// Return the size of a type of component registered with the sytem.}}
+\DoxyCodeLine{41 \textcolor{keywordtype}{size\_t} ecs\_get\_component\_type\_size(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \textcolor{keywordtype}{int} component\_type);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{comment}{// Spawn an entity with the masked components and return a reference to it.}}
+\DoxyCodeLine{44 \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}} ecs\_entity\_add(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, uint64\_t component\_mask);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{// Destroy an entity.}}
+\DoxyCodeLine{47 \textcolor{comment}{// If allow\_pending\_add is true, can destroy an entity that is not fully spawned.}}
+\DoxyCodeLine{48 \textcolor{keywordtype}{void} ecs\_entity\_remove(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}} ref, \textcolor{keywordtype}{bool} allow\_pending\_add);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{// Determines if a entity reference points to a valid entity.}}
+\DoxyCodeLine{51 \textcolor{comment}{// If allow\_pending\_add is true, entities that are not fully spawned are considered valid.}}
+\DoxyCodeLine{52 \textcolor{keywordtype}{bool} ecs\_is\_entity\_ref\_valid(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}} ref, \textcolor{keywordtype}{bool} allow\_pending\_add);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{// Get the memory for a component on an entity.}}
+\DoxyCodeLine{55 \textcolor{comment}{// NULL is returned if the entity is not valid or the component\_type is not present on the entity.}}
+\DoxyCodeLine{56 \textcolor{comment}{// If allow\_pending\_add is true, will return component data for not fully spawned entities.}}
+\DoxyCodeLine{57 \textcolor{keywordtype}{void}* ecs\_entity\_get\_component(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}} ref, \textcolor{keywordtype}{int} component\_type, \textcolor{keywordtype}{bool} allow\_pending\_add);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{comment}{// Creates a new entity query by component type mask.}}
+\DoxyCodeLine{60 \mbox{\hyperlink{structecs__query__t}{ecs\_query\_t}} ecs\_query\_create(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, uint64\_t mask);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{comment}{// Determines if the query points at a valid entity.}}
+\DoxyCodeLine{63 \textcolor{keywordtype}{bool} ecs\_query\_is\_valid(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \mbox{\hyperlink{structecs__query__t}{ecs\_query\_t}}* query);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{comment}{// Advances the query to the next matching entity, if any.}}
+\DoxyCodeLine{66 \textcolor{keywordtype}{void} ecs\_query\_next(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \mbox{\hyperlink{structecs__query__t}{ecs\_query\_t}}* query);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// Get data for a component on the entity referenced by the query, if any.}}
+\DoxyCodeLine{69 \textcolor{keywordtype}{void}* ecs\_query\_get\_component(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \mbox{\hyperlink{structecs__query__t}{ecs\_query\_t}}* query, \textcolor{keywordtype}{int} component\_type);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{// Get a entity reference for the current query location.}}
+\DoxyCodeLine{72 \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}} ecs\_query\_get\_entity(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \mbox{\hyperlink{structecs__query__t}{ecs\_query\_t}}* query);}
+
+\end{DoxyCode}

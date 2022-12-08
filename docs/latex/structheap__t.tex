@@ -1,0 +1,63 @@
+\hypertarget{structheap__t}{}\doxysection{heap\+\_\+t Struct Reference}
+\label{structheap__t}\index{heap\_t@{heap\_t}}
+
+
+A structure to define the engine\textquotesingle{}s heap.  
+
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+tlsf\+\_\+t \mbox{\hyperlink{structheap__t_a4da994718f31988edfd38303741022a1}{tlsf}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structheap__t_aceb982d953b047e5ab1e623e06538bfd}{grow\+\_\+increment}}
+\item 
+\mbox{\hyperlink{structarena__t}{arena\+\_\+t}} $\ast$ \mbox{\hyperlink{structheap__t_a7186d9172f6366ceae63c849794740b8}{arena}}
+\item 
+\mbox{\hyperlink{structlogger__t}{logger\+\_\+t}} $\ast$ \mbox{\hyperlink{structheap__t_a9575b06719f9ef5b9443b1dc68d38fe4}{logger}}
+\item 
+mutex\+\_\+t $\ast$ \mbox{\hyperlink{structheap__t_a52a260d3fe1f0fd9cbab0cd89084f3b7}{mutex}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A structure to define the engine\textquotesingle{}s heap. 
+
+The struct \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} is used to represent the heap, the space within the engine that manages all memory allocation/de-\/allocation over the course of the program\textquotesingle{}s execution. This implementation of heap uses a tlsf implementation written by Matthew Conte to handle all memory operations. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structheap__t_a7186d9172f6366ceae63c849794740b8}\label{structheap__t_a7186d9172f6366ceae63c849794740b8}} 
+\index{heap\_t@{heap\_t}!arena@{arena}}
+\index{arena@{arena}!heap\_t@{heap\_t}}
+\doxysubsubsection{\texorpdfstring{arena}{arena}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structarena__t}{arena\+\_\+t}}$\ast$ arena}
+
+arena points to the first \mbox{\hyperlink{structarena__t}{arena\+\_\+t}} in this heap. There might be more down the chain! These store the pools of memory that this heap is managing. \mbox{\Hypertarget{structheap__t_aceb982d953b047e5ab1e623e06538bfd}\label{structheap__t_aceb982d953b047e5ab1e623e06538bfd}} 
+\index{heap\_t@{heap\_t}!grow\_increment@{grow\_increment}}
+\index{grow\_increment@{grow\_increment}!heap\_t@{heap\_t}}
+\doxysubsubsection{\texorpdfstring{grow\_increment}{grow\_increment}}
+{\footnotesize\ttfamily size\+\_\+t grow\+\_\+increment}
+
+grow\+\_\+increment represents the minimum amount of memory that can be added to the heap in one go -\/ if the heap is out of memory and we try to add an arena to it, with minimum size of grow\+\_\+increment and maxiumum size of twice whatever the thing we\textquotesingle{}re trying to add is. \mbox{\Hypertarget{structheap__t_a9575b06719f9ef5b9443b1dc68d38fe4}\label{structheap__t_a9575b06719f9ef5b9443b1dc68d38fe4}} 
+\index{heap\_t@{heap\_t}!logger@{logger}}
+\index{logger@{logger}!heap\_t@{heap\_t}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}}$\ast$ logger}
+
+logger points to the first \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}} in a list. Each \mbox{\hyperlink{structlogger__t}{logger\+\_\+t}} stores a backtrace for a specific memory allocation, and if any are not properly freed before the program ends, they will print to console as memory leaks. \mbox{\Hypertarget{structheap__t_a52a260d3fe1f0fd9cbab0cd89084f3b7}\label{structheap__t_a52a260d3fe1f0fd9cbab0cd89084f3b7}} 
+\index{heap\_t@{heap\_t}!mutex@{mutex}}
+\index{mutex@{mutex}!heap\_t@{heap\_t}}
+\doxysubsubsection{\texorpdfstring{mutex}{mutex}}
+{\footnotesize\ttfamily mutex\+\_\+t$\ast$ mutex}
+
+mutex points to an instance of mutex\+\_\+t, an implementation of the mutex concept. This allows us to forbid the simultaneous execution of a given function in multiple threads, ensuring that a function is \char`\"{}thread-\/safe\char`\"{} -\/ that is, parallel execution over multiple threads will occur in proper order, and not result in unintended behavior. \mbox{\Hypertarget{structheap__t_a4da994718f31988edfd38303741022a1}\label{structheap__t_a4da994718f31988edfd38303741022a1}} 
+\index{heap\_t@{heap\_t}!tlsf@{tlsf}}
+\index{tlsf@{tlsf}!heap\_t@{heap\_t}}
+\doxysubsubsection{\texorpdfstring{tlsf}{tlsf}}
+{\footnotesize\ttfamily tlsf\+\_\+t tlsf}
+
+tlsf stores an instance of tlsf\+\_\+t, used for memory alignment, pool allocation, and memory freeing. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/heap.\+c\end{DoxyCompactItemize}

@@ -1,0 +1,87 @@
+\hypertarget{structwm__window__t}{}\doxysection{wm\+\_\+window\+\_\+t Struct Reference}
+\label{structwm__window__t}\index{wm\_window\_t@{wm\_window\_t}}
+
+
+\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} is a structure to store data for the OS-\/level window.  
+
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+HWND \mbox{\hyperlink{structwm__window__t_aa72255e7356d612ad72bb45def01fcbb}{hwnd}}
+\item 
+\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$ \mbox{\hyperlink{structwm__window__t_a030aa741640330c5c035c1a9dfd6e87f}{heap}}
+\item 
+bool \mbox{\hyperlink{structwm__window__t_ac746fa6ad48d19984a159f14bec028a3}{quit}}
+\item 
+bool \mbox{\hyperlink{structwm__window__t_adeee2fe45d1a1746ef0959ffe6957234}{has\+\_\+focus}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structwm__window__t_ab41b0e348c180fdb8415bed4c68d1d94}{mouse\+\_\+mask}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structwm__window__t_ab88c4ca39024cccfb4b9fe42a5b8b52e}{key\+\_\+mask}}
+\item 
+int \mbox{\hyperlink{structwm__window__t_a6c59af730728bf5260ef828aea2eebee}{mouse\+\_\+x}}
+\item 
+int \mbox{\hyperlink{structwm__window__t_ab21653e455bbca86826aa5f628a5fdb2}{mouse\+\_\+y}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} is a structure to store data for the OS-\/level window. 
+
+It contains important info, including the raw window object (HWND), a back reference to the heap, and other states like the mouse position, quit and focus states, and input masks. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structwm__window__t_adeee2fe45d1a1746ef0959ffe6957234}\label{structwm__window__t_adeee2fe45d1a1746ef0959ffe6957234}} 
+\index{wm\_window\_t@{wm\_window\_t}!has\_focus@{has\_focus}}
+\index{has\_focus@{has\_focus}!wm\_window\_t@{wm\_window\_t}}
+\doxysubsubsection{\texorpdfstring{has\_focus}{has\_focus}}
+{\footnotesize\ttfamily bool has\+\_\+focus}
+
+has\+\_\+focus changes state when the manager receives the WM\+\_\+\+ACTIVATEAPP flag, becoming true if the window is currently in focus. Otherwise, has\+\_\+focus is false. This flag is used to enable or disable mouse position updates. \mbox{\Hypertarget{structwm__window__t_a030aa741640330c5c035c1a9dfd6e87f}\label{structwm__window__t_a030aa741640330c5c035c1a9dfd6e87f}} 
+\index{wm\_window\_t@{wm\_window\_t}!heap@{heap}}
+\index{heap@{heap}!wm\_window\_t@{wm\_window\_t}}
+\doxysubsubsection{\texorpdfstring{heap}{heap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structheap__t}{heap\+\_\+t}}$\ast$ heap}
+
+heap is a reference to the heap in which the window object is stored. \mbox{\Hypertarget{structwm__window__t_aa72255e7356d612ad72bb45def01fcbb}\label{structwm__window__t_aa72255e7356d612ad72bb45def01fcbb}} 
+\index{wm\_window\_t@{wm\_window\_t}!hwnd@{hwnd}}
+\index{hwnd@{hwnd}!wm\_window\_t@{wm\_window\_t}}
+\doxysubsubsection{\texorpdfstring{hwnd}{hwnd}}
+{\footnotesize\ttfamily HWND hwnd}
+
+hwnd stores the raw OS-\/level window object. \mbox{\Hypertarget{structwm__window__t_ab88c4ca39024cccfb4b9fe42a5b8b52e}\label{structwm__window__t_ab88c4ca39024cccfb4b9fe42a5b8b52e}} 
+\index{wm\_window\_t@{wm\_window\_t}!key\_mask@{key\_mask}}
+\index{key\_mask@{key\_mask}!wm\_window\_t@{wm\_window\_t}}
+\doxysubsubsection{\texorpdfstring{key\_mask}{key\_mask}}
+{\footnotesize\ttfamily uint32\+\_\+t key\+\_\+mask}
+
+key\+\_\+mask is a bit mask that records up/down states for the up, down, left, and right keyboard keys. \mbox{\Hypertarget{structwm__window__t_ab41b0e348c180fdb8415bed4c68d1d94}\label{structwm__window__t_ab41b0e348c180fdb8415bed4c68d1d94}} 
+\index{wm\_window\_t@{wm\_window\_t}!mouse\_mask@{mouse\_mask}}
+\index{mouse\_mask@{mouse\_mask}!wm\_window\_t@{wm\_window\_t}}
+\doxysubsubsection{\texorpdfstring{mouse\_mask}{mouse\_mask}}
+{\footnotesize\ttfamily uint32\+\_\+t mouse\+\_\+mask}
+
+mouse\+\_\+mask is a bit mask that records up/down states for the left, right, and middle mouse buttons. \mbox{\Hypertarget{structwm__window__t_a6c59af730728bf5260ef828aea2eebee}\label{structwm__window__t_a6c59af730728bf5260ef828aea2eebee}} 
+\index{wm\_window\_t@{wm\_window\_t}!mouse\_x@{mouse\_x}}
+\index{mouse\_x@{mouse\_x}!wm\_window\_t@{wm\_window\_t}}
+\doxysubsubsection{\texorpdfstring{mouse\_x}{mouse\_x}}
+{\footnotesize\ttfamily int mouse\+\_\+x}
+
+mouse\+\_\+x records the relative x position of the mouse within the window, updating every frame as long as the window is currently in focus. \mbox{\Hypertarget{structwm__window__t_ab21653e455bbca86826aa5f628a5fdb2}\label{structwm__window__t_ab21653e455bbca86826aa5f628a5fdb2}} 
+\index{wm\_window\_t@{wm\_window\_t}!mouse\_y@{mouse\_y}}
+\index{mouse\_y@{mouse\_y}!wm\_window\_t@{wm\_window\_t}}
+\doxysubsubsection{\texorpdfstring{mouse\_y}{mouse\_y}}
+{\footnotesize\ttfamily int mouse\+\_\+y}
+
+mouse\+\_\+y records the relative y position of the mouse within the window, updating every frame as long as the window is currently in focus. \mbox{\Hypertarget{structwm__window__t_ac746fa6ad48d19984a159f14bec028a3}\label{structwm__window__t_ac746fa6ad48d19984a159f14bec028a3}} 
+\index{wm\_window\_t@{wm\_window\_t}!quit@{quit}}
+\index{quit@{quit}!wm\_window\_t@{wm\_window\_t}}
+\doxysubsubsection{\texorpdfstring{quit}{quit}}
+{\footnotesize\ttfamily bool quit}
+
+quit becomes true if the manager receives a WM\+\_\+\+CLOSE flag. Otherwise, quit is false. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/wm.\+c\end{DoxyCompactItemize}

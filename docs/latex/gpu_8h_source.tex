@@ -1,0 +1,130 @@
+\hypertarget{gpu_8h_source}{}\doxysection{gpu.\+h}
+\label{gpu_8h_source}\index{src/gpu.h@{src/gpu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__t}{gpu\_t}} \mbox{\hyperlink{structgpu__t}{gpu\_t}};}
+\DoxyCodeLine{6 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__cmd__buffer__t}{gpu\_cmd\_buffer\_t}} \mbox{\hyperlink{structgpu__cmd__buffer__t}{gpu\_cmd\_buffer\_t}};}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__descriptor__t}{gpu\_descriptor\_t}} \mbox{\hyperlink{structgpu__descriptor__t}{gpu\_descriptor\_t}};}
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__mesh__t}{gpu\_mesh\_t}} \mbox{\hyperlink{structgpu__mesh__t}{gpu\_mesh\_t}};}
+\DoxyCodeLine{9 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__pipeline__t}{gpu\_pipeline\_t}} \mbox{\hyperlink{structgpu__pipeline__t}{gpu\_pipeline\_t}};}
+\DoxyCodeLine{10 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__shader__t}{gpu\_shader\_t}} \mbox{\hyperlink{structgpu__shader__t}{gpu\_shader\_t}};}
+\DoxyCodeLine{11 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__uniform__buffer__t}{gpu\_uniform\_buffer\_t}} \mbox{\hyperlink{structgpu__uniform__buffer__t}{gpu\_uniform\_buffer\_t}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}} \mbox{\hyperlink{structwm__window__t}{wm\_window\_t}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__descriptor__info__t}{gpu\_descriptor\_info\_t}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \mbox{\hyperlink{structgpu__shader__t}{gpu\_shader\_t}}* shader;}
+\DoxyCodeLine{19     \mbox{\hyperlink{structgpu__uniform__buffer__t}{gpu\_uniform\_buffer\_t}}** uniform\_buffers;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} uniform\_buffer\_count;}
+\DoxyCodeLine{21 \} \mbox{\hyperlink{structgpu__descriptor__info__t}{gpu\_descriptor\_info\_t}};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} gpu\_mesh\_layout\_t}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     k\_gpu\_mesh\_layout\_tri\_p444\_i2,}
+\DoxyCodeLine{26     k\_gpu\_mesh\_layout\_tri\_p444\_c444\_i2,}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     k\_gpu\_mesh\_layout\_count,}
+\DoxyCodeLine{29 \} gpu\_mesh\_layout\_t;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__mesh__info__t}{gpu\_mesh\_info\_t}}}
+\DoxyCodeLine{32 \{}
+\DoxyCodeLine{33     gpu\_mesh\_layout\_t layout;}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void}* vertex\_data;}
+\DoxyCodeLine{35     \textcolor{keywordtype}{size\_t} vertex\_data\_size;}
+\DoxyCodeLine{36     \textcolor{keywordtype}{void}* index\_data;}
+\DoxyCodeLine{37     \textcolor{keywordtype}{size\_t} index\_data\_size;}
+\DoxyCodeLine{38 \} \mbox{\hyperlink{structgpu__mesh__info__t}{gpu\_mesh\_info\_t}};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__pipeline__info__t}{gpu\_pipeline\_info\_t}}}
+\DoxyCodeLine{41 \{}
+\DoxyCodeLine{42     \mbox{\hyperlink{structgpu__shader__t}{gpu\_shader\_t}}* shader;}
+\DoxyCodeLine{43     gpu\_mesh\_layout\_t mesh\_layout;}
+\DoxyCodeLine{44 \} \mbox{\hyperlink{structgpu__pipeline__info__t}{gpu\_pipeline\_info\_t}};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__shader__info__t}{gpu\_shader\_info\_t}}}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void}* vertex\_shader\_data;}
+\DoxyCodeLine{49     \textcolor{keywordtype}{size\_t} vertex\_shader\_size;}
+\DoxyCodeLine{50     \textcolor{keywordtype}{void}* fragment\_shader\_data;}
+\DoxyCodeLine{51     \textcolor{keywordtype}{size\_t} fragment\_shader\_size;}
+\DoxyCodeLine{52     \textcolor{keywordtype}{int} uniform\_buffer\_count;}
+\DoxyCodeLine{53 \} \mbox{\hyperlink{structgpu__shader__info__t}{gpu\_shader\_info\_t}};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__uniform__buffer__info__t}{gpu\_uniform\_buffer\_info\_t}}}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void}* data;}
+\DoxyCodeLine{58     \textcolor{keywordtype}{size\_t} size;}
+\DoxyCodeLine{59 \} \mbox{\hyperlink{structgpu__uniform__buffer__info__t}{gpu\_uniform\_buffer\_info\_t}};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{comment}{// Create an instance of Vulkan on the provided window.}}
+\DoxyCodeLine{62 \mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu\_create(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap, \mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{comment}{// Destroy the previously created Vulkan.}}
+\DoxyCodeLine{65 \textcolor{keywordtype}{void} gpu\_destroy(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{comment}{// Get the number of frames in the swapchain.}}
+\DoxyCodeLine{68 \textcolor{keywordtype}{int} gpu\_get\_frame\_count(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{comment}{// Wait for the GPU to be done all queued work.}}
+\DoxyCodeLine{71 \textcolor{keywordtype}{void} gpu\_wait\_until\_idle(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{comment}{// Binds uniform buffers (and textures if we had them) to a given shader layout.}}
+\DoxyCodeLine{74 \mbox{\hyperlink{structgpu__descriptor__t}{gpu\_descriptor\_t}}* gpu\_descriptor\_create(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \textcolor{keyword}{const} \mbox{\hyperlink{structgpu__descriptor__info__t}{gpu\_descriptor\_info\_t}}* info);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{comment}{// Destroys a descriptor.}}
+\DoxyCodeLine{77 \textcolor{keywordtype}{void} gpu\_descriptor\_destroy(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__descriptor__t}{gpu\_descriptor\_t}}* descriptor);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{comment}{// Create a drawable piece of geometry with vertex and index data.}}
+\DoxyCodeLine{80 \mbox{\hyperlink{structgpu__mesh__t}{gpu\_mesh\_t}}* gpu\_mesh\_create(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \textcolor{keyword}{const} \mbox{\hyperlink{structgpu__mesh__info__t}{gpu\_mesh\_info\_t}}* info);}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{comment}{// Destroy some geometry.}}
+\DoxyCodeLine{83 \textcolor{keywordtype}{void} gpu\_mesh\_destroy(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__mesh__t}{gpu\_mesh\_t}}* mesh);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{comment}{// Setup an object that binds a shader to a mesh layout for rendering.}}
+\DoxyCodeLine{86 \mbox{\hyperlink{structgpu__pipeline__t}{gpu\_pipeline\_t}}* gpu\_pipeline\_create(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \textcolor{keyword}{const} \mbox{\hyperlink{structgpu__pipeline__info__t}{gpu\_pipeline\_info\_t}}* info);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{comment}{// Destroy a pipeline.}}
+\DoxyCodeLine{89 \textcolor{keywordtype}{void} gpu\_pipeline\_destroy(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__pipeline__t}{gpu\_pipeline\_t}}* pipeline);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{comment}{// Create a shader object with vertex and fragment shader programs.}}
+\DoxyCodeLine{92 \mbox{\hyperlink{structgpu__shader__t}{gpu\_shader\_t}}* gpu\_shader\_create(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \textcolor{keyword}{const} \mbox{\hyperlink{structgpu__shader__info__t}{gpu\_shader\_info\_t}}* info);}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{comment}{// Destroy a shader.}}
+\DoxyCodeLine{95 \textcolor{keywordtype}{void} gpu\_shader\_destroy(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__shader__t}{gpu\_shader\_t}}* shader);}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{comment}{// Create a uniform buffer with specified size and contents.}}
+\DoxyCodeLine{98 \textcolor{comment}{// Will be consumed by a shader.}}
+\DoxyCodeLine{99 \mbox{\hyperlink{structgpu__uniform__buffer__t}{gpu\_uniform\_buffer\_t}}* gpu\_uniform\_buffer\_create(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \textcolor{keyword}{const} \mbox{\hyperlink{structgpu__uniform__buffer__info__t}{gpu\_uniform\_buffer\_info\_t}}* info);}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{comment}{// Modify an existing uniform buffer.}}
+\DoxyCodeLine{102 \textcolor{keywordtype}{void} gpu\_uniform\_buffer\_update(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__uniform__buffer__t}{gpu\_uniform\_buffer\_t}}* buffer, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{comment}{// Destroy a uniform buffer.}}
+\DoxyCodeLine{105 \textcolor{keywordtype}{void} gpu\_uniform\_buffer\_destroy(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__uniform__buffer__t}{gpu\_uniform\_buffer\_t}}* buffer);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{comment}{// Start a new frame of rendering. May wait on a prior frame to complete.}}
+\DoxyCodeLine{108 \textcolor{comment}{// Returns a command buffer for all rendering in that frame.}}
+\DoxyCodeLine{109 \mbox{\hyperlink{structgpu__cmd__buffer__t}{gpu\_cmd\_buffer\_t}}* gpu\_frame\_begin(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu);}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{comment}{// Finish rendering frame.}}
+\DoxyCodeLine{112 \textcolor{keywordtype}{void} gpu\_frame\_end(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu);}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 \textcolor{comment}{// Set the current pipeline for this command buffer.}}
+\DoxyCodeLine{115 \textcolor{keywordtype}{void} gpu\_cmd\_pipeline\_bind(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__cmd__buffer__t}{gpu\_cmd\_buffer\_t}}* cmd\_buffer, \mbox{\hyperlink{structgpu__pipeline__t}{gpu\_pipeline\_t}}* pipeline);}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \textcolor{comment}{// Set the current mesh for this command buffer.}}
+\DoxyCodeLine{118 \textcolor{keywordtype}{void} gpu\_cmd\_mesh\_bind(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__cmd__buffer__t}{gpu\_cmd\_buffer\_t}}* cmd\_buffer, \mbox{\hyperlink{structgpu__mesh__t}{gpu\_mesh\_t}}* mesh);}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 \textcolor{comment}{// Set the current descriptor for this command buffer.}}
+\DoxyCodeLine{121 \textcolor{keywordtype}{void} gpu\_cmd\_descriptor\_bind(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__cmd__buffer__t}{gpu\_cmd\_buffer\_t}}* cmd\_buffer, \mbox{\hyperlink{structgpu__descriptor__t}{gpu\_descriptor\_t}}* descriptor);}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{comment}{// Draw given current pipeline, mesh, and descriptor.}}
+\DoxyCodeLine{124 \textcolor{keywordtype}{void} gpu\_cmd\_draw(\mbox{\hyperlink{structgpu__t}{gpu\_t}}* gpu, \mbox{\hyperlink{structgpu__cmd__buffer__t}{gpu\_cmd\_buffer\_t}}* cmd\_buffer);}
+
+\end{DoxyCode}

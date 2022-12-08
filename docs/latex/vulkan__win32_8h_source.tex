@@ -1,0 +1,321 @@
+\hypertarget{vulkan__win32_8h_source}{}\doxysection{vulkan\+\_\+win32.\+h}
+\label{vulkan__win32_8h_source}\index{src/vulkan/vulkan\_win32.h@{src/vulkan/vulkan\_win32.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_WIN32\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_WIN32\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*}}
+\DoxyCodeLine{11 \textcolor{comment}{** This header is generated from the Khronos Vulkan XML API Registry.}}
+\DoxyCodeLine{12 \textcolor{comment}{**}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VK\_KHR\_win32\_surface 1}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define VK\_KHR\_WIN32\_SURFACE\_SPEC\_VERSION 6}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VK\_KHR\_WIN32\_SURFACE\_EXTENSION\_NAME "{}VK\_KHR\_win32\_surface"{}}}
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} VkFlags VkWin32SurfaceCreateFlagsKHR;}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_win32_surface_create_info_k_h_r}{VkWin32SurfaceCreateInfoKHR}} \{}
+\DoxyCodeLine{27     VkStructureType                 sType;}
+\DoxyCodeLine{28     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                     pNext;}
+\DoxyCodeLine{29     VkWin32SurfaceCreateFlagsKHR    flags;}
+\DoxyCodeLine{30     HINSTANCE                       hinstance;}
+\DoxyCodeLine{31     HWND                            hwnd;}
+\DoxyCodeLine{32 \} \mbox{\hyperlink{struct_vk_win32_surface_create_info_k_h_r}{VkWin32SurfaceCreateInfoKHR}};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateWin32SurfaceKHR)(VkInstance instance, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_win32_surface_create_info_k_h_r}{VkWin32SurfaceCreateInfoKHR}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkSurfaceKHR* pSurface);}
+\DoxyCodeLine{35 \textcolor{keyword}{typedef} VkBool32 (VKAPI\_PTR *PFN\_vkGetPhysicalDeviceWin32PresentationSupportKHR)(VkPhysicalDevice physicalDevice, uint32\_t queueFamilyIndex);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{38 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateWin32SurfaceKHR(}
+\DoxyCodeLine{39     VkInstance                                  instance,}
+\DoxyCodeLine{40     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_win32_surface_create_info_k_h_r}{VkWin32SurfaceCreateInfoKHR}}*          pCreateInfo,}
+\DoxyCodeLine{41     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{42     VkSurfaceKHR*                               pSurface);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 VKAPI\_ATTR VkBool32 VKAPI\_CALL vkGetPhysicalDeviceWin32PresentationSupportKHR(}
+\DoxyCodeLine{45     VkPhysicalDevice                            physicalDevice,}
+\DoxyCodeLine{46     uint32\_t                                    queueFamilyIndex);}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define VK\_KHR\_external\_memory\_win32 1}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define VK\_KHR\_EXTERNAL\_MEMORY\_WIN32\_SPEC\_VERSION 1}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define VK\_KHR\_EXTERNAL\_MEMORY\_WIN32\_EXTENSION\_NAME "{}VK\_KHR\_external\_memory\_win32"{}}}
+\DoxyCodeLine{53 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_import_memory_win32_handle_info_k_h_r}{VkImportMemoryWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{54     VkStructureType                       sType;}
+\DoxyCodeLine{55     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                           pNext;}
+\DoxyCodeLine{56     VkExternalMemoryHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{57     HANDLE                                handle;}
+\DoxyCodeLine{58     LPCWSTR                               name;}
+\DoxyCodeLine{59 \} \mbox{\hyperlink{struct_vk_import_memory_win32_handle_info_k_h_r}{VkImportMemoryWin32HandleInfoKHR}};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_export_memory_win32_handle_info_k_h_r}{VkExportMemoryWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{62     VkStructureType               sType;}
+\DoxyCodeLine{63     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                   pNext;}
+\DoxyCodeLine{64     \textcolor{keyword}{const} SECURITY\_ATTRIBUTES*    pAttributes;}
+\DoxyCodeLine{65     DWORD                         dwAccess;}
+\DoxyCodeLine{66     LPCWSTR                       name;}
+\DoxyCodeLine{67 \} \mbox{\hyperlink{struct_vk_export_memory_win32_handle_info_k_h_r}{VkExportMemoryWin32HandleInfoKHR}};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_memory_win32_handle_properties_k_h_r}{VkMemoryWin32HandlePropertiesKHR}} \{}
+\DoxyCodeLine{70     VkStructureType    sType;}
+\DoxyCodeLine{71     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{72     uint32\_t           memoryTypeBits;}
+\DoxyCodeLine{73 \} \mbox{\hyperlink{struct_vk_memory_win32_handle_properties_k_h_r}{VkMemoryWin32HandlePropertiesKHR}};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_memory_get_win32_handle_info_k_h_r}{VkMemoryGetWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{76     VkStructureType                       sType;}
+\DoxyCodeLine{77     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                           pNext;}
+\DoxyCodeLine{78     VkDeviceMemory                        memory;}
+\DoxyCodeLine{79     VkExternalMemoryHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{80 \} \mbox{\hyperlink{struct_vk_memory_get_win32_handle_info_k_h_r}{VkMemoryGetWin32HandleInfoKHR}};}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetMemoryWin32HandleKHR)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_memory_get_win32_handle_info_k_h_r}{VkMemoryGetWin32HandleInfoKHR}}* pGetWin32HandleInfo, HANDLE* pHandle);}
+\DoxyCodeLine{83 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetMemoryWin32HandlePropertiesKHR)(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, HANDLE handle, \mbox{\hyperlink{struct_vk_memory_win32_handle_properties_k_h_r}{VkMemoryWin32HandlePropertiesKHR}}* pMemoryWin32HandleProperties);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{86 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetMemoryWin32HandleKHR(}
+\DoxyCodeLine{87     VkDevice                                    device,}
+\DoxyCodeLine{88     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_memory_get_win32_handle_info_k_h_r}{VkMemoryGetWin32HandleInfoKHR}}*        pGetWin32HandleInfo,}
+\DoxyCodeLine{89     HANDLE*                                     pHandle);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetMemoryWin32HandlePropertiesKHR(}
+\DoxyCodeLine{92     VkDevice                                    device,}
+\DoxyCodeLine{93     VkExternalMemoryHandleTypeFlagBits          handleType,}
+\DoxyCodeLine{94     HANDLE                                      handle,}
+\DoxyCodeLine{95     \mbox{\hyperlink{struct_vk_memory_win32_handle_properties_k_h_r}{VkMemoryWin32HandlePropertiesKHR}}*           pMemoryWin32HandleProperties);}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define VK\_KHR\_win32\_keyed\_mutex 1}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define VK\_KHR\_WIN32\_KEYED\_MUTEX\_SPEC\_VERSION 1}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#define VK\_KHR\_WIN32\_KEYED\_MUTEX\_EXTENSION\_NAME "{}VK\_KHR\_win32\_keyed\_mutex"{}}}
+\DoxyCodeLine{102 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_win32_keyed_mutex_acquire_release_info_k_h_r}{VkWin32KeyedMutexAcquireReleaseInfoKHR}} \{}
+\DoxyCodeLine{103     VkStructureType          sType;}
+\DoxyCodeLine{104     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{105     uint32\_t                 acquireCount;}
+\DoxyCodeLine{106     \textcolor{keyword}{const} VkDeviceMemory*    pAcquireSyncs;}
+\DoxyCodeLine{107     \textcolor{keyword}{const} uint64\_t*          pAcquireKeys;}
+\DoxyCodeLine{108     \textcolor{keyword}{const} uint32\_t*          pAcquireTimeouts;}
+\DoxyCodeLine{109     uint32\_t                 releaseCount;}
+\DoxyCodeLine{110     \textcolor{keyword}{const} VkDeviceMemory*    pReleaseSyncs;}
+\DoxyCodeLine{111     \textcolor{keyword}{const} uint64\_t*          pReleaseKeys;}
+\DoxyCodeLine{112 \} \mbox{\hyperlink{struct_vk_win32_keyed_mutex_acquire_release_info_k_h_r}{VkWin32KeyedMutexAcquireReleaseInfoKHR}};}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#define VK\_KHR\_external\_semaphore\_win32 1}}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#define VK\_KHR\_EXTERNAL\_SEMAPHORE\_WIN32\_SPEC\_VERSION 1}}
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#define VK\_KHR\_EXTERNAL\_SEMAPHORE\_WIN32\_EXTENSION\_NAME "{}VK\_KHR\_external\_semaphore\_win32"{}}}
+\DoxyCodeLine{119 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_import_semaphore_win32_handle_info_k_h_r}{VkImportSemaphoreWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{120     VkStructureType                          sType;}
+\DoxyCodeLine{121     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                              pNext;}
+\DoxyCodeLine{122     VkSemaphore                              semaphore;}
+\DoxyCodeLine{123     VkSemaphoreImportFlags                   flags;}
+\DoxyCodeLine{124     VkExternalSemaphoreHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{125     HANDLE                                   handle;}
+\DoxyCodeLine{126     LPCWSTR                                  name;}
+\DoxyCodeLine{127 \} \mbox{\hyperlink{struct_vk_import_semaphore_win32_handle_info_k_h_r}{VkImportSemaphoreWin32HandleInfoKHR}};}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_export_semaphore_win32_handle_info_k_h_r}{VkExportSemaphoreWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{130     VkStructureType               sType;}
+\DoxyCodeLine{131     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                   pNext;}
+\DoxyCodeLine{132     \textcolor{keyword}{const} SECURITY\_ATTRIBUTES*    pAttributes;}
+\DoxyCodeLine{133     DWORD                         dwAccess;}
+\DoxyCodeLine{134     LPCWSTR                       name;}
+\DoxyCodeLine{135 \} \mbox{\hyperlink{struct_vk_export_semaphore_win32_handle_info_k_h_r}{VkExportSemaphoreWin32HandleInfoKHR}};}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_d3_d12_fence_submit_info_k_h_r}{VkD3D12FenceSubmitInfoKHR}} \{}
+\DoxyCodeLine{138     VkStructureType    sType;}
+\DoxyCodeLine{139     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{140     uint32\_t           waitSemaphoreValuesCount;}
+\DoxyCodeLine{141     \textcolor{keyword}{const} uint64\_t*    pWaitSemaphoreValues;}
+\DoxyCodeLine{142     uint32\_t           signalSemaphoreValuesCount;}
+\DoxyCodeLine{143     \textcolor{keyword}{const} uint64\_t*    pSignalSemaphoreValues;}
+\DoxyCodeLine{144 \} \mbox{\hyperlink{struct_vk_d3_d12_fence_submit_info_k_h_r}{VkD3D12FenceSubmitInfoKHR}};}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_semaphore_get_win32_handle_info_k_h_r}{VkSemaphoreGetWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{147     VkStructureType                          sType;}
+\DoxyCodeLine{148     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                              pNext;}
+\DoxyCodeLine{149     VkSemaphore                              semaphore;}
+\DoxyCodeLine{150     VkExternalSemaphoreHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{151 \} \mbox{\hyperlink{struct_vk_semaphore_get_win32_handle_info_k_h_r}{VkSemaphoreGetWin32HandleInfoKHR}};}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkImportSemaphoreWin32HandleKHR)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_import_semaphore_win32_handle_info_k_h_r}{VkImportSemaphoreWin32HandleInfoKHR}}* pImportSemaphoreWin32HandleInfo);}
+\DoxyCodeLine{154 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetSemaphoreWin32HandleKHR)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_semaphore_get_win32_handle_info_k_h_r}{VkSemaphoreGetWin32HandleInfoKHR}}* pGetWin32HandleInfo, HANDLE* pHandle);}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{157 VKAPI\_ATTR VkResult VKAPI\_CALL vkImportSemaphoreWin32HandleKHR(}
+\DoxyCodeLine{158     VkDevice                                    device,}
+\DoxyCodeLine{159     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_import_semaphore_win32_handle_info_k_h_r}{VkImportSemaphoreWin32HandleInfoKHR}}*  pImportSemaphoreWin32HandleInfo);}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetSemaphoreWin32HandleKHR(}
+\DoxyCodeLine{162     VkDevice                                    device,}
+\DoxyCodeLine{163     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_semaphore_get_win32_handle_info_k_h_r}{VkSemaphoreGetWin32HandleInfoKHR}}*     pGetWin32HandleInfo,}
+\DoxyCodeLine{164     HANDLE*                                     pHandle);}
+\DoxyCodeLine{165 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#define VK\_KHR\_external\_fence\_win32 1}}
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#define VK\_KHR\_EXTERNAL\_FENCE\_WIN32\_SPEC\_VERSION 1}}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#define VK\_KHR\_EXTERNAL\_FENCE\_WIN32\_EXTENSION\_NAME "{}VK\_KHR\_external\_fence\_win32"{}}}
+\DoxyCodeLine{171 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_import_fence_win32_handle_info_k_h_r}{VkImportFenceWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{172     VkStructureType                      sType;}
+\DoxyCodeLine{173     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                          pNext;}
+\DoxyCodeLine{174     VkFence                              fence;}
+\DoxyCodeLine{175     VkFenceImportFlags                   flags;}
+\DoxyCodeLine{176     VkExternalFenceHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{177     HANDLE                               handle;}
+\DoxyCodeLine{178     LPCWSTR                              name;}
+\DoxyCodeLine{179 \} \mbox{\hyperlink{struct_vk_import_fence_win32_handle_info_k_h_r}{VkImportFenceWin32HandleInfoKHR}};}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_export_fence_win32_handle_info_k_h_r}{VkExportFenceWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{182     VkStructureType               sType;}
+\DoxyCodeLine{183     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                   pNext;}
+\DoxyCodeLine{184     \textcolor{keyword}{const} SECURITY\_ATTRIBUTES*    pAttributes;}
+\DoxyCodeLine{185     DWORD                         dwAccess;}
+\DoxyCodeLine{186     LPCWSTR                       name;}
+\DoxyCodeLine{187 \} \mbox{\hyperlink{struct_vk_export_fence_win32_handle_info_k_h_r}{VkExportFenceWin32HandleInfoKHR}};}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_fence_get_win32_handle_info_k_h_r}{VkFenceGetWin32HandleInfoKHR}} \{}
+\DoxyCodeLine{190     VkStructureType                      sType;}
+\DoxyCodeLine{191     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                          pNext;}
+\DoxyCodeLine{192     VkFence                              fence;}
+\DoxyCodeLine{193     VkExternalFenceHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{194 \} \mbox{\hyperlink{struct_vk_fence_get_win32_handle_info_k_h_r}{VkFenceGetWin32HandleInfoKHR}};}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkImportFenceWin32HandleKHR)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_import_fence_win32_handle_info_k_h_r}{VkImportFenceWin32HandleInfoKHR}}* pImportFenceWin32HandleInfo);}
+\DoxyCodeLine{197 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetFenceWin32HandleKHR)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_fence_get_win32_handle_info_k_h_r}{VkFenceGetWin32HandleInfoKHR}}* pGetWin32HandleInfo, HANDLE* pHandle);}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{200 VKAPI\_ATTR VkResult VKAPI\_CALL vkImportFenceWin32HandleKHR(}
+\DoxyCodeLine{201     VkDevice                                    device,}
+\DoxyCodeLine{202     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_import_fence_win32_handle_info_k_h_r}{VkImportFenceWin32HandleInfoKHR}}*      pImportFenceWin32HandleInfo);}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetFenceWin32HandleKHR(}
+\DoxyCodeLine{205     VkDevice                                    device,}
+\DoxyCodeLine{206     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_fence_get_win32_handle_info_k_h_r}{VkFenceGetWin32HandleInfoKHR}}*         pGetWin32HandleInfo,}
+\DoxyCodeLine{207     HANDLE*                                     pHandle);}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211 \textcolor{preprocessor}{\#define VK\_NV\_external\_memory\_win32 1}}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#define VK\_NV\_EXTERNAL\_MEMORY\_WIN32\_SPEC\_VERSION 1}}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#define VK\_NV\_EXTERNAL\_MEMORY\_WIN32\_EXTENSION\_NAME "{}VK\_NV\_external\_memory\_win32"{}}}
+\DoxyCodeLine{214 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_import_memory_win32_handle_info_n_v}{VkImportMemoryWin32HandleInfoNV}} \{}
+\DoxyCodeLine{215     VkStructureType                      sType;}
+\DoxyCodeLine{216     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                          pNext;}
+\DoxyCodeLine{217     VkExternalMemoryHandleTypeFlagsNV    handleType;}
+\DoxyCodeLine{218     HANDLE                               handle;}
+\DoxyCodeLine{219 \} \mbox{\hyperlink{struct_vk_import_memory_win32_handle_info_n_v}{VkImportMemoryWin32HandleInfoNV}};}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_export_memory_win32_handle_info_n_v}{VkExportMemoryWin32HandleInfoNV}} \{}
+\DoxyCodeLine{222     VkStructureType               sType;}
+\DoxyCodeLine{223     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                   pNext;}
+\DoxyCodeLine{224     \textcolor{keyword}{const} SECURITY\_ATTRIBUTES*    pAttributes;}
+\DoxyCodeLine{225     DWORD                         dwAccess;}
+\DoxyCodeLine{226 \} \mbox{\hyperlink{struct_vk_export_memory_win32_handle_info_n_v}{VkExportMemoryWin32HandleInfoNV}};}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetMemoryWin32HandleNV)(VkDevice device, VkDeviceMemory memory, VkExternalMemoryHandleTypeFlagsNV handleType, HANDLE* pHandle);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{231 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetMemoryWin32HandleNV(}
+\DoxyCodeLine{232     VkDevice                                    device,}
+\DoxyCodeLine{233     VkDeviceMemory                              memory,}
+\DoxyCodeLine{234     VkExternalMemoryHandleTypeFlagsNV           handleType,}
+\DoxyCodeLine{235     HANDLE*                                     pHandle);}
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#define VK\_NV\_win32\_keyed\_mutex 1}}
+\DoxyCodeLine{240 \textcolor{preprocessor}{\#define VK\_NV\_WIN32\_KEYED\_MUTEX\_SPEC\_VERSION 2}}
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#define VK\_NV\_WIN32\_KEYED\_MUTEX\_EXTENSION\_NAME "{}VK\_NV\_win32\_keyed\_mutex"{}}}
+\DoxyCodeLine{242 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_win32_keyed_mutex_acquire_release_info_n_v}{VkWin32KeyedMutexAcquireReleaseInfoNV}} \{}
+\DoxyCodeLine{243     VkStructureType          sType;}
+\DoxyCodeLine{244     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{245     uint32\_t                 acquireCount;}
+\DoxyCodeLine{246     \textcolor{keyword}{const} VkDeviceMemory*    pAcquireSyncs;}
+\DoxyCodeLine{247     \textcolor{keyword}{const} uint64\_t*          pAcquireKeys;}
+\DoxyCodeLine{248     \textcolor{keyword}{const} uint32\_t*          pAcquireTimeoutMilliseconds;}
+\DoxyCodeLine{249     uint32\_t                 releaseCount;}
+\DoxyCodeLine{250     \textcolor{keyword}{const} VkDeviceMemory*    pReleaseSyncs;}
+\DoxyCodeLine{251     \textcolor{keyword}{const} uint64\_t*          pReleaseKeys;}
+\DoxyCodeLine{252 \} \mbox{\hyperlink{struct_vk_win32_keyed_mutex_acquire_release_info_n_v}{VkWin32KeyedMutexAcquireReleaseInfoNV}};}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256 \textcolor{preprocessor}{\#define VK\_EXT\_full\_screen\_exclusive 1}}
+\DoxyCodeLine{257 \textcolor{preprocessor}{\#define VK\_EXT\_FULL\_SCREEN\_EXCLUSIVE\_SPEC\_VERSION 4}}
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#define VK\_EXT\_FULL\_SCREEN\_EXCLUSIVE\_EXTENSION\_NAME "{}VK\_EXT\_full\_screen\_exclusive"{}}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkFullScreenExclusiveEXT \{}
+\DoxyCodeLine{261     VK\_FULL\_SCREEN\_EXCLUSIVE\_DEFAULT\_EXT = 0,}
+\DoxyCodeLine{262     VK\_FULL\_SCREEN\_EXCLUSIVE\_ALLOWED\_EXT = 1,}
+\DoxyCodeLine{263     VK\_FULL\_SCREEN\_EXCLUSIVE\_DISALLOWED\_EXT = 2,}
+\DoxyCodeLine{264     VK\_FULL\_SCREEN\_EXCLUSIVE\_APPLICATION\_CONTROLLED\_EXT = 3,}
+\DoxyCodeLine{265     VK\_FULL\_SCREEN\_EXCLUSIVE\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{266 \} VkFullScreenExclusiveEXT;}
+\DoxyCodeLine{267 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_surface_full_screen_exclusive_info_e_x_t}{VkSurfaceFullScreenExclusiveInfoEXT}} \{}
+\DoxyCodeLine{268     VkStructureType             sType;}
+\DoxyCodeLine{269     \textcolor{keywordtype}{void}*                       pNext;}
+\DoxyCodeLine{270     VkFullScreenExclusiveEXT    fullScreenExclusive;}
+\DoxyCodeLine{271 \} \mbox{\hyperlink{struct_vk_surface_full_screen_exclusive_info_e_x_t}{VkSurfaceFullScreenExclusiveInfoEXT}};}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_surface_capabilities_full_screen_exclusive_e_x_t}{VkSurfaceCapabilitiesFullScreenExclusiveEXT}} \{}
+\DoxyCodeLine{274     VkStructureType    sType;}
+\DoxyCodeLine{275     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{276     VkBool32           fullScreenExclusiveSupported;}
+\DoxyCodeLine{277 \} \mbox{\hyperlink{struct_vk_surface_capabilities_full_screen_exclusive_e_x_t}{VkSurfaceCapabilitiesFullScreenExclusiveEXT}};}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_surface_full_screen_exclusive_win32_info_e_x_t}{VkSurfaceFullScreenExclusiveWin32InfoEXT}} \{}
+\DoxyCodeLine{280     VkStructureType    sType;}
+\DoxyCodeLine{281     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{282     HMONITOR           hmonitor;}
+\DoxyCodeLine{283 \} \mbox{\hyperlink{struct_vk_surface_full_screen_exclusive_win32_info_e_x_t}{VkSurfaceFullScreenExclusiveWin32InfoEXT}};}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{285 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetPhysicalDeviceSurfacePresentModes2EXT)(VkPhysicalDevice physicalDevice, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_physical_device_surface_info2_k_h_r}{VkPhysicalDeviceSurfaceInfo2KHR}}* pSurfaceInfo, uint32\_t* pPresentModeCount, VkPresentModeKHR* pPresentModes);}
+\DoxyCodeLine{286 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkAcquireFullScreenExclusiveModeEXT)(VkDevice device, VkSwapchainKHR swapchain);}
+\DoxyCodeLine{287 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkReleaseFullScreenExclusiveModeEXT)(VkDevice device, VkSwapchainKHR swapchain);}
+\DoxyCodeLine{288 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetDeviceGroupSurfacePresentModes2EXT)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_physical_device_surface_info2_k_h_r}{VkPhysicalDeviceSurfaceInfo2KHR}}* pSurfaceInfo, VkDeviceGroupPresentModeFlagsKHR* pModes);}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{291 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetPhysicalDeviceSurfacePresentModes2EXT(}
+\DoxyCodeLine{292     VkPhysicalDevice                            physicalDevice,}
+\DoxyCodeLine{293     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_physical_device_surface_info2_k_h_r}{VkPhysicalDeviceSurfaceInfo2KHR}}*      pSurfaceInfo,}
+\DoxyCodeLine{294     uint32\_t*                                   pPresentModeCount,}
+\DoxyCodeLine{295     VkPresentModeKHR*                           pPresentModes);}
+\DoxyCodeLine{296 }
+\DoxyCodeLine{297 VKAPI\_ATTR VkResult VKAPI\_CALL vkAcquireFullScreenExclusiveModeEXT(}
+\DoxyCodeLine{298     VkDevice                                    device,}
+\DoxyCodeLine{299     VkSwapchainKHR                              swapchain);}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{301 VKAPI\_ATTR VkResult VKAPI\_CALL vkReleaseFullScreenExclusiveModeEXT(}
+\DoxyCodeLine{302     VkDevice                                    device,}
+\DoxyCodeLine{303     VkSwapchainKHR                              swapchain);}
+\DoxyCodeLine{304 }
+\DoxyCodeLine{305 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetDeviceGroupSurfacePresentModes2EXT(}
+\DoxyCodeLine{306     VkDevice                                    device,}
+\DoxyCodeLine{307     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_physical_device_surface_info2_k_h_r}{VkPhysicalDeviceSurfaceInfo2KHR}}*      pSurfaceInfo,}
+\DoxyCodeLine{308     VkDeviceGroupPresentModeFlagsKHR*           pModes);}
+\DoxyCodeLine{309 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{310 }
+\DoxyCodeLine{311 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{312 \}}
+\DoxyCodeLine{313 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{314 }
+\DoxyCodeLine{315 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

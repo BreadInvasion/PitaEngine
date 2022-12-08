@@ -8,6 +8,22 @@
 
 #include "cpp_test.h"
 
+/**
+ * @file
+ * @author Mark Haddleton <haddlm@rpi.edu>
+ * 
+ * The main file is used to test the engine's functionality and run test cases for specific sections.
+ */
+
+/**
+ * @brief The main function
+ * @author Mark Haddleton
+ * 
+ * This is the main function of the entire engine. It contains function calls to start: 
+ * In-game time, the heap, the file system, the game window, and the renderer. 
+ * Once those are in place, the game is initialized, then updated every frame in the core "pump" loop.
+ * Upon shutdown, all of the allocated memory blocks are freed and the window is closed.
+ */
 int main(int argc, const char* argv[])
 {
 	debug_set_print_mask(k_print_info | k_print_warning | k_print_error);

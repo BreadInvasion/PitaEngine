@@ -11,17 +11,24 @@
 #include <windows.h>
 #include <windowsx.h>
 
+/**
+ * \brief wm_window_t is a structure to store data for the OS-level window.
+ * 
+ * It contains important info, including the raw window object (HWND), 
+ * a back reference to the heap, and other states like the mouse position, quit and focus states, and input masks.
+ */
 typedef struct wm_window_t
 {
-	HWND hwnd;
-	heap_t* heap;
-	bool quit;
-	bool has_focus;
-	uint32_t mouse_mask;
-	uint32_t key_mask;
-	int mouse_x;
-	int mouse_y;
+	HWND hwnd; /**< hwnd stores the raw OS-level window object. */
+	heap_t* heap; /**< heap is a reference to the heap in which the window object is stored. */
+	bool quit; /**< quit becomes true if the manager receives a WM_CLOSE flag. Otherwise, quit is false. */
+	bool has_focus; /**< has_focus changes state when the manager receives the WM_ACTIVATEAPP flag, becoming true if the window is currently in focus. Otherwise, has_focus is false. This flag is used to enable or disable mouse position updates. */
+	uint32_t mouse_mask; /**< mouse_mask is a bit mask that records up/down states for the left, right, and middle mouse buttons. */
+	uint32_t key_mask; /**< key_mask is a bit mask that records up/down states for the up, down, left, and right keyboard keys. */
+	int mouse_x; /**< mouse_x records the relative x position of the mouse within the window, updating every frame as long as the window is currently in focus. */
+	int mouse_y; /**< mouse_y records the relative y position of the mouse within the window, updating every frame as long as the window is currently in focus. */
 } wm_window_t;
+
 
 const struct
 {
@@ -197,6 +204,7 @@ void wm_get_mouse_move(wm_window_t* window, int* x, int* y)
 	*x = window->mouse_x;
 	*y = window->mouse_y;
 }
+
 
 void wm_destroy(wm_window_t* window)
 {

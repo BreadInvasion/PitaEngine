@@ -1,0 +1,303 @@
+\hypertarget{xxhash_8h_source}{}\doxysection{xxhash.\+h}
+\label{xxhash_8h_source}\index{src/lz4/xxhash.h@{src/lz4/xxhash.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{   xxHash -\/ Extremely Fast Hash algorithm}}
+\DoxyCodeLine{3 \textcolor{comment}{   Header File}}
+\DoxyCodeLine{4 \textcolor{comment}{   Copyright (C) 2012-\/2016, Yann Collet.}}
+\DoxyCodeLine{5 \textcolor{comment}{}}
+\DoxyCodeLine{6 \textcolor{comment}{   BSD 2-\/Clause License (http://www.opensource.org/licenses/bsd-\/license.php)}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{   Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{9 \textcolor{comment}{   modification, are permitted provided that the following conditions are}}
+\DoxyCodeLine{10 \textcolor{comment}{   met:}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 \textcolor{comment}{       * Redistributions of source code must retain the above copyright}}
+\DoxyCodeLine{13 \textcolor{comment}{   notice, this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{14 \textcolor{comment}{       * Redistributions in binary form must reproduce the above}}
+\DoxyCodeLine{15 \textcolor{comment}{   copyright notice, this list of conditions and the following disclaimer}}
+\DoxyCodeLine{16 \textcolor{comment}{   in the documentation and/or other materials provided with the}}
+\DoxyCodeLine{17 \textcolor{comment}{   distribution.}}
+\DoxyCodeLine{18 \textcolor{comment}{}}
+\DoxyCodeLine{19 \textcolor{comment}{   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS}}
+\DoxyCodeLine{20 \textcolor{comment}{   "{}AS IS"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT}}
+\DoxyCodeLine{21 \textcolor{comment}{   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR}}
+\DoxyCodeLine{22 \textcolor{comment}{   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT}}
+\DoxyCodeLine{23 \textcolor{comment}{   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,}}
+\DoxyCodeLine{24 \textcolor{comment}{   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT}}
+\DoxyCodeLine{25 \textcolor{comment}{   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,}}
+\DoxyCodeLine{26 \textcolor{comment}{   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY}}
+\DoxyCodeLine{27 \textcolor{comment}{   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}}
+\DoxyCodeLine{28 \textcolor{comment}{   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE}}
+\DoxyCodeLine{29 \textcolor{comment}{   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{30 \textcolor{comment}{}}
+\DoxyCodeLine{31 \textcolor{comment}{   You can contact the author at :}}
+\DoxyCodeLine{32 \textcolor{comment}{   -\/ xxHash source repository : https://github.com/Cyan4973/xxHash}}
+\DoxyCodeLine{33 \textcolor{comment}{*/}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{/* Notice extracted from xxHash homepage :}}
+\DoxyCodeLine{36 \textcolor{comment}{}}
+\DoxyCodeLine{37 \textcolor{comment}{xxHash is an extremely fast Hash algorithm, running at RAM speed limits.}}
+\DoxyCodeLine{38 \textcolor{comment}{It also successfully passes all tests from the SMHasher suite.}}
+\DoxyCodeLine{39 \textcolor{comment}{}}
+\DoxyCodeLine{40 \textcolor{comment}{Comparison (single thread, Windows Seven 32 bits, using SMHasher on a Core 2 Duo @3GHz)}}
+\DoxyCodeLine{41 \textcolor{comment}{}}
+\DoxyCodeLine{42 \textcolor{comment}{Name            Speed       Q.Score   Author}}
+\DoxyCodeLine{43 \textcolor{comment}{xxHash          5.4 GB/s     10}}
+\DoxyCodeLine{44 \textcolor{comment}{CrapWow         3.2 GB/s      2       Andrew}}
+\DoxyCodeLine{45 \textcolor{comment}{MumurHash 3a    2.7 GB/s     10       Austin Appleby}}
+\DoxyCodeLine{46 \textcolor{comment}{SpookyHash      2.0 GB/s     10       Bob Jenkins}}
+\DoxyCodeLine{47 \textcolor{comment}{SBox            1.4 GB/s      9       Bret Mulvey}}
+\DoxyCodeLine{48 \textcolor{comment}{Lookup3         1.2 GB/s      9       Bob Jenkins}}
+\DoxyCodeLine{49 \textcolor{comment}{SuperFastHash   1.2 GB/s      1       Paul Hsieh}}
+\DoxyCodeLine{50 \textcolor{comment}{CityHash64      1.05 GB/s    10       Pike \& Alakuijala}}
+\DoxyCodeLine{51 \textcolor{comment}{FNV             0.55 GB/s     5       Fowler, Noll, Vo}}
+\DoxyCodeLine{52 \textcolor{comment}{CRC32           0.43 GB/s     9}}
+\DoxyCodeLine{53 \textcolor{comment}{MD5-\/32          0.33 GB/s    10       Ronald L. Rivest}}
+\DoxyCodeLine{54 \textcolor{comment}{SHA1-\/32         0.28 GB/s    10}}
+\DoxyCodeLine{55 \textcolor{comment}{}}
+\DoxyCodeLine{56 \textcolor{comment}{Q.Score is a measure of quality of the hash function.}}
+\DoxyCodeLine{57 \textcolor{comment}{It depends on successfully passing SMHasher test set.}}
+\DoxyCodeLine{58 \textcolor{comment}{10 is a perfect score.}}
+\DoxyCodeLine{59 \textcolor{comment}{}}
+\DoxyCodeLine{60 \textcolor{comment}{A 64-\/bit version, named XXH64, is available since r35.}}
+\DoxyCodeLine{61 \textcolor{comment}{It offers much better speed, but for 64-\/bit applications only.}}
+\DoxyCodeLine{62 \textcolor{comment}{Name     Speed on 64 bits    Speed on 32 bits}}
+\DoxyCodeLine{63 \textcolor{comment}{XXH64       13.8 GB/s            1.9 GB/s}}
+\DoxyCodeLine{64 \textcolor{comment}{XXH32        6.8 GB/s            6.0 GB/s}}
+\DoxyCodeLine{65 \textcolor{comment}{*/}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#ifndef XXHASH\_H\_5627135585666179}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define XXHASH\_H\_5627135585666179 1}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#if defined (\_\_cplusplus)}}
+\DoxyCodeLine{71 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{comment}{/* ****************************}}
+\DoxyCodeLine{76 \textcolor{comment}{*  Definitions}}
+\DoxyCodeLine{77 \textcolor{comment}{******************************/}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#include <stddef.h>}   \textcolor{comment}{/* size\_t */}}
+\DoxyCodeLine{79 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{ XXH\_OK=0, XXH\_ERROR \} XXH\_errorcode;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{comment}{/* ****************************}}
+\DoxyCodeLine{83 \textcolor{comment}{ *  API modifier}}
+\DoxyCodeLine{84 \textcolor{comment}{ ******************************/}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#if defined(XXH\_INLINE\_ALL) || defined(XXH\_PRIVATE\_API)}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#  ifndef XXH\_STATIC\_LINKING\_ONLY}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#    define XXH\_STATIC\_LINKING\_ONLY}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#  endif}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#  if defined(\_\_GNUC\_\_)}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#    define XXH\_PUBLIC\_API static \_\_inline \_\_attribute\_\_((unused))}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#  elif defined (\_\_cplusplus) || (defined (\_\_STDC\_VERSION\_\_) \&\& (\_\_STDC\_VERSION\_\_ >= 199901L) }\textcolor{comment}{/* C99 */}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#    define XXH\_PUBLIC\_API static inline}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#  elif defined(\_MSC\_VER)}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#    define XXH\_PUBLIC\_API static \_\_inline}}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#  else}}
+\DoxyCodeLine{106      \textcolor{comment}{/* this version may generate warnings for unused static functions */}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#    define XXH\_PUBLIC\_API static}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#  endif}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#  define XXH\_PUBLIC\_API   }\textcolor{comment}{/* do nothing */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* XXH\_INLINE\_ALL || XXH\_PRIVATE\_API */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{124 \textcolor{preprocessor}{\#ifdef XXH\_NAMESPACE}}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#  define XXH\_CAT(A,B) A\#\#B}}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#  define XXH\_NAME2(A,B) XXH\_CAT(A,B)}}
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#  define XXH\_versionNumber XXH\_NAME2(XXH\_NAMESPACE, XXH\_versionNumber)}}
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#  define XXH32 XXH\_NAME2(XXH\_NAMESPACE, XXH32)}}
+\DoxyCodeLine{129 \textcolor{preprocessor}{\#  define XXH32\_createState XXH\_NAME2(XXH\_NAMESPACE, XXH32\_createState)}}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#  define XXH32\_freeState XXH\_NAME2(XXH\_NAMESPACE, XXH32\_freeState)}}
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#  define XXH32\_reset XXH\_NAME2(XXH\_NAMESPACE, XXH32\_reset)}}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#  define XXH32\_update XXH\_NAME2(XXH\_NAMESPACE, XXH32\_update)}}
+\DoxyCodeLine{133 \textcolor{preprocessor}{\#  define XXH32\_digest XXH\_NAME2(XXH\_NAMESPACE, XXH32\_digest)}}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#  define XXH32\_copyState XXH\_NAME2(XXH\_NAMESPACE, XXH32\_copyState)}}
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#  define XXH32\_canonicalFromHash XXH\_NAME2(XXH\_NAMESPACE, XXH32\_canonicalFromHash)}}
+\DoxyCodeLine{136 \textcolor{preprocessor}{\#  define XXH32\_hashFromCanonical XXH\_NAME2(XXH\_NAMESPACE, XXH32\_hashFromCanonical)}}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#  define XXH64 XXH\_NAME2(XXH\_NAMESPACE, XXH64)}}
+\DoxyCodeLine{138 \textcolor{preprocessor}{\#  define XXH64\_createState XXH\_NAME2(XXH\_NAMESPACE, XXH64\_createState)}}
+\DoxyCodeLine{139 \textcolor{preprocessor}{\#  define XXH64\_freeState XXH\_NAME2(XXH\_NAMESPACE, XXH64\_freeState)}}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#  define XXH64\_reset XXH\_NAME2(XXH\_NAMESPACE, XXH64\_reset)}}
+\DoxyCodeLine{141 \textcolor{preprocessor}{\#  define XXH64\_update XXH\_NAME2(XXH\_NAMESPACE, XXH64\_update)}}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#  define XXH64\_digest XXH\_NAME2(XXH\_NAMESPACE, XXH64\_digest)}}
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#  define XXH64\_copyState XXH\_NAME2(XXH\_NAMESPACE, XXH64\_copyState)}}
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#  define XXH64\_canonicalFromHash XXH\_NAME2(XXH\_NAMESPACE, XXH64\_canonicalFromHash)}}
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#  define XXH64\_hashFromCanonical XXH\_NAME2(XXH\_NAMESPACE, XXH64\_hashFromCanonical)}}
+\DoxyCodeLine{146 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149 \textcolor{comment}{/* *************************************}}
+\DoxyCodeLine{150 \textcolor{comment}{*  Version}}
+\DoxyCodeLine{151 \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{152 \textcolor{preprocessor}{\#define XXH\_VERSION\_MAJOR    0}}
+\DoxyCodeLine{153 \textcolor{preprocessor}{\#define XXH\_VERSION\_MINOR    6}}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#define XXH\_VERSION\_RELEASE  5}}
+\DoxyCodeLine{155 \textcolor{preprocessor}{\#define XXH\_VERSION\_NUMBER  (XXH\_VERSION\_MAJOR *100*100 + XXH\_VERSION\_MINOR *100 + XXH\_VERSION\_RELEASE)}}
+\DoxyCodeLine{156 XXH\_PUBLIC\_API \textcolor{keywordtype}{unsigned} XXH\_versionNumber (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159 \textcolor{comment}{/*-\/**********************************************************************}}
+\DoxyCodeLine{160 \textcolor{comment}{*  32-\/bit hash}}
+\DoxyCodeLine{161 \textcolor{comment}{************************************************************************/}}
+\DoxyCodeLine{162 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} XXH32\_hash\_t;}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{169 XXH\_PUBLIC\_API XXH32\_hash\_t XXH32 (\textcolor{keyword}{const} \textcolor{keywordtype}{void}* input, \textcolor{keywordtype}{size\_t} length, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seed);}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171 \textcolor{comment}{/*======   Streaming   ======*/}}
+\DoxyCodeLine{172 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }XXH32\_state\_s XXH32\_state\_t;   \textcolor{comment}{/* incomplete type */}}
+\DoxyCodeLine{173 XXH\_PUBLIC\_API XXH32\_state\_t* XXH32\_createState(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{174 XXH\_PUBLIC\_API XXH\_errorcode  XXH32\_freeState(XXH32\_state\_t* statePtr);}
+\DoxyCodeLine{175 XXH\_PUBLIC\_API \textcolor{keywordtype}{void} XXH32\_copyState(XXH32\_state\_t* dst\_state, \textcolor{keyword}{const} XXH32\_state\_t* src\_state);}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 XXH\_PUBLIC\_API XXH\_errorcode XXH32\_reset  (XXH32\_state\_t* statePtr, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seed);}
+\DoxyCodeLine{178 XXH\_PUBLIC\_API XXH\_errorcode XXH32\_update (XXH32\_state\_t* statePtr, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* input, \textcolor{keywordtype}{size\_t} length);}
+\DoxyCodeLine{179 XXH\_PUBLIC\_API XXH32\_hash\_t  XXH32\_digest (\textcolor{keyword}{const} XXH32\_state\_t* statePtr);}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{comment}{/*}}
+\DoxyCodeLine{182 \textcolor{comment}{ * Streaming functions generate the xxHash of an input provided in multiple segments.}}
+\DoxyCodeLine{183 \textcolor{comment}{ * Note that, for small input, they are slower than single-\/call functions, due to state management.}}
+\DoxyCodeLine{184 \textcolor{comment}{ * For small inputs, prefer `XXH32()` and `XXH64()`, which are better optimized.}}
+\DoxyCodeLine{185 \textcolor{comment}{ *}}
+\DoxyCodeLine{186 \textcolor{comment}{ * XXH state must first be allocated, using XXH*\_createState() .}}
+\DoxyCodeLine{187 \textcolor{comment}{ *}}
+\DoxyCodeLine{188 \textcolor{comment}{ * Start a new hash by initializing state with a seed, using XXH*\_reset().}}
+\DoxyCodeLine{189 \textcolor{comment}{ *}}
+\DoxyCodeLine{190 \textcolor{comment}{ * Then, feed the hash state by calling XXH*\_update() as many times as necessary.}}
+\DoxyCodeLine{191 \textcolor{comment}{ * The function returns an error code, with 0 meaning OK, and any other value meaning there is an error.}}
+\DoxyCodeLine{192 \textcolor{comment}{ *}}
+\DoxyCodeLine{193 \textcolor{comment}{ * Finally, a hash value can be produced anytime, by using XXH*\_digest().}}
+\DoxyCodeLine{194 \textcolor{comment}{ * This function returns the nn-\/bits hash as an int or long long.}}
+\DoxyCodeLine{195 \textcolor{comment}{ *}}
+\DoxyCodeLine{196 \textcolor{comment}{ * It's still possible to continue inserting input into the hash state after a digest,}}
+\DoxyCodeLine{197 \textcolor{comment}{ * and generate some new hashes later on, by calling again XXH*\_digest().}}
+\DoxyCodeLine{198 \textcolor{comment}{ *}}
+\DoxyCodeLine{199 \textcolor{comment}{ * When done, free XXH state space if it was allocated dynamically.}}
+\DoxyCodeLine{200 \textcolor{comment}{ */}}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202 \textcolor{comment}{/*======   Canonical representation   ======*/}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{ \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} digest[4]; \} \mbox{\hyperlink{struct_x_x_h32__canonical__t}{XXH32\_canonical\_t}};}
+\DoxyCodeLine{205 XXH\_PUBLIC\_API \textcolor{keywordtype}{void} XXH32\_canonicalFromHash(\mbox{\hyperlink{struct_x_x_h32__canonical__t}{XXH32\_canonical\_t}}* dst, XXH32\_hash\_t hash);}
+\DoxyCodeLine{206 XXH\_PUBLIC\_API XXH32\_hash\_t XXH32\_hashFromCanonical(\textcolor{keyword}{const} \mbox{\hyperlink{struct_x_x_h32__canonical__t}{XXH32\_canonical\_t}}* src);}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 \textcolor{comment}{/* Default result type for XXH functions are primitive unsigned 32 and 64 bits.}}
+\DoxyCodeLine{209 \textcolor{comment}{ * The canonical representation uses human-\/readable write convention, aka big-\/endian (large digits first).}}
+\DoxyCodeLine{210 \textcolor{comment}{ * These functions allow transformation of hash result into and from its canonical format.}}
+\DoxyCodeLine{211 \textcolor{comment}{ * This way, hash values can be written into a file / memory, and remain comparable on different systems and programs.}}
+\DoxyCodeLine{212 \textcolor{comment}{ */}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215 \textcolor{preprocessor}{\#ifndef XXH\_NO\_LONG\_LONG}}
+\DoxyCodeLine{216 \textcolor{comment}{/*-\/**********************************************************************}}
+\DoxyCodeLine{217 \textcolor{comment}{*  64-\/bit hash}}
+\DoxyCodeLine{218 \textcolor{comment}{************************************************************************/}}
+\DoxyCodeLine{219 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} XXH64\_hash\_t;}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{226 XXH\_PUBLIC\_API XXH64\_hash\_t XXH64 (\textcolor{keyword}{const} \textcolor{keywordtype}{void}* input, \textcolor{keywordtype}{size\_t} length, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} seed);}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228 \textcolor{comment}{/*======   Streaming   ======*/}}
+\DoxyCodeLine{229 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }XXH64\_state\_s XXH64\_state\_t;   \textcolor{comment}{/* incomplete type */}}
+\DoxyCodeLine{230 XXH\_PUBLIC\_API XXH64\_state\_t* XXH64\_createState(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{231 XXH\_PUBLIC\_API XXH\_errorcode  XXH64\_freeState(XXH64\_state\_t* statePtr);}
+\DoxyCodeLine{232 XXH\_PUBLIC\_API \textcolor{keywordtype}{void} XXH64\_copyState(XXH64\_state\_t* dst\_state, \textcolor{keyword}{const} XXH64\_state\_t* src\_state);}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234 XXH\_PUBLIC\_API XXH\_errorcode XXH64\_reset  (XXH64\_state\_t* statePtr, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} seed);}
+\DoxyCodeLine{235 XXH\_PUBLIC\_API XXH\_errorcode XXH64\_update (XXH64\_state\_t* statePtr, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* input, \textcolor{keywordtype}{size\_t} length);}
+\DoxyCodeLine{236 XXH\_PUBLIC\_API XXH64\_hash\_t  XXH64\_digest (\textcolor{keyword}{const} XXH64\_state\_t* statePtr);}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 \textcolor{comment}{/*======   Canonical representation   ======*/}}
+\DoxyCodeLine{239 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{ \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} digest[8]; \} \mbox{\hyperlink{struct_x_x_h64__canonical__t}{XXH64\_canonical\_t}};}
+\DoxyCodeLine{240 XXH\_PUBLIC\_API \textcolor{keywordtype}{void} XXH64\_canonicalFromHash(\mbox{\hyperlink{struct_x_x_h64__canonical__t}{XXH64\_canonical\_t}}* dst, XXH64\_hash\_t hash);}
+\DoxyCodeLine{241 XXH\_PUBLIC\_API XXH64\_hash\_t XXH64\_hashFromCanonical(\textcolor{keyword}{const} \mbox{\hyperlink{struct_x_x_h64__canonical__t}{XXH64\_canonical\_t}}* src);}
+\DoxyCodeLine{242 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{/* XXH\_NO\_LONG\_LONG */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246 \textcolor{preprocessor}{\#ifdef XXH\_STATIC\_LINKING\_ONLY}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248 \textcolor{comment}{/* ================================================================================================}}
+\DoxyCodeLine{249 \textcolor{comment}{   This section contains declarations which are not guaranteed to remain stable.}}
+\DoxyCodeLine{250 \textcolor{comment}{   They may change in future versions, becoming incompatible with a different version of the library.}}
+\DoxyCodeLine{251 \textcolor{comment}{   These declarations should only be used with static linking.}}
+\DoxyCodeLine{252 \textcolor{comment}{   Never use them in association with dynamic linking !}}
+\DoxyCodeLine{253 \textcolor{comment}{=================================================================================================== */}}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 \textcolor{comment}{/* These definitions are only present to allow}}
+\DoxyCodeLine{256 \textcolor{comment}{ * static allocation of XXH state, on stack or in a struct for example.}}
+\DoxyCodeLine{257 \textcolor{comment}{ * Never **ever** use members directly. */}}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{259 \textcolor{preprocessor}{\#if !defined (\_\_VMS) \(\backslash\)}}
+\DoxyCodeLine{260 \textcolor{preprocessor}{  \&\& (defined (\_\_cplusplus) \(\backslash\)}}
+\DoxyCodeLine{261 \textcolor{preprocessor}{  || (defined (\_\_STDC\_VERSION\_\_) \&\& (\_\_STDC\_VERSION\_\_ >= 199901L) }\textcolor{comment}{/* C99 */}\textcolor{preprocessor}{) )}}
+\DoxyCodeLine{262 \textcolor{preprocessor}{\#   include <stdint.h>}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264 \textcolor{keyword}{struct }XXH32\_state\_s \{}
+\DoxyCodeLine{265    uint32\_t total\_len\_32;}
+\DoxyCodeLine{266    uint32\_t large\_len;}
+\DoxyCodeLine{267    uint32\_t v1;}
+\DoxyCodeLine{268    uint32\_t v2;}
+\DoxyCodeLine{269    uint32\_t v3;}
+\DoxyCodeLine{270    uint32\_t v4;}
+\DoxyCodeLine{271    uint32\_t mem32[4];}
+\DoxyCodeLine{272    uint32\_t memsize;}
+\DoxyCodeLine{273    uint32\_t reserved;   \textcolor{comment}{/* never read nor write, might be removed in a future version */}}
+\DoxyCodeLine{274 \};   \textcolor{comment}{/* typedef'd to XXH32\_state\_t */}}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276 \textcolor{keyword}{struct }XXH64\_state\_s \{}
+\DoxyCodeLine{277    uint64\_t total\_len;}
+\DoxyCodeLine{278    uint64\_t v1;}
+\DoxyCodeLine{279    uint64\_t v2;}
+\DoxyCodeLine{280    uint64\_t v3;}
+\DoxyCodeLine{281    uint64\_t v4;}
+\DoxyCodeLine{282    uint64\_t mem64[4];}
+\DoxyCodeLine{283    uint32\_t memsize;}
+\DoxyCodeLine{284    uint32\_t reserved[2];          \textcolor{comment}{/* never read nor write, might be removed in a future version */}}
+\DoxyCodeLine{285 \};   \textcolor{comment}{/* typedef'd to XXH64\_state\_t */}}
+\DoxyCodeLine{286 }
+\DoxyCodeLine{287 \textcolor{preprocessor}{\# else}}
+\DoxyCodeLine{288 }
+\DoxyCodeLine{289 \textcolor{keyword}{struct }XXH32\_state\_s \{}
+\DoxyCodeLine{290    \textcolor{keywordtype}{unsigned} total\_len\_32;}
+\DoxyCodeLine{291    \textcolor{keywordtype}{unsigned} large\_len;}
+\DoxyCodeLine{292    \textcolor{keywordtype}{unsigned} v1;}
+\DoxyCodeLine{293    \textcolor{keywordtype}{unsigned} v2;}
+\DoxyCodeLine{294    \textcolor{keywordtype}{unsigned} v3;}
+\DoxyCodeLine{295    \textcolor{keywordtype}{unsigned} v4;}
+\DoxyCodeLine{296    \textcolor{keywordtype}{unsigned} mem32[4];}
+\DoxyCodeLine{297    \textcolor{keywordtype}{unsigned} memsize;}
+\DoxyCodeLine{298    \textcolor{keywordtype}{unsigned} reserved;   \textcolor{comment}{/* never read nor write, might be removed in a future version */}}
+\DoxyCodeLine{299 \};   \textcolor{comment}{/* typedef'd to XXH32\_state\_t */}}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{301 \textcolor{preprocessor}{\#   ifndef XXH\_NO\_LONG\_LONG  }\textcolor{comment}{/* remove 64-\/bit support */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{302 \textcolor{keyword}{struct }XXH64\_state\_s \{}
+\DoxyCodeLine{303    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} total\_len;}
+\DoxyCodeLine{304    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} v1;}
+\DoxyCodeLine{305    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} v2;}
+\DoxyCodeLine{306    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} v3;}
+\DoxyCodeLine{307    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} v4;}
+\DoxyCodeLine{308    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} mem64[4];}
+\DoxyCodeLine{309    \textcolor{keywordtype}{unsigned} memsize;}
+\DoxyCodeLine{310    \textcolor{keywordtype}{unsigned} reserved[2];     \textcolor{comment}{/* never read nor write, might be removed in a future version */}}
+\DoxyCodeLine{311 \};   \textcolor{comment}{/* typedef'd to XXH64\_state\_t */}}
+\DoxyCodeLine{312 \textcolor{preprocessor}{\#    endif}}
+\DoxyCodeLine{313 }
+\DoxyCodeLine{314 \textcolor{preprocessor}{\# endif}}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316 }
+\DoxyCodeLine{317 \textcolor{preprocessor}{\#if defined(XXH\_INLINE\_ALL) || defined(XXH\_PRIVATE\_API)}}
+\DoxyCodeLine{318 \textcolor{preprocessor}{\#  include "{}xxhash.c"{}}   \textcolor{comment}{/* include xxhash function bodies as `static`, for inlining */}}
+\DoxyCodeLine{319 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{321 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* XXH\_STATIC\_LINKING\_ONLY */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{322 }
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324 \textcolor{preprocessor}{\#if defined (\_\_cplusplus)}}
+\DoxyCodeLine{325 \}}
+\DoxyCodeLine{326 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{328 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* XXHASH\_H\_5627135585666179 */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

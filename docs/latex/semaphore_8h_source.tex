@@ -1,0 +1,31 @@
+\hypertarget{semaphore_8h_source}{}\doxysection{semaphore.\+h}
+\label{semaphore_8h_source}\index{src/semaphore.h@{src/semaphore.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// Counting semaphore thread synchronization}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// Handle to a semaphore.}}
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }semaphore\_t semaphore\_t;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// Creates a new semaphore.}}
+\DoxyCodeLine{11 semaphore\_t* semaphore\_create(\textcolor{keywordtype}{int} initial\_count, \textcolor{keywordtype}{int} max\_count);}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// Destroys a previously created semaphore.}}
+\DoxyCodeLine{14 \textcolor{keywordtype}{void} semaphore\_destroy(semaphore\_t* semaphore);}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{// Lowers the semaphore count by one.}}
+\DoxyCodeLine{17 \textcolor{comment}{// If the semaphore count is zero, blocks until another thread releases.}}
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} semaphore\_acquire(semaphore\_t* semaphore);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{// Attempts to lower the semaphore count by one.}}
+\DoxyCodeLine{21 \textcolor{comment}{// If the semaphore count is zero, returns false. Otherwise true.}}
+\DoxyCodeLine{22 \textcolor{keywordtype}{bool} semaphore\_try\_acquire(semaphore\_t* semaphore);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{// Raises the semaphore count by one.}}
+\DoxyCodeLine{25 \textcolor{keywordtype}{void} semaphore\_release(semaphore\_t* semaphore);}
+
+\end{DoxyCode}

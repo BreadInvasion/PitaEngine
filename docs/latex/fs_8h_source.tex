@@ -1,0 +1,58 @@
+\hypertarget{fs_8h_source}{}\doxysection{fs.\+h}
+\label{fs_8h_source}\index{src/fs.h@{src/fs.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// Asynchronous read/write file system.}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// Handle to file system.}}
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structfs__t}{fs\_t}} \mbox{\hyperlink{structfs__t}{fs\_t}};}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// Handle to file work.}}
+\DoxyCodeLine{11 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structfs__work__t}{fs\_work\_t}} \mbox{\hyperlink{structfs__work__t}{fs\_work\_t}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// Create a new file system.}}
+\DoxyCodeLine{16 \textcolor{comment}{// Provided heap will be used to allocate space for queue and work buffers.}}
+\DoxyCodeLine{17 \textcolor{comment}{// Provided queue size defines number of in-\/flight file operations.}}
+\DoxyCodeLine{18 \mbox{\hyperlink{structfs__t}{fs\_t}}* fs\_create(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap, \textcolor{keywordtype}{int} queue\_capacity);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{// Destroy a previously created file system.}}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} fs\_destroy(\mbox{\hyperlink{structfs__t}{fs\_t}}* fs);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// Queue a file read.}}
+\DoxyCodeLine{24 \textcolor{comment}{// File at the specified path will be read in full.}}
+\DoxyCodeLine{25 \textcolor{comment}{// Memory for the file will be allocated out of the provided heap.}}
+\DoxyCodeLine{26 \textcolor{comment}{// It is the calls responsibility to free the memory allocated!}}
+\DoxyCodeLine{27 \textcolor{comment}{// Returns a work object.}}
+\DoxyCodeLine{28 \mbox{\hyperlink{structfs__work__t}{fs\_work\_t}}* fs\_read(\mbox{\hyperlink{structfs__t}{fs\_t}}* fs, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* path, \mbox{\hyperlink{structheap__t}{heap\_t}}* heap, \textcolor{keywordtype}{bool} null\_terminate, \textcolor{keywordtype}{bool} use\_compression);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{// Queue a file write.}}
+\DoxyCodeLine{31 \textcolor{comment}{// File at the specified path will be written in full.}}
+\DoxyCodeLine{32 \textcolor{comment}{// Returns a work object.}}
+\DoxyCodeLine{33 \mbox{\hyperlink{structfs__work__t}{fs\_work\_t}}* fs\_write(\mbox{\hyperlink{structfs__t}{fs\_t}}* fs, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* path, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* buffer, \textcolor{keywordtype}{size\_t} size, \textcolor{keywordtype}{bool} use\_compression);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// If true, the file work is complete.}}
+\DoxyCodeLine{36 \textcolor{keywordtype}{bool} fs\_work\_is\_done(\mbox{\hyperlink{structfs__work__t}{fs\_work\_t}}* work);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{comment}{// Block for the file work to complete.}}
+\DoxyCodeLine{39 \textcolor{keywordtype}{void} fs\_work\_wait(\mbox{\hyperlink{structfs__work__t}{fs\_work\_t}}* work);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{// Get the error code for the file work.}}
+\DoxyCodeLine{42 \textcolor{comment}{// A value of zero generally indicates success.}}
+\DoxyCodeLine{43 \textcolor{keywordtype}{int} fs\_work\_get\_result(\mbox{\hyperlink{structfs__work__t}{fs\_work\_t}}* work);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{// Get the buffer associated with the file operation.}}
+\DoxyCodeLine{46 \textcolor{keywordtype}{void}* fs\_work\_get\_buffer(\mbox{\hyperlink{structfs__work__t}{fs\_work\_t}}* work);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// Get the size associated with the file operation.}}
+\DoxyCodeLine{49 \textcolor{keywordtype}{size\_t} fs\_work\_get\_size(\mbox{\hyperlink{structfs__work__t}{fs\_work\_t}}* work);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{// Free a file work object.}}
+\DoxyCodeLine{52 \textcolor{keywordtype}{void} fs\_work\_destroy(\mbox{\hyperlink{structfs__work__t}{fs\_work\_t}}* work);}
+
+\end{DoxyCode}

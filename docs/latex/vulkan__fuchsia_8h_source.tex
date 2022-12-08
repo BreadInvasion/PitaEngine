@@ -1,0 +1,264 @@
+\hypertarget{vulkan__fuchsia_8h_source}{}\doxysection{vulkan\+\_\+fuchsia.\+h}
+\label{vulkan__fuchsia_8h_source}\index{src/vulkan/vulkan\_fuchsia.h@{src/vulkan/vulkan\_fuchsia.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_FUCHSIA\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_FUCHSIA\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*}}
+\DoxyCodeLine{11 \textcolor{comment}{** This header is generated from the Khronos Vulkan XML API Registry.}}
+\DoxyCodeLine{12 \textcolor{comment}{**}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_imagepipe\_surface 1}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_IMAGEPIPE\_SURFACE\_SPEC\_VERSION 1}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_IMAGEPIPE\_SURFACE\_EXTENSION\_NAME "{}VK\_FUCHSIA\_imagepipe\_surface"{}}}
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} VkFlags VkImagePipeSurfaceCreateFlagsFUCHSIA;}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_image_pipe_surface_create_info_f_u_c_h_s_i_a}{VkImagePipeSurfaceCreateInfoFUCHSIA}} \{}
+\DoxyCodeLine{27     VkStructureType                         sType;}
+\DoxyCodeLine{28     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                             pNext;}
+\DoxyCodeLine{29     VkImagePipeSurfaceCreateFlagsFUCHSIA    flags;}
+\DoxyCodeLine{30     zx\_handle\_t                             imagePipeHandle;}
+\DoxyCodeLine{31 \} \mbox{\hyperlink{struct_vk_image_pipe_surface_create_info_f_u_c_h_s_i_a}{VkImagePipeSurfaceCreateInfoFUCHSIA}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateImagePipeSurfaceFUCHSIA)(VkInstance instance, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_image_pipe_surface_create_info_f_u_c_h_s_i_a}{VkImagePipeSurfaceCreateInfoFUCHSIA}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkSurfaceKHR* pSurface);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{36 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateImagePipeSurfaceFUCHSIA(}
+\DoxyCodeLine{37     VkInstance                                  instance,}
+\DoxyCodeLine{38     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_image_pipe_surface_create_info_f_u_c_h_s_i_a}{VkImagePipeSurfaceCreateInfoFUCHSIA}}*  pCreateInfo,}
+\DoxyCodeLine{39     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{40     VkSurfaceKHR*                               pSurface);}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_external\_memory 1}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_EXTERNAL\_MEMORY\_SPEC\_VERSION 1}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_EXTERNAL\_MEMORY\_EXTENSION\_NAME "{}VK\_FUCHSIA\_external\_memory"{}}}
+\DoxyCodeLine{47 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_import_memory_zircon_handle_info_f_u_c_h_s_i_a}{VkImportMemoryZirconHandleInfoFUCHSIA}} \{}
+\DoxyCodeLine{48     VkStructureType                       sType;}
+\DoxyCodeLine{49     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                           pNext;}
+\DoxyCodeLine{50     VkExternalMemoryHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{51     zx\_handle\_t                           handle;}
+\DoxyCodeLine{52 \} \mbox{\hyperlink{struct_vk_import_memory_zircon_handle_info_f_u_c_h_s_i_a}{VkImportMemoryZirconHandleInfoFUCHSIA}};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_memory_zircon_handle_properties_f_u_c_h_s_i_a}{VkMemoryZirconHandlePropertiesFUCHSIA}} \{}
+\DoxyCodeLine{55     VkStructureType    sType;}
+\DoxyCodeLine{56     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{57     uint32\_t           memoryTypeBits;}
+\DoxyCodeLine{58 \} \mbox{\hyperlink{struct_vk_memory_zircon_handle_properties_f_u_c_h_s_i_a}{VkMemoryZirconHandlePropertiesFUCHSIA}};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_memory_get_zircon_handle_info_f_u_c_h_s_i_a}{VkMemoryGetZirconHandleInfoFUCHSIA}} \{}
+\DoxyCodeLine{61     VkStructureType                       sType;}
+\DoxyCodeLine{62     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                           pNext;}
+\DoxyCodeLine{63     VkDeviceMemory                        memory;}
+\DoxyCodeLine{64     VkExternalMemoryHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{65 \} \mbox{\hyperlink{struct_vk_memory_get_zircon_handle_info_f_u_c_h_s_i_a}{VkMemoryGetZirconHandleInfoFUCHSIA}};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetMemoryZirconHandleFUCHSIA)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_memory_get_zircon_handle_info_f_u_c_h_s_i_a}{VkMemoryGetZirconHandleInfoFUCHSIA}}* pGetZirconHandleInfo, zx\_handle\_t* pZirconHandle);}
+\DoxyCodeLine{68 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetMemoryZirconHandlePropertiesFUCHSIA)(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, zx\_handle\_t zirconHandle, \mbox{\hyperlink{struct_vk_memory_zircon_handle_properties_f_u_c_h_s_i_a}{VkMemoryZirconHandlePropertiesFUCHSIA}}* pMemoryZirconHandleProperties);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{71 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetMemoryZirconHandleFUCHSIA(}
+\DoxyCodeLine{72     VkDevice                                    device,}
+\DoxyCodeLine{73     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_memory_get_zircon_handle_info_f_u_c_h_s_i_a}{VkMemoryGetZirconHandleInfoFUCHSIA}}*   pGetZirconHandleInfo,}
+\DoxyCodeLine{74     zx\_handle\_t*                                pZirconHandle);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetMemoryZirconHandlePropertiesFUCHSIA(}
+\DoxyCodeLine{77     VkDevice                                    device,}
+\DoxyCodeLine{78     VkExternalMemoryHandleTypeFlagBits          handleType,}
+\DoxyCodeLine{79     zx\_handle\_t                                 zirconHandle,}
+\DoxyCodeLine{80     \mbox{\hyperlink{struct_vk_memory_zircon_handle_properties_f_u_c_h_s_i_a}{VkMemoryZirconHandlePropertiesFUCHSIA}}*      pMemoryZirconHandleProperties);}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_external\_semaphore 1}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_EXTERNAL\_SEMAPHORE\_SPEC\_VERSION 1}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_EXTERNAL\_SEMAPHORE\_EXTENSION\_NAME "{}VK\_FUCHSIA\_external\_semaphore"{}}}
+\DoxyCodeLine{87 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_import_semaphore_zircon_handle_info_f_u_c_h_s_i_a}{VkImportSemaphoreZirconHandleInfoFUCHSIA}} \{}
+\DoxyCodeLine{88     VkStructureType                          sType;}
+\DoxyCodeLine{89     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                              pNext;}
+\DoxyCodeLine{90     VkSemaphore                              semaphore;}
+\DoxyCodeLine{91     VkSemaphoreImportFlags                   flags;}
+\DoxyCodeLine{92     VkExternalSemaphoreHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{93     zx\_handle\_t                              zirconHandle;}
+\DoxyCodeLine{94 \} \mbox{\hyperlink{struct_vk_import_semaphore_zircon_handle_info_f_u_c_h_s_i_a}{VkImportSemaphoreZirconHandleInfoFUCHSIA}};}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_semaphore_get_zircon_handle_info_f_u_c_h_s_i_a}{VkSemaphoreGetZirconHandleInfoFUCHSIA}} \{}
+\DoxyCodeLine{97     VkStructureType                          sType;}
+\DoxyCodeLine{98     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                              pNext;}
+\DoxyCodeLine{99     VkSemaphore                              semaphore;}
+\DoxyCodeLine{100     VkExternalSemaphoreHandleTypeFlagBits    handleType;}
+\DoxyCodeLine{101 \} \mbox{\hyperlink{struct_vk_semaphore_get_zircon_handle_info_f_u_c_h_s_i_a}{VkSemaphoreGetZirconHandleInfoFUCHSIA}};}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkImportSemaphoreZirconHandleFUCHSIA)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_import_semaphore_zircon_handle_info_f_u_c_h_s_i_a}{VkImportSemaphoreZirconHandleInfoFUCHSIA}}* pImportSemaphoreZirconHandleInfo);}
+\DoxyCodeLine{104 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetSemaphoreZirconHandleFUCHSIA)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_semaphore_get_zircon_handle_info_f_u_c_h_s_i_a}{VkSemaphoreGetZirconHandleInfoFUCHSIA}}* pGetZirconHandleInfo, zx\_handle\_t* pZirconHandle);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{107 VKAPI\_ATTR VkResult VKAPI\_CALL vkImportSemaphoreZirconHandleFUCHSIA(}
+\DoxyCodeLine{108     VkDevice                                    device,}
+\DoxyCodeLine{109     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_import_semaphore_zircon_handle_info_f_u_c_h_s_i_a}{VkImportSemaphoreZirconHandleInfoFUCHSIA}}* pImportSemaphoreZirconHandleInfo);}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetSemaphoreZirconHandleFUCHSIA(}
+\DoxyCodeLine{112     VkDevice                                    device,}
+\DoxyCodeLine{113     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_semaphore_get_zircon_handle_info_f_u_c_h_s_i_a}{VkSemaphoreGetZirconHandleInfoFUCHSIA}}* pGetZirconHandleInfo,}
+\DoxyCodeLine{114     zx\_handle\_t*                                pZirconHandle);}
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_buffer\_collection 1}}
+\DoxyCodeLine{119 VK\_DEFINE\_NON\_DISPATCHABLE\_HANDLE(VkBufferCollectionFUCHSIA)}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_BUFFER\_COLLECTION\_SPEC\_VERSION 2}}
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#define VK\_FUCHSIA\_BUFFER\_COLLECTION\_EXTENSION\_NAME "{}VK\_FUCHSIA\_buffer\_collection"{}}}
+\DoxyCodeLine{122 \textcolor{keyword}{typedef} VkFlags VkImageFormatConstraintsFlagsFUCHSIA;}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkImageConstraintsInfoFlagBitsFUCHSIA \{}
+\DoxyCodeLine{125     VK\_IMAGE\_CONSTRAINTS\_INFO\_CPU\_READ\_RARELY\_FUCHSIA = 0x00000001,}
+\DoxyCodeLine{126     VK\_IMAGE\_CONSTRAINTS\_INFO\_CPU\_READ\_OFTEN\_FUCHSIA = 0x00000002,}
+\DoxyCodeLine{127     VK\_IMAGE\_CONSTRAINTS\_INFO\_CPU\_WRITE\_RARELY\_FUCHSIA = 0x00000004,}
+\DoxyCodeLine{128     VK\_IMAGE\_CONSTRAINTS\_INFO\_CPU\_WRITE\_OFTEN\_FUCHSIA = 0x00000008,}
+\DoxyCodeLine{129     VK\_IMAGE\_CONSTRAINTS\_INFO\_PROTECTED\_OPTIONAL\_FUCHSIA = 0x00000010,}
+\DoxyCodeLine{130     VK\_IMAGE\_CONSTRAINTS\_INFO\_FLAG\_BITS\_MAX\_ENUM\_FUCHSIA = 0x7FFFFFFF}
+\DoxyCodeLine{131 \} VkImageConstraintsInfoFlagBitsFUCHSIA;}
+\DoxyCodeLine{132 \textcolor{keyword}{typedef} VkFlags VkImageConstraintsInfoFlagsFUCHSIA;}
+\DoxyCodeLine{133 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_buffer_collection_create_info_f_u_c_h_s_i_a}{VkBufferCollectionCreateInfoFUCHSIA}} \{}
+\DoxyCodeLine{134     VkStructureType    sType;}
+\DoxyCodeLine{135     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{136     zx\_handle\_t        collectionToken;}
+\DoxyCodeLine{137 \} \mbox{\hyperlink{struct_vk_buffer_collection_create_info_f_u_c_h_s_i_a}{VkBufferCollectionCreateInfoFUCHSIA}};}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_import_memory_buffer_collection_f_u_c_h_s_i_a}{VkImportMemoryBufferCollectionFUCHSIA}} \{}
+\DoxyCodeLine{140     VkStructureType              sType;}
+\DoxyCodeLine{141     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                  pNext;}
+\DoxyCodeLine{142     VkBufferCollectionFUCHSIA    collection;}
+\DoxyCodeLine{143     uint32\_t                     index;}
+\DoxyCodeLine{144 \} \mbox{\hyperlink{struct_vk_import_memory_buffer_collection_f_u_c_h_s_i_a}{VkImportMemoryBufferCollectionFUCHSIA}};}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_buffer_collection_image_create_info_f_u_c_h_s_i_a}{VkBufferCollectionImageCreateInfoFUCHSIA}} \{}
+\DoxyCodeLine{147     VkStructureType              sType;}
+\DoxyCodeLine{148     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                  pNext;}
+\DoxyCodeLine{149     VkBufferCollectionFUCHSIA    collection;}
+\DoxyCodeLine{150     uint32\_t                     index;}
+\DoxyCodeLine{151 \} \mbox{\hyperlink{struct_vk_buffer_collection_image_create_info_f_u_c_h_s_i_a}{VkBufferCollectionImageCreateInfoFUCHSIA}};}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_buffer_collection_constraints_info_f_u_c_h_s_i_a}{VkBufferCollectionConstraintsInfoFUCHSIA}} \{}
+\DoxyCodeLine{154     VkStructureType    sType;}
+\DoxyCodeLine{155     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{156     uint32\_t           minBufferCount;}
+\DoxyCodeLine{157     uint32\_t           maxBufferCount;}
+\DoxyCodeLine{158     uint32\_t           minBufferCountForCamping;}
+\DoxyCodeLine{159     uint32\_t           minBufferCountForDedicatedSlack;}
+\DoxyCodeLine{160     uint32\_t           minBufferCountForSharedSlack;}
+\DoxyCodeLine{161 \} \mbox{\hyperlink{struct_vk_buffer_collection_constraints_info_f_u_c_h_s_i_a}{VkBufferCollectionConstraintsInfoFUCHSIA}};}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_buffer_constraints_info_f_u_c_h_s_i_a}{VkBufferConstraintsInfoFUCHSIA}} \{}
+\DoxyCodeLine{164     VkStructureType                             sType;}
+\DoxyCodeLine{165     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                 pNext;}
+\DoxyCodeLine{166     \mbox{\hyperlink{struct_vk_buffer_create_info}{VkBufferCreateInfo}}                          createInfo;}
+\DoxyCodeLine{167     VkFormatFeatureFlags                        requiredFormatFeatures;}
+\DoxyCodeLine{168     \mbox{\hyperlink{struct_vk_buffer_collection_constraints_info_f_u_c_h_s_i_a}{VkBufferCollectionConstraintsInfoFUCHSIA}}    bufferCollectionConstraints;}
+\DoxyCodeLine{169 \} \mbox{\hyperlink{struct_vk_buffer_constraints_info_f_u_c_h_s_i_a}{VkBufferConstraintsInfoFUCHSIA}};}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_buffer_collection_buffer_create_info_f_u_c_h_s_i_a}{VkBufferCollectionBufferCreateInfoFUCHSIA}} \{}
+\DoxyCodeLine{172     VkStructureType              sType;}
+\DoxyCodeLine{173     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                  pNext;}
+\DoxyCodeLine{174     VkBufferCollectionFUCHSIA    collection;}
+\DoxyCodeLine{175     uint32\_t                     index;}
+\DoxyCodeLine{176 \} \mbox{\hyperlink{struct_vk_buffer_collection_buffer_create_info_f_u_c_h_s_i_a}{VkBufferCollectionBufferCreateInfoFUCHSIA}};}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_sysmem_color_space_f_u_c_h_s_i_a}{VkSysmemColorSpaceFUCHSIA}} \{}
+\DoxyCodeLine{179     VkStructureType    sType;}
+\DoxyCodeLine{180     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{181     uint32\_t           colorSpace;}
+\DoxyCodeLine{182 \} \mbox{\hyperlink{struct_vk_sysmem_color_space_f_u_c_h_s_i_a}{VkSysmemColorSpaceFUCHSIA}};}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_buffer_collection_properties_f_u_c_h_s_i_a}{VkBufferCollectionPropertiesFUCHSIA}} \{}
+\DoxyCodeLine{185     VkStructureType                  sType;}
+\DoxyCodeLine{186     \textcolor{keywordtype}{void}*                            pNext;}
+\DoxyCodeLine{187     uint32\_t                         memoryTypeBits;}
+\DoxyCodeLine{188     uint32\_t                         bufferCount;}
+\DoxyCodeLine{189     uint32\_t                         createInfoIndex;}
+\DoxyCodeLine{190     uint64\_t                         sysmemPixelFormat;}
+\DoxyCodeLine{191     VkFormatFeatureFlags             formatFeatures;}
+\DoxyCodeLine{192     \mbox{\hyperlink{struct_vk_sysmem_color_space_f_u_c_h_s_i_a}{VkSysmemColorSpaceFUCHSIA}}        sysmemColorSpaceIndex;}
+\DoxyCodeLine{193     \mbox{\hyperlink{struct_vk_component_mapping}{VkComponentMapping}}               samplerYcbcrConversionComponents;}
+\DoxyCodeLine{194     VkSamplerYcbcrModelConversion    suggestedYcbcrModel;}
+\DoxyCodeLine{195     VkSamplerYcbcrRange              suggestedYcbcrRange;}
+\DoxyCodeLine{196     VkChromaLocation                 suggestedXChromaOffset;}
+\DoxyCodeLine{197     VkChromaLocation                 suggestedYChromaOffset;}
+\DoxyCodeLine{198 \} \mbox{\hyperlink{struct_vk_buffer_collection_properties_f_u_c_h_s_i_a}{VkBufferCollectionPropertiesFUCHSIA}};}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_image_format_constraints_info_f_u_c_h_s_i_a}{VkImageFormatConstraintsInfoFUCHSIA}} \{}
+\DoxyCodeLine{201     VkStructureType                         sType;}
+\DoxyCodeLine{202     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                             pNext;}
+\DoxyCodeLine{203     \mbox{\hyperlink{struct_vk_image_create_info}{VkImageCreateInfo}}                       imageCreateInfo;}
+\DoxyCodeLine{204     VkFormatFeatureFlags                    requiredFormatFeatures;}
+\DoxyCodeLine{205     VkImageFormatConstraintsFlagsFUCHSIA    flags;}
+\DoxyCodeLine{206     uint64\_t                                sysmemPixelFormat;}
+\DoxyCodeLine{207     uint32\_t                                colorSpaceCount;}
+\DoxyCodeLine{208     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_sysmem_color_space_f_u_c_h_s_i_a}{VkSysmemColorSpaceFUCHSIA}}*        pColorSpaces;}
+\DoxyCodeLine{209 \} \mbox{\hyperlink{struct_vk_image_format_constraints_info_f_u_c_h_s_i_a}{VkImageFormatConstraintsInfoFUCHSIA}};}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_image_constraints_info_f_u_c_h_s_i_a}{VkImageConstraintsInfoFUCHSIA}} \{}
+\DoxyCodeLine{212     VkStructureType                               sType;}
+\DoxyCodeLine{213     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                   pNext;}
+\DoxyCodeLine{214     uint32\_t                                      formatConstraintsCount;}
+\DoxyCodeLine{215     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_image_format_constraints_info_f_u_c_h_s_i_a}{VkImageFormatConstraintsInfoFUCHSIA}}*    pFormatConstraints;}
+\DoxyCodeLine{216     \mbox{\hyperlink{struct_vk_buffer_collection_constraints_info_f_u_c_h_s_i_a}{VkBufferCollectionConstraintsInfoFUCHSIA}}      bufferCollectionConstraints;}
+\DoxyCodeLine{217     VkImageConstraintsInfoFlagsFUCHSIA            flags;}
+\DoxyCodeLine{218 \} \mbox{\hyperlink{struct_vk_image_constraints_info_f_u_c_h_s_i_a}{VkImageConstraintsInfoFUCHSIA}};}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateBufferCollectionFUCHSIA)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_buffer_collection_create_info_f_u_c_h_s_i_a}{VkBufferCollectionCreateInfoFUCHSIA}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkBufferCollectionFUCHSIA* pCollection);}
+\DoxyCodeLine{221 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkSetBufferCollectionImageConstraintsFUCHSIA)(VkDevice device, VkBufferCollectionFUCHSIA collection, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_image_constraints_info_f_u_c_h_s_i_a}{VkImageConstraintsInfoFUCHSIA}}* pImageConstraintsInfo);}
+\DoxyCodeLine{222 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkSetBufferCollectionBufferConstraintsFUCHSIA)(VkDevice device, VkBufferCollectionFUCHSIA collection, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_buffer_constraints_info_f_u_c_h_s_i_a}{VkBufferConstraintsInfoFUCHSIA}}* pBufferConstraintsInfo);}
+\DoxyCodeLine{223 \textcolor{keyword}{typedef} void (VKAPI\_PTR *PFN\_vkDestroyBufferCollectionFUCHSIA)(VkDevice device, VkBufferCollectionFUCHSIA collection, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator);}
+\DoxyCodeLine{224 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetBufferCollectionPropertiesFUCHSIA)(VkDevice device, VkBufferCollectionFUCHSIA collection, \mbox{\hyperlink{struct_vk_buffer_collection_properties_f_u_c_h_s_i_a}{VkBufferCollectionPropertiesFUCHSIA}}* pProperties);}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{227 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateBufferCollectionFUCHSIA(}
+\DoxyCodeLine{228     VkDevice                                    device,}
+\DoxyCodeLine{229     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_buffer_collection_create_info_f_u_c_h_s_i_a}{VkBufferCollectionCreateInfoFUCHSIA}}*  pCreateInfo,}
+\DoxyCodeLine{230     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{231     VkBufferCollectionFUCHSIA*                  pCollection);}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 VKAPI\_ATTR VkResult VKAPI\_CALL vkSetBufferCollectionImageConstraintsFUCHSIA(}
+\DoxyCodeLine{234     VkDevice                                    device,}
+\DoxyCodeLine{235     VkBufferCollectionFUCHSIA                   collection,}
+\DoxyCodeLine{236     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_image_constraints_info_f_u_c_h_s_i_a}{VkImageConstraintsInfoFUCHSIA}}*        pImageConstraintsInfo);}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 VKAPI\_ATTR VkResult VKAPI\_CALL vkSetBufferCollectionBufferConstraintsFUCHSIA(}
+\DoxyCodeLine{239     VkDevice                                    device,}
+\DoxyCodeLine{240     VkBufferCollectionFUCHSIA                   collection,}
+\DoxyCodeLine{241     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_buffer_constraints_info_f_u_c_h_s_i_a}{VkBufferConstraintsInfoFUCHSIA}}*       pBufferConstraintsInfo);}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 VKAPI\_ATTR \textcolor{keywordtype}{void} VKAPI\_CALL vkDestroyBufferCollectionFUCHSIA(}
+\DoxyCodeLine{244     VkDevice                                    device,}
+\DoxyCodeLine{245     VkBufferCollectionFUCHSIA                   collection,}
+\DoxyCodeLine{246     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator);}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetBufferCollectionPropertiesFUCHSIA(}
+\DoxyCodeLine{249     VkDevice                                    device,}
+\DoxyCodeLine{250     VkBufferCollectionFUCHSIA                   collection,}
+\DoxyCodeLine{251     \mbox{\hyperlink{struct_vk_buffer_collection_properties_f_u_c_h_s_i_a}{VkBufferCollectionPropertiesFUCHSIA}}*        pProperties);}
+\DoxyCodeLine{252 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{255 \}}
+\DoxyCodeLine{256 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -9,24 +9,32 @@
 
 // Trace structure
 // Contains boolean that controls capturing status, and all relevant storage structures, as well as a pointer to the heap
+/** 
+ * \brief trace_t contains the status and storage structures of a given trace process.
+ */
 typedef struct trace_t {
-	bool capturing;
-	heap_t* heap;
-	queue_t* queue;
-	trace_event_t* list_head;
-	trace_event_t* list_tail;
-	const char* path;
+	bool capturing; /**< capturing is True if the trace is actively recording events, otherwise False. */
+	heap_t* heap; /**< heap is a back reference to the heap in which the instance of trace_t is stored. */
+	queue_t* queue; /**< queue is a pointer to a queue that stores trace events which have begun, but not yet ended. */
+	trace_event_t* list_head; /**< list_head points to the front of a chronological singly-linked list of trace_event_t instances. */
+	trace_event_t* list_tail; /**< list_tail points to the back of a chronological singly-linked list of trace_event_t instances. */
+	const char* path; /**< path stores the path to which the completed trace will be written. */
 } trace_t;
 
 // Event Structure
 // Contains event info, and a pointer to the next event sequentially (if any)
+/**
+ * \brief trace_event_t stores the process info related to a specific trace event.
+ * 
+ * trace_event_t also contains a pointer next, resulting in a self-contained singly linked list.
+ */
 typedef struct trace_event_t {
-	const char* name;
-	char ph;
-	DWORD pid;
-	DWORD tid;
-	uint32_t ts;
-	trace_event_t* next;
+	const char* name; /**< name is equal to the name of the event. */
+	char ph; /**< ph is 'B' if marking the start event, or 'E' if marking the end event. */
+	DWORD pid; /**< pid is equal to the Process ID at time of event. */
+	DWORD tid; /**< tid is equal to the Thread ID at time of event. */
+	uint32_t ts; /**< ts is equal to the system time in ms at time of event. */
+	trace_event_t* next; /**< next is a pointer to the next chronological event to occur, if one exists - otherwise, null. */
 } trace_event_t;
 
 // Create Trace

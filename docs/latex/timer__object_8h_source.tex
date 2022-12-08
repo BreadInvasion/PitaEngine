@@ -1,0 +1,53 @@
+\hypertarget{timer__object_8h_source}{}\doxysection{timer\+\_\+object.\+h}
+\label{timer__object_8h_source}\index{src/timer\_object.h@{src/timer\_object.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// A timer object.}}
+\DoxyCodeLine{4 \textcolor{comment}{// Supports pause/resume of time.}}
+\DoxyCodeLine{5 \textcolor{comment}{// Supports scaling time (slowing, speeding up).}}
+\DoxyCodeLine{6 \textcolor{comment}{// Supports parent-\/child relationship of time where child inherits parents base time.}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{heap_8h}{heap.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{comment}{// Handle to a time object.}}
+\DoxyCodeLine{13 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}} \mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// Create a new time object with the defined parent.}}
+\DoxyCodeLine{16 \textcolor{comment}{// If parent is NULL, use system timer as base time.}}
+\DoxyCodeLine{17 \mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* timer\_object\_create(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap, \mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* parent);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// Destroy previously created time object.}}
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} timer\_object\_destroy(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// Per-\/frame update for time object.}}
+\DoxyCodeLine{23 \textcolor{comment}{// Updates current time and delta time.}}
+\DoxyCodeLine{24 \textcolor{keywordtype}{void} timer\_object\_update(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// Get current time in microseconds.}}
+\DoxyCodeLine{27 uint64\_t timer\_object\_get\_us(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{// Get current time in milliseconds.}}
+\DoxyCodeLine{30 uint32\_t timer\_object\_get\_ms(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{comment}{// Get frame time in microseconds.}}
+\DoxyCodeLine{33 uint64\_t timer\_object\_get\_delta\_us(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// Get frame time in milliseconds.}}
+\DoxyCodeLine{36 uint32\_t timer\_object\_get\_delta\_ms(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{comment}{// Set time scale value.}}
+\DoxyCodeLine{39 \textcolor{comment}{// Smaller values slow down, larger values speed up.}}
+\DoxyCodeLine{40 \textcolor{comment}{// A value of 1.0 is normal speed.}}
+\DoxyCodeLine{41 \textcolor{keywordtype}{void} timer\_object\_set\_scale(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t, \textcolor{keywordtype}{float} s);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{comment}{// Pause time.}}
+\DoxyCodeLine{44 \textcolor{keywordtype}{void} timer\_object\_pause(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{// Resume previously paused time.}}
+\DoxyCodeLine{47 \textcolor{keywordtype}{void} timer\_object\_resume(\mbox{\hyperlink{structtimer__object__t}{timer\_object\_t}}* t);}
+
+\end{DoxyCode}

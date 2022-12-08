@@ -1,0 +1,29 @@
+\hypertarget{event_8h_source}{}\doxysection{event.\+h}
+\label{event_8h_source}\index{src/event.h@{src/event.h}}
+\mbox{\hyperlink{event_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// Event thread synchronization}}
+\DoxyCodeLine{13 \textcolor{comment}{}\textcolor{comment}{// Handle to an event.}}
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }event\_t event\_t;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{// Creates a new event.}}
+\DoxyCodeLine{24 \textcolor{comment}{}event\_t* \mbox{\hyperlink{event_8h_acf1ca98f90495849d7b9bcdd05838e95}{event\_create}}();}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// Destroys a previously created event.}}
+\DoxyCodeLine{32 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{event_8h_ac6929704355fc0963b58671b7b3ee3df}{event\_destroy}}(event\_t* event);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{comment}{// Signals an event.}}
+\DoxyCodeLine{35 \textcolor{comment}{// All threads waiting on this event will resume.}}
+\DoxyCodeLine{43 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{event_8h_a7f0e1879f9367ecc2fd2a650cda089e6}{event\_signal}}(event\_t* event);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{// Waits for an event to be signaled.}}
+\DoxyCodeLine{53 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{event_8h_a0770c6804452be2bed1ba42f32516b54}{event\_wait}}(event\_t* event);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{// Determines if an event is signaled.}}
+\DoxyCodeLine{62 \textcolor{comment}{}\textcolor{keywordtype}{bool} \mbox{\hyperlink{event_8h_ac808b511991a04e8bdc8abb9442f7a34}{event\_is\_raised}}(event\_t* event);}
+
+\end{DoxyCode}

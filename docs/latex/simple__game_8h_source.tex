@@ -1,0 +1,26 @@
+\hypertarget{simple__game_8h_source}{}\doxysection{simple\+\_\+game.\+h}
+\label{simple__game_8h_source}\index{src/simple\_game.h@{src/simple\_game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Simple Test Game}}
+\DoxyCodeLine{4 \textcolor{comment}{// Brings together major engine systems to make a very simple "{}game."{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structsimple__game__t}{simple\_game\_t}} \mbox{\hyperlink{structsimple__game__t}{simple\_game\_t}};}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structfs__t}{fs\_t}} \mbox{\hyperlink{structfs__t}{fs\_t}};}
+\DoxyCodeLine{9 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{10 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structrender__t}{render\_t}} \mbox{\hyperlink{structrender__t}{render\_t}};}
+\DoxyCodeLine{11 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}} \mbox{\hyperlink{structwm__window__t}{wm\_window\_t}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// Create an instance of simple test game.}}
+\DoxyCodeLine{14 \mbox{\hyperlink{structsimple__game__t}{simple\_game\_t}}* simple\_game\_create(\mbox{\hyperlink{structheap__t}{heap\_t}}* \mbox{\hyperlink{structwm__window__t_a030aa741640330c5c035c1a9dfd6e87f}{heap}}, \mbox{\hyperlink{structfs__t}{fs\_t}}* fs, \mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window, \mbox{\hyperlink{structrender__t}{render\_t}}* render, \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}** argv);}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{// Destroy an instance of simple test game.}}
+\DoxyCodeLine{17 \textcolor{keywordtype}{void} simple\_game\_destroy(\mbox{\hyperlink{structsimple__game__t}{simple\_game\_t}}* game);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// Per-\/frame update for our simple test game.}}
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} simple\_game\_update(\mbox{\hyperlink{structsimple__game__t}{simple\_game\_t}}* game);}
+
+\end{DoxyCode}

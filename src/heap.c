@@ -12,28 +12,48 @@
 #include <windows.h>
 #include <DbgHelp.h>
 
+/**
+ * \brief A structure to represent "arenas" within a heap.
+ * 
+ * The struct arena_t is used to represent specific "arenas", pools of contiguous memory within the heap that can be divided up into blocks, 
+ * to then be allocated and destroyed as necessary. Arenas are commonly split up based on tasks within the game, 
+ * so that a task's memory can be freed all at once when that task is complete, but in this specific implementation we just assign new heaps 
+ * whenever we run out of memory in the current heap.
+ */
 typedef struct arena_t
 {
-	pool_t pool;
-	struct arena_t* next;
+	pool_t pool; /**< pool is the specific set of memory assigned to this arena. A given arena may only contain one pool, but an instance of heap_t may contain many arenas! */
+	struct arena_t* next; /**< next points to the next arena in the heap. If this is the final arena in the heap, next is equal to null. */
 } arena_t;
 
+/**
+ * \brief A structure to define the memory leak logger.
+ * 
+ * The struct logger_t is used to define the contents of the memory leak logger, implemented to fulfill the requirements of Homework 1 of the Game Architecture class. 
+ * This structure contains pointers to become a self-contained doubly linked list, as well as functionality to store backtrace entries and the address of the memory allocation being tracked.
+ */
 typedef struct logger_t
 {
-	struct logger_t* next;
-	struct logger_t* previous;
-	char** names;
-	size_t allocSize;
-	void* address;
+	struct logger_t* next; /**< next points to the following logger_t in the list of memory logs. */
+	struct logger_t* previous; /**< previous points to the previous logger_t in the list of memory logs. */
+	char** names; /**< names stores the backtrace to the memory allocation instance that allocated the block pointed to by address. */
+	size_t allocSize; /**< allocSize represents the size of the block allocated at address. */
+	void* address; /**< address points to the block of allocated memory that this logger is tracking. */
 } logger_t;
 
+/** 
+ * \brief A structure to define the engine's heap.
+ * 
+ * The struct heap_t is used to represent the heap, the space within the engine that manages all memory allocation/de-allocation over the course of the program's execution. 
+ * This implementation of heap uses a tlsf implementation written by Matthew Conte to handle all memory operations.
+*/
 typedef struct heap_t
 {
-	tlsf_t tlsf;
-	size_t grow_increment;
-	arena_t* arena;
-	logger_t* logger;
-	mutex_t* mutex;
+	tlsf_t tlsf; /**< tlsf stores an instance of tlsf_t, used for memory alignment, pool allocation, and memory freeing. */
+	size_t grow_increment; /**< grow_increment represents the minimum amount of memory that can be added to the heap in one go - if the heap is out of memory and we try to add an arena to it, with minimum size of grow_increment and maxiumum size of twice whatever the thing we're trying to add is. */
+	arena_t* arena; /**< arena points to the first arena_t in this heap. There might be more down the chain! These store the pools of memory that this heap is managing. */
+	logger_t* logger; /**< logger points to the first logger_t in a list. Each logger_t stores a backtrace for a specific memory allocation, and if any are not properly freed before the program ends, they will print to console as memory leaks. */
+	mutex_t* mutex; /**< mutex points to an instance of mutex_t, an implementation of the mutex concept. This allows us to forbid the simultaneous execution of a given function in multiple threads, ensuring that a function is "thread-safe" - that is, parallel execution over multiple threads will occur in proper order, and not result in unintended behavior. */
 } heap_t;
 
 heap_t* heap_create(size_t grow_increment)

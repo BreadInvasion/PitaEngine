@@ -1,0 +1,37 @@
+\hypertarget{transform_8h_source}{}\doxysection{transform.\+h}
+\label{transform_8h_source}\index{src/transform.h@{src/transform.h}}
+\mbox{\hyperlink{transform_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// 3D transform object.}}
+\DoxyCodeLine{4 \textcolor{comment}{// Translation, scale, and rotation.}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}mat4f.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}quatf.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vec3f_8h}{vec3f.h}}"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// Transform object.}}
+\DoxyCodeLine{24 \textcolor{comment}{}\textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtransform__t}{transform\_t}}}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26     \mbox{\hyperlink{structvec3f__t}{vec3f\_t}} \mbox{\hyperlink{structtransform__t_a23fe5d3bdce84970101f60ed046a7198}{translation}}; }
+\DoxyCodeLine{27     \mbox{\hyperlink{structvec3f__t}{vec3f\_t}} \mbox{\hyperlink{structtransform__t_a7bd109603163fa4dcaa25a1553aa2820}{scale}}; }
+\DoxyCodeLine{28     \mbox{\hyperlink{structquatf__t}{quatf\_t}} \mbox{\hyperlink{structtransform__t_aef1a81692a7843b62d20cb0db730b59c}{rotation}}; }
+\DoxyCodeLine{29 \} \mbox{\hyperlink{structtransform__t}{transform\_t}};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{// Make a transform with no rotation, unit scale, and zero position.}}
+\DoxyCodeLine{37 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{transform_8h_a76b3595bdde8d84be15f37c52a4b2c2b}{transform\_identity}}(\mbox{\hyperlink{structtransform__t}{transform\_t}}* transform);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{// Convert a transform to a matrix representation.}}
+\DoxyCodeLine{46 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{transform_8h_a805e9521b27f437e1b8b6c3c06865604}{transform\_to\_matrix}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtransform__t}{transform\_t}}* transform, \mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* output);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// Combine two transforms -\/-\/ result and t -\/-\/ and store the output in result.}}
+\DoxyCodeLine{59 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{transform_8h_abea779bdfe8d5039d782dd6a85b4dd68}{transform\_multiply}}(\mbox{\hyperlink{structtransform__t}{transform\_t}}* result, \textcolor{keyword}{const} \mbox{\hyperlink{structtransform__t}{transform\_t}}* t);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{comment}{// Compute a transform's inverse in translation, scale, and rotation.}}
+\DoxyCodeLine{69 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{transform_8h_a15ff7db62fb112b0ac4708edf7bd6bc1}{transform\_invert}}(\mbox{\hyperlink{structtransform__t}{transform\_t}}* transform);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{// Transform a vector by a transform object. Return the resulting vector.}}
+\DoxyCodeLine{81 \textcolor{comment}{}\mbox{\hyperlink{structvec3f__t}{vec3f\_t}} \mbox{\hyperlink{transform_8h_a64c0c912cdbaaa533bdaef5137eb8bcf}{transform\_transform\_vec3}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtransform__t}{transform\_t}}* transform, \mbox{\hyperlink{structvec3f__t}{vec3f\_t}} v);}
+
+\end{DoxyCode}

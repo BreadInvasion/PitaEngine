@@ -1,0 +1,64 @@
+\hypertarget{quatf_8h_source}{}\doxysection{quatf.\+h}
+\label{quatf_8h_source}\index{src/quatf.h@{src/quatf.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Quaternion support.}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vec3f_8h}{vec3f.h}}"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// Quaternion object.}}
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structquatf__t}{quatf\_t}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{union}}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12         \textcolor{keyword}{struct }\{ \textcolor{keywordtype}{float} x, y, z, w; \};}
+\DoxyCodeLine{13         \textcolor{keyword}{struct }\{ \mbox{\hyperlink{structvec3f__t}{vec3f\_t}} v3; \textcolor{keywordtype}{float} s; \};}
+\DoxyCodeLine{14     \};}
+\DoxyCodeLine{15 \} \mbox{\hyperlink{structquatf__t}{quatf\_t}};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{// Creates a quaternion with no rotation.}}
+\DoxyCodeLine{18 \_\_forceinline \mbox{\hyperlink{structquatf__t}{quatf\_t}} quatf\_identity()}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     \textcolor{keywordflow}{return} (\mbox{\hyperlink{structquatf__t}{quatf\_t}})\{ .x = 0.0f, .y = 0.0f, .z = 0.0f, .w = 1.0f \};}
+\DoxyCodeLine{21 \}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// Combines the rotation of two quaternions -\/-\/ a and b -\/-\/ into a new quaternion.}}
+\DoxyCodeLine{24 \_\_forceinline \mbox{\hyperlink{structquatf__t}{quatf\_t}} quatf\_mul(\mbox{\hyperlink{structquatf__t}{quatf\_t}} a, \mbox{\hyperlink{structquatf__t}{quatf\_t}} b)}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26     \mbox{\hyperlink{structquatf__t}{quatf\_t}} result;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     result.v3 = \mbox{\hyperlink{vec3f_8h_a4a03a90898a16cb14ce940a982bda174}{vec3f\_cross}}(a.v3, b.v3);}
+\DoxyCodeLine{29     result.v3 = \mbox{\hyperlink{vec3f_8h_ab5a1d4f53a20791a5f3df5770054bac2}{vec3f\_add}}(result.v3, \mbox{\hyperlink{vec3f_8h_a2010b448d6f6b75a18ec6cd0a9966829}{vec3f\_scale}}(b.v3, a.s));}
+\DoxyCodeLine{30     result.v3 = \mbox{\hyperlink{vec3f_8h_ab5a1d4f53a20791a5f3df5770054bac2}{vec3f\_add}}(result.v3, \mbox{\hyperlink{vec3f_8h_a2010b448d6f6b75a18ec6cd0a9966829}{vec3f\_scale}}(a.v3, b.s));}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     result.s = (a.s * b.s) -\/ \mbox{\hyperlink{vec3f_8h_a17fc6c99ffde7de797be9df46cc19abd}{vec3f\_dot}}(a.v3, b.v3);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{35 \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{comment}{// Computes the inverse of a normalized quaternion.}}
+\DoxyCodeLine{38 \_\_forceinline \mbox{\hyperlink{structquatf__t}{quatf\_t}} quatf\_conjugate(\mbox{\hyperlink{structquatf__t}{quatf\_t}} q)}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40     \mbox{\hyperlink{structquatf__t}{quatf\_t}} result;}
+\DoxyCodeLine{41     result.v3 = \mbox{\hyperlink{vec3f_8h_a8830636bf8178b0664c572adbbf90e04}{vec3f\_negate}}(q.v3);}
+\DoxyCodeLine{42     result.s = q.s;}
+\DoxyCodeLine{43     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{// Rotates a vector by a quaterion.}}
+\DoxyCodeLine{47 \textcolor{comment}{// Returns the resulting vector.}}
+\DoxyCodeLine{48 \_\_forceinline \mbox{\hyperlink{structvec3f__t}{vec3f\_t}} quatf\_rotate\_vec(\mbox{\hyperlink{structquatf__t}{quatf\_t}} q, \mbox{\hyperlink{structvec3f__t}{vec3f\_t}} v)}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50     \mbox{\hyperlink{structvec3f__t}{vec3f\_t}} t = \mbox{\hyperlink{vec3f_8h_a2010b448d6f6b75a18ec6cd0a9966829}{vec3f\_scale}}(\mbox{\hyperlink{vec3f_8h_a4a03a90898a16cb14ce940a982bda174}{vec3f\_cross}}(q.v3, v), 2.0f);}
+\DoxyCodeLine{51     \textcolor{keywordflow}{return} \mbox{\hyperlink{vec3f_8h_ab5a1d4f53a20791a5f3df5770054bac2}{vec3f\_add}}(v, \mbox{\hyperlink{vec3f_8h_ab5a1d4f53a20791a5f3df5770054bac2}{vec3f\_add}}(\mbox{\hyperlink{vec3f_8h_a2010b448d6f6b75a18ec6cd0a9966829}{vec3f\_scale}}(t, q.w), \mbox{\hyperlink{vec3f_8h_a4a03a90898a16cb14ce940a982bda174}{vec3f\_cross}}(q.v3, t)));}
+\DoxyCodeLine{52 \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{// Converts a quaternion to representation with 3 angles in radians: roll, yaw, pitch.}}
+\DoxyCodeLine{55 \mbox{\hyperlink{structvec3f__t}{vec3f\_t}} quatf\_to\_eulers(\mbox{\hyperlink{structquatf__t}{quatf\_t}} q);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{comment}{// Converts roll, yaw, pitch in radians to a quaternion.}}
+\DoxyCodeLine{58 \mbox{\hyperlink{structquatf__t}{quatf\_t}} quatf\_from\_eulers(\mbox{\hyperlink{structvec3f__t}{vec3f\_t}} euler\_angles);}
+
+\end{DoxyCode}

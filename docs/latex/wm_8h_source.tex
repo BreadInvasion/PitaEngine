@@ -1,0 +1,60 @@
+\hypertarget{wm_8h_source}{}\doxysection{wm.\+h}
+\label{wm_8h_source}\index{src/wm.h@{src/wm.h}}
+\mbox{\hyperlink{wm_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// Window Manager}}
+\DoxyCodeLine{5 \textcolor{comment}{// }}
+\DoxyCodeLine{6 \textcolor{comment}{// Main object is wm\_window\_t to represents a single OS-\/level window.}}
+\DoxyCodeLine{7 \textcolor{comment}{// Window should be pumped every frame.}}
+\DoxyCodeLine{8 \textcolor{comment}{// After pumping a window can be queried for user input.}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{17 \textcolor{comment}{// Handle to a window.}}
+\DoxyCodeLine{18 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}} \mbox{\hyperlink{structwm__window__t}{wm\_window\_t}};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// Mouse buttons. See wm\_get\_mouse\_mask().}}
+\DoxyCodeLine{26 \textcolor{comment}{}\textcolor{keyword}{enum}}
+\DoxyCodeLine{27 \{}
+\DoxyCodeLine{28     \mbox{\hyperlink{wm_8h_a39fca1837c5ce7715cbf571669660c13a35aa9d75ddf9d57b50dd9194fa5ae97f}{k\_mouse\_button\_left}} = 1 << 0, }
+\DoxyCodeLine{29     \mbox{\hyperlink{wm_8h_a39fca1837c5ce7715cbf571669660c13a043ecb1411aecec19660f42b8c22b6da}{k\_mouse\_button\_right}} = 1 << 1, }
+\DoxyCodeLine{30     \mbox{\hyperlink{wm_8h_a39fca1837c5ce7715cbf571669660c13a213aec4534a07ea55ee8a329830eafde}{k\_mouse\_button\_middle}} = 1 << 2, }
+\DoxyCodeLine{31 \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// Keyboard keys. See wm\_get\_key\_mask().}}
+\DoxyCodeLine{37 \textcolor{comment}{}\textcolor{keyword}{enum}}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39     \mbox{\hyperlink{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4af9c467b4a37b72f905115a5db4ae5865}{k\_key\_up}} = 1 << 0, }
+\DoxyCodeLine{40     \mbox{\hyperlink{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4a0dd342e437bfdeaf2c4bc9f0f67cda09}{k\_key\_down}} = 1 << 1, }
+\DoxyCodeLine{41     \mbox{\hyperlink{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4a43c07a2024fc108a4c4deb49a6fe19fd}{k\_key\_left}} = 1 << 2, }
+\DoxyCodeLine{42     \mbox{\hyperlink{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4ab3af07b93b079d982833203d3a5535ba}{k\_key\_right}} = 1 << 3, }
+\DoxyCodeLine{43 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{// Creates a new window. Must be destroyed with wm\_destroy().}}
+\DoxyCodeLine{47 \textcolor{comment}{// Returns NULL on failure, otherwise a new window.}}
+\DoxyCodeLine{56 \textcolor{comment}{}\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* \mbox{\hyperlink{wm_8h_a9bb2bd2ea2903274d9f6b5d564410d70}{wm\_create}}(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{// Destroy a previously created window.}}
+\DoxyCodeLine{66 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{wm_8h_acbde6d7953971a66ec319e69fafe06c5}{wm\_destroy}}(\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// Pump the messages for a window.}}
+\DoxyCodeLine{69 \textcolor{comment}{// This will refresh the mouse and key state on the window.}}
+\DoxyCodeLine{76 \textcolor{comment}{}\textcolor{keywordtype}{bool} \mbox{\hyperlink{wm_8h_a04729d5b8c137a97ec53e4ad605a67f0}{wm\_pump}}(\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{// Get a mask of all mouse buttons current held.}}
+\DoxyCodeLine{85 \textcolor{comment}{}uint32\_t \mbox{\hyperlink{wm_8h_aa66e037d42cf79ab77ae84b78d4d0baf}{wm\_get\_mouse\_mask}}(\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{comment}{// Get a mask of all keyboard keys current held.}}
+\DoxyCodeLine{94 \textcolor{comment}{}uint32\_t \mbox{\hyperlink{wm_8h_a245b1308cafb5e57e0171819342a3180}{wm\_get\_key\_mask}}(\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{comment}{// Get relative mouse movement in x and y.}}
+\DoxyCodeLine{104 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{wm_8h_a606e18210732b49c608b4d86dc93446d}{wm\_get\_mouse\_move}}(\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window, \textcolor{keywordtype}{int}* x, \textcolor{keywordtype}{int}* y);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{comment}{// Get the raw OS window object.}}
+\DoxyCodeLine{113 \textcolor{comment}{}\textcolor{keywordtype}{void}* \mbox{\hyperlink{wm_8h_a7ff9706d0d53344fd51f71ae7e2a497d}{wm\_get\_raw\_window}}(\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window);}
+
+\end{DoxyCode}

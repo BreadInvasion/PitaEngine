@@ -1,0 +1,450 @@
+\hypertarget{lz4frame_8h_source}{}\doxysection{lz4frame.\+h}
+\label{lz4frame_8h_source}\index{src/lz4/lz4frame.h@{src/lz4/lz4frame.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{   LZ4F -\/ LZ4-\/Frame library}}
+\DoxyCodeLine{3 \textcolor{comment}{   Header File}}
+\DoxyCodeLine{4 \textcolor{comment}{   Copyright (C) 2011-\/2020, Yann Collet.}}
+\DoxyCodeLine{5 \textcolor{comment}{   BSD 2-\/Clause License (http://www.opensource.org/licenses/bsd-\/license.php)}}
+\DoxyCodeLine{6 \textcolor{comment}{}}
+\DoxyCodeLine{7 \textcolor{comment}{   Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{8 \textcolor{comment}{   modification, are permitted provided that the following conditions are}}
+\DoxyCodeLine{9 \textcolor{comment}{   met:}}
+\DoxyCodeLine{10 \textcolor{comment}{}}
+\DoxyCodeLine{11 \textcolor{comment}{       * Redistributions of source code must retain the above copyright}}
+\DoxyCodeLine{12 \textcolor{comment}{   notice, this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{13 \textcolor{comment}{       * Redistributions in binary form must reproduce the above}}
+\DoxyCodeLine{14 \textcolor{comment}{   copyright notice, this list of conditions and the following disclaimer}}
+\DoxyCodeLine{15 \textcolor{comment}{   in the documentation and/or other materials provided with the}}
+\DoxyCodeLine{16 \textcolor{comment}{   distribution.}}
+\DoxyCodeLine{17 \textcolor{comment}{}}
+\DoxyCodeLine{18 \textcolor{comment}{   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS}}
+\DoxyCodeLine{19 \textcolor{comment}{   "{}AS IS"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT}}
+\DoxyCodeLine{20 \textcolor{comment}{   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR}}
+\DoxyCodeLine{21 \textcolor{comment}{   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT}}
+\DoxyCodeLine{22 \textcolor{comment}{   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,}}
+\DoxyCodeLine{23 \textcolor{comment}{   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT}}
+\DoxyCodeLine{24 \textcolor{comment}{   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,}}
+\DoxyCodeLine{25 \textcolor{comment}{   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY}}
+\DoxyCodeLine{26 \textcolor{comment}{   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}}
+\DoxyCodeLine{27 \textcolor{comment}{   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE}}
+\DoxyCodeLine{28 \textcolor{comment}{   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{29 \textcolor{comment}{}}
+\DoxyCodeLine{30 \textcolor{comment}{   You can contact the author at :}}
+\DoxyCodeLine{31 \textcolor{comment}{   -\/ LZ4 source repository : https://github.com/lz4/lz4}}
+\DoxyCodeLine{32 \textcolor{comment}{   -\/ LZ4 public forum : https://groups.google.com/forum/\#!forum/lz4c}}
+\DoxyCodeLine{33 \textcolor{comment}{*/}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{/* LZ4F is a stand-\/alone API able to create and decode LZ4 frames}}
+\DoxyCodeLine{36 \textcolor{comment}{ * conformant with specification v1.6.1 in doc/lz4\_Frame\_format.md .}}
+\DoxyCodeLine{37 \textcolor{comment}{ * Generated frames are compatible with `lz4` CLI.}}
+\DoxyCodeLine{38 \textcolor{comment}{ *}}
+\DoxyCodeLine{39 \textcolor{comment}{ * LZ4F also offers streaming capabilities.}}
+\DoxyCodeLine{40 \textcolor{comment}{ *}}
+\DoxyCodeLine{41 \textcolor{comment}{ * lz4.h is not required when using lz4frame.h,}}
+\DoxyCodeLine{42 \textcolor{comment}{ * except to extract common constants such as LZ4\_VERSION\_NUMBER.}}
+\DoxyCodeLine{43 \textcolor{comment}{ * */}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#ifndef LZ4F\_H\_09782039843}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define LZ4F\_H\_09782039843}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#if defined (\_\_cplusplus)}}
+\DoxyCodeLine{49 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{comment}{/* -\/-\/-\/   Dependency   -\/-\/-\/ */}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#include <stddef.h>}   \textcolor{comment}{/* size\_t */}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 }
+\DoxyCodeLine{64 \textcolor{comment}{/*-\/***************************************************************}}
+\DoxyCodeLine{65 \textcolor{comment}{ *  Compiler specifics}}
+\DoxyCodeLine{66 \textcolor{comment}{ *****************************************************************/}}
+\DoxyCodeLine{67 \textcolor{comment}{/*  LZ4\_DLL\_EXPORT :}}
+\DoxyCodeLine{68 \textcolor{comment}{ *  Enable exporting of functions when building a Windows DLL}}
+\DoxyCodeLine{69 \textcolor{comment}{ *  LZ4FLIB\_VISIBILITY :}}
+\DoxyCodeLine{70 \textcolor{comment}{ *  Control library symbols visibility.}}
+\DoxyCodeLine{71 \textcolor{comment}{ */}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#ifndef LZ4FLIB\_VISIBILITY}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#  if defined(\_\_GNUC\_\_) \&\& (\_\_GNUC\_\_ >= 4)}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#    define LZ4FLIB\_VISIBILITY \_\_attribute\_\_ ((visibility ("{}default"{}})))}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#  else}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#    define LZ4FLIB\_VISIBILITY}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#  endif}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#if defined(LZ4\_DLL\_EXPORT) \&\& (LZ4\_DLL\_EXPORT==1)}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#  define LZ4FLIB\_API \_\_declspec(dllexport) LZ4FLIB\_VISIBILITY}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#elif defined(LZ4\_DLL\_IMPORT) \&\& (LZ4\_DLL\_IMPORT==1)}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#  define LZ4FLIB\_API \_\_declspec(dllimport) LZ4FLIB\_VISIBILITY}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#  define LZ4FLIB\_API LZ4FLIB\_VISIBILITY}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#ifdef LZ4F\_DISABLE\_DEPRECATE\_WARNINGS}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#  define LZ4F\_DEPRECATE(x) x}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#  if defined(\_MSC\_VER)}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#    define LZ4F\_DEPRECATE(x) x   }\textcolor{comment}{/* \_\_declspec(deprecated) x -\/ only works with C++ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#  elif defined(\_\_clang\_\_) || (defined(\_\_GNUC\_\_) \&\& (\_\_GNUC\_\_ >= 6))}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#    define LZ4F\_DEPRECATE(x) x \_\_attribute\_\_((deprecated))}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#  else}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#    define LZ4F\_DEPRECATE(x) x   }\textcolor{comment}{/* no deprecation warning for this compiler */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#  endif}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{comment}{/*-\/************************************}}
+\DoxyCodeLine{101 \textcolor{comment}{ *  Error management}}
+\DoxyCodeLine{102 \textcolor{comment}{ **************************************/}}
+\DoxyCodeLine{103 \textcolor{keyword}{typedef} \textcolor{keywordtype}{size\_t} LZ4F\_errorCode\_t;}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 LZ4FLIB\_API \textcolor{keywordtype}{unsigned}    LZ4F\_isError(LZ4F\_errorCode\_t code);   }
+\DoxyCodeLine{106 LZ4FLIB\_API \textcolor{keyword}{const} \textcolor{keywordtype}{char}* LZ4F\_getErrorName(LZ4F\_errorCode\_t code);   }
+\DoxyCodeLine{109 \textcolor{comment}{/*-\/************************************}}
+\DoxyCodeLine{110 \textcolor{comment}{ *  Frame compression types}}
+\DoxyCodeLine{111 \textcolor{comment}{ ************************************* */}}
+\DoxyCodeLine{112 \textcolor{comment}{/* \#define LZ4F\_ENABLE\_OBSOLETE\_ENUMS   // uncomment to enable obsolete enums */}}
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#ifdef LZ4F\_ENABLE\_OBSOLETE\_ENUMS}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#  define LZ4F\_OBSOLETE\_ENUM(x) , LZ4F\_DEPRECATE(x) = LZ4F\_\#\#x}}
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#  define LZ4F\_OBSOLETE\_ENUM(x)}}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{comment}{/* The larger the block size, the (slightly) better the compression ratio,}}
+\DoxyCodeLine{120 \textcolor{comment}{ * though there are diminishing returns.}}
+\DoxyCodeLine{121 \textcolor{comment}{ * Larger blocks also increase memory usage on both compression and decompression sides.}}
+\DoxyCodeLine{122 \textcolor{comment}{ */}}
+\DoxyCodeLine{123 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{124     LZ4F\_default=0,}
+\DoxyCodeLine{125     LZ4F\_max64KB=4,}
+\DoxyCodeLine{126     LZ4F\_max256KB=5,}
+\DoxyCodeLine{127     LZ4F\_max1MB=6,}
+\DoxyCodeLine{128     LZ4F\_max4MB=7}
+\DoxyCodeLine{129     LZ4F\_OBSOLETE\_ENUM(max64KB)}
+\DoxyCodeLine{130     LZ4F\_OBSOLETE\_ENUM(max256KB)}
+\DoxyCodeLine{131     LZ4F\_OBSOLETE\_ENUM(max1MB)}
+\DoxyCodeLine{132     LZ4F\_OBSOLETE\_ENUM(max4MB)}
+\DoxyCodeLine{133 \} LZ4F\_blockSizeID\_t;}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 \textcolor{comment}{/* Linked blocks sharply reduce inefficiencies when using small blocks,}}
+\DoxyCodeLine{136 \textcolor{comment}{ * they compress better.}}
+\DoxyCodeLine{137 \textcolor{comment}{ * However, some LZ4 decoders are only compatible with independent blocks */}}
+\DoxyCodeLine{138 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{139     LZ4F\_blockLinked=0,}
+\DoxyCodeLine{140     LZ4F\_blockIndependent}
+\DoxyCodeLine{141     LZ4F\_OBSOLETE\_ENUM(blockLinked)}
+\DoxyCodeLine{142     LZ4F\_OBSOLETE\_ENUM(blockIndependent)}
+\DoxyCodeLine{143 \} LZ4F\_blockMode\_t;}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{146     LZ4F\_noContentChecksum=0,}
+\DoxyCodeLine{147     LZ4F\_contentChecksumEnabled}
+\DoxyCodeLine{148     LZ4F\_OBSOLETE\_ENUM(noContentChecksum)}
+\DoxyCodeLine{149     LZ4F\_OBSOLETE\_ENUM(contentChecksumEnabled)}
+\DoxyCodeLine{150 \} LZ4F\_contentChecksum\_t;}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{153     LZ4F\_noBlockChecksum=0,}
+\DoxyCodeLine{154     LZ4F\_blockChecksumEnabled}
+\DoxyCodeLine{155 \} LZ4F\_blockChecksum\_t;}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{158     LZ4F\_frame=0,}
+\DoxyCodeLine{159     LZ4F\_skippableFrame}
+\DoxyCodeLine{160     LZ4F\_OBSOLETE\_ENUM(skippableFrame)}
+\DoxyCodeLine{161 \} LZ4F\_frameType\_t;}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163 \textcolor{preprocessor}{\#ifdef LZ4F\_ENABLE\_OBSOLETE\_ENUMS}}
+\DoxyCodeLine{164 \textcolor{keyword}{typedef} LZ4F\_blockSizeID\_t blockSizeID\_t;}
+\DoxyCodeLine{165 \textcolor{keyword}{typedef} LZ4F\_blockMode\_t blockMode\_t;}
+\DoxyCodeLine{166 \textcolor{keyword}{typedef} LZ4F\_frameType\_t frameType\_t;}
+\DoxyCodeLine{167 \textcolor{keyword}{typedef} LZ4F\_contentChecksum\_t contentChecksum\_t;}
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{175 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{176   LZ4F\_blockSizeID\_t     blockSizeID;         \textcolor{comment}{/* max64KB, max256KB, max1MB, max4MB; 0 == default */}}
+\DoxyCodeLine{177   LZ4F\_blockMode\_t       blockMode;           \textcolor{comment}{/* LZ4F\_blockLinked, LZ4F\_blockIndependent; 0 == default */}}
+\DoxyCodeLine{178   LZ4F\_contentChecksum\_t contentChecksumFlag; \textcolor{comment}{/* 1: frame terminated with 32-\/bit checksum of decompressed data; 0: disabled (default) */}}
+\DoxyCodeLine{179   LZ4F\_frameType\_t       frameType;           \textcolor{comment}{/* read-\/only field : LZ4F\_frame or LZ4F\_skippableFrame */}}
+\DoxyCodeLine{180   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long}     contentSize;         \textcolor{comment}{/* Size of uncompressed content ; 0 == unknown */}}
+\DoxyCodeLine{181   \textcolor{keywordtype}{unsigned}               dictID;              \textcolor{comment}{/* Dictionary ID, sent by compressor to help decoder select correct dictionary; 0 == no dictID provided */}}
+\DoxyCodeLine{182   LZ4F\_blockChecksum\_t   blockChecksumFlag;   \textcolor{comment}{/* 1: each block followed by a checksum of block's compressed data; 0: disabled (default) */}}
+\DoxyCodeLine{183 \} \mbox{\hyperlink{struct_l_z4_f__frame_info__t}{LZ4F\_frameInfo\_t}};}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185 \textcolor{preprocessor}{\#define LZ4F\_INIT\_FRAMEINFO   \{ LZ4F\_default, LZ4F\_blockLinked, LZ4F\_noContentChecksum, LZ4F\_frame, 0ULL, 0U, LZ4F\_noBlockChecksum \}    }\textcolor{comment}{/* v1.8.3+ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{192 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{193   \mbox{\hyperlink{struct_l_z4_f__frame_info__t}{LZ4F\_frameInfo\_t}} frameInfo;}
+\DoxyCodeLine{194   \textcolor{keywordtype}{int}      compressionLevel;    \textcolor{comment}{/* 0: default (fast mode); values > LZ4HC\_CLEVEL\_MAX count as LZ4HC\_CLEVEL\_MAX; values < 0 trigger "{}fast acceleration"{} */}}
+\DoxyCodeLine{195   \textcolor{keywordtype}{unsigned} autoFlush;           \textcolor{comment}{/* 1: always flush; reduces usage of internal buffers */}}
+\DoxyCodeLine{196   \textcolor{keywordtype}{unsigned} favorDecSpeed;       \textcolor{comment}{/* 1: parser favors decompression speed vs compression ratio. Only works for high compression modes (>= LZ4HC\_CLEVEL\_OPT\_MIN) */}  \textcolor{comment}{/* v1.8.2+ */}}
+\DoxyCodeLine{197   \textcolor{keywordtype}{unsigned} reserved[3];         \textcolor{comment}{/* must be zero for forward compatibility */}}
+\DoxyCodeLine{198 \} \mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4F\_preferences\_t}};}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200 \textcolor{preprocessor}{\#define LZ4F\_INIT\_PREFERENCES   \{ LZ4F\_INIT\_FRAMEINFO, 0, 0u, 0u, \{ 0u, 0u, 0u \} \}    }\textcolor{comment}{/* v1.8.3+ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203 \textcolor{comment}{/*-\/*********************************}}
+\DoxyCodeLine{204 \textcolor{comment}{*  Simple compression function}}
+\DoxyCodeLine{205 \textcolor{comment}{***********************************/}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 LZ4FLIB\_API \textcolor{keywordtype}{int} LZ4F\_compressionLevel\_max(\textcolor{keywordtype}{void});   \textcolor{comment}{/* v1.8.0+ */}}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{215 LZ4FLIB\_API \textcolor{keywordtype}{size\_t} LZ4F\_compressFrameBound(\textcolor{keywordtype}{size\_t} srcSize, \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4F\_preferences\_t}}* preferencesPtr);}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{234 LZ4FLIB\_API \textcolor{keywordtype}{size\_t} LZ4F\_compressFrame(\textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t} dstCapacity,}
+\DoxyCodeLine{235                                 \textcolor{keyword}{const} \textcolor{keywordtype}{void}* srcBuffer, \textcolor{keywordtype}{size\_t} srcSize,}
+\DoxyCodeLine{236                                 \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4F\_preferences\_t}}* preferencesPtr);}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{comment}{/*-\/***********************************}}
+\DoxyCodeLine{240 \textcolor{comment}{*  Advanced compression functions}}
+\DoxyCodeLine{241 \textcolor{comment}{*************************************/}}
+\DoxyCodeLine{242 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx\_s}} \mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}};   \textcolor{comment}{/* incomplete type */}}
+\DoxyCodeLine{243 \textcolor{keyword}{typedef} \mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* \mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_compressionContext\_t}};  \textcolor{comment}{/* for compatibility with older APIs, prefer using LZ4F\_cctx */}}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{246   \textcolor{keywordtype}{unsigned} stableSrc;    \textcolor{comment}{/* 1 == src content will remain present on future calls to LZ4F\_compress(); skip copying src content within tmp buffer */}}
+\DoxyCodeLine{247   \textcolor{keywordtype}{unsigned} reserved[3];}
+\DoxyCodeLine{248 \} \mbox{\hyperlink{struct_l_z4_f__compress_options__t}{LZ4F\_compressOptions\_t}};}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250 \textcolor{comment}{/*-\/-\/-\/   Resource Management   -\/-\/-\/*/}}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252 \textcolor{preprocessor}{\#define LZ4F\_VERSION 100    }\textcolor{comment}{/* This number can be used to check for an incompatible API breaking change */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{253 LZ4FLIB\_API \textcolor{keywordtype}{unsigned} LZ4F\_getVersion(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{270 LZ4FLIB\_API LZ4F\_errorCode\_t LZ4F\_createCompressionContext(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}** cctxPtr, \textcolor{keywordtype}{unsigned} version);}
+\DoxyCodeLine{271 LZ4FLIB\_API LZ4F\_errorCode\_t LZ4F\_freeCompressionContext(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* cctx);}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274 \textcolor{comment}{/*-\/-\/-\/-\/    Compression    -\/-\/-\/-\/*/}}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276 \textcolor{preprocessor}{\#define LZ4F\_HEADER\_SIZE\_MIN  7   }\textcolor{comment}{/* LZ4 Frame header size can vary, depending on selected parameters */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{277 \textcolor{preprocessor}{\#define LZ4F\_HEADER\_SIZE\_MAX 19}}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279 \textcolor{comment}{/* Size in bytes of a block header in little-\/endian format. Highest bit indicates if block data is uncompressed */}}
+\DoxyCodeLine{280 \textcolor{preprocessor}{\#define LZ4F\_BLOCK\_HEADER\_SIZE 4}}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{282 \textcolor{comment}{/* Size in bytes of a block checksum footer in little-\/endian format. */}}
+\DoxyCodeLine{283 \textcolor{preprocessor}{\#define LZ4F\_BLOCK\_CHECKSUM\_SIZE 4}}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{285 \textcolor{comment}{/* Size in bytes of the content checksum. */}}
+\DoxyCodeLine{286 \textcolor{preprocessor}{\#define LZ4F\_CONTENT\_CHECKSUM\_SIZE 4}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{295 LZ4FLIB\_API \textcolor{keywordtype}{size\_t} LZ4F\_compressBegin(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* cctx,}
+\DoxyCodeLine{296                                       \textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t} dstCapacity,}
+\DoxyCodeLine{297                                       \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4F\_preferences\_t}}* prefsPtr);}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{314 LZ4FLIB\_API \textcolor{keywordtype}{size\_t} LZ4F\_compressBound(\textcolor{keywordtype}{size\_t} srcSize, \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4F\_preferences\_t}}* prefsPtr);}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{328 LZ4FLIB\_API \textcolor{keywordtype}{size\_t} LZ4F\_compressUpdate(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* cctx,}
+\DoxyCodeLine{329                                        \textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t} dstCapacity,}
+\DoxyCodeLine{330                                  \textcolor{keyword}{const} \textcolor{keywordtype}{void}* srcBuffer, \textcolor{keywordtype}{size\_t} srcSize,}
+\DoxyCodeLine{331                                  \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__compress_options__t}{LZ4F\_compressOptions\_t}}* cOptPtr);}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{342 LZ4FLIB\_API \textcolor{keywordtype}{size\_t} LZ4F\_flush(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* cctx,}
+\DoxyCodeLine{343                               \textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t} dstCapacity,}
+\DoxyCodeLine{344                         \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__compress_options__t}{LZ4F\_compressOptions\_t}}* cOptPtr);}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{356 LZ4FLIB\_API \textcolor{keywordtype}{size\_t} LZ4F\_compressEnd(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* cctx,}
+\DoxyCodeLine{357                                     \textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t} dstCapacity,}
+\DoxyCodeLine{358                               \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__compress_options__t}{LZ4F\_compressOptions\_t}}* cOptPtr);}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360 }
+\DoxyCodeLine{361 \textcolor{comment}{/*-\/*********************************}}
+\DoxyCodeLine{362 \textcolor{comment}{*  Decompression functions}}
+\DoxyCodeLine{363 \textcolor{comment}{***********************************/}}
+\DoxyCodeLine{364 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx\_s}} \mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}};   \textcolor{comment}{/* incomplete type */}}
+\DoxyCodeLine{365 \textcolor{keyword}{typedef} \mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}}* \mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_decompressionContext\_t}};   \textcolor{comment}{/* compatibility with previous API versions */}}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{367 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{368   \textcolor{keywordtype}{unsigned} stableDst;     \textcolor{comment}{/* pledges that last 64KB decompressed data will remain available unmodified between invocations.}}
+\DoxyCodeLine{369 \textcolor{comment}{                           * This optimization skips storage operations in tmp buffers. */}}
+\DoxyCodeLine{370   \textcolor{keywordtype}{unsigned} skipChecksums; \textcolor{comment}{/* disable checksum calculation and verification, even when one is present in frame, to save CPU time.}}
+\DoxyCodeLine{371 \textcolor{comment}{                           * Setting this option to 1 once disables all checksums for the rest of the frame. */}}
+\DoxyCodeLine{372   \textcolor{keywordtype}{unsigned} reserved1;     \textcolor{comment}{/* must be set to zero for forward compatibility */}}
+\DoxyCodeLine{373   \textcolor{keywordtype}{unsigned} reserved0;     \textcolor{comment}{/* idem */}}
+\DoxyCodeLine{374 \} \mbox{\hyperlink{struct_l_z4_f__decompress_options__t}{LZ4F\_decompressOptions\_t}};}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{376 }
+\DoxyCodeLine{377 \textcolor{comment}{/* Resource management */}}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{389 LZ4FLIB\_API LZ4F\_errorCode\_t LZ4F\_createDecompressionContext(\mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}}** dctxPtr, \textcolor{keywordtype}{unsigned} version);}
+\DoxyCodeLine{390 LZ4FLIB\_API LZ4F\_errorCode\_t LZ4F\_freeDecompressionContext(\mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}}* dctx);}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{392 }
+\DoxyCodeLine{393 \textcolor{comment}{/*-\/***********************************}}
+\DoxyCodeLine{394 \textcolor{comment}{*  Streaming decompression functions}}
+\DoxyCodeLine{395 \textcolor{comment}{*************************************/}}
+\DoxyCodeLine{396 }
+\DoxyCodeLine{397 \textcolor{preprocessor}{\#define LZ4F\_MAGICNUMBER 0x184D2204U}}
+\DoxyCodeLine{398 \textcolor{preprocessor}{\#define LZ4F\_MAGIC\_SKIPPABLE\_START 0x184D2A50U}}
+\DoxyCodeLine{399 \textcolor{preprocessor}{\#define LZ4F\_MIN\_SIZE\_TO\_KNOW\_HEADER\_LENGTH 5}}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{410 LZ4FLIB\_API \textcolor{keywordtype}{size\_t} LZ4F\_headerSize(\textcolor{keyword}{const} \textcolor{keywordtype}{void}* src, \textcolor{keywordtype}{size\_t} srcSize);}
+\DoxyCodeLine{411 }
+\DoxyCodeLine{455 LZ4FLIB\_API \textcolor{keywordtype}{size\_t}}
+\DoxyCodeLine{456 LZ4F\_getFrameInfo(\mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}}* dctx,}
+\DoxyCodeLine{457                   \mbox{\hyperlink{struct_l_z4_f__frame_info__t}{LZ4F\_frameInfo\_t}}* frameInfoPtr,}
+\DoxyCodeLine{458             \textcolor{keyword}{const} \textcolor{keywordtype}{void}* srcBuffer, \textcolor{keywordtype}{size\_t}* srcSizePtr);}
+\DoxyCodeLine{459 }
+\DoxyCodeLine{491 LZ4FLIB\_API \textcolor{keywordtype}{size\_t}}
+\DoxyCodeLine{492 LZ4F\_decompress(\mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}}* dctx,}
+\DoxyCodeLine{493                 \textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t}* dstSizePtr,}
+\DoxyCodeLine{494           \textcolor{keyword}{const} \textcolor{keywordtype}{void}* srcBuffer, \textcolor{keywordtype}{size\_t}* srcSizePtr,}
+\DoxyCodeLine{495           \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__decompress_options__t}{LZ4F\_decompressOptions\_t}}* dOptPtr);}
+\DoxyCodeLine{496 }
+\DoxyCodeLine{497 }
+\DoxyCodeLine{503 LZ4FLIB\_API \textcolor{keywordtype}{void} LZ4F\_resetDecompressionContext(\mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}}* dctx);   \textcolor{comment}{/* always successful */}}
+\DoxyCodeLine{504 }
+\DoxyCodeLine{505 }
+\DoxyCodeLine{506 }
+\DoxyCodeLine{507 \textcolor{preprocessor}{\#if defined (\_\_cplusplus)}}
+\DoxyCodeLine{508 \}}
+\DoxyCodeLine{509 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{510 }
+\DoxyCodeLine{511 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{/* LZ4F\_H\_09782039843 */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{512 }
+\DoxyCodeLine{513 \textcolor{preprocessor}{\#if defined(LZ4F\_STATIC\_LINKING\_ONLY) \&\& !defined(LZ4F\_H\_STATIC\_09782039843)}}
+\DoxyCodeLine{514 \textcolor{preprocessor}{\#define LZ4F\_H\_STATIC\_09782039843}}
+\DoxyCodeLine{515 }
+\DoxyCodeLine{516 \textcolor{preprocessor}{\#if defined (\_\_cplusplus)}}
+\DoxyCodeLine{517 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{518 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{519 }
+\DoxyCodeLine{520 \textcolor{comment}{/* These declarations are not stable and may change in the future.}}
+\DoxyCodeLine{521 \textcolor{comment}{ * They are therefore only safe to depend on}}
+\DoxyCodeLine{522 \textcolor{comment}{ * when the caller is statically linked against the library.}}
+\DoxyCodeLine{523 \textcolor{comment}{ * To access their declarations, define LZ4F\_STATIC\_LINKING\_ONLY.}}
+\DoxyCodeLine{524 \textcolor{comment}{ *}}
+\DoxyCodeLine{525 \textcolor{comment}{ * By default, these symbols aren't published into shared/dynamic libraries.}}
+\DoxyCodeLine{526 \textcolor{comment}{ * You can override this behavior and force them to be published}}
+\DoxyCodeLine{527 \textcolor{comment}{ * by defining LZ4F\_PUBLISH\_STATIC\_FUNCTIONS.}}
+\DoxyCodeLine{528 \textcolor{comment}{ * Use at your own risk.}}
+\DoxyCodeLine{529 \textcolor{comment}{ */}}
+\DoxyCodeLine{530 \textcolor{preprocessor}{\#ifdef LZ4F\_PUBLISH\_STATIC\_FUNCTIONS}}
+\DoxyCodeLine{531 \textcolor{preprocessor}{\# define LZ4FLIB\_STATIC\_API LZ4FLIB\_API}}
+\DoxyCodeLine{532 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{533 \textcolor{preprocessor}{\# define LZ4FLIB\_STATIC\_API}}
+\DoxyCodeLine{534 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{535 }
+\DoxyCodeLine{536 }
+\DoxyCodeLine{537 \textcolor{comment}{/* -\/-\/-\/   Error List   -\/-\/-\/ */}}
+\DoxyCodeLine{538 \textcolor{preprocessor}{\#define LZ4F\_LIST\_ERRORS(ITEM) \(\backslash\)}}
+\DoxyCodeLine{539 \textcolor{preprocessor}{        ITEM(OK\_NoError) \(\backslash\)}}
+\DoxyCodeLine{540 \textcolor{preprocessor}{        ITEM(ERROR\_GENERIC) \(\backslash\)}}
+\DoxyCodeLine{541 \textcolor{preprocessor}{        ITEM(ERROR\_maxBlockSize\_invalid) \(\backslash\)}}
+\DoxyCodeLine{542 \textcolor{preprocessor}{        ITEM(ERROR\_blockMode\_invalid) \(\backslash\)}}
+\DoxyCodeLine{543 \textcolor{preprocessor}{        ITEM(ERROR\_contentChecksumFlag\_invalid) \(\backslash\)}}
+\DoxyCodeLine{544 \textcolor{preprocessor}{        ITEM(ERROR\_compressionLevel\_invalid) \(\backslash\)}}
+\DoxyCodeLine{545 \textcolor{preprocessor}{        ITEM(ERROR\_headerVersion\_wrong) \(\backslash\)}}
+\DoxyCodeLine{546 \textcolor{preprocessor}{        ITEM(ERROR\_blockChecksum\_invalid) \(\backslash\)}}
+\DoxyCodeLine{547 \textcolor{preprocessor}{        ITEM(ERROR\_reservedFlag\_set) \(\backslash\)}}
+\DoxyCodeLine{548 \textcolor{preprocessor}{        ITEM(ERROR\_allocation\_failed) \(\backslash\)}}
+\DoxyCodeLine{549 \textcolor{preprocessor}{        ITEM(ERROR\_srcSize\_tooLarge) \(\backslash\)}}
+\DoxyCodeLine{550 \textcolor{preprocessor}{        ITEM(ERROR\_dstMaxSize\_tooSmall) \(\backslash\)}}
+\DoxyCodeLine{551 \textcolor{preprocessor}{        ITEM(ERROR\_frameHeader\_incomplete) \(\backslash\)}}
+\DoxyCodeLine{552 \textcolor{preprocessor}{        ITEM(ERROR\_frameType\_unknown) \(\backslash\)}}
+\DoxyCodeLine{553 \textcolor{preprocessor}{        ITEM(ERROR\_frameSize\_wrong) \(\backslash\)}}
+\DoxyCodeLine{554 \textcolor{preprocessor}{        ITEM(ERROR\_srcPtr\_wrong) \(\backslash\)}}
+\DoxyCodeLine{555 \textcolor{preprocessor}{        ITEM(ERROR\_decompressionFailed) \(\backslash\)}}
+\DoxyCodeLine{556 \textcolor{preprocessor}{        ITEM(ERROR\_headerChecksum\_invalid) \(\backslash\)}}
+\DoxyCodeLine{557 \textcolor{preprocessor}{        ITEM(ERROR\_contentChecksum\_invalid) \(\backslash\)}}
+\DoxyCodeLine{558 \textcolor{preprocessor}{        ITEM(ERROR\_frameDecoding\_alreadyStarted) \(\backslash\)}}
+\DoxyCodeLine{559 \textcolor{preprocessor}{        ITEM(ERROR\_compressionState\_uninitialized) \(\backslash\)}}
+\DoxyCodeLine{560 \textcolor{preprocessor}{        ITEM(ERROR\_parameter\_null) \(\backslash\)}}
+\DoxyCodeLine{561 \textcolor{preprocessor}{        ITEM(ERROR\_maxCode)}}
+\DoxyCodeLine{562 }
+\DoxyCodeLine{563 \textcolor{preprocessor}{\#define LZ4F\_GENERATE\_ENUM(ENUM) LZ4F\_\#\#ENUM,}}
+\DoxyCodeLine{564 }
+\DoxyCodeLine{565 \textcolor{comment}{/* enum list is exposed, to handle specific errors */}}
+\DoxyCodeLine{566 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{ LZ4F\_LIST\_ERRORS(LZ4F\_GENERATE\_ENUM)}
+\DoxyCodeLine{567               \_LZ4F\_dummy\_error\_enum\_for\_c89\_never\_used \} LZ4F\_errorCodes;}
+\DoxyCodeLine{568 }
+\DoxyCodeLine{569 LZ4FLIB\_STATIC\_API LZ4F\_errorCodes LZ4F\_getErrorCode(\textcolor{keywordtype}{size\_t} functionResult);}
+\DoxyCodeLine{570 }
+\DoxyCodeLine{571 }
+\DoxyCodeLine{576 LZ4FLIB\_STATIC\_API \textcolor{keywordtype}{size\_t} LZ4F\_getBlockSize(LZ4F\_blockSizeID\_t blockSizeID);}
+\DoxyCodeLine{577 }
+\DoxyCodeLine{591 LZ4FLIB\_STATIC\_API \textcolor{keywordtype}{size\_t}}
+\DoxyCodeLine{592 LZ4F\_uncompressedUpdate(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* cctx,}
+\DoxyCodeLine{593                         \textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t} dstCapacity,}
+\DoxyCodeLine{594                   \textcolor{keyword}{const} \textcolor{keywordtype}{void}* srcBuffer, \textcolor{keywordtype}{size\_t} srcSize,}
+\DoxyCodeLine{595                   \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__compress_options__t}{LZ4F\_compressOptions\_t}}* cOptPtr);}
+\DoxyCodeLine{596 }
+\DoxyCodeLine{597 \textcolor{comment}{/**********************************}}
+\DoxyCodeLine{598 \textcolor{comment}{ *  Bulk processing dictionary API}}
+\DoxyCodeLine{599 \textcolor{comment}{ *********************************/}}
+\DoxyCodeLine{600 }
+\DoxyCodeLine{601 \textcolor{comment}{/* A Dictionary is useful for the compression of small messages (KB range).}}
+\DoxyCodeLine{602 \textcolor{comment}{ * It dramatically improves compression efficiency.}}
+\DoxyCodeLine{603 \textcolor{comment}{ *}}
+\DoxyCodeLine{604 \textcolor{comment}{ * LZ4 can ingest any input as dictionary, though only the last 64 KB are useful.}}
+\DoxyCodeLine{605 \textcolor{comment}{ * Best results are generally achieved by using Zstandard's Dictionary Builder}}
+\DoxyCodeLine{606 \textcolor{comment}{ * to generate a high-\/quality dictionary from a set of samples.}}
+\DoxyCodeLine{607 \textcolor{comment}{ *}}
+\DoxyCodeLine{608 \textcolor{comment}{ * Loading a dictionary has a cost, since it involves construction of tables.}}
+\DoxyCodeLine{609 \textcolor{comment}{ * The Bulk processing dictionary API makes it possible to share this cost}}
+\DoxyCodeLine{610 \textcolor{comment}{ * over an arbitrary number of compression jobs, even concurrently,}}
+\DoxyCodeLine{611 \textcolor{comment}{ * markedly improving compression latency for these cases.}}
+\DoxyCodeLine{612 \textcolor{comment}{ *}}
+\DoxyCodeLine{613 \textcolor{comment}{ * The same dictionary will have to be used on the decompression side}}
+\DoxyCodeLine{614 \textcolor{comment}{ * for decoding to be successful.}}
+\DoxyCodeLine{615 \textcolor{comment}{ * To help identify the correct dictionary at decoding stage,}}
+\DoxyCodeLine{616 \textcolor{comment}{ * the frame header allows optional embedding of a dictID field.}}
+\DoxyCodeLine{617 \textcolor{comment}{ */}}
+\DoxyCodeLine{618 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_l_z4_f___c_dict__s}{LZ4F\_CDict\_s}} LZ4F\_CDict;}
+\DoxyCodeLine{619 }
+\DoxyCodeLine{625 LZ4FLIB\_STATIC\_API LZ4F\_CDict* LZ4F\_createCDict(\textcolor{keyword}{const} \textcolor{keywordtype}{void}* dictBuffer, \textcolor{keywordtype}{size\_t} dictSize);}
+\DoxyCodeLine{626 LZ4FLIB\_STATIC\_API \textcolor{keywordtype}{void}        LZ4F\_freeCDict(LZ4F\_CDict* CDict);}
+\DoxyCodeLine{627 }
+\DoxyCodeLine{628 }
+\DoxyCodeLine{639 LZ4FLIB\_STATIC\_API \textcolor{keywordtype}{size\_t}}
+\DoxyCodeLine{640 LZ4F\_compressFrame\_usingCDict(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* cctx,}
+\DoxyCodeLine{641                               \textcolor{keywordtype}{void}* dst, \textcolor{keywordtype}{size\_t} dstCapacity,}
+\DoxyCodeLine{642                         \textcolor{keyword}{const} \textcolor{keywordtype}{void}* src, \textcolor{keywordtype}{size\_t} srcSize,}
+\DoxyCodeLine{643                         \textcolor{keyword}{const} LZ4F\_CDict* cdict,}
+\DoxyCodeLine{644                         \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4F\_preferences\_t}}* preferencesPtr);}
+\DoxyCodeLine{645 }
+\DoxyCodeLine{646 }
+\DoxyCodeLine{654 LZ4FLIB\_STATIC\_API \textcolor{keywordtype}{size\_t}}
+\DoxyCodeLine{655 LZ4F\_compressBegin\_usingCDict(\mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* cctx,}
+\DoxyCodeLine{656                               \textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t} dstCapacity,}
+\DoxyCodeLine{657                         \textcolor{keyword}{const} LZ4F\_CDict* cdict,}
+\DoxyCodeLine{658                         \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4F\_preferences\_t}}* prefsPtr);}
+\DoxyCodeLine{659 }
+\DoxyCodeLine{660 }
+\DoxyCodeLine{665 LZ4FLIB\_STATIC\_API \textcolor{keywordtype}{size\_t}}
+\DoxyCodeLine{666 LZ4F\_decompress\_usingDict(\mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}}* dctxPtr,}
+\DoxyCodeLine{667                           \textcolor{keywordtype}{void}* dstBuffer, \textcolor{keywordtype}{size\_t}* dstSizePtr,}
+\DoxyCodeLine{668                     \textcolor{keyword}{const} \textcolor{keywordtype}{void}* srcBuffer, \textcolor{keywordtype}{size\_t}* srcSizePtr,}
+\DoxyCodeLine{669                     \textcolor{keyword}{const} \textcolor{keywordtype}{void}* dict, \textcolor{keywordtype}{size\_t} dictSize,}
+\DoxyCodeLine{670                     \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__decompress_options__t}{LZ4F\_decompressOptions\_t}}* decompressOptionsPtr);}
+\DoxyCodeLine{671 }
+\DoxyCodeLine{672 }
+\DoxyCodeLine{678 \textcolor{keyword}{typedef} \textcolor{keywordtype}{void}* (*LZ4F\_AllocFunction) (\textcolor{keywordtype}{void}* opaqueState, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{679 \textcolor{keyword}{typedef} \textcolor{keywordtype}{void}* (*LZ4F\_CallocFunction) (\textcolor{keywordtype}{void}* opaqueState, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{680 \textcolor{keyword}{typedef} void  (*LZ4F\_FreeFunction) (\textcolor{keywordtype}{void}* opaqueState, \textcolor{keywordtype}{void}* address);}
+\DoxyCodeLine{681 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{682     LZ4F\_AllocFunction customAlloc;}
+\DoxyCodeLine{683     LZ4F\_CallocFunction customCalloc; \textcolor{comment}{/* optional; when not defined, uses customAlloc + memset */}}
+\DoxyCodeLine{684     LZ4F\_FreeFunction customFree;}
+\DoxyCodeLine{685     \textcolor{keywordtype}{void}* opaqueState;}
+\DoxyCodeLine{686 \} LZ4F\_CustomMem;}
+\DoxyCodeLine{687 \textcolor{keyword}{static}}
+\DoxyCodeLine{688 \textcolor{preprocessor}{\#ifdef \_\_GNUC\_\_}}
+\DoxyCodeLine{689 \_\_attribute\_\_((\_\_unused\_\_))}
+\DoxyCodeLine{690 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{691 LZ4F\_CustomMem \textcolor{keyword}{const} LZ4F\_defaultCMem = \{ NULL, NULL, NULL, NULL \};  }
+\DoxyCodeLine{693 LZ4FLIB\_STATIC\_API \mbox{\hyperlink{struct_l_z4_f__cctx__s}{LZ4F\_cctx}}* LZ4F\_createCompressionContext\_advanced(LZ4F\_CustomMem customMem, \textcolor{keywordtype}{unsigned} version);}
+\DoxyCodeLine{694 LZ4FLIB\_STATIC\_API \mbox{\hyperlink{struct_l_z4_f__dctx__s}{LZ4F\_dctx}}* LZ4F\_createDecompressionContext\_advanced(LZ4F\_CustomMem customMem, \textcolor{keywordtype}{unsigned} version);}
+\DoxyCodeLine{695 LZ4FLIB\_STATIC\_API LZ4F\_CDict* LZ4F\_createCDict\_advanced(LZ4F\_CustomMem customMem, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* dictBuffer, \textcolor{keywordtype}{size\_t} dictSize);}
+\DoxyCodeLine{696 }
+\DoxyCodeLine{697 }
+\DoxyCodeLine{698 \textcolor{preprocessor}{\#if defined (\_\_cplusplus)}}
+\DoxyCodeLine{699 \}}
+\DoxyCodeLine{700 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{701 }
+\DoxyCodeLine{702 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{/* defined(LZ4F\_STATIC\_LINKING\_ONLY) \&\& !defined(LZ4F\_H\_STATIC\_09782039843) */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

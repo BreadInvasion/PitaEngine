@@ -1,0 +1,30 @@
+\hypertarget{render_8h_source}{}\doxysection{render.\+h}
+\label{render_8h_source}\index{src/render.h@{src/render.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// High-\/level graphics rendering interface.}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structrender__t}{render\_t}} \mbox{\hyperlink{structrender__t}{render\_t}};}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}} \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}};}
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__mesh__info__t}{gpu\_mesh\_info\_t}} \mbox{\hyperlink{structgpu__mesh__info__t}{gpu\_mesh\_info\_t}};}
+\DoxyCodeLine{9 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__shader__info__t}{gpu\_shader\_info\_t}} \mbox{\hyperlink{structgpu__shader__info__t}{gpu\_shader\_info\_t}};}
+\DoxyCodeLine{10 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgpu__uniform__buffer__info__t}{gpu\_uniform\_buffer\_info\_t}} \mbox{\hyperlink{structgpu__uniform__buffer__info__t}{gpu\_uniform\_buffer\_info\_t}};}
+\DoxyCodeLine{11 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structwm__window__t}{wm\_window\_t}} \mbox{\hyperlink{structwm__window__t}{wm\_window\_t}};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// Create a render system.}}
+\DoxyCodeLine{15 \mbox{\hyperlink{structrender__t}{render\_t}}* render\_create(\mbox{\hyperlink{structheap__t}{heap\_t}}* \mbox{\hyperlink{structwm__window__t_a030aa741640330c5c035c1a9dfd6e87f}{heap}}, \mbox{\hyperlink{structwm__window__t}{wm\_window\_t}}* window);}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{// Destroy a render system.}}
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} render\_destroy(\mbox{\hyperlink{structrender__t}{render\_t}}* render);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{// Push a model onto a queue of items to be rendered.}}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} render\_push\_model(\mbox{\hyperlink{structrender__t}{render\_t}}* render, \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}}* entity, \mbox{\hyperlink{structgpu__mesh__info__t}{gpu\_mesh\_info\_t}}* mesh, \mbox{\hyperlink{structgpu__shader__info__t}{gpu\_shader\_info\_t}}* shader, \mbox{\hyperlink{structgpu__uniform__buffer__info__t}{gpu\_uniform\_buffer\_info\_t}}* uniform);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// Push an end-\/of-\/frame marker on a queue of items to be rendered.}}
+\DoxyCodeLine{24 \textcolor{keywordtype}{void} render\_push\_done(\mbox{\hyperlink{structrender__t}{render\_t}}* render);}
+
+\end{DoxyCode}

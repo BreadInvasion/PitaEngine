@@ -1,0 +1,51 @@
+\hypertarget{vulkan__xlib__xrandr_8h_source}{}\doxysection{vulkan\+\_\+xlib\+\_\+xrandr.\+h}
+\label{vulkan__xlib__xrandr_8h_source}\index{src/vulkan/vulkan\_xlib\_xrandr.h@{src/vulkan/vulkan\_xlib\_xrandr.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_XLIB\_XRANDR\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_XLIB\_XRANDR\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*}}
+\DoxyCodeLine{11 \textcolor{comment}{** This header is generated from the Khronos Vulkan XML API Registry.}}
+\DoxyCodeLine{12 \textcolor{comment}{**}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VK\_EXT\_acquire\_xlib\_display 1}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define VK\_EXT\_ACQUIRE\_XLIB\_DISPLAY\_SPEC\_VERSION 1}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VK\_EXT\_ACQUIRE\_XLIB\_DISPLAY\_EXTENSION\_NAME "{}VK\_EXT\_acquire\_xlib\_display"{}}}
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkAcquireXlibDisplayEXT)(VkPhysicalDevice physicalDevice, Display* dpy, VkDisplayKHR display);}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetRandROutputDisplayEXT)(VkPhysicalDevice physicalDevice, Display* dpy, RROutput rrOutput, VkDisplayKHR* pDisplay);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{29 VKAPI\_ATTR VkResult VKAPI\_CALL vkAcquireXlibDisplayEXT(}
+\DoxyCodeLine{30     VkPhysicalDevice                            physicalDevice,}
+\DoxyCodeLine{31     Display*                                    dpy,}
+\DoxyCodeLine{32     VkDisplayKHR                                display);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetRandROutputDisplayEXT(}
+\DoxyCodeLine{35     VkPhysicalDevice                            physicalDevice,}
+\DoxyCodeLine{36     Display*                                    dpy,}
+\DoxyCodeLine{37     RROutput                                    rrOutput,}
+\DoxyCodeLine{38     VkDisplayKHR*                               pDisplay);}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{42 \}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

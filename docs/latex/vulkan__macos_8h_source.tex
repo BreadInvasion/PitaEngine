@@ -1,0 +1,53 @@
+\hypertarget{vulkan__macos_8h_source}{}\doxysection{vulkan\+\_\+macos.\+h}
+\label{vulkan__macos_8h_source}\index{src/vulkan/vulkan\_macos.h@{src/vulkan/vulkan\_macos.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_MACOS\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_MACOS\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*}}
+\DoxyCodeLine{11 \textcolor{comment}{** This header is generated from the Khronos Vulkan XML API Registry.}}
+\DoxyCodeLine{12 \textcolor{comment}{**}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VK\_MVK\_macos\_surface 1}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define VK\_MVK\_MACOS\_SURFACE\_SPEC\_VERSION 3}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VK\_MVK\_MACOS\_SURFACE\_EXTENSION\_NAME "{}VK\_MVK\_macos\_surface"{}}}
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} VkFlags VkMacOSSurfaceCreateFlagsMVK;}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_mac_o_s_surface_create_info_m_v_k}{VkMacOSSurfaceCreateInfoMVK}} \{}
+\DoxyCodeLine{27     VkStructureType                 sType;}
+\DoxyCodeLine{28     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                     pNext;}
+\DoxyCodeLine{29     VkMacOSSurfaceCreateFlagsMVK    flags;}
+\DoxyCodeLine{30     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                     pView;}
+\DoxyCodeLine{31 \} \mbox{\hyperlink{struct_vk_mac_o_s_surface_create_info_m_v_k}{VkMacOSSurfaceCreateInfoMVK}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateMacOSSurfaceMVK)(VkInstance instance, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_mac_o_s_surface_create_info_m_v_k}{VkMacOSSurfaceCreateInfoMVK}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkSurfaceKHR* pSurface);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{36 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateMacOSSurfaceMVK(}
+\DoxyCodeLine{37     VkInstance                                  instance,}
+\DoxyCodeLine{38     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_mac_o_s_surface_create_info_m_v_k}{VkMacOSSurfaceCreateInfoMVK}}*          pCreateInfo,}
+\DoxyCodeLine{39     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{40     VkSurfaceKHR*                               pSurface);}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

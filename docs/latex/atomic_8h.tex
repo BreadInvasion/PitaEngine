@@ -1,0 +1,119 @@
+\hypertarget{atomic_8h}{}\doxysection{src/atomic.h File Reference}
+\label{atomic_8h}\index{src/atomic.h@{src/atomic.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{atomic_8h_a7faa319a45fb1b3e75200c78588ccad7}{atomic\+\_\+increment}} (int $\ast$address)
+\begin{DoxyCompactList}\small\item\em Increments the number that address points to, then returns the old value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{atomic_8h_ad626165441c8986841af4c0661e62d91}{atomic\+\_\+decrement}} (int $\ast$address)
+\begin{DoxyCompactList}\small\item\em Decrements the number that address points to, then returns the old value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{atomic_8h_a690f161da3b0890c2b1af82524fe8445}{atomic\+\_\+compare\+\_\+and\+\_\+exchange}} (int $\ast$dest, int compare, int exchange)
+\begin{DoxyCompactList}\small\item\em Changes the value at dest to exchange if the value at dest equals compare. Returns the original value at dest. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{atomic_8h_a9d57530a0194eb75f118a4ca11e00ae5}{atomic\+\_\+load}} (int $\ast$address)
+\begin{DoxyCompactList}\small\item\em Reads an integer from address. All writes before the last atomic\+\_\+store to address are flushed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{atomic_8h_a608299904067980a895caf5dc839a8e3}{atomic\+\_\+store}} (int $\ast$address, int value)
+\begin{DoxyCompactList}\small\item\em Writes integer value to address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Mark Haddleton
+\end{DoxyAuthor}
+atomic contains atomic operations to be performed on 32-\/bit integers. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{atomic_8h_a690f161da3b0890c2b1af82524fe8445}\label{atomic_8h_a690f161da3b0890c2b1af82524fe8445}} 
+\index{atomic.h@{atomic.h}!atomic\_compare\_and\_exchange@{atomic\_compare\_and\_exchange}}
+\index{atomic\_compare\_and\_exchange@{atomic\_compare\_and\_exchange}!atomic.h@{atomic.h}}
+\doxysubsubsection{\texorpdfstring{atomic\_compare\_and\_exchange()}{atomic\_compare\_and\_exchange()}}
+{\footnotesize\ttfamily int atomic\+\_\+compare\+\_\+and\+\_\+exchange (\begin{DoxyParamCaption}\item[{int $\ast$}]{dest,  }\item[{int}]{compare,  }\item[{int}]{exchange }\end{DoxyParamCaption})}
+
+
+
+Changes the value at dest to exchange if the value at dest equals compare. Returns the original value at dest. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & The address of the number to be compared and potentially changed. \\
+\hline
+{\em compare} & The number to compare the integer at dest with. \\
+\hline
+{\em exchange} & The value of dest is altered to this number if $\ast$dest == compare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The original value of dest. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{atomic_8h_ad626165441c8986841af4c0661e62d91}\label{atomic_8h_ad626165441c8986841af4c0661e62d91}} 
+\index{atomic.h@{atomic.h}!atomic\_decrement@{atomic\_decrement}}
+\index{atomic\_decrement@{atomic\_decrement}!atomic.h@{atomic.h}}
+\doxysubsubsection{\texorpdfstring{atomic\_decrement()}{atomic\_decrement()}}
+{\footnotesize\ttfamily int atomic\+\_\+decrement (\begin{DoxyParamCaption}\item[{int $\ast$}]{address }\end{DoxyParamCaption})}
+
+
+
+Decrements the number that address points to, then returns the old value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address of the number to be decremented. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The original value of the number at address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{atomic_8h_a7faa319a45fb1b3e75200c78588ccad7}\label{atomic_8h_a7faa319a45fb1b3e75200c78588ccad7}} 
+\index{atomic.h@{atomic.h}!atomic\_increment@{atomic\_increment}}
+\index{atomic\_increment@{atomic\_increment}!atomic.h@{atomic.h}}
+\doxysubsubsection{\texorpdfstring{atomic\_increment()}{atomic\_increment()}}
+{\footnotesize\ttfamily int atomic\+\_\+increment (\begin{DoxyParamCaption}\item[{int $\ast$}]{address }\end{DoxyParamCaption})}
+
+
+
+Increments the number that address points to, then returns the old value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address of the number to be incremented. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The original value of the number at address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{atomic_8h_a9d57530a0194eb75f118a4ca11e00ae5}\label{atomic_8h_a9d57530a0194eb75f118a4ca11e00ae5}} 
+\index{atomic.h@{atomic.h}!atomic\_load@{atomic\_load}}
+\index{atomic\_load@{atomic\_load}!atomic.h@{atomic.h}}
+\doxysubsubsection{\texorpdfstring{atomic\_load()}{atomic\_load()}}
+{\footnotesize\ttfamily int atomic\+\_\+load (\begin{DoxyParamCaption}\item[{int $\ast$}]{address }\end{DoxyParamCaption})}
+
+
+
+Reads an integer from address. All writes before the last atomic\+\_\+store to address are flushed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value read from address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{atomic_8h_a608299904067980a895caf5dc839a8e3}\label{atomic_8h_a608299904067980a895caf5dc839a8e3}} 
+\index{atomic.h@{atomic.h}!atomic\_store@{atomic\_store}}
+\index{atomic\_store@{atomic\_store}!atomic.h@{atomic.h}}
+\doxysubsubsection{\texorpdfstring{atomic\_store()}{atomic\_store()}}
+{\footnotesize\ttfamily void atomic\+\_\+store (\begin{DoxyParamCaption}\item[{int $\ast$}]{address,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Writes integer value to address. 
+
+This function helps to guarantee ordering and visibility, in combination with the atomic\+\_\+load(address) function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address to store value at. \\
+\hline
+{\em value} & The number to be stored. \\
+\hline
+\end{DoxyParams}

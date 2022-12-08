@@ -1,0 +1,26 @@
+\hypertarget{timer_8h_source}{}\doxysection{timer.\+h}
+\label{timer_8h_source}\index{src/timer.h@{src/timer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// High resolution timer support.}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// Perform one-\/time initialization of the timer.}}
+\DoxyCodeLine{8 \textcolor{keywordtype}{void} timer\_startup();}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// Get the number of OS-\/defined ticks that have elapsed since startup.}}
+\DoxyCodeLine{11 uint64\_t timer\_get\_ticks();}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// Get the OS-\/defined tick frequency.}}
+\DoxyCodeLine{14 uint64\_t timer\_get\_ticks\_per\_second();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{// Convert a number of OS-\/defined ticks to microseconds.}}
+\DoxyCodeLine{17 uint64\_t timer\_ticks\_to\_us(uint64\_t t);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// Convert a number of OS-\/defined ticks to milliseconds.}}
+\DoxyCodeLine{20 uint32\_t timer\_ticks\_to\_ms(uint64\_t t);}
+
+\end{DoxyCode}

@@ -1,0 +1,232 @@
+\hypertarget{wm_8h}{}\doxysection{src/wm.h File Reference}
+\label{wm_8h}\index{src/wm.h@{src/wm.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{wm_8h_af82f8a686a2a705c1c6af502fe57d423}\label{wm_8h_af82f8a686a2a705c1c6af502fe57d423}} 
+typedef struct \mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} {\bfseries wm\+\_\+window\+\_\+t}
+\item 
+\mbox{\Hypertarget{wm_8h_a75c19bcef00dee4542c1ddab212e29a8}\label{wm_8h_a75c19bcef00dee4542c1ddab212e29a8}} 
+typedef struct \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} {\bfseries heap\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{wm_8h_a39fca1837c5ce7715cbf571669660c13a35aa9d75ddf9d57b50dd9194fa5ae97f}{k\+\_\+mouse\+\_\+button\+\_\+left}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{wm_8h_a39fca1837c5ce7715cbf571669660c13a043ecb1411aecec19660f42b8c22b6da}{k\+\_\+mouse\+\_\+button\+\_\+right}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{wm_8h_a39fca1837c5ce7715cbf571669660c13a213aec4534a07ea55ee8a329830eafde}{k\+\_\+mouse\+\_\+button\+\_\+middle}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+ \}
+\begin{DoxyCompactList}\small\item\em This enum maps the 3 mouse buttons to specific bit shifts within the mouse\+\_\+mask. \end{DoxyCompactList}\item 
+enum \{ \mbox{\hyperlink{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4af9c467b4a37b72f905115a5db4ae5865}{k\+\_\+key\+\_\+up}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4a0dd342e437bfdeaf2c4bc9f0f67cda09}{k\+\_\+key\+\_\+down}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4a43c07a2024fc108a4c4deb49a6fe19fd}{k\+\_\+key\+\_\+left}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, \mbox{\hyperlink{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4ab3af07b93b079d982833203d3a5535ba}{k\+\_\+key\+\_\+right}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+ \}
+\begin{DoxyCompactList}\small\item\em This enum maps the 4 arrow keys to specific bit shifts within the key\+\_\+mask. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$ \mbox{\hyperlink{wm_8h_a9bb2bd2ea2903274d9f6b5d564410d70}{wm\+\_\+create}} (\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$heap)
+\begin{DoxyCompactList}\small\item\em Creates a new window, stored in \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} heap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{wm_8h_acbde6d7953971a66ec319e69fafe06c5}{wm\+\_\+destroy}} (\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Destroys the provided window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{wm_8h_a04729d5b8c137a97ec53e4ad605a67f0}{wm\+\_\+pump}} (\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Pumps the messages of the provided window, effectively advancing a frame. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{wm_8h_aa66e037d42cf79ab77ae84b78d4d0baf}{wm\+\_\+get\+\_\+mouse\+\_\+mask}} (\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Returns the mouse mask of the provided window. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{wm_8h_a245b1308cafb5e57e0171819342a3180}{wm\+\_\+get\+\_\+key\+\_\+mask}} (\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Returns the key mask of the provided window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{wm_8h_a606e18210732b49c608b4d86dc93446d}{wm\+\_\+get\+\_\+mouse\+\_\+move}} (\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$window, int $\ast$x, int $\ast$y)
+\begin{DoxyCompactList}\small\item\em Changes the values of the x and y parameters to equal the current mouse position in the window. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{wm_8h_a7ff9706d0d53344fd51f71ae7e2a497d}{wm\+\_\+get\+\_\+raw\+\_\+window}} (\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Returns the raw OS window object of the given window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Mark Haddleton
+\end{DoxyAuthor}
+The Window Manager controls the OS-\/level window\+: including the initial creation, the update every frame, retrieval of input, and destroying the window. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{wm_8h_a39fca1837c5ce7715cbf571669660c13}\label{wm_8h_a39fca1837c5ce7715cbf571669660c13}} 
+\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+
+
+This enum maps the 3 mouse buttons to specific bit shifts within the mouse\+\_\+mask. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_mouse\_button\_left@{k\_mouse\_button\_left}!wm.h@{wm.h}}\index{wm.h@{wm.h}!k\_mouse\_button\_left@{k\_mouse\_button\_left}}}\mbox{\Hypertarget{wm_8h_a39fca1837c5ce7715cbf571669660c13a35aa9d75ddf9d57b50dd9194fa5ae97f}\label{wm_8h_a39fca1837c5ce7715cbf571669660c13a35aa9d75ddf9d57b50dd9194fa5ae97f}} 
+k\+\_\+mouse\+\_\+button\+\_\+left&The left mouse button. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_mouse\_button\_right@{k\_mouse\_button\_right}!wm.h@{wm.h}}\index{wm.h@{wm.h}!k\_mouse\_button\_right@{k\_mouse\_button\_right}}}\mbox{\Hypertarget{wm_8h_a39fca1837c5ce7715cbf571669660c13a043ecb1411aecec19660f42b8c22b6da}\label{wm_8h_a39fca1837c5ce7715cbf571669660c13a043ecb1411aecec19660f42b8c22b6da}} 
+k\+\_\+mouse\+\_\+button\+\_\+right&The right mouse button. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_mouse\_button\_middle@{k\_mouse\_button\_middle}!wm.h@{wm.h}}\index{wm.h@{wm.h}!k\_mouse\_button\_middle@{k\_mouse\_button\_middle}}}\mbox{\Hypertarget{wm_8h_a39fca1837c5ce7715cbf571669660c13a213aec4534a07ea55ee8a329830eafde}\label{wm_8h_a39fca1837c5ce7715cbf571669660c13a213aec4534a07ea55ee8a329830eafde}} 
+k\+\_\+mouse\+\_\+button\+\_\+middle&The middle mouse button. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4}\label{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4}} 
+\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+
+
+This enum maps the 4 arrow keys to specific bit shifts within the key\+\_\+mask. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_key\_up@{k\_key\_up}!wm.h@{wm.h}}\index{wm.h@{wm.h}!k\_key\_up@{k\_key\_up}}}\mbox{\Hypertarget{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4af9c467b4a37b72f905115a5db4ae5865}\label{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4af9c467b4a37b72f905115a5db4ae5865}} 
+k\+\_\+key\+\_\+up&The up arrow key. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_key\_down@{k\_key\_down}!wm.h@{wm.h}}\index{wm.h@{wm.h}!k\_key\_down@{k\_key\_down}}}\mbox{\Hypertarget{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4a0dd342e437bfdeaf2c4bc9f0f67cda09}\label{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4a0dd342e437bfdeaf2c4bc9f0f67cda09}} 
+k\+\_\+key\+\_\+down&The down arrow key. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_key\_left@{k\_key\_left}!wm.h@{wm.h}}\index{wm.h@{wm.h}!k\_key\_left@{k\_key\_left}}}\mbox{\Hypertarget{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4a43c07a2024fc108a4c4deb49a6fe19fd}\label{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4a43c07a2024fc108a4c4deb49a6fe19fd}} 
+k\+\_\+key\+\_\+left&The left arrow key. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_key\_right@{k\_key\_right}!wm.h@{wm.h}}\index{wm.h@{wm.h}!k\_key\_right@{k\_key\_right}}}\mbox{\Hypertarget{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4ab3af07b93b079d982833203d3a5535ba}\label{wm_8h_aaf8fd5f0e57d456151c951e0f3715fc4ab3af07b93b079d982833203d3a5535ba}} 
+k\+\_\+key\+\_\+right&The right arrow key. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{wm_8h_a9bb2bd2ea2903274d9f6b5d564410d70}\label{wm_8h_a9bb2bd2ea2903274d9f6b5d564410d70}} 
+\index{wm.h@{wm.h}!wm\_create@{wm\_create}}
+\index{wm\_create@{wm\_create}!wm.h@{wm.h}}
+\doxysubsubsection{\texorpdfstring{wm\_create()}{wm\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$ wm\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$}]{heap }\end{DoxyParamCaption})}
+
+
+
+Creates a new window, stored in \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} heap. 
+
+wm\+\_\+create creates the raw window object in the OS and stores the HWND object in the new \mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}}, along with accompanying input data and flags.
+
+
+\begin{DoxyParams}{Parameters}
+{\em heap} & The heap to store the \mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The newly-\/created \mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{wm_8h_acbde6d7953971a66ec319e69fafe06c5}\label{wm_8h_acbde6d7953971a66ec319e69fafe06c5}} 
+\index{wm.h@{wm.h}!wm\_destroy@{wm\_destroy}}
+\index{wm\_destroy@{wm\_destroy}!wm.h@{wm.h}}
+\doxysubsubsection{\texorpdfstring{wm\_destroy()}{wm\_destroy()}}
+{\footnotesize\ttfamily void wm\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Destroys the provided window. 
+
+This destroys the raw object in the OS, then frees the struct from the heap.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window to be destroyed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{wm_8h_a245b1308cafb5e57e0171819342a3180}\label{wm_8h_a245b1308cafb5e57e0171819342a3180}} 
+\index{wm.h@{wm.h}!wm\_get\_key\_mask@{wm\_get\_key\_mask}}
+\index{wm\_get\_key\_mask@{wm\_get\_key\_mask}!wm.h@{wm.h}}
+\doxysubsubsection{\texorpdfstring{wm\_get\_key\_mask()}{wm\_get\_key\_mask()}}
+{\footnotesize\ttfamily uint32\+\_\+t wm\+\_\+get\+\_\+key\+\_\+mask (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Returns the key mask of the provided window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window that contains the key\+\_\+mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The key mask of the window. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{wm_8h_aa66e037d42cf79ab77ae84b78d4d0baf}\label{wm_8h_aa66e037d42cf79ab77ae84b78d4d0baf}} 
+\index{wm.h@{wm.h}!wm\_get\_mouse\_mask@{wm\_get\_mouse\_mask}}
+\index{wm\_get\_mouse\_mask@{wm\_get\_mouse\_mask}!wm.h@{wm.h}}
+\doxysubsubsection{\texorpdfstring{wm\_get\_mouse\_mask()}{wm\_get\_mouse\_mask()}}
+{\footnotesize\ttfamily uint32\+\_\+t wm\+\_\+get\+\_\+mouse\+\_\+mask (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Returns the mouse mask of the provided window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window that contains the mouse\+\_\+mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mouse mask of the window. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{wm_8h_a606e18210732b49c608b4d86dc93446d}\label{wm_8h_a606e18210732b49c608b4d86dc93446d}} 
+\index{wm.h@{wm.h}!wm\_get\_mouse\_move@{wm\_get\_mouse\_move}}
+\index{wm\_get\_mouse\_move@{wm\_get\_mouse\_move}!wm.h@{wm.h}}
+\doxysubsubsection{\texorpdfstring{wm\_get\_mouse\_move()}{wm\_get\_mouse\_move()}}
+{\footnotesize\ttfamily void wm\+\_\+get\+\_\+mouse\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$}]{window,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y }\end{DoxyParamCaption})}
+
+
+
+Changes the values of the x and y parameters to equal the current mouse position in the window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window where we\textquotesingle{}re looking for the mouse. \\
+\hline
+{\em x} & A pointer to the x value that will be changed. \\
+\hline
+{\em y} & A pointer to the y value that will be changed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{wm_8h_a7ff9706d0d53344fd51f71ae7e2a497d}\label{wm_8h_a7ff9706d0d53344fd51f71ae7e2a497d}} 
+\index{wm.h@{wm.h}!wm\_get\_raw\_window@{wm\_get\_raw\_window}}
+\index{wm\_get\_raw\_window@{wm\_get\_raw\_window}!wm.h@{wm.h}}
+\doxysubsubsection{\texorpdfstring{wm\_get\_raw\_window()}{wm\_get\_raw\_window()}}
+{\footnotesize\ttfamily void $\ast$ wm\+\_\+get\+\_\+raw\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Returns the raw OS window object of the given window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window whose object we\textquotesingle{}re retrieving. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The raw window object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{wm_8h_a04729d5b8c137a97ec53e4ad605a67f0}\label{wm_8h_a04729d5b8c137a97ec53e4ad605a67f0}} 
+\index{wm.h@{wm.h}!wm\_pump@{wm\_pump}}
+\index{wm\_pump@{wm\_pump}!wm.h@{wm.h}}
+\doxysubsubsection{\texorpdfstring{wm\_pump()}{wm\_pump()}}
+{\footnotesize\ttfamily bool wm\+\_\+pump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwm__window__t}{wm\+\_\+window\+\_\+t}} $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Pumps the messages of the provided window, effectively advancing a frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & window to be pumped. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the program should quit, False otherwise. 
+\end{DoxyReturn}

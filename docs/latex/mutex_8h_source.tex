@@ -1,0 +1,26 @@
+\hypertarget{mutex_8h_source}{}\doxysection{mutex.\+h}
+\label{mutex_8h_source}\index{src/mutex.h@{src/mutex.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Recursive mutex thread synchronization}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// Handle to a mutex.}}
+\DoxyCodeLine{6 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }mutex\_t mutex\_t;}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// Creates a new mutex.}}
+\DoxyCodeLine{9 mutex\_t* mutex\_create();}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// Destroys a previously created mutex.}}
+\DoxyCodeLine{12 \textcolor{keywordtype}{void} mutex\_destroy(mutex\_t* mutex);}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// Locks a mutex. May block if another thread unlocks it.}}
+\DoxyCodeLine{15 \textcolor{comment}{// If a thread locks a mutex multiple times, it must be unlocked}}
+\DoxyCodeLine{16 \textcolor{comment}{// multiple times.}}
+\DoxyCodeLine{17 \textcolor{keywordtype}{void} mutex\_lock(mutex\_t* mutex);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// Unlocks a mutex.}}
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} mutex\_unlock(mutex\_t* mutex);}
+
+\end{DoxyCode}

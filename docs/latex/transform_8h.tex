@@ -1,0 +1,140 @@
+\hypertarget{transform_8h}{}\doxysection{src/transform.h File Reference}
+\label{transform_8h}\index{src/transform.h@{src/transform.h}}
+{\ttfamily \#include \char`\"{}mat4f.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}quatf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vec3f.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} stores spatial positioning data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} \mbox{\hyperlink{transform_8h_a37438c9635d7b95c7a7c1221b1d2e2ab}{transform\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} stores spatial positioning data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{transform_8h_a76b3595bdde8d84be15f37c52a4b2c2b}{transform\+\_\+identity}} (\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$transform)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} instance with 0 rotation, (1,1,1) scale, and (0,0,0) position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{transform_8h_a805e9521b27f437e1b8b6c3c06865604}{transform\+\_\+to\+\_\+matrix}} (const \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$transform, \mbox{\hyperlink{structmat4f__t}{mat4f\+\_\+t}} $\ast$output)
+\begin{DoxyCompactList}\small\item\em Converts a provided \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} to matrix form. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{transform_8h_abea779bdfe8d5039d782dd6a85b4dd68}{transform\+\_\+multiply}} (\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$result, const \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Combines two input transforms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{transform_8h_a15ff7db62fb112b0ac4708edf7bd6bc1}{transform\+\_\+invert}} (\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$transform)
+\begin{DoxyCompactList}\small\item\em Inverts the provided transform. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvec3f__t}{vec3f\+\_\+t}} \mbox{\hyperlink{transform_8h_a64c0c912cdbaaa533bdaef5137eb8bcf}{transform\+\_\+transform\+\_\+vec3}} (const \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$transform, \mbox{\hyperlink{structvec3f__t}{vec3f\+\_\+t}} v)
+\begin{DoxyCompactList}\small\item\em Transforms the provided vector using the provided transform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Mark Haddleton
+\end{DoxyAuthor}
+Transforms manage the position, orientation, and relative size of objects in 3D space -\/ this file contains a structure and associated methods to handle and alter these values both independently and in relation to eachother. 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{transform_8h_a37438c9635d7b95c7a7c1221b1d2e2ab}\label{transform_8h_a37438c9635d7b95c7a7c1221b1d2e2ab}} 
+\index{transform.h@{transform.h}!transform\_t@{transform\_t}}
+\index{transform\_t@{transform\_t}!transform.h@{transform.h}}
+\doxysubsubsection{\texorpdfstring{transform\_t}{transform\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}}}
+
+
+
+\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} stores spatial positioning data. 
+
+Specifically, linear position, scale, and rotation are stored as vectors and a quaternion. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{transform_8h_a76b3595bdde8d84be15f37c52a4b2c2b}\label{transform_8h_a76b3595bdde8d84be15f37c52a4b2c2b}} 
+\index{transform.h@{transform.h}!transform\_identity@{transform\_identity}}
+\index{transform\_identity@{transform\_identity}!transform.h@{transform.h}}
+\doxysubsubsection{\texorpdfstring{transform\_identity()}{transform\_identity()}}
+{\footnotesize\ttfamily void transform\+\_\+identity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$}]{transform }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} instance with 0 rotation, (1,1,1) scale, and (0,0,0) position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em transform} & A pointer that will be assigned the identity transform. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{transform_8h_a15ff7db62fb112b0ac4708edf7bd6bc1}\label{transform_8h_a15ff7db62fb112b0ac4708edf7bd6bc1}} 
+\index{transform.h@{transform.h}!transform\_invert@{transform\_invert}}
+\index{transform\_invert@{transform\_invert}!transform.h@{transform.h}}
+\doxysubsubsection{\texorpdfstring{transform\_invert()}{transform\_invert()}}
+{\footnotesize\ttfamily void transform\+\_\+invert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$}]{transform }\end{DoxyParamCaption})}
+
+
+
+Inverts the provided transform. 
+
+Scale is simply a multiplicative inverse, Rotation uses the function quatf\+\_\+conjugate(), and the translation is the additive inverse, adjusted for rotation, then multiplied by the new scale.
+
+
+\begin{DoxyParams}{Parameters}
+{\em transform} & The transform to be inverted, which will be reassigned the new values. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{transform_8h_abea779bdfe8d5039d782dd6a85b4dd68}\label{transform_8h_abea779bdfe8d5039d782dd6a85b4dd68}} 
+\index{transform.h@{transform.h}!transform\_multiply@{transform\_multiply}}
+\index{transform\_multiply@{transform\_multiply}!transform.h@{transform.h}}
+\doxysubsubsection{\texorpdfstring{transform\_multiply()}{transform\_multiply()}}
+{\footnotesize\ttfamily void transform\+\_\+multiply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$}]{result,  }\item[{const \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Combines two input transforms. 
+
+This is not as simple as adding the two together -\/ while the scales and rotations can simply use vector and quaternion multiplication respectively, the translation is a little bit more complicated. First, one of the translations has to be multiplied by the other\textquotesingle{}s scale and rotation, reflecting the difference in relative positioning. Once they are in the same relative scope, {\itshape then} they can be added together.
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & The first transform provided, which will also be replaced with the output. \\
+\hline
+{\em t} & The second transform provided. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{transform_8h_a805e9521b27f437e1b8b6c3c06865604}\label{transform_8h_a805e9521b27f437e1b8b6c3c06865604}} 
+\index{transform.h@{transform.h}!transform\_to\_matrix@{transform\_to\_matrix}}
+\index{transform\_to\_matrix@{transform\_to\_matrix}!transform.h@{transform.h}}
+\doxysubsubsection{\texorpdfstring{transform\_to\_matrix()}{transform\_to\_matrix()}}
+{\footnotesize\ttfamily void transform\+\_\+to\+\_\+matrix (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$}]{transform,  }\item[{\mbox{\hyperlink{structmat4f__t}{mat4f\+\_\+t}} $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Converts a provided \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} to matrix form. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em transform} & The \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} to be converted. \\
+\hline
+{\em output} & A pointer that will be assigned the matrix output. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{transform_8h_a64c0c912cdbaaa533bdaef5137eb8bcf}\label{transform_8h_a64c0c912cdbaaa533bdaef5137eb8bcf}} 
+\index{transform.h@{transform.h}!transform\_transform\_vec3@{transform\_transform\_vec3}}
+\index{transform\_transform\_vec3@{transform\_transform\_vec3}!transform.h@{transform.h}}
+\doxysubsubsection{\texorpdfstring{transform\_transform\_vec3()}{transform\_transform\_vec3()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvec3f__t}{vec3f\+\_\+t}} transform\+\_\+transform\+\_\+vec3 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} $\ast$}]{transform,  }\item[{\mbox{\hyperlink{structvec3f__t}{vec3f\+\_\+t}}}]{v }\end{DoxyParamCaption})}
+
+
+
+Transforms the provided vector using the provided transform. 
+
+The function sequentially translates, rotates, and scales the vector using each aspect of the transform.
+
+
+\begin{DoxyParams}{Parameters}
+{\em transform} & The transform whose contents will modify the provided vector. \\
+\hline
+{\em v} & The vector to be modified. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting vector. 
+\end{DoxyReturn}

@@ -1,0 +1,34 @@
+\hypertarget{trace_8h_source}{}\doxysection{trace.\+h}
+\label{trace_8h_source}\index{src/trace.h@{src/trace.h}}
+\mbox{\hyperlink{trace_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtrace__t}{trace\_t}} \mbox{\hyperlink{structtrace__t}{trace\_t}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtrace__event__t}{trace\_event\_t}} \mbox{\hyperlink{structtrace__event__t}{trace\_event\_t}};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// Creates a CPU performance tracing system.}}
+\DoxyCodeLine{19 \textcolor{comment}{// Event capacity is the maximum number of durations that can be traced.}}
+\DoxyCodeLine{29 \textcolor{comment}{}\mbox{\hyperlink{structtrace__t}{trace\_t}}* \mbox{\hyperlink{trace_8h_a8a94a6e947faa8e6d1e644c531acdca2}{trace\_create}}(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap, \textcolor{keywordtype}{int} event\_capacity);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{// Destroys a CPU performance tracing system.}}
+\DoxyCodeLine{37 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{trace_8h_a40e994f11b09a8183f5dd13d6ea1f133}{trace\_destroy}}(\mbox{\hyperlink{structtrace__t}{trace\_t}}* trace);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{// Begin tracing a named duration on the current thread.}}
+\DoxyCodeLine{40 \textcolor{comment}{// It is okay to nest multiple durations at once.}}
+\DoxyCodeLine{49 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{trace_8h_a01472bfc73024c758e6bb2e5d5962b85}{trace\_duration\_push}}(\mbox{\hyperlink{structtrace__t}{trace\_t}}* trace, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{structtrace__event__t_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{// End tracing the currently active duration on the current thread.}}
+\DoxyCodeLine{60 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{trace_8h_a9382a00193b8330c6821faf9b58faaba}{trace\_duration\_pop}}(\mbox{\hyperlink{structtrace__t}{trace\_t}}* trace);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{comment}{// Start recording trace events.}}
+\DoxyCodeLine{63 \textcolor{comment}{// A Chrome trace file will be written to path.}}
+\DoxyCodeLine{70 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{trace_8h_a52d14ec93ed6b3d0d250513e15540b54}{trace\_capture\_start}}(\mbox{\hyperlink{structtrace__t}{trace\_t}}* trace, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* path);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{// Stop recording trace events.}}
+\DoxyCodeLine{78 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{trace_8h_a4d27f84f7791a95db9d06decd361d127}{trace\_capture\_stop}}(\mbox{\hyperlink{structtrace__t}{trace\_t}}* trace);}
+
+\end{DoxyCode}

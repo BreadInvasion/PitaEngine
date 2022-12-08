@@ -1,0 +1,64 @@
+\hypertarget{mat4f_8h_source}{}\doxysection{mat4f.\+h}
+\label{mat4f_8h_source}\index{src/mat4f.h@{src/mat4f.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Matrix support.}}
+\DoxyCodeLine{4 \textcolor{comment}{// Four columns, four rows.}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structquatf__t}{quatf\_t}} \mbox{\hyperlink{structquatf__t}{quatf\_t}};}
+\DoxyCodeLine{9 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structvec3f__t}{vec3f\_t}} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}};}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// Base 4x4 matrix object.}}
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     \textcolor{keywordtype}{float} data[4][4];}
+\DoxyCodeLine{15 \} \mbox{\hyperlink{structmat4f__t}{mat4f\_t}};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{// Makes the matrix m identity.}}
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} mat4f\_make\_identity(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{// Make a matrix m that translates vectors by t.}}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} mat4f\_make\_translation(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keyword}{const} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* t);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// Make a matrix m that scales vectors by s.}}
+\DoxyCodeLine{24 \textcolor{keywordtype}{void} mat4f\_make\_scaling(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keyword}{const} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* s);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// Make a matrix m that rotates vectors by q.}}
+\DoxyCodeLine{27 \textcolor{keywordtype}{void} mat4f\_make\_rotation(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keyword}{const} \mbox{\hyperlink{structquatf__t}{quatf\_t}}* q);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{// Translate matrix m by translation vector t.}}
+\DoxyCodeLine{30 \textcolor{keywordtype}{void} mat4f\_translate(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keyword}{const} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* t);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{comment}{// Scale matrix m by scale vector s.}}
+\DoxyCodeLine{33 \textcolor{keywordtype}{void} mat4f\_scale(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keyword}{const} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* s);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// Rotate matrix m by quaternion q.}}
+\DoxyCodeLine{36 \textcolor{keywordtype}{void} mat4f\_rotate(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keyword}{const} \mbox{\hyperlink{structquatf__t}{quatf\_t}}* q);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{comment}{// Concatenate matrices a and b to get matrix result.}}
+\DoxyCodeLine{39 \textcolor{keywordtype}{void} mat4f\_mul(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* result, \textcolor{keyword}{const} \mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* a, \textcolor{keyword}{const} \mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* b);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{// Concatenate matrices result and m and store in result.}}
+\DoxyCodeLine{42 \textcolor{keywordtype}{void} mat4f\_mul\_inplace(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* result, \textcolor{keyword}{const} \mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// Multiples vector in by matrix m and stores the result in out.}}
+\DoxyCodeLine{45 \textcolor{keywordtype}{void} mat4f\_transform(\textcolor{keyword}{const} \mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keyword}{const} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* in, \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* out);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{// Multiples vector v by matrix m and stores the result back in v.}}
+\DoxyCodeLine{48 \textcolor{keywordtype}{void} mat4f\_transform\_inplace(\textcolor{keyword}{const} \mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* v);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{// Attempt to compute a matrix inverse.}}
+\DoxyCodeLine{51 \textcolor{comment}{// Returns true on success, returns false if the determinant is zero.}}
+\DoxyCodeLine{52 \textcolor{keywordtype}{bool} mat4f\_invert(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{// Given a field of view angle in radians, width/height aspect ratio, and depth near+far distances, compute a perspective projection matrix.}}
+\DoxyCodeLine{55 \textcolor{keywordtype}{void} mat4f\_make\_perspective(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keywordtype}{float} angle, \textcolor{keywordtype}{float} aspect, \textcolor{keywordtype}{float} z\_near, \textcolor{keywordtype}{float} z\_far);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{comment}{// Creates a view matrix given an eye location, facing direction, and up vector.}}
+\DoxyCodeLine{58 \textcolor{keywordtype}{void} mat4f\_make\_lookat(\mbox{\hyperlink{structmat4f__t}{mat4f\_t}}* m, \textcolor{keyword}{const} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* eye, \textcolor{keyword}{const} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* dir, \textcolor{keyword}{const} \mbox{\hyperlink{structvec3f__t}{vec3f\_t}}* up);}
+
+\end{DoxyCode}

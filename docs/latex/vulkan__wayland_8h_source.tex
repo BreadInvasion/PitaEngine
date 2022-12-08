@@ -1,0 +1,60 @@
+\hypertarget{vulkan__wayland_8h_source}{}\doxysection{vulkan\+\_\+wayland.\+h}
+\label{vulkan__wayland_8h_source}\index{src/vulkan/vulkan\_wayland.h@{src/vulkan/vulkan\_wayland.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_WAYLAND\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_WAYLAND\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*}}
+\DoxyCodeLine{11 \textcolor{comment}{** This header is generated from the Khronos Vulkan XML API Registry.}}
+\DoxyCodeLine{12 \textcolor{comment}{**}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VK\_KHR\_wayland\_surface 1}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define VK\_KHR\_WAYLAND\_SURFACE\_SPEC\_VERSION 6}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VK\_KHR\_WAYLAND\_SURFACE\_EXTENSION\_NAME "{}VK\_KHR\_wayland\_surface"{}}}
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} VkFlags VkWaylandSurfaceCreateFlagsKHR;}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_wayland_surface_create_info_k_h_r}{VkWaylandSurfaceCreateInfoKHR}} \{}
+\DoxyCodeLine{27     VkStructureType                   sType;}
+\DoxyCodeLine{28     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                       pNext;}
+\DoxyCodeLine{29     VkWaylandSurfaceCreateFlagsKHR    flags;}
+\DoxyCodeLine{30     \textcolor{keyword}{struct }wl\_display*                display;}
+\DoxyCodeLine{31     \textcolor{keyword}{struct }wl\_surface*                surface;}
+\DoxyCodeLine{32 \} \mbox{\hyperlink{struct_vk_wayland_surface_create_info_k_h_r}{VkWaylandSurfaceCreateInfoKHR}};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateWaylandSurfaceKHR)(VkInstance instance, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_wayland_surface_create_info_k_h_r}{VkWaylandSurfaceCreateInfoKHR}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkSurfaceKHR* pSurface);}
+\DoxyCodeLine{35 \textcolor{keyword}{typedef} VkBool32 (VKAPI\_PTR *PFN\_vkGetPhysicalDeviceWaylandPresentationSupportKHR)(VkPhysicalDevice physicalDevice, uint32\_t queueFamilyIndex, \textcolor{keyword}{struct }wl\_display* display);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{38 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateWaylandSurfaceKHR(}
+\DoxyCodeLine{39     VkInstance                                  instance,}
+\DoxyCodeLine{40     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_wayland_surface_create_info_k_h_r}{VkWaylandSurfaceCreateInfoKHR}}*        pCreateInfo,}
+\DoxyCodeLine{41     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{42     VkSurfaceKHR*                               pSurface);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 VKAPI\_ATTR VkBool32 VKAPI\_CALL vkGetPhysicalDeviceWaylandPresentationSupportKHR(}
+\DoxyCodeLine{45     VkPhysicalDevice                            physicalDevice,}
+\DoxyCodeLine{46     uint32\_t                                    queueFamilyIndex,}
+\DoxyCodeLine{47     \textcolor{keyword}{struct} wl\_display*                          display);}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{51 \}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

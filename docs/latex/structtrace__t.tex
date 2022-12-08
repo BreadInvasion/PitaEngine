@@ -1,0 +1,69 @@
+\hypertarget{structtrace__t}{}\doxysection{trace\+\_\+t Struct Reference}
+\label{structtrace__t}\index{trace\_t@{trace\_t}}
+
+
+\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} contains the status and storage structures of a given trace process.  
+
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structtrace__t_a24e470ac53e77a9081f1075b80e8cecd}{capturing}}
+\item 
+\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$ \mbox{\hyperlink{structtrace__t_a030aa741640330c5c035c1a9dfd6e87f}{heap}}
+\item 
+\mbox{\hyperlink{structqueue__t}{queue\+\_\+t}} $\ast$ \mbox{\hyperlink{structtrace__t_a910e7193959291e85c8a69835d8f5c8d}{queue}}
+\item 
+\mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} $\ast$ \mbox{\hyperlink{structtrace__t_a24e24e2d50b7f03544fa278976bd65a9}{list\+\_\+head}}
+\item 
+\mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} $\ast$ \mbox{\hyperlink{structtrace__t_ad4c189b27a646a60a0f8174c9d07604b}{list\+\_\+tail}}
+\item 
+const char $\ast$ \mbox{\hyperlink{structtrace__t_a3b02c6de5c049804444a246f7fdf46b4}{path}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} contains the status and storage structures of a given trace process. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structtrace__t_a24e470ac53e77a9081f1075b80e8cecd}\label{structtrace__t_a24e470ac53e77a9081f1075b80e8cecd}} 
+\index{trace\_t@{trace\_t}!capturing@{capturing}}
+\index{capturing@{capturing}!trace\_t@{trace\_t}}
+\doxysubsubsection{\texorpdfstring{capturing}{capturing}}
+{\footnotesize\ttfamily bool capturing}
+
+capturing is True if the trace is actively recording events, otherwise False. \mbox{\Hypertarget{structtrace__t_a030aa741640330c5c035c1a9dfd6e87f}\label{structtrace__t_a030aa741640330c5c035c1a9dfd6e87f}} 
+\index{trace\_t@{trace\_t}!heap@{heap}}
+\index{heap@{heap}!trace\_t@{trace\_t}}
+\doxysubsubsection{\texorpdfstring{heap}{heap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structheap__t}{heap\+\_\+t}}$\ast$ heap}
+
+heap is a back reference to the heap in which the instance of \mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} is stored. \mbox{\Hypertarget{structtrace__t_a24e24e2d50b7f03544fa278976bd65a9}\label{structtrace__t_a24e24e2d50b7f03544fa278976bd65a9}} 
+\index{trace\_t@{trace\_t}!list\_head@{list\_head}}
+\index{list\_head@{list\_head}!trace\_t@{trace\_t}}
+\doxysubsubsection{\texorpdfstring{list\_head}{list\_head}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}}$\ast$ list\+\_\+head}
+
+list\+\_\+head points to the front of a chronological singly-\/linked list of \mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} instances. \mbox{\Hypertarget{structtrace__t_ad4c189b27a646a60a0f8174c9d07604b}\label{structtrace__t_ad4c189b27a646a60a0f8174c9d07604b}} 
+\index{trace\_t@{trace\_t}!list\_tail@{list\_tail}}
+\index{list\_tail@{list\_tail}!trace\_t@{trace\_t}}
+\doxysubsubsection{\texorpdfstring{list\_tail}{list\_tail}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}}$\ast$ list\+\_\+tail}
+
+list\+\_\+tail points to the back of a chronological singly-\/linked list of \mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} instances. \mbox{\Hypertarget{structtrace__t_a3b02c6de5c049804444a246f7fdf46b4}\label{structtrace__t_a3b02c6de5c049804444a246f7fdf46b4}} 
+\index{trace\_t@{trace\_t}!path@{path}}
+\index{path@{path}!trace\_t@{trace\_t}}
+\doxysubsubsection{\texorpdfstring{path}{path}}
+{\footnotesize\ttfamily const char$\ast$ path}
+
+path stores the path to which the completed trace will be written. \mbox{\Hypertarget{structtrace__t_a910e7193959291e85c8a69835d8f5c8d}\label{structtrace__t_a910e7193959291e85c8a69835d8f5c8d}} 
+\index{trace\_t@{trace\_t}!queue@{queue}}
+\index{queue@{queue}!trace\_t@{trace\_t}}
+\doxysubsubsection{\texorpdfstring{queue}{queue}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structqueue__t}{queue\+\_\+t}}$\ast$ queue}
+
+queue is a pointer to a queue that stores trace events which have begun, but not yet ended. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/trace.\+c\end{DoxyCompactItemize}

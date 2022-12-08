@@ -1,0 +1,145 @@
+\hypertarget{trace_8h}{}\doxysection{src/trace.h File Reference}
+\label{trace_8h}\index{src/trace.h@{src/trace.h}}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{trace_8h_a75c19bcef00dee4542c1ddab212e29a8}\label{trace_8h_a75c19bcef00dee4542c1ddab212e29a8}} 
+typedef struct \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} {\bfseries heap\+\_\+t}
+\item 
+\mbox{\Hypertarget{trace_8h_abec033e59d4add4aa6ec61a874d0d52d}\label{trace_8h_abec033e59d4add4aa6ec61a874d0d52d}} 
+typedef struct \mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} {\bfseries trace\+\_\+t}
+\item 
+\mbox{\Hypertarget{trace_8h_ab265cd672eade4e5ef68dbaea40dac1d}\label{trace_8h_ab265cd672eade4e5ef68dbaea40dac1d}} 
+typedef struct \mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} {\bfseries trace\+\_\+event\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$ \mbox{\hyperlink{trace_8h_a8a94a6e947faa8e6d1e644c531acdca2}{trace\+\_\+create}} (\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$heap, int event\+\_\+capacity)
+\begin{DoxyCompactList}\small\item\em Creates a new trace system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{trace_8h_a40e994f11b09a8183f5dd13d6ea1f133}{trace\+\_\+destroy}} (\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$trace)
+\begin{DoxyCompactList}\small\item\em Destroys the provided trace system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{trace_8h_a01472bfc73024c758e6bb2e5d5962b85}{trace\+\_\+duration\+\_\+push}} (\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$trace, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Begins tracing an event called name on the current thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{trace_8h_a9382a00193b8330c6821faf9b58faaba}{trace\+\_\+duration\+\_\+pop}} (\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$trace)
+\begin{DoxyCompactList}\small\item\em Stops tracing an event called name on the current thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{trace_8h_a52d14ec93ed6b3d0d250513e15540b54}{trace\+\_\+capture\+\_\+start}} (\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$trace, const char $\ast$path)
+\begin{DoxyCompactList}\small\item\em Begins capturing events, and stores the output file path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{trace_8h_a4d27f84f7791a95db9d06decd361d127}{trace\+\_\+capture\+\_\+stop}} (\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$trace)
+\begin{DoxyCompactList}\small\item\em Stops capturing events, and writes all events to a Chrome tracing file at trace-\/\texorpdfstring{$>$}{>}path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Mark Haddleton
+\end{DoxyAuthor}
+Traces are used to track the length of time that occurs between two points in the code. They can also be used to see the difference in starting times between multiple events, or they can be nested as shown in Homework 3. Regardless of the specific application, tracing is a very valuable tool. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{trace_8h_a52d14ec93ed6b3d0d250513e15540b54}\label{trace_8h_a52d14ec93ed6b3d0d250513e15540b54}} 
+\index{trace.h@{trace.h}!trace\_capture\_start@{trace\_capture\_start}}
+\index{trace\_capture\_start@{trace\_capture\_start}!trace.h@{trace.h}}
+\doxysubsubsection{\texorpdfstring{trace\_capture\_start()}{trace\_capture\_start()}}
+{\footnotesize\ttfamily void trace\+\_\+capture\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$}]{trace,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+Begins capturing events, and stores the output file path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trace} & The trace to be activated. \\
+\hline
+{\em path} & The file path to which the activated capture session should be written. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{trace_8h_a4d27f84f7791a95db9d06decd361d127}\label{trace_8h_a4d27f84f7791a95db9d06decd361d127}} 
+\index{trace.h@{trace.h}!trace\_capture\_stop@{trace\_capture\_stop}}
+\index{trace\_capture\_stop@{trace\_capture\_stop}!trace.h@{trace.h}}
+\doxysubsubsection{\texorpdfstring{trace\_capture\_stop()}{trace\_capture\_stop()}}
+{\footnotesize\ttfamily void trace\+\_\+capture\+\_\+stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$}]{trace }\end{DoxyParamCaption})}
+
+
+
+Stops capturing events, and writes all events to a Chrome tracing file at trace-\/\texorpdfstring{$>$}{>}path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trace} & The trace to be stopped and formatted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{trace_8h_a8a94a6e947faa8e6d1e644c531acdca2}\label{trace_8h_a8a94a6e947faa8e6d1e644c531acdca2}} 
+\index{trace.h@{trace.h}!trace\_create@{trace\_create}}
+\index{trace\_create@{trace\_create}!trace.h@{trace.h}}
+\doxysubsubsection{\texorpdfstring{trace\_create()}{trace\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$ trace\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$}]{heap,  }\item[{int}]{event\+\_\+capacity }\end{DoxyParamCaption})}
+
+
+
+Creates a new trace system. 
+
+Note\+: The trace does not immediately begin capturing upon creation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em heap} & The heap in which to create the trace. \\
+\hline
+{\em event\+\_\+capacity} & The maximum number of events that may be tracked simultaneously. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The newly created trace instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{trace_8h_a40e994f11b09a8183f5dd13d6ea1f133}\label{trace_8h_a40e994f11b09a8183f5dd13d6ea1f133}} 
+\index{trace.h@{trace.h}!trace\_destroy@{trace\_destroy}}
+\index{trace\_destroy@{trace\_destroy}!trace.h@{trace.h}}
+\doxysubsubsection{\texorpdfstring{trace\_destroy()}{trace\_destroy()}}
+{\footnotesize\ttfamily void trace\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$}]{trace }\end{DoxyParamCaption})}
+
+
+
+Destroys the provided trace system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trace} & The trace system to destroy. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{trace_8h_a9382a00193b8330c6821faf9b58faaba}\label{trace_8h_a9382a00193b8330c6821faf9b58faaba}} 
+\index{trace.h@{trace.h}!trace\_duration\_pop@{trace\_duration\_pop}}
+\index{trace\_duration\_pop@{trace\_duration\_pop}!trace.h@{trace.h}}
+\doxysubsubsection{\texorpdfstring{trace\_duration\_pop()}{trace\_duration\_pop()}}
+{\footnotesize\ttfamily void trace\+\_\+duration\+\_\+pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$}]{trace }\end{DoxyParamCaption})}
+
+
+
+Stops tracing an event called name on the current thread. 
+
+Nesting multiple durations is permitted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em trace} & The tracing system handling the event. \\
+\hline
+{\em name} & The name of the event being ended. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{trace_8h_a01472bfc73024c758e6bb2e5d5962b85}\label{trace_8h_a01472bfc73024c758e6bb2e5d5962b85}} 
+\index{trace.h@{trace.h}!trace\_duration\_push@{trace\_duration\_push}}
+\index{trace\_duration\_push@{trace\_duration\_push}!trace.h@{trace.h}}
+\doxysubsubsection{\texorpdfstring{trace\_duration\_push()}{trace\_duration\_push()}}
+{\footnotesize\ttfamily void trace\+\_\+duration\+\_\+push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtrace__t}{trace\+\_\+t}} $\ast$}]{trace,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Begins tracing an event called name on the current thread. 
+
+Nesting multiple durations is permitted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em trace} & The tracing system handling the event. \\
+\hline
+{\em name} & The name of the new event. \\
+\hline
+\end{DoxyParams}

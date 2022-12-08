@@ -1,0 +1,38 @@
+\hypertarget{main_8c}{}\doxysection{src/main.c File Reference}
+\label{main_8c}\index{src/main.c@{src/main.c}}
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}heap.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}simple\+\_\+game.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}wm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpp\+\_\+test.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_ac0f2228420376f4db7e1274f2b41667c}{main}} (int argc, const char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em The main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Mark Haddleton \href{mailto:haddlm@rpi.edu}{\texttt{ haddlm@rpi.\+edu}}
+\end{DoxyAuthor}
+The main file is used to test the engine\textquotesingle{}s functionality and run test cases for specific sections. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_ac0f2228420376f4db7e1274f2b41667c}\label{main_8c_ac0f2228420376f4db7e1274f2b41667c}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{const char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+The main function. 
+
+\begin{DoxyAuthor}{Author}
+Mark Haddleton
+\end{DoxyAuthor}
+This is the main function of the entire engine. It contains function calls to start\+: In-\/game time, the heap, the file system, the game window, and the renderer. Once those are in place, the game is initialized, then updated every frame in the core \char`\"{}pump\char`\"{} loop. Upon shutdown, all of the allocated memory blocks are freed and the window is closed. 

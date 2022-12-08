@@ -1,0 +1,39 @@
+\hypertarget{structarena__t}{}\doxysection{arena\+\_\+t Struct Reference}
+\label{structarena__t}\index{arena\_t@{arena\_t}}
+
+
+A structure to represent \char`\"{}arenas\char`\"{} within a heap.  
+
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+pool\+\_\+t \mbox{\hyperlink{structarena__t_aea6bdbe9b69ce28d0330c7febfb88465}{pool}}
+\item 
+struct \mbox{\hyperlink{structarena__t}{arena\+\_\+t}} $\ast$ \mbox{\hyperlink{structarena__t_aaf0cd146d8aa2d94fe8e52f5070590b6}{next}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A structure to represent \char`\"{}arenas\char`\"{} within a heap. 
+
+The struct \mbox{\hyperlink{structarena__t}{arena\+\_\+t}} is used to represent specific \char`\"{}arenas\char`\"{}, pools of contiguous memory within the heap that can be divided up into blocks, to then be allocated and destroyed as necessary. Arenas are commonly split up based on tasks within the game, so that a task\textquotesingle{}s memory can be freed all at once when that task is complete, but in this specific implementation we just assign new heaps whenever we run out of memory in the current heap. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structarena__t_aaf0cd146d8aa2d94fe8e52f5070590b6}\label{structarena__t_aaf0cd146d8aa2d94fe8e52f5070590b6}} 
+\index{arena\_t@{arena\_t}!next@{next}}
+\index{next@{next}!arena\_t@{arena\_t}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structarena__t}{arena\+\_\+t}}$\ast$ next}
+
+next points to the next arena in the heap. If this is the final arena in the heap, next is equal to null. \mbox{\Hypertarget{structarena__t_aea6bdbe9b69ce28d0330c7febfb88465}\label{structarena__t_aea6bdbe9b69ce28d0330c7febfb88465}} 
+\index{arena\_t@{arena\_t}!pool@{pool}}
+\index{pool@{pool}!arena\_t@{arena\_t}}
+\doxysubsubsection{\texorpdfstring{pool}{pool}}
+{\footnotesize\ttfamily pool\+\_\+t pool}
+
+pool is the specific set of memory assigned to this arena. A given arena may only contain one pool, but an instance of \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} may contain many arenas! 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/heap.\+c\end{DoxyCompactItemize}

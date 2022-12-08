@@ -1,0 +1,32 @@
+\hypertarget{heap_8h_source}{}\doxysection{heap.\+h}
+\label{heap_8h_source}\index{src/heap.h@{src/heap.h}}
+\mbox{\hyperlink{heap_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// Heap Memory Manager}}
+\DoxyCodeLine{15 \textcolor{comment}{// }}
+\DoxyCodeLine{16 \textcolor{comment}{// Main object, heap\_t, represents a dynamic memory heap.}}
+\DoxyCodeLine{17 \textcolor{comment}{// Once created, memory can be allocated and free from the heap.}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// Handle to a heap.}}
+\DoxyCodeLine{20 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// Creates a new memory heap.}}
+\DoxyCodeLine{23 \textcolor{comment}{// The grow increment is the default size with which the heap grows.}}
+\DoxyCodeLine{24 \textcolor{comment}{// Should be a multiple of OS page size.}}
+\DoxyCodeLine{31 \textcolor{comment}{}\mbox{\hyperlink{structheap__t}{heap\_t}}* \mbox{\hyperlink{heap_8h_a2f96277dac31fe86acd615a053760f91}{heap\_create}}(\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structheap__t_aceb982d953b047e5ab1e623e06538bfd}{grow\_increment}});}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// Destroy a previously created heap.}}
+\DoxyCodeLine{39 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{heap_8h_af8c6e8c6fa5933de699ded23aa83774f}{heap\_destroy}}(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{// Allocate memory from a heap.}}
+\DoxyCodeLine{50 \textcolor{comment}{}\textcolor{keywordtype}{void}* \mbox{\hyperlink{heap_8h_a49de2190cff9a4489628dcb9f81b9b66}{heap\_alloc}}(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap, \textcolor{keywordtype}{size\_t} size, \textcolor{keywordtype}{size\_t} alignment);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{comment}{// Free memory previously allocated from a heap.}}
+\DoxyCodeLine{59 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{heap_8h_a1d24a2df5996245973d7711842d55b9d}{heap\_free}}(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap, \textcolor{keywordtype}{void}* address);}
+
+\end{DoxyCode}

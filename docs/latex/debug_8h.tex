@@ -1,0 +1,126 @@
+\hypertarget{debug_8h}{}\doxysection{src/debug.h File Reference}
+\label{debug_8h}\index{src/debug.h@{src/debug.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{debug_8h_a0215e690b45055ae65c6f8a65927d650}\label{debug_8h_a0215e690b45055ae65c6f8a65927d650}} 
+typedef enum \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31}{debug\+\_\+print\+\_\+t}} {\bfseries debug\+\_\+print\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Defines individual bits of the debug print mask for different types of debug statements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31}{debug\+\_\+print\+\_\+t}} \{ \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a21e7f572868cf8c20b03d45d628c4be1}{k\+\_\+print\+\_\+info}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a15eb3a16a4e036732930b407e6b0a42b}{k\+\_\+print\+\_\+warning}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a64ecbe175b4ae60b391bfd24e207add2}{k\+\_\+print\+\_\+error}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+ \}
+\begin{DoxyCompactList}\small\item\em Defines individual bits of the debug print mask for different types of debug statements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{debug_8h_a89840444cc6756be53adf624d474c947}{debug\+\_\+install\+\_\+exception\+\_\+handler}} ()
+\begin{DoxyCompactList}\small\item\em Installs the unhandled exception handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{debug_8h_a1a3ff0f06dac4215d782c9b006a408be}{debug\+\_\+set\+\_\+print\+\_\+mask}} (uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Sets the print mask, which filters print output by statement type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{debug_8h_a61b310c7b59459a0d554831893626017}{debug\+\_\+print}} (uint32\+\_\+t type, \+\_\+\+Printf\+\_\+format\+\_\+string\+\_\+ const char $\ast$format,...)
+\begin{DoxyCompactList}\small\item\em Prints a message to the console if its type is in the active print mask. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \mbox{\hyperlink{debug_8h_ae57c334d7974acf65d60a685ba5a00ac}{debug\+\_\+backtrace}} ()
+\begin{DoxyCompactList}\small\item\em Captures the callstack to the current location. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Mark Haddleton
+\end{DoxyAuthor}
+debug contains functionality to both log and filter debug statements. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31}\label{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31}} 
+\index{debug.h@{debug.h}!debug\_print\_t@{debug\_print\_t}}
+\index{debug\_print\_t@{debug\_print\_t}!debug.h@{debug.h}}
+\doxysubsubsection{\texorpdfstring{debug\_print\_t}{debug\_print\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31}{debug\+\_\+print\+\_\+t}}}
+
+
+
+Defines individual bits of the debug print mask for different types of debug statements. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_print\_info@{k\_print\_info}!debug.h@{debug.h}}\index{debug.h@{debug.h}!k\_print\_info@{k\_print\_info}}}\mbox{\Hypertarget{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a21e7f572868cf8c20b03d45d628c4be1}\label{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a21e7f572868cf8c20b03d45d628c4be1}} 
+k\+\_\+print\+\_\+info&Info statements. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_print\_warning@{k\_print\_warning}!debug.h@{debug.h}}\index{debug.h@{debug.h}!k\_print\_warning@{k\_print\_warning}}}\mbox{\Hypertarget{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a15eb3a16a4e036732930b407e6b0a42b}\label{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a15eb3a16a4e036732930b407e6b0a42b}} 
+k\+\_\+print\+\_\+warning&Warning statements. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{k\_print\_error@{k\_print\_error}!debug.h@{debug.h}}\index{debug.h@{debug.h}!k\_print\_error@{k\_print\_error}}}\mbox{\Hypertarget{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a64ecbe175b4ae60b391bfd24e207add2}\label{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a64ecbe175b4ae60b391bfd24e207add2}} 
+k\+\_\+print\+\_\+error&Error statements. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{debug_8h_ae57c334d7974acf65d60a685ba5a00ac}\label{debug_8h_ae57c334d7974acf65d60a685ba5a00ac}} 
+\index{debug.h@{debug.h}!debug\_backtrace@{debug\_backtrace}}
+\index{debug\_backtrace@{debug\_backtrace}!debug.h@{debug.h}}
+\doxysubsubsection{\texorpdfstring{debug\_backtrace()}{debug\_backtrace()}}
+{\footnotesize\ttfamily char $\ast$$\ast$ debug\+\_\+backtrace (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Captures the callstack to the current location. 
+
+The stack capacity is hardcoded to a maximum of 100 frames.
+
+\begin{DoxyReturn}{Returns}
+The address stack contents. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{debug_8h_a89840444cc6756be53adf624d474c947}\label{debug_8h_a89840444cc6756be53adf624d474c947}} 
+\index{debug.h@{debug.h}!debug\_install\_exception\_handler@{debug\_install\_exception\_handler}}
+\index{debug\_install\_exception\_handler@{debug\_install\_exception\_handler}!debug.h@{debug.h}}
+\doxysubsubsection{\texorpdfstring{debug\_install\_exception\_handler()}{debug\_install\_exception\_handler()}}
+{\footnotesize\ttfamily void debug\+\_\+install\+\_\+exception\+\_\+handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Installs the unhandled exception handler. 
+
+This function uses Add\+Vectored\+Exception\+Handler from errhandlingapi.\+h in Win32. \mbox{\Hypertarget{debug_8h_a61b310c7b59459a0d554831893626017}\label{debug_8h_a61b310c7b59459a0d554831893626017}} 
+\index{debug.h@{debug.h}!debug\_print@{debug\_print}}
+\index{debug\_print@{debug\_print}!debug.h@{debug.h}}
+\doxysubsubsection{\texorpdfstring{debug\_print()}{debug\_print()}}
+{\footnotesize\ttfamily void debug\+\_\+print (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{type,  }\item[{\+\_\+\+Printf\+\_\+format\+\_\+string\+\_\+ const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Prints a message to the console if its type is in the active print mask. 
+
+\begin{DoxySeeAlso}{See also}
+debug\+\_\+set\+\_\+print\+\_\+mask(mask)
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Defines the type of message being sent to console. \\
+\hline
+{\em format} & The string in which to insert values, then print to console. \\
+\hline
+{\em ...} & Variable arguments to insert into the formatted string. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{debug_8h_a1a3ff0f06dac4215d782c9b006a408be}\label{debug_8h_a1a3ff0f06dac4215d782c9b006a408be}} 
+\index{debug.h@{debug.h}!debug\_set\_print\_mask@{debug\_set\_print\_mask}}
+\index{debug\_set\_print\_mask@{debug\_set\_print\_mask}!debug.h@{debug.h}}
+\doxysubsubsection{\texorpdfstring{debug\_set\_print\_mask()}{debug\_set\_print\_mask()}}
+{\footnotesize\ttfamily void debug\+\_\+set\+\_\+print\+\_\+mask (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})}
+
+
+
+Sets the print mask, which filters print output by statement type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & A bit mask of the desired output types. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,107 @@
+Two-\/\+Level Segregated Fit memory allocator implementation. Written by Matthew Conte (\href{mailto:matt@baisoku.org}{\texttt{ matt@baisoku.\+org}}). Released under the BSD license.\hypertarget{md_src_tlsf__r_e_a_d_m_e_autotoc_md12}{}\doxysection{Features}\label{md_src_tlsf__r_e_a_d_m_e_autotoc_md12}
+
+\begin{DoxyItemize}
+\item O(1) cost for malloc, free, realloc, memalign
+\item Extremely low overhead per allocation (4 bytes)
+\item Low overhead per TLSF management of pools ($\sim$3kB)
+\item Low fragmentation
+\item Compiles to only a few kB of code and data
+\item Support for adding and removing memory pool regions on the fly
+\end{DoxyItemize}\hypertarget{md_src_tlsf__r_e_a_d_m_e_autotoc_md13}{}\doxysection{Caveats}\label{md_src_tlsf__r_e_a_d_m_e_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Currently, assumes architecture can make 4-\/byte aligned accesses
+\item Not designed to be thread safe; the user must provide this
+\end{DoxyItemize}\hypertarget{md_src_tlsf__r_e_a_d_m_e_autotoc_md14}{}\doxysection{Notes}\label{md_src_tlsf__r_e_a_d_m_e_autotoc_md14}
+This code was based on the TLSF 1.\+4 spec and documentation found at\+: \begin{DoxyVerb}http://www.gii.upv.es/tlsf/main/docs
+\end{DoxyVerb}
+ It also leverages the TLSF 2.\+0 improvement to shrink the per-\/block overhead from 8 to 4 bytes.\hypertarget{md_src_tlsf__r_e_a_d_m_e_autotoc_md15}{}\doxysection{History}\label{md_src_tlsf__r_e_a_d_m_e_autotoc_md15}
+2016/04/10 -\/ v3.\+1
+\begin{DoxyItemize}
+\item Code moved to github
+\item tlsfbits.\+h rolled into tlsf.\+c
+\item License changed to BSD
+\end{DoxyItemize}
+
+2014/02/08 -\/ v3.\+0
+\begin{DoxyItemize}
+\item This version is based on improvements from 3DInteractive GmbH
+\item Interface changed to allow more than one memory pool
+\item Separated pool handling from control structure (adding, removing, debugging)
+\item Control structure and pools can still be constructed in the same memory block
+\item Memory blocks for control structure and pools are checked for alignment
+\item Added functions to retrieve control structure size, alignment size, min and max block size, overhead of pool structure, and overhead of a single allocation
+\item Minimal Pool size is tlsf\+\_\+block\+\_\+size\+\_\+min() + tlsf\+\_\+pool\+\_\+overhead()
+\item Pool must be empty when it is removed, in order to allow O(1) removal
+\end{DoxyItemize}
+
+2011/10/20 -\/ v2.\+0
+\begin{DoxyItemize}
+\item 64-\/bit support
+\item More compiler intrinsics for ffs/fls
+\item ffs/fls verification during TLSF creation in debug builds
+\end{DoxyItemize}
+
+2008/04/04 -\/ v1.\+9
+\begin{DoxyItemize}
+\item Add tlsf\+\_\+heap\+\_\+check, a heap integrity check
+\item Support a predefined tlsf\+\_\+assert macro
+\item Fix realloc case where block should shrink; if adjacent block is in use, execution would go down the slow path
+\end{DoxyItemize}
+
+2007/02/08 -\/ v1.\+8
+\begin{DoxyItemize}
+\item Fix for unnecessary reallocation in tlsf\+\_\+realloc
+\end{DoxyItemize}
+
+2007/02/03 -\/ v1.\+7
+\begin{DoxyItemize}
+\item tlsf\+\_\+heap\+\_\+walk takes a callback
+\item tlsf\+\_\+realloc now returns NULL on failure
+\item tlsf\+\_\+memalign optimization for 4-\/byte alignment
+\item Usage of size\+\_\+t where appropriate
+\end{DoxyItemize}
+
+2006/11/21 -\/ v1.\+6
+\begin{DoxyItemize}
+\item ffs/fls broken out into tlsfbits.\+h
+\item tlsf\+\_\+overhead queries per-\/pool overhead
+\end{DoxyItemize}
+
+2006/11/07 -\/ v1.\+5
+\begin{DoxyItemize}
+\item Smart realloc implementation
+\item Smart memalign implementation
+\end{DoxyItemize}
+
+2006/10/11 -\/ v1.\+4
+\begin{DoxyItemize}
+\item Add some ffs/fls implementations
+\item Minor code footprint reduction
+\end{DoxyItemize}
+
+2006/09/14 -\/ v1.\+3
+\begin{DoxyItemize}
+\item Profiling indicates heavy use of blocks of size 1-\/128, so implement small block handling
+\item Reduce pool overhead by about 1kb
+\item Reduce minimum block size from 32 to 12 bytes
+\item Realloc bug fix
+\end{DoxyItemize}
+
+2006/09/09 -\/ v1.\+2
+\begin{DoxyItemize}
+\item Add tlsf\+\_\+block\+\_\+size
+\item Static assertion mechanism for invariants
+\item Minor bugfixes
+\end{DoxyItemize}
+
+2006/09/01 -\/ v1.\+1
+\begin{DoxyItemize}
+\item Add tlsf\+\_\+realloc
+\item Add tlsf\+\_\+walk\+\_\+heap
+\end{DoxyItemize}
+
+2006/08/25 -\/ v1.\+0
+\begin{DoxyItemize}
+\item First release 
+\end{DoxyItemize}

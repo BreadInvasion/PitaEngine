@@ -1,0 +1,37 @@
+\hypertarget{net_8h_source}{}\doxysection{net.\+h}
+\label{net_8h_source}\index{src/net.h@{src/net.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}ecs.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structnet__t}{net\_t}} \mbox{\hyperlink{structnet__t}{net\_t}};}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structheap__t}{heap\_t}} \mbox{\hyperlink{structheap__t}{heap\_t}};}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structnet__address__t}{net\_address\_t}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     uint8\_t ip[4];}
+\DoxyCodeLine{15     uint16\_t port;}
+\DoxyCodeLine{16 \} \mbox{\hyperlink{structnet__address__t}{net\_address\_t}};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{typedef} void(*net\_configure\_entity\_callback\_t)(\mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs, \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}} entity, \textcolor{keywordtype}{int} type, \textcolor{keywordtype}{void}* user);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \mbox{\hyperlink{structnet__t}{net\_t}}* net\_create(\mbox{\hyperlink{structheap__t}{heap\_t}}* heap, \mbox{\hyperlink{structecs__t}{ecs\_t}}* ecs);}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} net\_destroy(\mbox{\hyperlink{structnet__t}{net\_t}}* net);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keywordtype}{void} net\_update(\mbox{\hyperlink{structnet__t}{net\_t}}* net);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keywordtype}{void} net\_connect(\mbox{\hyperlink{structnet__t}{net\_t}}* net, \textcolor{keyword}{const} \mbox{\hyperlink{structnet__address__t}{net\_address\_t}}* address);}
+\DoxyCodeLine{26 \textcolor{keywordtype}{void} net\_disconnect\_all(\mbox{\hyperlink{structnet__t}{net\_t}}* net);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keywordtype}{void} net\_state\_register\_entity\_type(\mbox{\hyperlink{structnet__t}{net\_t}}* net, \textcolor{keywordtype}{int} type, uint64\_t component\_mask, uint64\_t replicated\_component\_mask, net\_configure\_entity\_callback\_t configure\_callback, \textcolor{keywordtype}{void}* configure\_callback\_data);}
+\DoxyCodeLine{29 \textcolor{keywordtype}{void} net\_state\_register\_entity\_instance(\mbox{\hyperlink{structnet__t}{net\_t}}* net, \textcolor{keywordtype}{int} type, \mbox{\hyperlink{structecs__entity__ref__t}{ecs\_entity\_ref\_t}} entity);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keywordtype}{bool} net\_string\_to\_address(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str, \mbox{\hyperlink{structnet__address__t}{net\_address\_t}}* address);}
+
+\end{DoxyCode}

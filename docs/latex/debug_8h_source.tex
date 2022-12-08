@@ -1,0 +1,36 @@
+\hypertarget{debug_8h_source}{}\doxysection{debug.\+h}
+\label{debug_8h_source}\index{src/debug.h@{src/debug.h}}
+\mbox{\hyperlink{debug_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// Debugging Support}}
+\DoxyCodeLine{13 \textcolor{comment}{}\textcolor{comment}{// Flags for debug\_print().}}
+\DoxyCodeLine{17 \textcolor{comment}{}\textcolor{keyword}{typedef} \textcolor{keyword}{enum} \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31}{debug\_print\_t}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a21e7f572868cf8c20b03d45d628c4be1}{k\_print\_info}} = 1 << 0, }
+\DoxyCodeLine{20     \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a15eb3a16a4e036732930b407e6b0a42b}{k\_print\_warning}} = 1 << 1, }
+\DoxyCodeLine{21     \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31a64ecbe175b4ae60b391bfd24e207add2}{k\_print\_error}} = 1 << 2, }
+\DoxyCodeLine{22 \} \mbox{\hyperlink{debug_8h_aaf595fd6dfc2061e76f2b6c904ac0f31}{debug\_print\_t}};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{// Install unhandled exception handler.}}
+\DoxyCodeLine{25 \textcolor{comment}{// When unhandled exceptions are caught, will log an error and capture a memory dump.}}
+\DoxyCodeLine{31 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{debug_8h_a89840444cc6756be53adf624d474c947}{debug\_install\_exception\_handler}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// Set mask of which types of prints will actually fire.}}
+\DoxyCodeLine{34 \textcolor{comment}{// See the debug\_print().}}
+\DoxyCodeLine{40 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{debug_8h_a1a3ff0f06dac4215d782c9b006a408be}{debug\_set\_print\_mask}}(uint32\_t mask);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// Log a message to the console.}}
+\DoxyCodeLine{43 \textcolor{comment}{// Message may be dropped if type is not in the active mask.}}
+\DoxyCodeLine{44 \textcolor{comment}{// See debug\_set\_print\_mask.}}
+\DoxyCodeLine{54 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{debug_8h_a61b310c7b59459a0d554831893626017}{debug\_print}}(uint32\_t type, \_Printf\_format\_string\_ \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format, ...);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{comment}{// Capture a list of addresses that make up the current function callstack.}}
+\DoxyCodeLine{57 \textcolor{comment}{// On return, stack contains at most stack\_capacity addresses.}}
+\DoxyCodeLine{58 \textcolor{comment}{// The number of addresses captured is the return value.}}
+\DoxyCodeLine{66 \textcolor{comment}{}\textcolor{keywordtype}{char}** \mbox{\hyperlink{debug_8h_ae57c334d7974acf65d60a685ba5a00ac}{debug\_backtrace}}();}
+
+\end{DoxyCode}

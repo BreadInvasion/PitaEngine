@@ -1,0 +1,71 @@
+\hypertarget{structtrace__event__t}{}\doxysection{trace\+\_\+event\+\_\+t Struct Reference}
+\label{structtrace__event__t}\index{trace\_event\_t@{trace\_event\_t}}
+
+
+\mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} stores the process info related to a specific trace event.  
+
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{structtrace__event__t_a8f8f80d37794cde9472343e4487ba3eb}{name}}
+\item 
+char \mbox{\hyperlink{structtrace__event__t_a87371e823dc5f31d5f03cbdcf72e1b43}{ph}}
+\item 
+DWORD \mbox{\hyperlink{structtrace__event__t_aa86e7b3e8c2c2dbf162358da237788ac}{pid}}
+\item 
+DWORD \mbox{\hyperlink{structtrace__event__t_abcd75f399219ad50af9203b3af664789}{tid}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structtrace__event__t_a3632be30a7f225a0eec53aec8ba7d5f8}{ts}}
+\item 
+\mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} $\ast$ \mbox{\hyperlink{structtrace__event__t_a719f9355421c45e25f020dc1810aa4f0}{next}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} stores the process info related to a specific trace event. 
+
+\mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}} also contains a pointer next, resulting in a self-\/contained singly linked list. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structtrace__event__t_a8f8f80d37794cde9472343e4487ba3eb}\label{structtrace__event__t_a8f8f80d37794cde9472343e4487ba3eb}} 
+\index{trace\_event\_t@{trace\_event\_t}!name@{name}}
+\index{name@{name}!trace\_event\_t@{trace\_event\_t}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily const char$\ast$ name}
+
+name is equal to the name of the event. \mbox{\Hypertarget{structtrace__event__t_a719f9355421c45e25f020dc1810aa4f0}\label{structtrace__event__t_a719f9355421c45e25f020dc1810aa4f0}} 
+\index{trace\_event\_t@{trace\_event\_t}!next@{next}}
+\index{next@{next}!trace\_event\_t@{trace\_event\_t}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtrace__event__t}{trace\+\_\+event\+\_\+t}}$\ast$ next}
+
+next is a pointer to the next chronological event to occur, if one exists -\/ otherwise, null. \mbox{\Hypertarget{structtrace__event__t_a87371e823dc5f31d5f03cbdcf72e1b43}\label{structtrace__event__t_a87371e823dc5f31d5f03cbdcf72e1b43}} 
+\index{trace\_event\_t@{trace\_event\_t}!ph@{ph}}
+\index{ph@{ph}!trace\_event\_t@{trace\_event\_t}}
+\doxysubsubsection{\texorpdfstring{ph}{ph}}
+{\footnotesize\ttfamily char ph}
+
+ph is \textquotesingle{}B\textquotesingle{} if marking the start event, or \textquotesingle{}E\textquotesingle{} if marking the end event. \mbox{\Hypertarget{structtrace__event__t_aa86e7b3e8c2c2dbf162358da237788ac}\label{structtrace__event__t_aa86e7b3e8c2c2dbf162358da237788ac}} 
+\index{trace\_event\_t@{trace\_event\_t}!pid@{pid}}
+\index{pid@{pid}!trace\_event\_t@{trace\_event\_t}}
+\doxysubsubsection{\texorpdfstring{pid}{pid}}
+{\footnotesize\ttfamily DWORD pid}
+
+pid is equal to the Process ID at time of event. \mbox{\Hypertarget{structtrace__event__t_abcd75f399219ad50af9203b3af664789}\label{structtrace__event__t_abcd75f399219ad50af9203b3af664789}} 
+\index{trace\_event\_t@{trace\_event\_t}!tid@{tid}}
+\index{tid@{tid}!trace\_event\_t@{trace\_event\_t}}
+\doxysubsubsection{\texorpdfstring{tid}{tid}}
+{\footnotesize\ttfamily DWORD tid}
+
+tid is equal to the Thread ID at time of event. \mbox{\Hypertarget{structtrace__event__t_a3632be30a7f225a0eec53aec8ba7d5f8}\label{structtrace__event__t_a3632be30a7f225a0eec53aec8ba7d5f8}} 
+\index{trace\_event\_t@{trace\_event\_t}!ts@{ts}}
+\index{ts@{ts}!trace\_event\_t@{trace\_event\_t}}
+\doxysubsubsection{\texorpdfstring{ts}{ts}}
+{\footnotesize\ttfamily uint32\+\_\+t ts}
+
+ts is equal to the system time in ms at time of event. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/trace.\+c\end{DoxyCompactItemize}

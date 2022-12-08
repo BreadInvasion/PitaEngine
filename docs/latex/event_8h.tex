@@ -1,0 +1,113 @@
+\hypertarget{event_8h}{}\doxysection{src/event.h File Reference}
+\label{event_8h}\index{src/event.h@{src/event.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{event_8h_a59f5f6b9c6023baebf9c49c328b639a1}\label{event_8h_a59f5f6b9c6023baebf9c49c328b639a1}} 
+typedef struct event\+\_\+t {\bfseries event\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+event\+\_\+t $\ast$ \mbox{\hyperlink{event_8h_acf1ca98f90495849d7b9bcdd05838e95}{event\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em Creates a generic event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{event_8h_ac6929704355fc0963b58671b7b3ee3df}{event\+\_\+destroy}} (event\+\_\+t $\ast$event)
+\begin{DoxyCompactList}\small\item\em Destroys the provided event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{event_8h_a7f0e1879f9367ecc2fd2a650cda089e6}{event\+\_\+signal}} (event\+\_\+t $\ast$event)
+\begin{DoxyCompactList}\small\item\em Signals the provided event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{event_8h_a0770c6804452be2bed1ba42f32516b54}{event\+\_\+wait}} (event\+\_\+t $\ast$event)
+\begin{DoxyCompactList}\small\item\em Waits for the provided event to be signaled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{event_8h_ac808b511991a04e8bdc8abb9442f7a34}{event\+\_\+is\+\_\+raised}} (event\+\_\+t $\ast$event)
+\begin{DoxyCompactList}\small\item\em Returns true if the provided event is signaled, otherwise false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Mark Haddleton
+\end{DoxyAuthor}
+Methods for basic event waits and signals. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{event_8h_acf1ca98f90495849d7b9bcdd05838e95}\label{event_8h_acf1ca98f90495849d7b9bcdd05838e95}} 
+\index{event.h@{event.h}!event\_create@{event\_create}}
+\index{event\_create@{event\_create}!event.h@{event.h}}
+\doxysubsubsection{\texorpdfstring{event\_create()}{event\_create()}}
+{\footnotesize\ttfamily event\+\_\+t $\ast$ event\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a generic event. 
+
+Uses Create\+Event from synchapi.\+h in Win32.
+
+\begin{DoxyReturn}{Returns}
+A generic new event. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{event_8h_ac6929704355fc0963b58671b7b3ee3df}\label{event_8h_ac6929704355fc0963b58671b7b3ee3df}} 
+\index{event.h@{event.h}!event\_destroy@{event\_destroy}}
+\index{event\_destroy@{event\_destroy}!event.h@{event.h}}
+\doxysubsubsection{\texorpdfstring{event\_destroy()}{event\_destroy()}}
+{\footnotesize\ttfamily void event\+\_\+destroy (\begin{DoxyParamCaption}\item[{event\+\_\+t $\ast$}]{event }\end{DoxyParamCaption})}
+
+
+
+Destroys the provided event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event to be destroyed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{event_8h_ac808b511991a04e8bdc8abb9442f7a34}\label{event_8h_ac808b511991a04e8bdc8abb9442f7a34}} 
+\index{event.h@{event.h}!event\_is\_raised@{event\_is\_raised}}
+\index{event\_is\_raised@{event\_is\_raised}!event.h@{event.h}}
+\doxysubsubsection{\texorpdfstring{event\_is\_raised()}{event\_is\_raised()}}
+{\footnotesize\ttfamily bool event\+\_\+is\+\_\+raised (\begin{DoxyParamCaption}\item[{event\+\_\+t $\ast$}]{event }\end{DoxyParamCaption})}
+
+
+
+Returns true if the provided event is signaled, otherwise false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & event to check the signal status of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if event is signaled, otherwise false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{event_8h_a7f0e1879f9367ecc2fd2a650cda089e6}\label{event_8h_a7f0e1879f9367ecc2fd2a650cda089e6}} 
+\index{event.h@{event.h}!event\_signal@{event\_signal}}
+\index{event\_signal@{event\_signal}!event.h@{event.h}}
+\doxysubsubsection{\texorpdfstring{event\_signal()}{event\_signal()}}
+{\footnotesize\ttfamily void event\+\_\+signal (\begin{DoxyParamCaption}\item[{event\+\_\+t $\ast$}]{event }\end{DoxyParamCaption})}
+
+
+
+Signals the provided event. 
+
+Any threads that are waiting for this event will resume.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event to be signaled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{event_8h_a0770c6804452be2bed1ba42f32516b54}\label{event_8h_a0770c6804452be2bed1ba42f32516b54}} 
+\index{event.h@{event.h}!event\_wait@{event\_wait}}
+\index{event\_wait@{event\_wait}!event.h@{event.h}}
+\doxysubsubsection{\texorpdfstring{event\_wait()}{event\_wait()}}
+{\footnotesize\ttfamily void event\+\_\+wait (\begin{DoxyParamCaption}\item[{event\+\_\+t $\ast$}]{event }\end{DoxyParamCaption})}
+
+
+
+Waits for the provided event to be signaled. 
+
+This forces the current thread to stall until the signal occurs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event to wait for. \\
+\hline
+\end{DoxyParams}

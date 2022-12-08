@@ -1,0 +1,34 @@
+\hypertarget{atomic_8h_source}{}\doxysection{atomic.\+h}
+\label{atomic_8h_source}\index{src/atomic.h@{src/atomic.h}}
+\mbox{\hyperlink{atomic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Atomic operations on 32-\/bit integers.}}
+\DoxyCodeLine{11 \textcolor{comment}{}\textcolor{comment}{// Increment a number atomically.}}
+\DoxyCodeLine{12 \textcolor{comment}{// Returns the old value of the number.}}
+\DoxyCodeLine{13 \textcolor{comment}{// Performs the following operation atomically:}}
+\DoxyCodeLine{14 \textcolor{comment}{//   int old\_value = *address; (*address)++; return old\_value;}}
+\DoxyCodeLine{21 \textcolor{comment}{}\textcolor{keywordtype}{int} \mbox{\hyperlink{atomic_8h_a7faa319a45fb1b3e75200c78588ccad7}{atomic\_increment}}(\textcolor{keywordtype}{int}* address);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// Decrement a number atomically.}}
+\DoxyCodeLine{24 \textcolor{comment}{// Returns the old value of the number.}}
+\DoxyCodeLine{25 \textcolor{comment}{// Performs the following operation atomically:}}
+\DoxyCodeLine{26 \textcolor{comment}{//   int old\_value = *address; (*address)-\/-\/; return old\_value;}}
+\DoxyCodeLine{33 \textcolor{comment}{}\textcolor{keywordtype}{int} \mbox{\hyperlink{atomic_8h_ad626165441c8986841af4c0661e62d91}{atomic\_decrement}}(\textcolor{keywordtype}{int}* address);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// Compare two numbers atomically and assign if equal.}}
+\DoxyCodeLine{36 \textcolor{comment}{// Returns the old value of the number.}}
+\DoxyCodeLine{37 \textcolor{comment}{// Performs the following operation atomically:}}
+\DoxyCodeLine{38 \textcolor{comment}{//   int old\_value = *address; if (*address == compare) *address = exchange; return old\_value;}}
+\DoxyCodeLine{47 \textcolor{comment}{}\textcolor{keywordtype}{int} \mbox{\hyperlink{atomic_8h_a690f161da3b0890c2b1af82524fe8445}{atomic\_compare\_and\_exchange}}(\textcolor{keywordtype}{int}* dest, \textcolor{keywordtype}{int} compare, \textcolor{keywordtype}{int} exchange);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{// Reads an integer from an address.}}
+\DoxyCodeLine{50 \textcolor{comment}{// All writes that occurred before the last atomic\_store to this address are flushed.}}
+\DoxyCodeLine{57 \textcolor{comment}{}\textcolor{keywordtype}{int} \mbox{\hyperlink{atomic_8h_a9d57530a0194eb75f118a4ca11e00ae5}{atomic\_load}}(\textcolor{keywordtype}{int}* address);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{comment}{// Writes an integer.}}
+\DoxyCodeLine{60 \textcolor{comment}{// Paired with an atomic\_load, can guarantee ordering and visibility.}}
+\DoxyCodeLine{69 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{atomic_8h_a608299904067980a895caf5dc839a8e3}{atomic\_store}}(\textcolor{keywordtype}{int}* address, \textcolor{keywordtype}{int} value);}
+
+\end{DoxyCode}

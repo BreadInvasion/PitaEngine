@@ -1,0 +1,69 @@
+\hypertarget{lz4file_8h_source}{}\doxysection{lz4file.\+h}
+\label{lz4file_8h_source}\index{src/lz4/lz4file.h@{src/lz4/lz4file.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{   LZ4 file library}}
+\DoxyCodeLine{3 \textcolor{comment}{   Header File}}
+\DoxyCodeLine{4 \textcolor{comment}{   Copyright (C) 2022, Xiaomi Inc.}}
+\DoxyCodeLine{5 \textcolor{comment}{   BSD 2-\/Clause License (http://www.opensource.org/licenses/bsd-\/license.php)}}
+\DoxyCodeLine{6 \textcolor{comment}{}}
+\DoxyCodeLine{7 \textcolor{comment}{   Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{8 \textcolor{comment}{   modification, are permitted provided that the following conditions are}}
+\DoxyCodeLine{9 \textcolor{comment}{   met:}}
+\DoxyCodeLine{10 \textcolor{comment}{}}
+\DoxyCodeLine{11 \textcolor{comment}{       * Redistributions of source code must retain the above copyright}}
+\DoxyCodeLine{12 \textcolor{comment}{   notice, this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{13 \textcolor{comment}{       * Redistributions in binary form must reproduce the above}}
+\DoxyCodeLine{14 \textcolor{comment}{   copyright notice, this list of conditions and the following disclaimer}}
+\DoxyCodeLine{15 \textcolor{comment}{   in the documentation and/or other materials provided with the}}
+\DoxyCodeLine{16 \textcolor{comment}{   distribution.}}
+\DoxyCodeLine{17 \textcolor{comment}{}}
+\DoxyCodeLine{18 \textcolor{comment}{   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS}}
+\DoxyCodeLine{19 \textcolor{comment}{   "{}AS IS"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT}}
+\DoxyCodeLine{20 \textcolor{comment}{   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR}}
+\DoxyCodeLine{21 \textcolor{comment}{   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT}}
+\DoxyCodeLine{22 \textcolor{comment}{   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,}}
+\DoxyCodeLine{23 \textcolor{comment}{   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT}}
+\DoxyCodeLine{24 \textcolor{comment}{   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,}}
+\DoxyCodeLine{25 \textcolor{comment}{   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY}}
+\DoxyCodeLine{26 \textcolor{comment}{   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}}
+\DoxyCodeLine{27 \textcolor{comment}{   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE}}
+\DoxyCodeLine{28 \textcolor{comment}{   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{29 \textcolor{comment}{}}
+\DoxyCodeLine{30 \textcolor{comment}{   You can contact the author at :}}
+\DoxyCodeLine{31 \textcolor{comment}{   -\/ LZ4 source repository : https://github.com/lz4/lz4}}
+\DoxyCodeLine{32 \textcolor{comment}{   -\/ LZ4 public forum : https://groups.google.com/forum/\#!forum/lz4c}}
+\DoxyCodeLine{33 \textcolor{comment}{*/}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#if defined (\_\_cplusplus)}}
+\DoxyCodeLine{35 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef LZ4FILE\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define LZ4FILE\_H}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}lz4frame\_static.h"{}}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_l_z4__read_file__s}{LZ4\_readFile\_s}} \mbox{\hyperlink{struct_l_z4__read_file__s}{LZ4\_readFile\_t}};}
+\DoxyCodeLine{45 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_l_z4__write_file__s}{LZ4\_writeFile\_s}} \mbox{\hyperlink{struct_l_z4__write_file__s}{LZ4\_writeFile\_t}};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{52 LZ4FLIB\_STATIC\_API LZ4F\_errorCode\_t LZ4F\_readOpen(\mbox{\hyperlink{struct_l_z4__read_file__s}{LZ4\_readFile\_t}}** lz4fRead, FILE* fp);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{60 LZ4FLIB\_STATIC\_API \textcolor{keywordtype}{size\_t} LZ4F\_read(\mbox{\hyperlink{struct_l_z4__read_file__s}{LZ4\_readFile\_t}}* lz4fRead, \textcolor{keywordtype}{void}* buf, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{66 LZ4FLIB\_STATIC\_API LZ4F\_errorCode\_t LZ4F\_readClose(\mbox{\hyperlink{struct_l_z4__read_file__s}{LZ4\_readFile\_t}}* lz4fRead);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{73 LZ4FLIB\_STATIC\_API LZ4F\_errorCode\_t LZ4F\_writeOpen(\mbox{\hyperlink{struct_l_z4__write_file__s}{LZ4\_writeFile\_t}}** lz4fWrite, FILE* fp, \textcolor{keyword}{const} \mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4F\_preferences\_t}}* prefsPtr);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{81 LZ4FLIB\_STATIC\_API \textcolor{keywordtype}{size\_t} LZ4F\_write(\mbox{\hyperlink{struct_l_z4__write_file__s}{LZ4\_writeFile\_t}}* lz4fWrite, \textcolor{keywordtype}{void}* buf, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{87 LZ4FLIB\_STATIC\_API LZ4F\_errorCode\_t LZ4F\_writeClose(\mbox{\hyperlink{struct_l_z4__write_file__s}{LZ4\_writeFile\_t}}* lz4fWrite);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LZ4FILE\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#if defined (\_\_cplusplus)}}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

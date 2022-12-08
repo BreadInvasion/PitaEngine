@@ -1,0 +1,1020 @@
+\hypertarget{vulkan__beta_8h_source}{}\doxysection{vulkan\+\_\+beta.\+h}
+\label{vulkan__beta_8h_source}\index{src/vulkan/vulkan\_beta.h@{src/vulkan/vulkan\_beta.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_BETA\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_BETA\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*}}
+\DoxyCodeLine{11 \textcolor{comment}{** This header is generated from the Khronos Vulkan XML API Registry.}}
+\DoxyCodeLine{12 \textcolor{comment}{**}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VK\_KHR\_video\_queue 1}}
+\DoxyCodeLine{23 VK\_DEFINE\_NON\_DISPATCHABLE\_HANDLE(VkVideoSessionKHR)}
+\DoxyCodeLine{24 VK\_DEFINE\_NON\_DISPATCHABLE\_HANDLE(VkVideoSessionParametersKHR)}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define VK\_KHR\_VIDEO\_QUEUE\_SPEC\_VERSION   7}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define VK\_KHR\_VIDEO\_QUEUE\_EXTENSION\_NAME "{}VK\_KHR\_video\_queue"{}}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkQueryResultStatusKHR \{}
+\DoxyCodeLine{29     VK\_QUERY\_RESULT\_STATUS\_ERROR\_KHR = -\/1,}
+\DoxyCodeLine{30     VK\_QUERY\_RESULT\_STATUS\_NOT\_READY\_KHR = 0,}
+\DoxyCodeLine{31     VK\_QUERY\_RESULT\_STATUS\_COMPLETE\_KHR = 1,}
+\DoxyCodeLine{32     VK\_QUERY\_RESULT\_STATUS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{33 \} VkQueryResultStatusKHR;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoCodecOperationFlagBitsKHR \{}
+\DoxyCodeLine{36     VK\_VIDEO\_CODEC\_OPERATION\_NONE\_KHR = 0,}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifdef VK\_ENABLE\_BETA\_EXTENSIONS}}
+\DoxyCodeLine{38     VK\_VIDEO\_CODEC\_OPERATION\_ENCODE\_H264\_BIT\_EXT = 0x00010000,}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#ifdef VK\_ENABLE\_BETA\_EXTENSIONS}}
+\DoxyCodeLine{41     VK\_VIDEO\_CODEC\_OPERATION\_ENCODE\_H265\_BIT\_EXT = 0x00020000,}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#ifdef VK\_ENABLE\_BETA\_EXTENSIONS}}
+\DoxyCodeLine{44     VK\_VIDEO\_CODEC\_OPERATION\_DECODE\_H264\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#ifdef VK\_ENABLE\_BETA\_EXTENSIONS}}
+\DoxyCodeLine{47     VK\_VIDEO\_CODEC\_OPERATION\_DECODE\_H265\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{49     VK\_VIDEO\_CODEC\_OPERATION\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{50 \} VkVideoCodecOperationFlagBitsKHR;}
+\DoxyCodeLine{51 \textcolor{keyword}{typedef} VkFlags VkVideoCodecOperationFlagsKHR;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoChromaSubsamplingFlagBitsKHR \{}
+\DoxyCodeLine{54     VK\_VIDEO\_CHROMA\_SUBSAMPLING\_INVALID\_KHR = 0,}
+\DoxyCodeLine{55     VK\_VIDEO\_CHROMA\_SUBSAMPLING\_MONOCHROME\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{56     VK\_VIDEO\_CHROMA\_SUBSAMPLING\_420\_BIT\_KHR = 0x00000002,}
+\DoxyCodeLine{57     VK\_VIDEO\_CHROMA\_SUBSAMPLING\_422\_BIT\_KHR = 0x00000004,}
+\DoxyCodeLine{58     VK\_VIDEO\_CHROMA\_SUBSAMPLING\_444\_BIT\_KHR = 0x00000008,}
+\DoxyCodeLine{59     VK\_VIDEO\_CHROMA\_SUBSAMPLING\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{60 \} VkVideoChromaSubsamplingFlagBitsKHR;}
+\DoxyCodeLine{61 \textcolor{keyword}{typedef} VkFlags VkVideoChromaSubsamplingFlagsKHR;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoComponentBitDepthFlagBitsKHR \{}
+\DoxyCodeLine{64     VK\_VIDEO\_COMPONENT\_BIT\_DEPTH\_INVALID\_KHR = 0,}
+\DoxyCodeLine{65     VK\_VIDEO\_COMPONENT\_BIT\_DEPTH\_8\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{66     VK\_VIDEO\_COMPONENT\_BIT\_DEPTH\_10\_BIT\_KHR = 0x00000004,}
+\DoxyCodeLine{67     VK\_VIDEO\_COMPONENT\_BIT\_DEPTH\_12\_BIT\_KHR = 0x00000010,}
+\DoxyCodeLine{68     VK\_VIDEO\_COMPONENT\_BIT\_DEPTH\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{69 \} VkVideoComponentBitDepthFlagBitsKHR;}
+\DoxyCodeLine{70 \textcolor{keyword}{typedef} VkFlags VkVideoComponentBitDepthFlagsKHR;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoCapabilityFlagBitsKHR \{}
+\DoxyCodeLine{73     VK\_VIDEO\_CAPABILITY\_PROTECTED\_CONTENT\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{74     VK\_VIDEO\_CAPABILITY\_SEPARATE\_REFERENCE\_IMAGES\_BIT\_KHR = 0x00000002,}
+\DoxyCodeLine{75     VK\_VIDEO\_CAPABILITY\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{76 \} VkVideoCapabilityFlagBitsKHR;}
+\DoxyCodeLine{77 \textcolor{keyword}{typedef} VkFlags VkVideoCapabilityFlagsKHR;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoSessionCreateFlagBitsKHR \{}
+\DoxyCodeLine{80     VK\_VIDEO\_SESSION\_CREATE\_PROTECTED\_CONTENT\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{81     VK\_VIDEO\_SESSION\_CREATE\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{82 \} VkVideoSessionCreateFlagBitsKHR;}
+\DoxyCodeLine{83 \textcolor{keyword}{typedef} VkFlags VkVideoSessionCreateFlagsKHR;}
+\DoxyCodeLine{84 \textcolor{keyword}{typedef} VkFlags VkVideoSessionParametersCreateFlagsKHR;}
+\DoxyCodeLine{85 \textcolor{keyword}{typedef} VkFlags VkVideoBeginCodingFlagsKHR;}
+\DoxyCodeLine{86 \textcolor{keyword}{typedef} VkFlags VkVideoEndCodingFlagsKHR;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoCodingControlFlagBitsKHR \{}
+\DoxyCodeLine{89     VK\_VIDEO\_CODING\_CONTROL\_RESET\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#ifdef VK\_ENABLE\_BETA\_EXTENSIONS}}
+\DoxyCodeLine{91     VK\_VIDEO\_CODING\_CONTROL\_ENCODE\_RATE\_CONTROL\_BIT\_KHR = 0x00000002,}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#ifdef VK\_ENABLE\_BETA\_EXTENSIONS}}
+\DoxyCodeLine{94     VK\_VIDEO\_CODING\_CONTROL\_ENCODE\_RATE\_CONTROL\_LAYER\_BIT\_KHR = 0x00000004,}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{96     VK\_VIDEO\_CODING\_CONTROL\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{97 \} VkVideoCodingControlFlagBitsKHR;}
+\DoxyCodeLine{98 \textcolor{keyword}{typedef} VkFlags VkVideoCodingControlFlagsKHR;}
+\DoxyCodeLine{99 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_queue_family_query_result_status_properties_k_h_r}{VkQueueFamilyQueryResultStatusPropertiesKHR}} \{}
+\DoxyCodeLine{100     VkStructureType    sType;}
+\DoxyCodeLine{101     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{102     VkBool32           queryResultStatusSupport;}
+\DoxyCodeLine{103 \} \mbox{\hyperlink{struct_vk_queue_family_query_result_status_properties_k_h_r}{VkQueueFamilyQueryResultStatusPropertiesKHR}};}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_queue_family_video_properties_k_h_r}{VkQueueFamilyVideoPropertiesKHR}} \{}
+\DoxyCodeLine{106     VkStructureType                  sType;}
+\DoxyCodeLine{107     \textcolor{keywordtype}{void}*                            pNext;}
+\DoxyCodeLine{108     VkVideoCodecOperationFlagsKHR    videoCodecOperations;}
+\DoxyCodeLine{109 \} \mbox{\hyperlink{struct_vk_queue_family_video_properties_k_h_r}{VkQueueFamilyVideoPropertiesKHR}};}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_profile_info_k_h_r}{VkVideoProfileInfoKHR}} \{}
+\DoxyCodeLine{112     VkStructureType                     sType;}
+\DoxyCodeLine{113     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                         pNext;}
+\DoxyCodeLine{114     VkVideoCodecOperationFlagBitsKHR    videoCodecOperation;}
+\DoxyCodeLine{115     VkVideoChromaSubsamplingFlagsKHR    chromaSubsampling;}
+\DoxyCodeLine{116     VkVideoComponentBitDepthFlagsKHR    lumaBitDepth;}
+\DoxyCodeLine{117     VkVideoComponentBitDepthFlagsKHR    chromaBitDepth;}
+\DoxyCodeLine{118 \} \mbox{\hyperlink{struct_vk_video_profile_info_k_h_r}{VkVideoProfileInfoKHR}};}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_profile_list_info_k_h_r}{VkVideoProfileListInfoKHR}} \{}
+\DoxyCodeLine{121     VkStructureType                 sType;}
+\DoxyCodeLine{122     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                     pNext;}
+\DoxyCodeLine{123     uint32\_t                        profileCount;}
+\DoxyCodeLine{124     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_profile_info_k_h_r}{VkVideoProfileInfoKHR}}*    pProfiles;}
+\DoxyCodeLine{125 \} \mbox{\hyperlink{struct_vk_video_profile_list_info_k_h_r}{VkVideoProfileListInfoKHR}};}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_capabilities_k_h_r}{VkVideoCapabilitiesKHR}} \{}
+\DoxyCodeLine{128     VkStructureType              sType;}
+\DoxyCodeLine{129     \textcolor{keywordtype}{void}*                        pNext;}
+\DoxyCodeLine{130     VkVideoCapabilityFlagsKHR    flags;}
+\DoxyCodeLine{131     VkDeviceSize                 minBitstreamBufferOffsetAlignment;}
+\DoxyCodeLine{132     VkDeviceSize                 minBitstreamBufferSizeAlignment;}
+\DoxyCodeLine{133     \mbox{\hyperlink{struct_vk_extent2_d}{VkExtent2D}}                   pictureAccessGranularity;}
+\DoxyCodeLine{134     \mbox{\hyperlink{struct_vk_extent2_d}{VkExtent2D}}                   minCodedExtent;}
+\DoxyCodeLine{135     \mbox{\hyperlink{struct_vk_extent2_d}{VkExtent2D}}                   maxCodedExtent;}
+\DoxyCodeLine{136     uint32\_t                     maxDpbSlots;}
+\DoxyCodeLine{137     uint32\_t                     maxActiveReferencePictures;}
+\DoxyCodeLine{138     \mbox{\hyperlink{struct_vk_extension_properties}{VkExtensionProperties}}        stdHeaderVersion;}
+\DoxyCodeLine{139 \} \mbox{\hyperlink{struct_vk_video_capabilities_k_h_r}{VkVideoCapabilitiesKHR}};}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_physical_device_video_format_info_k_h_r}{VkPhysicalDeviceVideoFormatInfoKHR}} \{}
+\DoxyCodeLine{142      VkStructureType     sType;}
+\DoxyCodeLine{143     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*          pNext;}
+\DoxyCodeLine{144     VkImageUsageFlags    imageUsage;}
+\DoxyCodeLine{145 \} \mbox{\hyperlink{struct_vk_physical_device_video_format_info_k_h_r}{VkPhysicalDeviceVideoFormatInfoKHR}};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_format_properties_k_h_r}{VkVideoFormatPropertiesKHR}} \{}
+\DoxyCodeLine{148     VkStructureType       sType;}
+\DoxyCodeLine{149     \textcolor{keywordtype}{void}*                 pNext;}
+\DoxyCodeLine{150     VkFormat              format;}
+\DoxyCodeLine{151     \mbox{\hyperlink{struct_vk_component_mapping}{VkComponentMapping}}    componentMapping;}
+\DoxyCodeLine{152     VkImageCreateFlags    imageCreateFlags;}
+\DoxyCodeLine{153     VkImageType           imageType;}
+\DoxyCodeLine{154     VkImageTiling         imageTiling;}
+\DoxyCodeLine{155     VkImageUsageFlags     imageUsageFlags;}
+\DoxyCodeLine{156 \} \mbox{\hyperlink{struct_vk_video_format_properties_k_h_r}{VkVideoFormatPropertiesKHR}};}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_picture_resource_info_k_h_r}{VkVideoPictureResourceInfoKHR}} \{}
+\DoxyCodeLine{159     VkStructureType    sType;}
+\DoxyCodeLine{160     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{161     \mbox{\hyperlink{struct_vk_offset2_d}{VkOffset2D}}         codedOffset;}
+\DoxyCodeLine{162     \mbox{\hyperlink{struct_vk_extent2_d}{VkExtent2D}}         codedExtent;}
+\DoxyCodeLine{163     uint32\_t           baseArrayLayer;}
+\DoxyCodeLine{164     VkImageView        imageViewBinding;}
+\DoxyCodeLine{165 \} \mbox{\hyperlink{struct_vk_video_picture_resource_info_k_h_r}{VkVideoPictureResourceInfoKHR}};}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_reference_slot_info_k_h_r}{VkVideoReferenceSlotInfoKHR}} \{}
+\DoxyCodeLine{168     VkStructureType                         sType;}
+\DoxyCodeLine{169     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                             pNext;}
+\DoxyCodeLine{170     int32\_t                                 slotIndex;}
+\DoxyCodeLine{171     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_picture_resource_info_k_h_r}{VkVideoPictureResourceInfoKHR}}*    pPictureResource;}
+\DoxyCodeLine{172 \} \mbox{\hyperlink{struct_vk_video_reference_slot_info_k_h_r}{VkVideoReferenceSlotInfoKHR}};}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_session_memory_requirements_k_h_r}{VkVideoSessionMemoryRequirementsKHR}} \{}
+\DoxyCodeLine{175     VkStructureType         sType;}
+\DoxyCodeLine{176     \textcolor{keywordtype}{void}*                   pNext;}
+\DoxyCodeLine{177     uint32\_t                memoryBindIndex;}
+\DoxyCodeLine{178     \mbox{\hyperlink{struct_vk_memory_requirements}{VkMemoryRequirements}}    memoryRequirements;}
+\DoxyCodeLine{179 \} \mbox{\hyperlink{struct_vk_video_session_memory_requirements_k_h_r}{VkVideoSessionMemoryRequirementsKHR}};}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_bind_video_session_memory_info_k_h_r}{VkBindVideoSessionMemoryInfoKHR}} \{}
+\DoxyCodeLine{182     VkStructureType    sType;}
+\DoxyCodeLine{183     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{184     uint32\_t           memoryBindIndex;}
+\DoxyCodeLine{185     VkDeviceMemory     memory;}
+\DoxyCodeLine{186     VkDeviceSize       memoryOffset;}
+\DoxyCodeLine{187     VkDeviceSize       memorySize;}
+\DoxyCodeLine{188 \} \mbox{\hyperlink{struct_vk_bind_video_session_memory_info_k_h_r}{VkBindVideoSessionMemoryInfoKHR}};}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_session_create_info_k_h_r}{VkVideoSessionCreateInfoKHR}} \{}
+\DoxyCodeLine{191     VkStructureType                 sType;}
+\DoxyCodeLine{192     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                     pNext;}
+\DoxyCodeLine{193     uint32\_t                        queueFamilyIndex;}
+\DoxyCodeLine{194     VkVideoSessionCreateFlagsKHR    flags;}
+\DoxyCodeLine{195     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_profile_info_k_h_r}{VkVideoProfileInfoKHR}}*    pVideoProfile;}
+\DoxyCodeLine{196     VkFormat                        pictureFormat;}
+\DoxyCodeLine{197     \mbox{\hyperlink{struct_vk_extent2_d}{VkExtent2D}}                      maxCodedExtent;}
+\DoxyCodeLine{198     VkFormat                        referencePictureFormat;}
+\DoxyCodeLine{199     uint32\_t                        maxDpbSlots;}
+\DoxyCodeLine{200     uint32\_t                        maxActiveReferencePictures;}
+\DoxyCodeLine{201     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_extension_properties}{VkExtensionProperties}}*    pStdHeaderVersion;}
+\DoxyCodeLine{202 \} \mbox{\hyperlink{struct_vk_video_session_create_info_k_h_r}{VkVideoSessionCreateInfoKHR}};}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_session_parameters_create_info_k_h_r}{VkVideoSessionParametersCreateInfoKHR}} \{}
+\DoxyCodeLine{205     VkStructureType                           sType;}
+\DoxyCodeLine{206     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                               pNext;}
+\DoxyCodeLine{207     VkVideoSessionParametersCreateFlagsKHR    flags;}
+\DoxyCodeLine{208     VkVideoSessionParametersKHR               videoSessionParametersTemplate;}
+\DoxyCodeLine{209     VkVideoSessionKHR                         videoSession;}
+\DoxyCodeLine{210 \} \mbox{\hyperlink{struct_vk_video_session_parameters_create_info_k_h_r}{VkVideoSessionParametersCreateInfoKHR}};}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_session_parameters_update_info_k_h_r}{VkVideoSessionParametersUpdateInfoKHR}} \{}
+\DoxyCodeLine{213     VkStructureType    sType;}
+\DoxyCodeLine{214     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{215     uint32\_t           updateSequenceCount;}
+\DoxyCodeLine{216 \} \mbox{\hyperlink{struct_vk_video_session_parameters_update_info_k_h_r}{VkVideoSessionParametersUpdateInfoKHR}};}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_begin_coding_info_k_h_r}{VkVideoBeginCodingInfoKHR}} \{}
+\DoxyCodeLine{219     VkStructureType                       sType;}
+\DoxyCodeLine{220     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                           pNext;}
+\DoxyCodeLine{221     VkVideoBeginCodingFlagsKHR            flags;}
+\DoxyCodeLine{222     VkVideoSessionKHR                     videoSession;}
+\DoxyCodeLine{223     VkVideoSessionParametersKHR           videoSessionParameters;}
+\DoxyCodeLine{224     uint32\_t                              referenceSlotCount;}
+\DoxyCodeLine{225     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_reference_slot_info_k_h_r}{VkVideoReferenceSlotInfoKHR}}*    pReferenceSlots;}
+\DoxyCodeLine{226 \} \mbox{\hyperlink{struct_vk_video_begin_coding_info_k_h_r}{VkVideoBeginCodingInfoKHR}};}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_end_coding_info_k_h_r}{VkVideoEndCodingInfoKHR}} \{}
+\DoxyCodeLine{229     VkStructureType             sType;}
+\DoxyCodeLine{230     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                 pNext;}
+\DoxyCodeLine{231     VkVideoEndCodingFlagsKHR    flags;}
+\DoxyCodeLine{232 \} \mbox{\hyperlink{struct_vk_video_end_coding_info_k_h_r}{VkVideoEndCodingInfoKHR}};}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_coding_control_info_k_h_r}{VkVideoCodingControlInfoKHR}} \{}
+\DoxyCodeLine{235     VkStructureType                 sType;}
+\DoxyCodeLine{236     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                     pNext;}
+\DoxyCodeLine{237     VkVideoCodingControlFlagsKHR    flags;}
+\DoxyCodeLine{238 \} \mbox{\hyperlink{struct_vk_video_coding_control_info_k_h_r}{VkVideoCodingControlInfoKHR}};}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{240 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetPhysicalDeviceVideoCapabilitiesKHR)(VkPhysicalDevice physicalDevice, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_profile_info_k_h_r}{VkVideoProfileInfoKHR}}* pVideoProfile, \mbox{\hyperlink{struct_vk_video_capabilities_k_h_r}{VkVideoCapabilitiesKHR}}* pCapabilities);}
+\DoxyCodeLine{241 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetPhysicalDeviceVideoFormatPropertiesKHR)(VkPhysicalDevice physicalDevice, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_physical_device_video_format_info_k_h_r}{VkPhysicalDeviceVideoFormatInfoKHR}}* pVideoFormatInfo, uint32\_t* pVideoFormatPropertyCount, \mbox{\hyperlink{struct_vk_video_format_properties_k_h_r}{VkVideoFormatPropertiesKHR}}* pVideoFormatProperties);}
+\DoxyCodeLine{242 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateVideoSessionKHR)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_session_create_info_k_h_r}{VkVideoSessionCreateInfoKHR}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkVideoSessionKHR* pVideoSession);}
+\DoxyCodeLine{243 \textcolor{keyword}{typedef} void (VKAPI\_PTR *PFN\_vkDestroyVideoSessionKHR)(VkDevice device, VkVideoSessionKHR videoSession, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator);}
+\DoxyCodeLine{244 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetVideoSessionMemoryRequirementsKHR)(VkDevice device, VkVideoSessionKHR videoSession, uint32\_t* pMemoryRequirementsCount, \mbox{\hyperlink{struct_vk_video_session_memory_requirements_k_h_r}{VkVideoSessionMemoryRequirementsKHR}}* pMemoryRequirements);}
+\DoxyCodeLine{245 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkBindVideoSessionMemoryKHR)(VkDevice device, VkVideoSessionKHR videoSession, uint32\_t bindSessionMemoryInfoCount, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_bind_video_session_memory_info_k_h_r}{VkBindVideoSessionMemoryInfoKHR}}* pBindSessionMemoryInfos);}
+\DoxyCodeLine{246 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateVideoSessionParametersKHR)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_session_parameters_create_info_k_h_r}{VkVideoSessionParametersCreateInfoKHR}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkVideoSessionParametersKHR* pVideoSessionParameters);}
+\DoxyCodeLine{247 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkUpdateVideoSessionParametersKHR)(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_session_parameters_update_info_k_h_r}{VkVideoSessionParametersUpdateInfoKHR}}* pUpdateInfo);}
+\DoxyCodeLine{248 \textcolor{keyword}{typedef} void (VKAPI\_PTR *PFN\_vkDestroyVideoSessionParametersKHR)(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator);}
+\DoxyCodeLine{249 \textcolor{keyword}{typedef} void (VKAPI\_PTR *PFN\_vkCmdBeginVideoCodingKHR)(VkCommandBuffer commandBuffer, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_begin_coding_info_k_h_r}{VkVideoBeginCodingInfoKHR}}* pBeginInfo);}
+\DoxyCodeLine{250 \textcolor{keyword}{typedef} void (VKAPI\_PTR *PFN\_vkCmdEndVideoCodingKHR)(VkCommandBuffer commandBuffer, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_end_coding_info_k_h_r}{VkVideoEndCodingInfoKHR}}* pEndCodingInfo);}
+\DoxyCodeLine{251 \textcolor{keyword}{typedef} void (VKAPI\_PTR *PFN\_vkCmdControlVideoCodingKHR)(VkCommandBuffer commandBuffer, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_coding_control_info_k_h_r}{VkVideoCodingControlInfoKHR}}* pCodingControlInfo);}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{254 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetPhysicalDeviceVideoCapabilitiesKHR(}
+\DoxyCodeLine{255     VkPhysicalDevice                            physicalDevice,}
+\DoxyCodeLine{256     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_profile_info_k_h_r}{VkVideoProfileInfoKHR}}*                pVideoProfile,}
+\DoxyCodeLine{257     \mbox{\hyperlink{struct_vk_video_capabilities_k_h_r}{VkVideoCapabilitiesKHR}}*                     pCapabilities);}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{259 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetPhysicalDeviceVideoFormatPropertiesKHR(}
+\DoxyCodeLine{260     VkPhysicalDevice                            physicalDevice,}
+\DoxyCodeLine{261     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_physical_device_video_format_info_k_h_r}{VkPhysicalDeviceVideoFormatInfoKHR}}*   pVideoFormatInfo,}
+\DoxyCodeLine{262     uint32\_t*                                   pVideoFormatPropertyCount,}
+\DoxyCodeLine{263     \mbox{\hyperlink{struct_vk_video_format_properties_k_h_r}{VkVideoFormatPropertiesKHR}}*                 pVideoFormatProperties);}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateVideoSessionKHR(}
+\DoxyCodeLine{266     VkDevice                                    device,}
+\DoxyCodeLine{267     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_session_create_info_k_h_r}{VkVideoSessionCreateInfoKHR}}*          pCreateInfo,}
+\DoxyCodeLine{268     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{269     VkVideoSessionKHR*                          pVideoSession);}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271 VKAPI\_ATTR \textcolor{keywordtype}{void} VKAPI\_CALL vkDestroyVideoSessionKHR(}
+\DoxyCodeLine{272     VkDevice                                    device,}
+\DoxyCodeLine{273     VkVideoSessionKHR                           videoSession,}
+\DoxyCodeLine{274     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator);}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetVideoSessionMemoryRequirementsKHR(}
+\DoxyCodeLine{277     VkDevice                                    device,}
+\DoxyCodeLine{278     VkVideoSessionKHR                           videoSession,}
+\DoxyCodeLine{279     uint32\_t*                                   pMemoryRequirementsCount,}
+\DoxyCodeLine{280     \mbox{\hyperlink{struct_vk_video_session_memory_requirements_k_h_r}{VkVideoSessionMemoryRequirementsKHR}}*        pMemoryRequirements);}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{282 VKAPI\_ATTR VkResult VKAPI\_CALL vkBindVideoSessionMemoryKHR(}
+\DoxyCodeLine{283     VkDevice                                    device,}
+\DoxyCodeLine{284     VkVideoSessionKHR                           videoSession,}
+\DoxyCodeLine{285     uint32\_t                                    bindSessionMemoryInfoCount,}
+\DoxyCodeLine{286     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_bind_video_session_memory_info_k_h_r}{VkBindVideoSessionMemoryInfoKHR}}*      pBindSessionMemoryInfos);}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateVideoSessionParametersKHR(}
+\DoxyCodeLine{289     VkDevice                                    device,}
+\DoxyCodeLine{290     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_session_parameters_create_info_k_h_r}{VkVideoSessionParametersCreateInfoKHR}}* pCreateInfo,}
+\DoxyCodeLine{291     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{292     VkVideoSessionParametersKHR*                pVideoSessionParameters);}
+\DoxyCodeLine{293 }
+\DoxyCodeLine{294 VKAPI\_ATTR VkResult VKAPI\_CALL vkUpdateVideoSessionParametersKHR(}
+\DoxyCodeLine{295     VkDevice                                    device,}
+\DoxyCodeLine{296     VkVideoSessionParametersKHR                 videoSessionParameters,}
+\DoxyCodeLine{297     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_session_parameters_update_info_k_h_r}{VkVideoSessionParametersUpdateInfoKHR}}* pUpdateInfo);}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299 VKAPI\_ATTR \textcolor{keywordtype}{void} VKAPI\_CALL vkDestroyVideoSessionParametersKHR(}
+\DoxyCodeLine{300     VkDevice                                    device,}
+\DoxyCodeLine{301     VkVideoSessionParametersKHR                 videoSessionParameters,}
+\DoxyCodeLine{302     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator);}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{304 VKAPI\_ATTR \textcolor{keywordtype}{void} VKAPI\_CALL vkCmdBeginVideoCodingKHR(}
+\DoxyCodeLine{305     VkCommandBuffer                             commandBuffer,}
+\DoxyCodeLine{306     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_begin_coding_info_k_h_r}{VkVideoBeginCodingInfoKHR}}*            pBeginInfo);}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{308 VKAPI\_ATTR \textcolor{keywordtype}{void} VKAPI\_CALL vkCmdEndVideoCodingKHR(}
+\DoxyCodeLine{309     VkCommandBuffer                             commandBuffer,}
+\DoxyCodeLine{310     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_end_coding_info_k_h_r}{VkVideoEndCodingInfoKHR}}*              pEndCodingInfo);}
+\DoxyCodeLine{311 }
+\DoxyCodeLine{312 VKAPI\_ATTR \textcolor{keywordtype}{void} VKAPI\_CALL vkCmdControlVideoCodingKHR(}
+\DoxyCodeLine{313     VkCommandBuffer                             commandBuffer,}
+\DoxyCodeLine{314     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_coding_control_info_k_h_r}{VkVideoCodingControlInfoKHR}}*          pCodingControlInfo);}
+\DoxyCodeLine{315 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{317 }
+\DoxyCodeLine{318 \textcolor{preprocessor}{\#define VK\_KHR\_video\_decode\_queue 1}}
+\DoxyCodeLine{319 \textcolor{preprocessor}{\#define VK\_KHR\_VIDEO\_DECODE\_QUEUE\_SPEC\_VERSION 6}}
+\DoxyCodeLine{320 \textcolor{preprocessor}{\#define VK\_KHR\_VIDEO\_DECODE\_QUEUE\_EXTENSION\_NAME "{}VK\_KHR\_video\_decode\_queue"{}}}
+\DoxyCodeLine{321 }
+\DoxyCodeLine{322 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoDecodeCapabilityFlagBitsKHR \{}
+\DoxyCodeLine{323     VK\_VIDEO\_DECODE\_CAPABILITY\_DPB\_AND\_OUTPUT\_COINCIDE\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{324     VK\_VIDEO\_DECODE\_CAPABILITY\_DPB\_AND\_OUTPUT\_DISTINCT\_BIT\_KHR = 0x00000002,}
+\DoxyCodeLine{325     VK\_VIDEO\_DECODE\_CAPABILITY\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{326 \} VkVideoDecodeCapabilityFlagBitsKHR;}
+\DoxyCodeLine{327 \textcolor{keyword}{typedef} VkFlags VkVideoDecodeCapabilityFlagsKHR;}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{329 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoDecodeUsageFlagBitsKHR \{}
+\DoxyCodeLine{330     VK\_VIDEO\_DECODE\_USAGE\_DEFAULT\_KHR = 0,}
+\DoxyCodeLine{331     VK\_VIDEO\_DECODE\_USAGE\_TRANSCODING\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{332     VK\_VIDEO\_DECODE\_USAGE\_OFFLINE\_BIT\_KHR = 0x00000002,}
+\DoxyCodeLine{333     VK\_VIDEO\_DECODE\_USAGE\_STREAMING\_BIT\_KHR = 0x00000004,}
+\DoxyCodeLine{334     VK\_VIDEO\_DECODE\_USAGE\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{335 \} VkVideoDecodeUsageFlagBitsKHR;}
+\DoxyCodeLine{336 \textcolor{keyword}{typedef} VkFlags VkVideoDecodeUsageFlagsKHR;}
+\DoxyCodeLine{337 \textcolor{keyword}{typedef} VkFlags VkVideoDecodeFlagsKHR;}
+\DoxyCodeLine{338 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_capabilities_k_h_r}{VkVideoDecodeCapabilitiesKHR}} \{}
+\DoxyCodeLine{339     VkStructureType                    sType;}
+\DoxyCodeLine{340     \textcolor{keywordtype}{void}*                              pNext;}
+\DoxyCodeLine{341     VkVideoDecodeCapabilityFlagsKHR    flags;}
+\DoxyCodeLine{342 \} \mbox{\hyperlink{struct_vk_video_decode_capabilities_k_h_r}{VkVideoDecodeCapabilitiesKHR}};}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_usage_info_k_h_r}{VkVideoDecodeUsageInfoKHR}} \{}
+\DoxyCodeLine{345     VkStructureType               sType;}
+\DoxyCodeLine{346     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                   pNext;}
+\DoxyCodeLine{347     VkVideoDecodeUsageFlagsKHR    videoUsageHints;}
+\DoxyCodeLine{348 \} \mbox{\hyperlink{struct_vk_video_decode_usage_info_k_h_r}{VkVideoDecodeUsageInfoKHR}};}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{350 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_info_k_h_r}{VkVideoDecodeInfoKHR}} \{}
+\DoxyCodeLine{351     VkStructureType                       sType;}
+\DoxyCodeLine{352     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                           pNext;}
+\DoxyCodeLine{353     VkVideoDecodeFlagsKHR                 flags;}
+\DoxyCodeLine{354     VkBuffer                              srcBuffer;}
+\DoxyCodeLine{355     VkDeviceSize                          srcBufferOffset;}
+\DoxyCodeLine{356     VkDeviceSize                          srcBufferRange;}
+\DoxyCodeLine{357     \mbox{\hyperlink{struct_vk_video_picture_resource_info_k_h_r}{VkVideoPictureResourceInfoKHR}}         dstPictureResource;}
+\DoxyCodeLine{358     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_reference_slot_info_k_h_r}{VkVideoReferenceSlotInfoKHR}}*    pSetupReferenceSlot;}
+\DoxyCodeLine{359     uint32\_t                              referenceSlotCount;}
+\DoxyCodeLine{360     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_reference_slot_info_k_h_r}{VkVideoReferenceSlotInfoKHR}}*    pReferenceSlots;}
+\DoxyCodeLine{361 \} \mbox{\hyperlink{struct_vk_video_decode_info_k_h_r}{VkVideoDecodeInfoKHR}};}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363 \textcolor{keyword}{typedef} void (VKAPI\_PTR *PFN\_vkCmdDecodeVideoKHR)(VkCommandBuffer commandBuffer, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_decode_info_k_h_r}{VkVideoDecodeInfoKHR}}* pDecodeInfo);}
+\DoxyCodeLine{364 }
+\DoxyCodeLine{365 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{366 VKAPI\_ATTR \textcolor{keywordtype}{void} VKAPI\_CALL vkCmdDecodeVideoKHR(}
+\DoxyCodeLine{367     VkCommandBuffer                             commandBuffer,}
+\DoxyCodeLine{368     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_decode_info_k_h_r}{VkVideoDecodeInfoKHR}}*                 pDecodeInfo);}
+\DoxyCodeLine{369 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{370 }
+\DoxyCodeLine{371 }
+\DoxyCodeLine{372 \textcolor{preprocessor}{\#define VK\_KHR\_portability\_subset 1}}
+\DoxyCodeLine{373 \textcolor{preprocessor}{\#define VK\_KHR\_PORTABILITY\_SUBSET\_SPEC\_VERSION 1}}
+\DoxyCodeLine{374 \textcolor{preprocessor}{\#define VK\_KHR\_PORTABILITY\_SUBSET\_EXTENSION\_NAME "{}VK\_KHR\_portability\_subset"{}}}
+\DoxyCodeLine{375 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_physical_device_portability_subset_features_k_h_r}{VkPhysicalDevicePortabilitySubsetFeaturesKHR}} \{}
+\DoxyCodeLine{376     VkStructureType    sType;}
+\DoxyCodeLine{377     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{378     VkBool32           constantAlphaColorBlendFactors;}
+\DoxyCodeLine{379     VkBool32           events;}
+\DoxyCodeLine{380     VkBool32           imageViewFormatReinterpretation;}
+\DoxyCodeLine{381     VkBool32           imageViewFormatSwizzle;}
+\DoxyCodeLine{382     VkBool32           imageView2DOn3DImage;}
+\DoxyCodeLine{383     VkBool32           multisampleArrayImage;}
+\DoxyCodeLine{384     VkBool32           mutableComparisonSamplers;}
+\DoxyCodeLine{385     VkBool32           pointPolygons;}
+\DoxyCodeLine{386     VkBool32           samplerMipLodBias;}
+\DoxyCodeLine{387     VkBool32           separateStencilMaskRef;}
+\DoxyCodeLine{388     VkBool32           shaderSampleRateInterpolationFunctions;}
+\DoxyCodeLine{389     VkBool32           tessellationIsolines;}
+\DoxyCodeLine{390     VkBool32           tessellationPointMode;}
+\DoxyCodeLine{391     VkBool32           triangleFans;}
+\DoxyCodeLine{392     VkBool32           vertexAttributeAccessBeyondStride;}
+\DoxyCodeLine{393 \} \mbox{\hyperlink{struct_vk_physical_device_portability_subset_features_k_h_r}{VkPhysicalDevicePortabilitySubsetFeaturesKHR}};}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{395 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_physical_device_portability_subset_properties_k_h_r}{VkPhysicalDevicePortabilitySubsetPropertiesKHR}} \{}
+\DoxyCodeLine{396     VkStructureType    sType;}
+\DoxyCodeLine{397     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{398     uint32\_t           minVertexInputBindingStrideAlignment;}
+\DoxyCodeLine{399 \} \mbox{\hyperlink{struct_vk_physical_device_portability_subset_properties_k_h_r}{VkPhysicalDevicePortabilitySubsetPropertiesKHR}};}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{401 }
+\DoxyCodeLine{402 }
+\DoxyCodeLine{403 \textcolor{preprocessor}{\#define VK\_KHR\_video\_encode\_queue 1}}
+\DoxyCodeLine{404 \textcolor{preprocessor}{\#define VK\_KHR\_VIDEO\_ENCODE\_QUEUE\_SPEC\_VERSION 7}}
+\DoxyCodeLine{405 \textcolor{preprocessor}{\#define VK\_KHR\_VIDEO\_ENCODE\_QUEUE\_EXTENSION\_NAME "{}VK\_KHR\_video\_encode\_queue"{}}}
+\DoxyCodeLine{406 }
+\DoxyCodeLine{407 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeTuningModeKHR \{}
+\DoxyCodeLine{408     VK\_VIDEO\_ENCODE\_TUNING\_MODE\_DEFAULT\_KHR = 0,}
+\DoxyCodeLine{409     VK\_VIDEO\_ENCODE\_TUNING\_MODE\_HIGH\_QUALITY\_KHR = 1,}
+\DoxyCodeLine{410     VK\_VIDEO\_ENCODE\_TUNING\_MODE\_LOW\_LATENCY\_KHR = 2,}
+\DoxyCodeLine{411     VK\_VIDEO\_ENCODE\_TUNING\_MODE\_ULTRA\_LOW\_LATENCY\_KHR = 3,}
+\DoxyCodeLine{412     VK\_VIDEO\_ENCODE\_TUNING\_MODE\_LOSSLESS\_KHR = 4,}
+\DoxyCodeLine{413     VK\_VIDEO\_ENCODE\_TUNING\_MODE\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{414 \} VkVideoEncodeTuningModeKHR;}
+\DoxyCodeLine{415 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeFlagsKHR;}
+\DoxyCodeLine{416 }
+\DoxyCodeLine{417 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeCapabilityFlagBitsKHR \{}
+\DoxyCodeLine{418     VK\_VIDEO\_ENCODE\_CAPABILITY\_PRECEDING\_EXTERNALLY\_ENCODED\_BYTES\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{419     VK\_VIDEO\_ENCODE\_CAPABILITY\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{420 \} VkVideoEncodeCapabilityFlagBitsKHR;}
+\DoxyCodeLine{421 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeCapabilityFlagsKHR;}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{423 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeRateControlModeFlagBitsKHR \{}
+\DoxyCodeLine{424     VK\_VIDEO\_ENCODE\_RATE\_CONTROL\_MODE\_NONE\_BIT\_KHR = 0,}
+\DoxyCodeLine{425     VK\_VIDEO\_ENCODE\_RATE\_CONTROL\_MODE\_CBR\_BIT\_KHR = 1,}
+\DoxyCodeLine{426     VK\_VIDEO\_ENCODE\_RATE\_CONTROL\_MODE\_VBR\_BIT\_KHR = 2,}
+\DoxyCodeLine{427     VK\_VIDEO\_ENCODE\_RATE\_CONTROL\_MODE\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{428 \} VkVideoEncodeRateControlModeFlagBitsKHR;}
+\DoxyCodeLine{429 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeRateControlModeFlagsKHR;}
+\DoxyCodeLine{430 }
+\DoxyCodeLine{431 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeUsageFlagBitsKHR \{}
+\DoxyCodeLine{432     VK\_VIDEO\_ENCODE\_USAGE\_DEFAULT\_KHR = 0,}
+\DoxyCodeLine{433     VK\_VIDEO\_ENCODE\_USAGE\_TRANSCODING\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{434     VK\_VIDEO\_ENCODE\_USAGE\_STREAMING\_BIT\_KHR = 0x00000002,}
+\DoxyCodeLine{435     VK\_VIDEO\_ENCODE\_USAGE\_RECORDING\_BIT\_KHR = 0x00000004,}
+\DoxyCodeLine{436     VK\_VIDEO\_ENCODE\_USAGE\_CONFERENCING\_BIT\_KHR = 0x00000008,}
+\DoxyCodeLine{437     VK\_VIDEO\_ENCODE\_USAGE\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{438 \} VkVideoEncodeUsageFlagBitsKHR;}
+\DoxyCodeLine{439 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeUsageFlagsKHR;}
+\DoxyCodeLine{440 }
+\DoxyCodeLine{441 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeContentFlagBitsKHR \{}
+\DoxyCodeLine{442     VK\_VIDEO\_ENCODE\_CONTENT\_DEFAULT\_KHR = 0,}
+\DoxyCodeLine{443     VK\_VIDEO\_ENCODE\_CONTENT\_CAMERA\_BIT\_KHR = 0x00000001,}
+\DoxyCodeLine{444     VK\_VIDEO\_ENCODE\_CONTENT\_DESKTOP\_BIT\_KHR = 0x00000002,}
+\DoxyCodeLine{445     VK\_VIDEO\_ENCODE\_CONTENT\_RENDERED\_BIT\_KHR = 0x00000004,}
+\DoxyCodeLine{446     VK\_VIDEO\_ENCODE\_CONTENT\_FLAG\_BITS\_MAX\_ENUM\_KHR = 0x7FFFFFFF}
+\DoxyCodeLine{447 \} VkVideoEncodeContentFlagBitsKHR;}
+\DoxyCodeLine{448 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeContentFlagsKHR;}
+\DoxyCodeLine{449 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeRateControlFlagsKHR;}
+\DoxyCodeLine{450 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_info_k_h_r}{VkVideoEncodeInfoKHR}} \{}
+\DoxyCodeLine{451     VkStructureType                       sType;}
+\DoxyCodeLine{452     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                           pNext;}
+\DoxyCodeLine{453     VkVideoEncodeFlagsKHR                 flags;}
+\DoxyCodeLine{454     uint32\_t                              qualityLevel;}
+\DoxyCodeLine{455     VkBuffer                              dstBitstreamBuffer;}
+\DoxyCodeLine{456     VkDeviceSize                          dstBitstreamBufferOffset;}
+\DoxyCodeLine{457     VkDeviceSize                          dstBitstreamBufferMaxRange;}
+\DoxyCodeLine{458     \mbox{\hyperlink{struct_vk_video_picture_resource_info_k_h_r}{VkVideoPictureResourceInfoKHR}}         srcPictureResource;}
+\DoxyCodeLine{459     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_reference_slot_info_k_h_r}{VkVideoReferenceSlotInfoKHR}}*    pSetupReferenceSlot;}
+\DoxyCodeLine{460     uint32\_t                              referenceSlotCount;}
+\DoxyCodeLine{461     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_reference_slot_info_k_h_r}{VkVideoReferenceSlotInfoKHR}}*    pReferenceSlots;}
+\DoxyCodeLine{462     uint32\_t                              precedingExternallyEncodedBytes;}
+\DoxyCodeLine{463 \} \mbox{\hyperlink{struct_vk_video_encode_info_k_h_r}{VkVideoEncodeInfoKHR}};}
+\DoxyCodeLine{464 }
+\DoxyCodeLine{465 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_capabilities_k_h_r}{VkVideoEncodeCapabilitiesKHR}} \{}
+\DoxyCodeLine{466     VkStructureType                         sType;}
+\DoxyCodeLine{467     \textcolor{keywordtype}{void}*                                   pNext;}
+\DoxyCodeLine{468     VkVideoEncodeCapabilityFlagsKHR         flags;}
+\DoxyCodeLine{469     VkVideoEncodeRateControlModeFlagsKHR    rateControlModes;}
+\DoxyCodeLine{470     uint8\_t                                 rateControlLayerCount;}
+\DoxyCodeLine{471     uint8\_t                                 qualityLevelCount;}
+\DoxyCodeLine{472     \mbox{\hyperlink{struct_vk_extent2_d}{VkExtent2D}}                              inputImageDataFillAlignment;}
+\DoxyCodeLine{473 \} \mbox{\hyperlink{struct_vk_video_encode_capabilities_k_h_r}{VkVideoEncodeCapabilitiesKHR}};}
+\DoxyCodeLine{474 }
+\DoxyCodeLine{475 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_usage_info_k_h_r}{VkVideoEncodeUsageInfoKHR}} \{}
+\DoxyCodeLine{476     VkStructureType                 sType;}
+\DoxyCodeLine{477     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                     pNext;}
+\DoxyCodeLine{478     VkVideoEncodeUsageFlagsKHR      videoUsageHints;}
+\DoxyCodeLine{479     VkVideoEncodeContentFlagsKHR    videoContentHints;}
+\DoxyCodeLine{480     VkVideoEncodeTuningModeKHR      tuningMode;}
+\DoxyCodeLine{481 \} \mbox{\hyperlink{struct_vk_video_encode_usage_info_k_h_r}{VkVideoEncodeUsageInfoKHR}};}
+\DoxyCodeLine{482 }
+\DoxyCodeLine{483 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_rate_control_layer_info_k_h_r}{VkVideoEncodeRateControlLayerInfoKHR}} \{}
+\DoxyCodeLine{484     VkStructureType    sType;}
+\DoxyCodeLine{485     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{486     uint32\_t           averageBitrate;}
+\DoxyCodeLine{487     uint32\_t           maxBitrate;}
+\DoxyCodeLine{488     uint32\_t           frameRateNumerator;}
+\DoxyCodeLine{489     uint32\_t           frameRateDenominator;}
+\DoxyCodeLine{490     uint32\_t           virtualBufferSizeInMs;}
+\DoxyCodeLine{491     uint32\_t           initialVirtualBufferSizeInMs;}
+\DoxyCodeLine{492 \} \mbox{\hyperlink{struct_vk_video_encode_rate_control_layer_info_k_h_r}{VkVideoEncodeRateControlLayerInfoKHR}};}
+\DoxyCodeLine{493 }
+\DoxyCodeLine{494 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_rate_control_info_k_h_r}{VkVideoEncodeRateControlInfoKHR}} \{}
+\DoxyCodeLine{495     VkStructureType                                sType;}
+\DoxyCodeLine{496     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                    pNext;}
+\DoxyCodeLine{497     VkVideoEncodeRateControlFlagsKHR               flags;}
+\DoxyCodeLine{498     VkVideoEncodeRateControlModeFlagBitsKHR        rateControlMode;}
+\DoxyCodeLine{499     uint8\_t                                        layerCount;}
+\DoxyCodeLine{500     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_rate_control_layer_info_k_h_r}{VkVideoEncodeRateControlLayerInfoKHR}}*    pLayerConfigs;}
+\DoxyCodeLine{501 \} \mbox{\hyperlink{struct_vk_video_encode_rate_control_info_k_h_r}{VkVideoEncodeRateControlInfoKHR}};}
+\DoxyCodeLine{502 }
+\DoxyCodeLine{503 \textcolor{keyword}{typedef} void (VKAPI\_PTR *PFN\_vkCmdEncodeVideoKHR)(VkCommandBuffer commandBuffer, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_info_k_h_r}{VkVideoEncodeInfoKHR}}* pEncodeInfo);}
+\DoxyCodeLine{504 }
+\DoxyCodeLine{505 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{506 VKAPI\_ATTR \textcolor{keywordtype}{void} VKAPI\_CALL vkCmdEncodeVideoKHR(}
+\DoxyCodeLine{507     VkCommandBuffer                             commandBuffer,}
+\DoxyCodeLine{508     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_info_k_h_r}{VkVideoEncodeInfoKHR}}*                 pEncodeInfo);}
+\DoxyCodeLine{509 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{510 }
+\DoxyCodeLine{511 }
+\DoxyCodeLine{512 \textcolor{preprocessor}{\#define VK\_EXT\_video\_encode\_h264 1}}
+\DoxyCodeLine{513 \textcolor{preprocessor}{\#include "{}vk\_video/vulkan\_video\_codec\_h264std.h"{}}}
+\DoxyCodeLine{514 \textcolor{preprocessor}{\#include "{}vk\_video/vulkan\_video\_codec\_h264std\_encode.h"{}}}
+\DoxyCodeLine{515 \textcolor{preprocessor}{\#define VK\_EXT\_VIDEO\_ENCODE\_H264\_SPEC\_VERSION 9}}
+\DoxyCodeLine{516 \textcolor{preprocessor}{\#define VK\_EXT\_VIDEO\_ENCODE\_H264\_EXTENSION\_NAME "{}VK\_EXT\_video\_encode\_h264"{}}}
+\DoxyCodeLine{517 }
+\DoxyCodeLine{518 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH264RateControlStructureEXT \{}
+\DoxyCodeLine{519     VK\_VIDEO\_ENCODE\_H264\_RATE\_CONTROL\_STRUCTURE\_UNKNOWN\_EXT = 0,}
+\DoxyCodeLine{520     VK\_VIDEO\_ENCODE\_H264\_RATE\_CONTROL\_STRUCTURE\_FLAT\_EXT = 1,}
+\DoxyCodeLine{521     VK\_VIDEO\_ENCODE\_H264\_RATE\_CONTROL\_STRUCTURE\_DYADIC\_EXT = 2,}
+\DoxyCodeLine{522     VK\_VIDEO\_ENCODE\_H264\_RATE\_CONTROL\_STRUCTURE\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{523 \} VkVideoEncodeH264RateControlStructureEXT;}
+\DoxyCodeLine{524 }
+\DoxyCodeLine{525 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH264CapabilityFlagBitsEXT \{}
+\DoxyCodeLine{526     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_DIRECT\_8X8\_INFERENCE\_ENABLED\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{527     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_DIRECT\_8X8\_INFERENCE\_DISABLED\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{528     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_SEPARATE\_COLOUR\_PLANE\_BIT\_EXT = 0x00000004,}
+\DoxyCodeLine{529     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_QPPRIME\_Y\_ZERO\_TRANSFORM\_BYPASS\_BIT\_EXT = 0x00000008,}
+\DoxyCodeLine{530     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_SCALING\_LISTS\_BIT\_EXT = 0x00000010,}
+\DoxyCodeLine{531     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_HRD\_COMPLIANCE\_BIT\_EXT = 0x00000020,}
+\DoxyCodeLine{532     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_CHROMA\_QP\_OFFSET\_BIT\_EXT = 0x00000040,}
+\DoxyCodeLine{533     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_SECOND\_CHROMA\_QP\_OFFSET\_BIT\_EXT = 0x00000080,}
+\DoxyCodeLine{534     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_PIC\_INIT\_QP\_MINUS26\_BIT\_EXT = 0x00000100,}
+\DoxyCodeLine{535     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_WEIGHTED\_PRED\_BIT\_EXT = 0x00000200,}
+\DoxyCodeLine{536     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_WEIGHTED\_BIPRED\_EXPLICIT\_BIT\_EXT = 0x00000400,}
+\DoxyCodeLine{537     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_WEIGHTED\_BIPRED\_IMPLICIT\_BIT\_EXT = 0x00000800,}
+\DoxyCodeLine{538     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_WEIGHTED\_PRED\_NO\_TABLE\_BIT\_EXT = 0x00001000,}
+\DoxyCodeLine{539     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_TRANSFORM\_8X8\_BIT\_EXT = 0x00002000,}
+\DoxyCodeLine{540     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_CABAC\_BIT\_EXT = 0x00004000,}
+\DoxyCodeLine{541     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_CAVLC\_BIT\_EXT = 0x00008000,}
+\DoxyCodeLine{542     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_DEBLOCKING\_FILTER\_DISABLED\_BIT\_EXT = 0x00010000,}
+\DoxyCodeLine{543     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_DEBLOCKING\_FILTER\_ENABLED\_BIT\_EXT = 0x00020000,}
+\DoxyCodeLine{544     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_DEBLOCKING\_FILTER\_PARTIAL\_BIT\_EXT = 0x00040000,}
+\DoxyCodeLine{545     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_DISABLE\_DIRECT\_SPATIAL\_MV\_PRED\_BIT\_EXT = 0x00080000,}
+\DoxyCodeLine{546     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_MULTIPLE\_SLICE\_PER\_FRAME\_BIT\_EXT = 0x00100000,}
+\DoxyCodeLine{547     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_SLICE\_MB\_COUNT\_BIT\_EXT = 0x00200000,}
+\DoxyCodeLine{548     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_ROW\_UNALIGNED\_SLICE\_BIT\_EXT = 0x00400000,}
+\DoxyCodeLine{549     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_DIFFERENT\_SLICE\_TYPE\_BIT\_EXT = 0x00800000,}
+\DoxyCodeLine{550     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_B\_FRAME\_IN\_L1\_LIST\_BIT\_EXT = 0x01000000,}
+\DoxyCodeLine{551     VK\_VIDEO\_ENCODE\_H264\_CAPABILITY\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{552 \} VkVideoEncodeH264CapabilityFlagBitsEXT;}
+\DoxyCodeLine{553 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeH264CapabilityFlagsEXT;}
+\DoxyCodeLine{554 }
+\DoxyCodeLine{555 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH264InputModeFlagBitsEXT \{}
+\DoxyCodeLine{556     VK\_VIDEO\_ENCODE\_H264\_INPUT\_MODE\_FRAME\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{557     VK\_VIDEO\_ENCODE\_H264\_INPUT\_MODE\_SLICE\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{558     VK\_VIDEO\_ENCODE\_H264\_INPUT\_MODE\_NON\_VCL\_BIT\_EXT = 0x00000004,}
+\DoxyCodeLine{559     VK\_VIDEO\_ENCODE\_H264\_INPUT\_MODE\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{560 \} VkVideoEncodeH264InputModeFlagBitsEXT;}
+\DoxyCodeLine{561 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeH264InputModeFlagsEXT;}
+\DoxyCodeLine{562 }
+\DoxyCodeLine{563 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH264OutputModeFlagBitsEXT \{}
+\DoxyCodeLine{564     VK\_VIDEO\_ENCODE\_H264\_OUTPUT\_MODE\_FRAME\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{565     VK\_VIDEO\_ENCODE\_H264\_OUTPUT\_MODE\_SLICE\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{566     VK\_VIDEO\_ENCODE\_H264\_OUTPUT\_MODE\_NON\_VCL\_BIT\_EXT = 0x00000004,}
+\DoxyCodeLine{567     VK\_VIDEO\_ENCODE\_H264\_OUTPUT\_MODE\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{568 \} VkVideoEncodeH264OutputModeFlagBitsEXT;}
+\DoxyCodeLine{569 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeH264OutputModeFlagsEXT;}
+\DoxyCodeLine{570 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_capabilities_e_x_t}{VkVideoEncodeH264CapabilitiesEXT}} \{}
+\DoxyCodeLine{571     VkStructureType                        sType;}
+\DoxyCodeLine{572     \textcolor{keywordtype}{void}*                                  pNext;}
+\DoxyCodeLine{573     VkVideoEncodeH264CapabilityFlagsEXT    flags;}
+\DoxyCodeLine{574     VkVideoEncodeH264InputModeFlagsEXT     inputModeFlags;}
+\DoxyCodeLine{575     VkVideoEncodeH264OutputModeFlagsEXT    outputModeFlags;}
+\DoxyCodeLine{576     uint8\_t                                maxPPictureL0ReferenceCount;}
+\DoxyCodeLine{577     uint8\_t                                maxBPictureL0ReferenceCount;}
+\DoxyCodeLine{578     uint8\_t                                maxL1ReferenceCount;}
+\DoxyCodeLine{579     VkBool32                               motionVectorsOverPicBoundariesFlag;}
+\DoxyCodeLine{580     uint32\_t                               maxBytesPerPicDenom;}
+\DoxyCodeLine{581     uint32\_t                               maxBitsPerMbDenom;}
+\DoxyCodeLine{582     uint32\_t                               log2MaxMvLengthHorizontal;}
+\DoxyCodeLine{583     uint32\_t                               log2MaxMvLengthVertical;}
+\DoxyCodeLine{584 \} \mbox{\hyperlink{struct_vk_video_encode_h264_capabilities_e_x_t}{VkVideoEncodeH264CapabilitiesEXT}};}
+\DoxyCodeLine{585 }
+\DoxyCodeLine{586 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_session_parameters_add_info_e_x_t}{VkVideoEncodeH264SessionParametersAddInfoEXT}} \{}
+\DoxyCodeLine{587     VkStructureType                            sType;}
+\DoxyCodeLine{588     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                pNext;}
+\DoxyCodeLine{589     uint32\_t                                   stdSPSCount;}
+\DoxyCodeLine{590     \textcolor{keyword}{const} StdVideoH264SequenceParameterSet*    pStdSPSs;}
+\DoxyCodeLine{591     uint32\_t                                   stdPPSCount;}
+\DoxyCodeLine{592     \textcolor{keyword}{const} StdVideoH264PictureParameterSet*     pStdPPSs;}
+\DoxyCodeLine{593 \} \mbox{\hyperlink{struct_vk_video_encode_h264_session_parameters_add_info_e_x_t}{VkVideoEncodeH264SessionParametersAddInfoEXT}};}
+\DoxyCodeLine{594 }
+\DoxyCodeLine{595 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_session_parameters_create_info_e_x_t}{VkVideoEncodeH264SessionParametersCreateInfoEXT}} \{}
+\DoxyCodeLine{596     VkStructureType                                        sType;}
+\DoxyCodeLine{597     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                            pNext;}
+\DoxyCodeLine{598     uint32\_t                                               maxStdSPSCount;}
+\DoxyCodeLine{599     uint32\_t                                               maxStdPPSCount;}
+\DoxyCodeLine{600     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h264_session_parameters_add_info_e_x_t}{VkVideoEncodeH264SessionParametersAddInfoEXT}}*    pParametersAddInfo;}
+\DoxyCodeLine{601 \} \mbox{\hyperlink{struct_vk_video_encode_h264_session_parameters_create_info_e_x_t}{VkVideoEncodeH264SessionParametersCreateInfoEXT}};}
+\DoxyCodeLine{602 }
+\DoxyCodeLine{603 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_dpb_slot_info_e_x_t}{VkVideoEncodeH264DpbSlotInfoEXT}} \{}
+\DoxyCodeLine{604     VkStructureType                           sType;}
+\DoxyCodeLine{605     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                               pNext;}
+\DoxyCodeLine{606     int8\_t                                    slotIndex;}
+\DoxyCodeLine{607     \textcolor{keyword}{const} StdVideoEncodeH264ReferenceInfo*    pStdReferenceInfo;}
+\DoxyCodeLine{608 \} \mbox{\hyperlink{struct_vk_video_encode_h264_dpb_slot_info_e_x_t}{VkVideoEncodeH264DpbSlotInfoEXT}};}
+\DoxyCodeLine{609 }
+\DoxyCodeLine{610 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_reference_lists_info_e_x_t}{VkVideoEncodeH264ReferenceListsInfoEXT}} \{}
+\DoxyCodeLine{611     VkStructureType                                      sType;}
+\DoxyCodeLine{612     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                          pNext;}
+\DoxyCodeLine{613     uint8\_t                                              referenceList0EntryCount;}
+\DoxyCodeLine{614     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h264_dpb_slot_info_e_x_t}{VkVideoEncodeH264DpbSlotInfoEXT}}*               pReferenceList0Entries;}
+\DoxyCodeLine{615     uint8\_t                                              referenceList1EntryCount;}
+\DoxyCodeLine{616     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h264_dpb_slot_info_e_x_t}{VkVideoEncodeH264DpbSlotInfoEXT}}*               pReferenceList1Entries;}
+\DoxyCodeLine{617     \textcolor{keyword}{const} StdVideoEncodeH264RefMemMgmtCtrlOperations*    pMemMgmtCtrlOperations;}
+\DoxyCodeLine{618 \} \mbox{\hyperlink{struct_vk_video_encode_h264_reference_lists_info_e_x_t}{VkVideoEncodeH264ReferenceListsInfoEXT}};}
+\DoxyCodeLine{619 }
+\DoxyCodeLine{620 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_nalu_slice_info_e_x_t}{VkVideoEncodeH264NaluSliceInfoEXT}} \{}
+\DoxyCodeLine{621     VkStructureType                                  sType;}
+\DoxyCodeLine{622     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                      pNext;}
+\DoxyCodeLine{623     uint32\_t                                         mbCount;}
+\DoxyCodeLine{624     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h264_reference_lists_info_e_x_t}{VkVideoEncodeH264ReferenceListsInfoEXT}}*    pReferenceFinalLists;}
+\DoxyCodeLine{625     \textcolor{keyword}{const} StdVideoEncodeH264SliceHeader*             pSliceHeaderStd;}
+\DoxyCodeLine{626 \} \mbox{\hyperlink{struct_vk_video_encode_h264_nalu_slice_info_e_x_t}{VkVideoEncodeH264NaluSliceInfoEXT}};}
+\DoxyCodeLine{627 }
+\DoxyCodeLine{628 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_vcl_frame_info_e_x_t}{VkVideoEncodeH264VclFrameInfoEXT}} \{}
+\DoxyCodeLine{629     VkStructureType                                  sType;}
+\DoxyCodeLine{630     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                      pNext;}
+\DoxyCodeLine{631     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h264_reference_lists_info_e_x_t}{VkVideoEncodeH264ReferenceListsInfoEXT}}*    pReferenceFinalLists;}
+\DoxyCodeLine{632     uint32\_t                                         naluSliceEntryCount;}
+\DoxyCodeLine{633     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h264_nalu_slice_info_e_x_t}{VkVideoEncodeH264NaluSliceInfoEXT}}*         pNaluSliceEntries;}
+\DoxyCodeLine{634     \textcolor{keyword}{const} StdVideoEncodeH264PictureInfo*             pCurrentPictureInfo;}
+\DoxyCodeLine{635 \} \mbox{\hyperlink{struct_vk_video_encode_h264_vcl_frame_info_e_x_t}{VkVideoEncodeH264VclFrameInfoEXT}};}
+\DoxyCodeLine{636 }
+\DoxyCodeLine{637 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_emit_picture_parameters_info_e_x_t}{VkVideoEncodeH264EmitPictureParametersInfoEXT}} \{}
+\DoxyCodeLine{638     VkStructureType    sType;}
+\DoxyCodeLine{639     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{640     uint8\_t            spsId;}
+\DoxyCodeLine{641     VkBool32           emitSpsEnable;}
+\DoxyCodeLine{642     uint32\_t           ppsIdEntryCount;}
+\DoxyCodeLine{643     \textcolor{keyword}{const} uint8\_t*     ppsIdEntries;}
+\DoxyCodeLine{644 \} \mbox{\hyperlink{struct_vk_video_encode_h264_emit_picture_parameters_info_e_x_t}{VkVideoEncodeH264EmitPictureParametersInfoEXT}};}
+\DoxyCodeLine{645 }
+\DoxyCodeLine{646 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_profile_info_e_x_t}{VkVideoEncodeH264ProfileInfoEXT}} \{}
+\DoxyCodeLine{647     VkStructureType           sType;}
+\DoxyCodeLine{648     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*               pNext;}
+\DoxyCodeLine{649     StdVideoH264ProfileIdc    stdProfileIdc;}
+\DoxyCodeLine{650 \} \mbox{\hyperlink{struct_vk_video_encode_h264_profile_info_e_x_t}{VkVideoEncodeH264ProfileInfoEXT}};}
+\DoxyCodeLine{651 }
+\DoxyCodeLine{652 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_rate_control_info_e_x_t}{VkVideoEncodeH264RateControlInfoEXT}} \{}
+\DoxyCodeLine{653     VkStructureType                             sType;}
+\DoxyCodeLine{654     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                 pNext;}
+\DoxyCodeLine{655     uint32\_t                                    gopFrameCount;}
+\DoxyCodeLine{656     uint32\_t                                    idrPeriod;}
+\DoxyCodeLine{657     uint32\_t                                    consecutiveBFrameCount;}
+\DoxyCodeLine{658     VkVideoEncodeH264RateControlStructureEXT    rateControlStructure;}
+\DoxyCodeLine{659     uint8\_t                                     temporalLayerCount;}
+\DoxyCodeLine{660 \} \mbox{\hyperlink{struct_vk_video_encode_h264_rate_control_info_e_x_t}{VkVideoEncodeH264RateControlInfoEXT}};}
+\DoxyCodeLine{661 }
+\DoxyCodeLine{662 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_qp_e_x_t}{VkVideoEncodeH264QpEXT}} \{}
+\DoxyCodeLine{663     int32\_t    qpI;}
+\DoxyCodeLine{664     int32\_t    qpP;}
+\DoxyCodeLine{665     int32\_t    qpB;}
+\DoxyCodeLine{666 \} \mbox{\hyperlink{struct_vk_video_encode_h264_qp_e_x_t}{VkVideoEncodeH264QpEXT}};}
+\DoxyCodeLine{667 }
+\DoxyCodeLine{668 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_frame_size_e_x_t}{VkVideoEncodeH264FrameSizeEXT}} \{}
+\DoxyCodeLine{669     uint32\_t    frameISize;}
+\DoxyCodeLine{670     uint32\_t    framePSize;}
+\DoxyCodeLine{671     uint32\_t    frameBSize;}
+\DoxyCodeLine{672 \} \mbox{\hyperlink{struct_vk_video_encode_h264_frame_size_e_x_t}{VkVideoEncodeH264FrameSizeEXT}};}
+\DoxyCodeLine{673 }
+\DoxyCodeLine{674 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h264_rate_control_layer_info_e_x_t}{VkVideoEncodeH264RateControlLayerInfoEXT}} \{}
+\DoxyCodeLine{675     VkStructureType                  sType;}
+\DoxyCodeLine{676     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                      pNext;}
+\DoxyCodeLine{677     uint8\_t                          temporalLayerId;}
+\DoxyCodeLine{678     VkBool32                         useInitialRcQp;}
+\DoxyCodeLine{679     \mbox{\hyperlink{struct_vk_video_encode_h264_qp_e_x_t}{VkVideoEncodeH264QpEXT}}           initialRcQp;}
+\DoxyCodeLine{680     VkBool32                         useMinQp;}
+\DoxyCodeLine{681     \mbox{\hyperlink{struct_vk_video_encode_h264_qp_e_x_t}{VkVideoEncodeH264QpEXT}}           minQp;}
+\DoxyCodeLine{682     VkBool32                         useMaxQp;}
+\DoxyCodeLine{683     \mbox{\hyperlink{struct_vk_video_encode_h264_qp_e_x_t}{VkVideoEncodeH264QpEXT}}           maxQp;}
+\DoxyCodeLine{684     VkBool32                         useMaxFrameSize;}
+\DoxyCodeLine{685     \mbox{\hyperlink{struct_vk_video_encode_h264_frame_size_e_x_t}{VkVideoEncodeH264FrameSizeEXT}}    maxFrameSize;}
+\DoxyCodeLine{686 \} \mbox{\hyperlink{struct_vk_video_encode_h264_rate_control_layer_info_e_x_t}{VkVideoEncodeH264RateControlLayerInfoEXT}};}
+\DoxyCodeLine{687 }
+\DoxyCodeLine{688 }
+\DoxyCodeLine{689 }
+\DoxyCodeLine{690 \textcolor{preprocessor}{\#define VK\_EXT\_video\_encode\_h265 1}}
+\DoxyCodeLine{691 \textcolor{preprocessor}{\#include "{}vk\_video/vulkan\_video\_codec\_h265std.h"{}}}
+\DoxyCodeLine{692 \textcolor{preprocessor}{\#include "{}vk\_video/vulkan\_video\_codec\_h265std\_encode.h"{}}}
+\DoxyCodeLine{693 \textcolor{preprocessor}{\#define VK\_EXT\_VIDEO\_ENCODE\_H265\_SPEC\_VERSION 9}}
+\DoxyCodeLine{694 \textcolor{preprocessor}{\#define VK\_EXT\_VIDEO\_ENCODE\_H265\_EXTENSION\_NAME "{}VK\_EXT\_video\_encode\_h265"{}}}
+\DoxyCodeLine{695 }
+\DoxyCodeLine{696 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH265RateControlStructureEXT \{}
+\DoxyCodeLine{697     VK\_VIDEO\_ENCODE\_H265\_RATE\_CONTROL\_STRUCTURE\_UNKNOWN\_EXT = 0,}
+\DoxyCodeLine{698     VK\_VIDEO\_ENCODE\_H265\_RATE\_CONTROL\_STRUCTURE\_FLAT\_EXT = 1,}
+\DoxyCodeLine{699     VK\_VIDEO\_ENCODE\_H265\_RATE\_CONTROL\_STRUCTURE\_DYADIC\_EXT = 2,}
+\DoxyCodeLine{700     VK\_VIDEO\_ENCODE\_H265\_RATE\_CONTROL\_STRUCTURE\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{701 \} VkVideoEncodeH265RateControlStructureEXT;}
+\DoxyCodeLine{702 }
+\DoxyCodeLine{703 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH265CapabilityFlagBitsEXT \{}
+\DoxyCodeLine{704     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_SEPARATE\_COLOUR\_PLANE\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{705     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_SCALING\_LISTS\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{706     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_SAMPLE\_ADAPTIVE\_OFFSET\_ENABLED\_BIT\_EXT = 0x00000004,}
+\DoxyCodeLine{707     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_PCM\_ENABLE\_BIT\_EXT = 0x00000008,}
+\DoxyCodeLine{708     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_SPS\_TEMPORAL\_MVP\_ENABLED\_BIT\_EXT = 0x00000010,}
+\DoxyCodeLine{709     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_HRD\_COMPLIANCE\_BIT\_EXT = 0x00000020,}
+\DoxyCodeLine{710     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_INIT\_QP\_MINUS26\_BIT\_EXT = 0x00000040,}
+\DoxyCodeLine{711     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_LOG2\_PARALLEL\_MERGE\_LEVEL\_MINUS2\_BIT\_EXT = 0x00000080,}
+\DoxyCodeLine{712     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_SIGN\_DATA\_HIDING\_ENABLED\_BIT\_EXT = 0x00000100,}
+\DoxyCodeLine{713     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_TRANSFORM\_SKIP\_ENABLED\_BIT\_EXT = 0x00000200,}
+\DoxyCodeLine{714     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_TRANSFORM\_SKIP\_DISABLED\_BIT\_EXT = 0x00000400,}
+\DoxyCodeLine{715     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_PPS\_SLICE\_CHROMA\_QP\_OFFSETS\_PRESENT\_BIT\_EXT = 0x00000800,}
+\DoxyCodeLine{716     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_WEIGHTED\_PRED\_BIT\_EXT = 0x00001000,}
+\DoxyCodeLine{717     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_WEIGHTED\_BIPRED\_BIT\_EXT = 0x00002000,}
+\DoxyCodeLine{718     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_WEIGHTED\_PRED\_NO\_TABLE\_BIT\_EXT = 0x00004000,}
+\DoxyCodeLine{719     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_TRANSQUANT\_BYPASS\_ENABLED\_BIT\_EXT = 0x00008000,}
+\DoxyCodeLine{720     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_ENTROPY\_CODING\_SYNC\_ENABLED\_BIT\_EXT = 0x00010000,}
+\DoxyCodeLine{721     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_DEBLOCKING\_FILTER\_OVERRIDE\_ENABLED\_BIT\_EXT = 0x00020000,}
+\DoxyCodeLine{722     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_MULTIPLE\_TILE\_PER\_FRAME\_BIT\_EXT = 0x00040000,}
+\DoxyCodeLine{723     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_MULTIPLE\_SLICE\_PER\_TILE\_BIT\_EXT = 0x00080000,}
+\DoxyCodeLine{724     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_MULTIPLE\_TILE\_PER\_SLICE\_BIT\_EXT = 0x00100000,}
+\DoxyCodeLine{725     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_SLICE\_SEGMENT\_CTB\_COUNT\_BIT\_EXT = 0x00200000,}
+\DoxyCodeLine{726     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_ROW\_UNALIGNED\_SLICE\_SEGMENT\_BIT\_EXT = 0x00400000,}
+\DoxyCodeLine{727     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_DEPENDENT\_SLICE\_SEGMENT\_BIT\_EXT = 0x00800000,}
+\DoxyCodeLine{728     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_DIFFERENT\_SLICE\_TYPE\_BIT\_EXT = 0x01000000,}
+\DoxyCodeLine{729     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_B\_FRAME\_IN\_L1\_LIST\_BIT\_EXT = 0x02000000,}
+\DoxyCodeLine{730     VK\_VIDEO\_ENCODE\_H265\_CAPABILITY\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{731 \} VkVideoEncodeH265CapabilityFlagBitsEXT;}
+\DoxyCodeLine{732 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeH265CapabilityFlagsEXT;}
+\DoxyCodeLine{733 }
+\DoxyCodeLine{734 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH265InputModeFlagBitsEXT \{}
+\DoxyCodeLine{735     VK\_VIDEO\_ENCODE\_H265\_INPUT\_MODE\_FRAME\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{736     VK\_VIDEO\_ENCODE\_H265\_INPUT\_MODE\_SLICE\_SEGMENT\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{737     VK\_VIDEO\_ENCODE\_H265\_INPUT\_MODE\_NON\_VCL\_BIT\_EXT = 0x00000004,}
+\DoxyCodeLine{738     VK\_VIDEO\_ENCODE\_H265\_INPUT\_MODE\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{739 \} VkVideoEncodeH265InputModeFlagBitsEXT;}
+\DoxyCodeLine{740 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeH265InputModeFlagsEXT;}
+\DoxyCodeLine{741 }
+\DoxyCodeLine{742 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH265OutputModeFlagBitsEXT \{}
+\DoxyCodeLine{743     VK\_VIDEO\_ENCODE\_H265\_OUTPUT\_MODE\_FRAME\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{744     VK\_VIDEO\_ENCODE\_H265\_OUTPUT\_MODE\_SLICE\_SEGMENT\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{745     VK\_VIDEO\_ENCODE\_H265\_OUTPUT\_MODE\_NON\_VCL\_BIT\_EXT = 0x00000004,}
+\DoxyCodeLine{746     VK\_VIDEO\_ENCODE\_H265\_OUTPUT\_MODE\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{747 \} VkVideoEncodeH265OutputModeFlagBitsEXT;}
+\DoxyCodeLine{748 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeH265OutputModeFlagsEXT;}
+\DoxyCodeLine{749 }
+\DoxyCodeLine{750 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH265CtbSizeFlagBitsEXT \{}
+\DoxyCodeLine{751     VK\_VIDEO\_ENCODE\_H265\_CTB\_SIZE\_16\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{752     VK\_VIDEO\_ENCODE\_H265\_CTB\_SIZE\_32\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{753     VK\_VIDEO\_ENCODE\_H265\_CTB\_SIZE\_64\_BIT\_EXT = 0x00000004,}
+\DoxyCodeLine{754     VK\_VIDEO\_ENCODE\_H265\_CTB\_SIZE\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{755 \} VkVideoEncodeH265CtbSizeFlagBitsEXT;}
+\DoxyCodeLine{756 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeH265CtbSizeFlagsEXT;}
+\DoxyCodeLine{757 }
+\DoxyCodeLine{758 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoEncodeH265TransformBlockSizeFlagBitsEXT \{}
+\DoxyCodeLine{759     VK\_VIDEO\_ENCODE\_H265\_TRANSFORM\_BLOCK\_SIZE\_4\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{760     VK\_VIDEO\_ENCODE\_H265\_TRANSFORM\_BLOCK\_SIZE\_8\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{761     VK\_VIDEO\_ENCODE\_H265\_TRANSFORM\_BLOCK\_SIZE\_16\_BIT\_EXT = 0x00000004,}
+\DoxyCodeLine{762     VK\_VIDEO\_ENCODE\_H265\_TRANSFORM\_BLOCK\_SIZE\_32\_BIT\_EXT = 0x00000008,}
+\DoxyCodeLine{763     VK\_VIDEO\_ENCODE\_H265\_TRANSFORM\_BLOCK\_SIZE\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{764 \} VkVideoEncodeH265TransformBlockSizeFlagBitsEXT;}
+\DoxyCodeLine{765 \textcolor{keyword}{typedef} VkFlags VkVideoEncodeH265TransformBlockSizeFlagsEXT;}
+\DoxyCodeLine{766 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_capabilities_e_x_t}{VkVideoEncodeH265CapabilitiesEXT}} \{}
+\DoxyCodeLine{767     VkStructureType                                sType;}
+\DoxyCodeLine{768     \textcolor{keywordtype}{void}*                                          pNext;}
+\DoxyCodeLine{769     VkVideoEncodeH265CapabilityFlagsEXT            flags;}
+\DoxyCodeLine{770     VkVideoEncodeH265InputModeFlagsEXT             inputModeFlags;}
+\DoxyCodeLine{771     VkVideoEncodeH265OutputModeFlagsEXT            outputModeFlags;}
+\DoxyCodeLine{772     VkVideoEncodeH265CtbSizeFlagsEXT               ctbSizes;}
+\DoxyCodeLine{773     VkVideoEncodeH265TransformBlockSizeFlagsEXT    transformBlockSizes;}
+\DoxyCodeLine{774     uint8\_t                                        maxPPictureL0ReferenceCount;}
+\DoxyCodeLine{775     uint8\_t                                        maxBPictureL0ReferenceCount;}
+\DoxyCodeLine{776     uint8\_t                                        maxL1ReferenceCount;}
+\DoxyCodeLine{777     uint8\_t                                        maxSubLayersCount;}
+\DoxyCodeLine{778     uint8\_t                                        minLog2MinLumaCodingBlockSizeMinus3;}
+\DoxyCodeLine{779     uint8\_t                                        maxLog2MinLumaCodingBlockSizeMinus3;}
+\DoxyCodeLine{780     uint8\_t                                        minLog2MinLumaTransformBlockSizeMinus2;}
+\DoxyCodeLine{781     uint8\_t                                        maxLog2MinLumaTransformBlockSizeMinus2;}
+\DoxyCodeLine{782     uint8\_t                                        minMaxTransformHierarchyDepthInter;}
+\DoxyCodeLine{783     uint8\_t                                        maxMaxTransformHierarchyDepthInter;}
+\DoxyCodeLine{784     uint8\_t                                        minMaxTransformHierarchyDepthIntra;}
+\DoxyCodeLine{785     uint8\_t                                        maxMaxTransformHierarchyDepthIntra;}
+\DoxyCodeLine{786     uint8\_t                                        maxDiffCuQpDeltaDepth;}
+\DoxyCodeLine{787     uint8\_t                                        minMaxNumMergeCand;}
+\DoxyCodeLine{788     uint8\_t                                        maxMaxNumMergeCand;}
+\DoxyCodeLine{789 \} \mbox{\hyperlink{struct_vk_video_encode_h265_capabilities_e_x_t}{VkVideoEncodeH265CapabilitiesEXT}};}
+\DoxyCodeLine{790 }
+\DoxyCodeLine{791 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_session_parameters_add_info_e_x_t}{VkVideoEncodeH265SessionParametersAddInfoEXT}} \{}
+\DoxyCodeLine{792     VkStructureType                            sType;}
+\DoxyCodeLine{793     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                pNext;}
+\DoxyCodeLine{794     uint32\_t                                   stdVPSCount;}
+\DoxyCodeLine{795     \textcolor{keyword}{const} StdVideoH265VideoParameterSet*       pStdVPSs;}
+\DoxyCodeLine{796     uint32\_t                                   stdSPSCount;}
+\DoxyCodeLine{797     \textcolor{keyword}{const} StdVideoH265SequenceParameterSet*    pStdSPSs;}
+\DoxyCodeLine{798     uint32\_t                                   stdPPSCount;}
+\DoxyCodeLine{799     \textcolor{keyword}{const} StdVideoH265PictureParameterSet*     pStdPPSs;}
+\DoxyCodeLine{800 \} \mbox{\hyperlink{struct_vk_video_encode_h265_session_parameters_add_info_e_x_t}{VkVideoEncodeH265SessionParametersAddInfoEXT}};}
+\DoxyCodeLine{801 }
+\DoxyCodeLine{802 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_session_parameters_create_info_e_x_t}{VkVideoEncodeH265SessionParametersCreateInfoEXT}} \{}
+\DoxyCodeLine{803     VkStructureType                                        sType;}
+\DoxyCodeLine{804     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                            pNext;}
+\DoxyCodeLine{805     uint32\_t                                               maxStdVPSCount;}
+\DoxyCodeLine{806     uint32\_t                                               maxStdSPSCount;}
+\DoxyCodeLine{807     uint32\_t                                               maxStdPPSCount;}
+\DoxyCodeLine{808     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h265_session_parameters_add_info_e_x_t}{VkVideoEncodeH265SessionParametersAddInfoEXT}}*    pParametersAddInfo;}
+\DoxyCodeLine{809 \} \mbox{\hyperlink{struct_vk_video_encode_h265_session_parameters_create_info_e_x_t}{VkVideoEncodeH265SessionParametersCreateInfoEXT}};}
+\DoxyCodeLine{810 }
+\DoxyCodeLine{811 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_dpb_slot_info_e_x_t}{VkVideoEncodeH265DpbSlotInfoEXT}} \{}
+\DoxyCodeLine{812     VkStructureType                           sType;}
+\DoxyCodeLine{813     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                               pNext;}
+\DoxyCodeLine{814     int8\_t                                    slotIndex;}
+\DoxyCodeLine{815     \textcolor{keyword}{const} StdVideoEncodeH265ReferenceInfo*    pStdReferenceInfo;}
+\DoxyCodeLine{816 \} \mbox{\hyperlink{struct_vk_video_encode_h265_dpb_slot_info_e_x_t}{VkVideoEncodeH265DpbSlotInfoEXT}};}
+\DoxyCodeLine{817 }
+\DoxyCodeLine{818 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_reference_lists_info_e_x_t}{VkVideoEncodeH265ReferenceListsInfoEXT}} \{}
+\DoxyCodeLine{819     VkStructureType                                    sType;}
+\DoxyCodeLine{820     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                        pNext;}
+\DoxyCodeLine{821     uint8\_t                                            referenceList0EntryCount;}
+\DoxyCodeLine{822     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h265_dpb_slot_info_e_x_t}{VkVideoEncodeH265DpbSlotInfoEXT}}*             pReferenceList0Entries;}
+\DoxyCodeLine{823     uint8\_t                                            referenceList1EntryCount;}
+\DoxyCodeLine{824     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h265_dpb_slot_info_e_x_t}{VkVideoEncodeH265DpbSlotInfoEXT}}*             pReferenceList1Entries;}
+\DoxyCodeLine{825     \textcolor{keyword}{const} StdVideoEncodeH265ReferenceModifications*    pReferenceModifications;}
+\DoxyCodeLine{826 \} \mbox{\hyperlink{struct_vk_video_encode_h265_reference_lists_info_e_x_t}{VkVideoEncodeH265ReferenceListsInfoEXT}};}
+\DoxyCodeLine{827 }
+\DoxyCodeLine{828 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_nalu_slice_segment_info_e_x_t}{VkVideoEncodeH265NaluSliceSegmentInfoEXT}} \{}
+\DoxyCodeLine{829     VkStructureType                                  sType;}
+\DoxyCodeLine{830     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                      pNext;}
+\DoxyCodeLine{831     uint32\_t                                         ctbCount;}
+\DoxyCodeLine{832     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h265_reference_lists_info_e_x_t}{VkVideoEncodeH265ReferenceListsInfoEXT}}*    pReferenceFinalLists;}
+\DoxyCodeLine{833     \textcolor{keyword}{const} StdVideoEncodeH265SliceSegmentHeader*      pSliceSegmentHeaderStd;}
+\DoxyCodeLine{834 \} \mbox{\hyperlink{struct_vk_video_encode_h265_nalu_slice_segment_info_e_x_t}{VkVideoEncodeH265NaluSliceSegmentInfoEXT}};}
+\DoxyCodeLine{835 }
+\DoxyCodeLine{836 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_vcl_frame_info_e_x_t}{VkVideoEncodeH265VclFrameInfoEXT}} \{}
+\DoxyCodeLine{837     VkStructureType                                    sType;}
+\DoxyCodeLine{838     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                        pNext;}
+\DoxyCodeLine{839     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h265_reference_lists_info_e_x_t}{VkVideoEncodeH265ReferenceListsInfoEXT}}*      pReferenceFinalLists;}
+\DoxyCodeLine{840     uint32\_t                                           naluSliceSegmentEntryCount;}
+\DoxyCodeLine{841     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_encode_h265_nalu_slice_segment_info_e_x_t}{VkVideoEncodeH265NaluSliceSegmentInfoEXT}}*    pNaluSliceSegmentEntries;}
+\DoxyCodeLine{842     \textcolor{keyword}{const} StdVideoEncodeH265PictureInfo*               pCurrentPictureInfo;}
+\DoxyCodeLine{843 \} \mbox{\hyperlink{struct_vk_video_encode_h265_vcl_frame_info_e_x_t}{VkVideoEncodeH265VclFrameInfoEXT}};}
+\DoxyCodeLine{844 }
+\DoxyCodeLine{845 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_emit_picture_parameters_info_e_x_t}{VkVideoEncodeH265EmitPictureParametersInfoEXT}} \{}
+\DoxyCodeLine{846     VkStructureType    sType;}
+\DoxyCodeLine{847     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{848     uint8\_t            vpsId;}
+\DoxyCodeLine{849     uint8\_t            spsId;}
+\DoxyCodeLine{850     VkBool32           emitVpsEnable;}
+\DoxyCodeLine{851     VkBool32           emitSpsEnable;}
+\DoxyCodeLine{852     uint32\_t           ppsIdEntryCount;}
+\DoxyCodeLine{853     \textcolor{keyword}{const} uint8\_t*     ppsIdEntries;}
+\DoxyCodeLine{854 \} \mbox{\hyperlink{struct_vk_video_encode_h265_emit_picture_parameters_info_e_x_t}{VkVideoEncodeH265EmitPictureParametersInfoEXT}};}
+\DoxyCodeLine{855 }
+\DoxyCodeLine{856 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_profile_info_e_x_t}{VkVideoEncodeH265ProfileInfoEXT}} \{}
+\DoxyCodeLine{857     VkStructureType           sType;}
+\DoxyCodeLine{858     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*               pNext;}
+\DoxyCodeLine{859     StdVideoH265ProfileIdc    stdProfileIdc;}
+\DoxyCodeLine{860 \} \mbox{\hyperlink{struct_vk_video_encode_h265_profile_info_e_x_t}{VkVideoEncodeH265ProfileInfoEXT}};}
+\DoxyCodeLine{861 }
+\DoxyCodeLine{862 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_rate_control_info_e_x_t}{VkVideoEncodeH265RateControlInfoEXT}} \{}
+\DoxyCodeLine{863     VkStructureType                             sType;}
+\DoxyCodeLine{864     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                 pNext;}
+\DoxyCodeLine{865     uint32\_t                                    gopFrameCount;}
+\DoxyCodeLine{866     uint32\_t                                    idrPeriod;}
+\DoxyCodeLine{867     uint32\_t                                    consecutiveBFrameCount;}
+\DoxyCodeLine{868     VkVideoEncodeH265RateControlStructureEXT    rateControlStructure;}
+\DoxyCodeLine{869     uint8\_t                                     subLayerCount;}
+\DoxyCodeLine{870 \} \mbox{\hyperlink{struct_vk_video_encode_h265_rate_control_info_e_x_t}{VkVideoEncodeH265RateControlInfoEXT}};}
+\DoxyCodeLine{871 }
+\DoxyCodeLine{872 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_qp_e_x_t}{VkVideoEncodeH265QpEXT}} \{}
+\DoxyCodeLine{873     int32\_t    qpI;}
+\DoxyCodeLine{874     int32\_t    qpP;}
+\DoxyCodeLine{875     int32\_t    qpB;}
+\DoxyCodeLine{876 \} \mbox{\hyperlink{struct_vk_video_encode_h265_qp_e_x_t}{VkVideoEncodeH265QpEXT}};}
+\DoxyCodeLine{877 }
+\DoxyCodeLine{878 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_frame_size_e_x_t}{VkVideoEncodeH265FrameSizeEXT}} \{}
+\DoxyCodeLine{879     uint32\_t    frameISize;}
+\DoxyCodeLine{880     uint32\_t    framePSize;}
+\DoxyCodeLine{881     uint32\_t    frameBSize;}
+\DoxyCodeLine{882 \} \mbox{\hyperlink{struct_vk_video_encode_h265_frame_size_e_x_t}{VkVideoEncodeH265FrameSizeEXT}};}
+\DoxyCodeLine{883 }
+\DoxyCodeLine{884 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_encode_h265_rate_control_layer_info_e_x_t}{VkVideoEncodeH265RateControlLayerInfoEXT}} \{}
+\DoxyCodeLine{885     VkStructureType                  sType;}
+\DoxyCodeLine{886     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                      pNext;}
+\DoxyCodeLine{887     uint8\_t                          temporalId;}
+\DoxyCodeLine{888     VkBool32                         useInitialRcQp;}
+\DoxyCodeLine{889     \mbox{\hyperlink{struct_vk_video_encode_h265_qp_e_x_t}{VkVideoEncodeH265QpEXT}}           initialRcQp;}
+\DoxyCodeLine{890     VkBool32                         useMinQp;}
+\DoxyCodeLine{891     \mbox{\hyperlink{struct_vk_video_encode_h265_qp_e_x_t}{VkVideoEncodeH265QpEXT}}           minQp;}
+\DoxyCodeLine{892     VkBool32                         useMaxQp;}
+\DoxyCodeLine{893     \mbox{\hyperlink{struct_vk_video_encode_h265_qp_e_x_t}{VkVideoEncodeH265QpEXT}}           maxQp;}
+\DoxyCodeLine{894     VkBool32                         useMaxFrameSize;}
+\DoxyCodeLine{895     \mbox{\hyperlink{struct_vk_video_encode_h265_frame_size_e_x_t}{VkVideoEncodeH265FrameSizeEXT}}    maxFrameSize;}
+\DoxyCodeLine{896 \} \mbox{\hyperlink{struct_vk_video_encode_h265_rate_control_layer_info_e_x_t}{VkVideoEncodeH265RateControlLayerInfoEXT}};}
+\DoxyCodeLine{897 }
+\DoxyCodeLine{898 }
+\DoxyCodeLine{899 }
+\DoxyCodeLine{900 \textcolor{preprocessor}{\#define VK\_EXT\_video\_decode\_h264 1}}
+\DoxyCodeLine{901 \textcolor{preprocessor}{\#include "{}vk\_video/vulkan\_video\_codec\_h264std\_decode.h"{}}}
+\DoxyCodeLine{902 \textcolor{preprocessor}{\#define VK\_EXT\_VIDEO\_DECODE\_H264\_SPEC\_VERSION 7}}
+\DoxyCodeLine{903 \textcolor{preprocessor}{\#define VK\_EXT\_VIDEO\_DECODE\_H264\_EXTENSION\_NAME "{}VK\_EXT\_video\_decode\_h264"{}}}
+\DoxyCodeLine{904 }
+\DoxyCodeLine{905 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} VkVideoDecodeH264PictureLayoutFlagBitsEXT \{}
+\DoxyCodeLine{906     VK\_VIDEO\_DECODE\_H264\_PICTURE\_LAYOUT\_PROGRESSIVE\_EXT = 0,}
+\DoxyCodeLine{907     VK\_VIDEO\_DECODE\_H264\_PICTURE\_LAYOUT\_INTERLACED\_INTERLEAVED\_LINES\_BIT\_EXT = 0x00000001,}
+\DoxyCodeLine{908     VK\_VIDEO\_DECODE\_H264\_PICTURE\_LAYOUT\_INTERLACED\_SEPARATE\_PLANES\_BIT\_EXT = 0x00000002,}
+\DoxyCodeLine{909     VK\_VIDEO\_DECODE\_H264\_PICTURE\_LAYOUT\_FLAG\_BITS\_MAX\_ENUM\_EXT = 0x7FFFFFFF}
+\DoxyCodeLine{910 \} VkVideoDecodeH264PictureLayoutFlagBitsEXT;}
+\DoxyCodeLine{911 \textcolor{keyword}{typedef} VkFlags VkVideoDecodeH264PictureLayoutFlagsEXT;}
+\DoxyCodeLine{912 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h264_profile_info_e_x_t}{VkVideoDecodeH264ProfileInfoEXT}} \{}
+\DoxyCodeLine{913     VkStructureType                              sType;}
+\DoxyCodeLine{914     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                  pNext;}
+\DoxyCodeLine{915     StdVideoH264ProfileIdc                       stdProfileIdc;}
+\DoxyCodeLine{916     VkVideoDecodeH264PictureLayoutFlagBitsEXT    pictureLayout;}
+\DoxyCodeLine{917 \} \mbox{\hyperlink{struct_vk_video_decode_h264_profile_info_e_x_t}{VkVideoDecodeH264ProfileInfoEXT}};}
+\DoxyCodeLine{918 }
+\DoxyCodeLine{919 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h264_capabilities_e_x_t}{VkVideoDecodeH264CapabilitiesEXT}} \{}
+\DoxyCodeLine{920     VkStructureType         sType;}
+\DoxyCodeLine{921     \textcolor{keywordtype}{void}*                   pNext;}
+\DoxyCodeLine{922     StdVideoH264LevelIdc    maxLevelIdc;}
+\DoxyCodeLine{923     \mbox{\hyperlink{struct_vk_offset2_d}{VkOffset2D}}              fieldOffsetGranularity;}
+\DoxyCodeLine{924 \} \mbox{\hyperlink{struct_vk_video_decode_h264_capabilities_e_x_t}{VkVideoDecodeH264CapabilitiesEXT}};}
+\DoxyCodeLine{925 }
+\DoxyCodeLine{926 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h264_session_parameters_add_info_e_x_t}{VkVideoDecodeH264SessionParametersAddInfoEXT}} \{}
+\DoxyCodeLine{927     VkStructureType                            sType;}
+\DoxyCodeLine{928     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                pNext;}
+\DoxyCodeLine{929     uint32\_t                                   stdSPSCount;}
+\DoxyCodeLine{930     \textcolor{keyword}{const} StdVideoH264SequenceParameterSet*    pStdSPSs;}
+\DoxyCodeLine{931     uint32\_t                                   stdPPSCount;}
+\DoxyCodeLine{932     \textcolor{keyword}{const} StdVideoH264PictureParameterSet*     pStdPPSs;}
+\DoxyCodeLine{933 \} \mbox{\hyperlink{struct_vk_video_decode_h264_session_parameters_add_info_e_x_t}{VkVideoDecodeH264SessionParametersAddInfoEXT}};}
+\DoxyCodeLine{934 }
+\DoxyCodeLine{935 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h264_session_parameters_create_info_e_x_t}{VkVideoDecodeH264SessionParametersCreateInfoEXT}} \{}
+\DoxyCodeLine{936     VkStructureType                                        sType;}
+\DoxyCodeLine{937     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                            pNext;}
+\DoxyCodeLine{938     uint32\_t                                               maxStdSPSCount;}
+\DoxyCodeLine{939     uint32\_t                                               maxStdPPSCount;}
+\DoxyCodeLine{940     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_decode_h264_session_parameters_add_info_e_x_t}{VkVideoDecodeH264SessionParametersAddInfoEXT}}*    pParametersAddInfo;}
+\DoxyCodeLine{941 \} \mbox{\hyperlink{struct_vk_video_decode_h264_session_parameters_create_info_e_x_t}{VkVideoDecodeH264SessionParametersCreateInfoEXT}};}
+\DoxyCodeLine{942 }
+\DoxyCodeLine{943 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h264_picture_info_e_x_t}{VkVideoDecodeH264PictureInfoEXT}} \{}
+\DoxyCodeLine{944     VkStructureType                         sType;}
+\DoxyCodeLine{945     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                             pNext;}
+\DoxyCodeLine{946     \textcolor{keyword}{const} StdVideoDecodeH264PictureInfo*    pStdPictureInfo;}
+\DoxyCodeLine{947     uint32\_t                                sliceCount;}
+\DoxyCodeLine{948     \textcolor{keyword}{const} uint32\_t*                         pSliceOffsets;}
+\DoxyCodeLine{949 \} \mbox{\hyperlink{struct_vk_video_decode_h264_picture_info_e_x_t}{VkVideoDecodeH264PictureInfoEXT}};}
+\DoxyCodeLine{950 }
+\DoxyCodeLine{951 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h264_dpb_slot_info_e_x_t}{VkVideoDecodeH264DpbSlotInfoEXT}} \{}
+\DoxyCodeLine{952     VkStructureType                           sType;}
+\DoxyCodeLine{953     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                               pNext;}
+\DoxyCodeLine{954     \textcolor{keyword}{const} StdVideoDecodeH264ReferenceInfo*    pStdReferenceInfo;}
+\DoxyCodeLine{955 \} \mbox{\hyperlink{struct_vk_video_decode_h264_dpb_slot_info_e_x_t}{VkVideoDecodeH264DpbSlotInfoEXT}};}
+\DoxyCodeLine{956 }
+\DoxyCodeLine{957 }
+\DoxyCodeLine{958 }
+\DoxyCodeLine{959 \textcolor{preprocessor}{\#define VK\_EXT\_video\_decode\_h265 1}}
+\DoxyCodeLine{960 \textcolor{preprocessor}{\#include "{}vk\_video/vulkan\_video\_codec\_h265std\_decode.h"{}}}
+\DoxyCodeLine{961 \textcolor{preprocessor}{\#define VK\_EXT\_VIDEO\_DECODE\_H265\_SPEC\_VERSION 5}}
+\DoxyCodeLine{962 \textcolor{preprocessor}{\#define VK\_EXT\_VIDEO\_DECODE\_H265\_EXTENSION\_NAME "{}VK\_EXT\_video\_decode\_h265"{}}}
+\DoxyCodeLine{963 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h265_profile_info_e_x_t}{VkVideoDecodeH265ProfileInfoEXT}} \{}
+\DoxyCodeLine{964     VkStructureType           sType;}
+\DoxyCodeLine{965     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*               pNext;}
+\DoxyCodeLine{966     StdVideoH265ProfileIdc    stdProfileIdc;}
+\DoxyCodeLine{967 \} \mbox{\hyperlink{struct_vk_video_decode_h265_profile_info_e_x_t}{VkVideoDecodeH265ProfileInfoEXT}};}
+\DoxyCodeLine{968 }
+\DoxyCodeLine{969 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h265_capabilities_e_x_t}{VkVideoDecodeH265CapabilitiesEXT}} \{}
+\DoxyCodeLine{970     VkStructureType         sType;}
+\DoxyCodeLine{971     \textcolor{keywordtype}{void}*                   pNext;}
+\DoxyCodeLine{972     StdVideoH265LevelIdc    maxLevelIdc;}
+\DoxyCodeLine{973 \} \mbox{\hyperlink{struct_vk_video_decode_h265_capabilities_e_x_t}{VkVideoDecodeH265CapabilitiesEXT}};}
+\DoxyCodeLine{974 }
+\DoxyCodeLine{975 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h265_session_parameters_add_info_e_x_t}{VkVideoDecodeH265SessionParametersAddInfoEXT}} \{}
+\DoxyCodeLine{976     VkStructureType                            sType;}
+\DoxyCodeLine{977     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                pNext;}
+\DoxyCodeLine{978     uint32\_t                                   stdVPSCount;}
+\DoxyCodeLine{979     \textcolor{keyword}{const} StdVideoH265VideoParameterSet*       pStdVPSs;}
+\DoxyCodeLine{980     uint32\_t                                   stdSPSCount;}
+\DoxyCodeLine{981     \textcolor{keyword}{const} StdVideoH265SequenceParameterSet*    pStdSPSs;}
+\DoxyCodeLine{982     uint32\_t                                   stdPPSCount;}
+\DoxyCodeLine{983     \textcolor{keyword}{const} StdVideoH265PictureParameterSet*     pStdPPSs;}
+\DoxyCodeLine{984 \} \mbox{\hyperlink{struct_vk_video_decode_h265_session_parameters_add_info_e_x_t}{VkVideoDecodeH265SessionParametersAddInfoEXT}};}
+\DoxyCodeLine{985 }
+\DoxyCodeLine{986 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h265_session_parameters_create_info_e_x_t}{VkVideoDecodeH265SessionParametersCreateInfoEXT}} \{}
+\DoxyCodeLine{987     VkStructureType                                        sType;}
+\DoxyCodeLine{988     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                                            pNext;}
+\DoxyCodeLine{989     uint32\_t                                               maxStdVPSCount;}
+\DoxyCodeLine{990     uint32\_t                                               maxStdSPSCount;}
+\DoxyCodeLine{991     uint32\_t                                               maxStdPPSCount;}
+\DoxyCodeLine{992     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_video_decode_h265_session_parameters_add_info_e_x_t}{VkVideoDecodeH265SessionParametersAddInfoEXT}}*    pParametersAddInfo;}
+\DoxyCodeLine{993 \} \mbox{\hyperlink{struct_vk_video_decode_h265_session_parameters_create_info_e_x_t}{VkVideoDecodeH265SessionParametersCreateInfoEXT}};}
+\DoxyCodeLine{994 }
+\DoxyCodeLine{995 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h265_picture_info_e_x_t}{VkVideoDecodeH265PictureInfoEXT}} \{}
+\DoxyCodeLine{996     VkStructureType                   sType;}
+\DoxyCodeLine{997     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                       pNext;}
+\DoxyCodeLine{998     StdVideoDecodeH265PictureInfo*    pStdPictureInfo;}
+\DoxyCodeLine{999     uint32\_t                          sliceCount;}
+\DoxyCodeLine{1000     \textcolor{keyword}{const} uint32\_t*                   pSliceOffsets;}
+\DoxyCodeLine{1001 \} \mbox{\hyperlink{struct_vk_video_decode_h265_picture_info_e_x_t}{VkVideoDecodeH265PictureInfoEXT}};}
+\DoxyCodeLine{1002 }
+\DoxyCodeLine{1003 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_video_decode_h265_dpb_slot_info_e_x_t}{VkVideoDecodeH265DpbSlotInfoEXT}} \{}
+\DoxyCodeLine{1004     VkStructureType                           sType;}
+\DoxyCodeLine{1005     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                               pNext;}
+\DoxyCodeLine{1006     \textcolor{keyword}{const} StdVideoDecodeH265ReferenceInfo*    pStdReferenceInfo;}
+\DoxyCodeLine{1007 \} \mbox{\hyperlink{struct_vk_video_decode_h265_dpb_slot_info_e_x_t}{VkVideoDecodeH265DpbSlotInfoEXT}};}
+\DoxyCodeLine{1008 }
+\DoxyCodeLine{1009 }
+\DoxyCodeLine{1010 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{1011 \}}
+\DoxyCodeLine{1012 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{1013 }
+\DoxyCodeLine{1014 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

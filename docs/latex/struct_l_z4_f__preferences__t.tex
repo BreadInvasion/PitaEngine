@@ -1,0 +1,32 @@
+\hypertarget{struct_l_z4_f__preferences__t}{}\doxysection{LZ4\+F\+\_\+preferences\+\_\+t Struct Reference}
+\label{struct_l_z4_f__preferences__t}\index{LZ4F\_preferences\_t@{LZ4F\_preferences\_t}}
+
+
+{\ttfamily \#include $<$lz4frame.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_l_z4_f__preferences__t_a24886c461e9e30bd07ed00671a7f917c}\label{struct_l_z4_f__preferences__t_a24886c461e9e30bd07ed00671a7f917c}} 
+\mbox{\hyperlink{struct_l_z4_f__frame_info__t}{LZ4\+F\+\_\+frame\+Info\+\_\+t}} {\bfseries frame\+Info}
+\item 
+\mbox{\Hypertarget{struct_l_z4_f__preferences__t_a32a17b17e69f931b832c8adecea7ad07}\label{struct_l_z4_f__preferences__t_a32a17b17e69f931b832c8adecea7ad07}} 
+int {\bfseries compression\+Level}
+\item 
+\mbox{\Hypertarget{struct_l_z4_f__preferences__t_ac6a6f8c35cfb72c0abeb96dcf298056b}\label{struct_l_z4_f__preferences__t_ac6a6f8c35cfb72c0abeb96dcf298056b}} 
+unsigned {\bfseries auto\+Flush}
+\item 
+\mbox{\Hypertarget{struct_l_z4_f__preferences__t_a4a6750592ec9a39c4fc567bef20f2485}\label{struct_l_z4_f__preferences__t_a4a6750592ec9a39c4fc567bef20f2485}} 
+unsigned {\bfseries favor\+Dec\+Speed}
+\item 
+\mbox{\Hypertarget{struct_l_z4_f__preferences__t_a305a9d0c146cb13a00b1665701c6f029}\label{struct_l_z4_f__preferences__t_a305a9d0c146cb13a00b1665701c6f029}} 
+unsigned {\bfseries reserved} \mbox{[}3\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{struct_l_z4_f__preferences__t}{LZ4\+F\+\_\+preferences\+\_\+t}} \+: makes it possible to supply advanced compression instructions to streaming interface. Structure must be first init to 0, using memset() or LZ4\+F\+\_\+\+INIT\+\_\+\+PREFERENCES, setting all parameters to default. All reserved fields must be set to zero. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lz4/lz4frame.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,36 @@
+\hypertarget{math_8h_source}{}\doxysection{math.\+h}
+\label{math_8h_source}\index{src/math.h@{src/math.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Math helpers.}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <float.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{// Determines if two scalar values are nearly equal}}
+\DoxyCodeLine{10 \textcolor{comment}{// given the limitations of floating point accuracy.}}
+\DoxyCodeLine{11 \_\_forceinline \textcolor{keywordtype}{bool} almost\_equalf(\textcolor{keywordtype}{float} a, \textcolor{keywordtype}{float} b)}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{keywordtype}{float} diff = fabsf(a -\/ b);}
+\DoxyCodeLine{14     \textcolor{keywordflow}{if} (diff <= FLT\_EPSILON * 1000.0f)}
+\DoxyCodeLine{15     \{}
+\DoxyCodeLine{16         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{17     \}}
+\DoxyCodeLine{18     \textcolor{keywordflow}{if} (diff <= \_\_max(fabsf(a), fabsf(b)) * FLT\_EPSILON * 4.0f)}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{23 \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{comment}{// Linearly interpolate between two floating point values.}}
+\DoxyCodeLine{26 \textcolor{comment}{// Return the resulting value.}}
+\DoxyCodeLine{27 \_\_forceinline \textcolor{keywordtype}{float} lerpf(\textcolor{keywordtype}{float} begin, \textcolor{keywordtype}{float} end, \textcolor{keywordtype}{float} distance)}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} (begin * (1.0f -\/ distance)) + (end * distance);}
+\DoxyCodeLine{30 \}}
+
+\end{DoxyCode}

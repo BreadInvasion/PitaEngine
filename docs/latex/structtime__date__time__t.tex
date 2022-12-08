@@ -1,0 +1,41 @@
+\hypertarget{structtime__date__time__t}{}\doxysection{time\+\_\+date\+\_\+time\+\_\+t Struct Reference}
+\label{structtime__date__time__t}\index{time\_date\_time\_t@{time\_date\_time\_t}}
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structtime__date__time__t_a6ef12257d73a654e20d39dcd2bdb369f}\label{structtime__date__time__t_a6ef12257d73a654e20d39dcd2bdb369f}} 
+uint64\+\_\+t {\bfseries seconds\+\_\+since\+\_\+epoch}
+\item 
+\mbox{\Hypertarget{structtime__date__time__t_a015f97b29cf23c856c012641bd102703}\label{structtime__date__time__t_a015f97b29cf23c856c012641bd102703}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint32\_t {\bfseries packed\_date}\\
+\mbox{\Hypertarget{uniontime__date__time__t_1_1_0d9_a2a4b4ff9e60e5da1568190ce0e26e23c}\label{uniontime__date__time__t_1_1_0d9_a2a4b4ff9e60e5da1568190ce0e26e23c}} 
+\>struct \{\\
+\>\>uint32\_t {\bfseries day}: 5\\
+\>\>uint32\_t {\bfseries month}: 4\\
+\>\>uint32\_t {\bfseries year}: 23\\
+\>\} \\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\Hypertarget{structtime__date__time__t_ad57d23efd5ab4cd709061eba24b14563}\label{structtime__date__time__t_ad57d23efd5ab4cd709061eba24b14563}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint32\_t {\bfseries packed\_time}\\
+\mbox{\Hypertarget{uniontime__date__time__t_1_1_0d11_aa06fd595964f867d7a7030324bde987e}\label{uniontime__date__time__t_1_1_0d11_aa06fd595964f867d7a7030324bde987e}} 
+\>struct \{\\
+\>\>uint32\_t {\bfseries second}: 6\\
+\>\>uint32\_t {\bfseries minute}: 6\\
+\>\>uint32\_t {\bfseries hour}: 5\\
+\>\} \\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/timeofday.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,51 @@
+\hypertarget{structtransform__t}{}\doxysection{transform\+\_\+t Struct Reference}
+\label{structtransform__t}\index{transform\_t@{transform\_t}}
+
+
+\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} stores spatial positioning data.  
+
+
+
+
+{\ttfamily \#include $<$transform.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structvec3f__t}{vec3f\+\_\+t}} \mbox{\hyperlink{structtransform__t_a23fe5d3bdce84970101f60ed046a7198}{translation}}
+\item 
+\mbox{\hyperlink{structvec3f__t}{vec3f\+\_\+t}} \mbox{\hyperlink{structtransform__t_a7bd109603163fa4dcaa25a1553aa2820}{scale}}
+\item 
+\mbox{\hyperlink{structquatf__t}{quatf\+\_\+t}} \mbox{\hyperlink{structtransform__t_aef1a81692a7843b62d20cb0db730b59c}{rotation}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structtransform__t}{transform\+\_\+t}} stores spatial positioning data. 
+
+Specifically, linear position, scale, and rotation are stored as vectors and a quaternion. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structtransform__t_aef1a81692a7843b62d20cb0db730b59c}\label{structtransform__t_aef1a81692a7843b62d20cb0db730b59c}} 
+\index{transform\_t@{transform\_t}!rotation@{rotation}}
+\index{rotation@{rotation}!transform\_t@{transform\_t}}
+\doxysubsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structquatf__t}{quatf\+\_\+t}} rotation}
+
+rotation is a quaternion that defines the rotation of the object in 3D space. A quaternion is used specifically to prevent cases in which multiple sets of values could result in the same effective rotation. See \mbox{\hyperlink{structquatf__t}{quatf\+\_\+t}} for more info. \mbox{\Hypertarget{structtransform__t_a7bd109603163fa4dcaa25a1553aa2820}\label{structtransform__t_a7bd109603163fa4dcaa25a1553aa2820}} 
+\index{transform\_t@{transform\_t}!scale@{scale}}
+\index{scale@{scale}!transform\_t@{transform\_t}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvec3f__t}{vec3f\+\_\+t}} scale}
+
+scale is a 3D vector representing the linear scaling of the object\textquotesingle{}s dimensions along the x, y, and z axes. \mbox{\Hypertarget{structtransform__t_a23fe5d3bdce84970101f60ed046a7198}\label{structtransform__t_a23fe5d3bdce84970101f60ed046a7198}} 
+\index{transform\_t@{transform\_t}!translation@{translation}}
+\index{translation@{translation}!transform\_t@{transform\_t}}
+\doxysubsubsection{\texorpdfstring{translation}{translation}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvec3f__t}{vec3f\+\_\+t}} translation}
+
+translation is a 3D vector representing the x, y, and z position of the object in space. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{transform_8h}{transform.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,101 @@
+\hypertarget{heap_8h}{}\doxysection{src/heap.h File Reference}
+\label{heap_8h}\index{src/heap.h@{src/heap.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{heap_8h_a75c19bcef00dee4542c1ddab212e29a8}\label{heap_8h_a75c19bcef00dee4542c1ddab212e29a8}} 
+typedef struct \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} {\bfseries heap\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$ \mbox{\hyperlink{heap_8h_a2f96277dac31fe86acd615a053760f91}{heap\+\_\+create}} (size\+\_\+t grow\+\_\+increment)
+\begin{DoxyCompactList}\small\item\em Create and return an empty heap with minimum grow increment grow\+\_\+increment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{heap_8h_af8c6e8c6fa5933de699ded23aa83774f}{heap\+\_\+destroy}} (\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$heap)
+\begin{DoxyCompactList}\small\item\em Destroys \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} heap. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{heap_8h_a49de2190cff9a4489628dcb9f81b9b66}{heap\+\_\+alloc}} (\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$heap, size\+\_\+t size, size\+\_\+t alignment)
+\begin{DoxyCompactList}\small\item\em Allocates a number of bytes equal to size in \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} heap, aligned an alignment number of bytes from the last block. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{heap_8h_a1d24a2df5996245973d7711842d55b9d}{heap\+\_\+free}} (\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$heap, void $\ast$address)
+\begin{DoxyCompactList}\small\item\em Frees the memory block at address in \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} heap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Mark Haddleton
+\end{DoxyAuthor}
+The heap is a collective memory handling location, in which we can assign both \char`\"{}arenas\char`\"{} for separate pools of memory, and allocate or destroy specific blocks of memory for use elsewhere in the engine. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{heap_8h_a49de2190cff9a4489628dcb9f81b9b66}\label{heap_8h_a49de2190cff9a4489628dcb9f81b9b66}} 
+\index{heap.h@{heap.h}!heap\_alloc@{heap\_alloc}}
+\index{heap\_alloc@{heap\_alloc}!heap.h@{heap.h}}
+\doxysubsubsection{\texorpdfstring{heap\_alloc()}{heap\_alloc()}}
+{\footnotesize\ttfamily void $\ast$ heap\+\_\+alloc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$}]{heap,  }\item[{size\+\_\+t}]{size,  }\item[{size\+\_\+t}]{alignment }\end{DoxyParamCaption})}
+
+
+
+Allocates a number of bytes equal to size in \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} heap, aligned an alignment number of bytes from the last block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heap} & The heap to which the new memory will be allocated. \\
+\hline
+{\em size} & The size of the new block. \\
+\hline
+{\em alignment} & The number of bytes to \char`\"{}pad\char`\"{} the new block of memory with, in order to assure high-\/speed access. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The memory address of the newly-\/allocated block. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{heap_8h_a2f96277dac31fe86acd615a053760f91}\label{heap_8h_a2f96277dac31fe86acd615a053760f91}} 
+\index{heap.h@{heap.h}!heap\_create@{heap\_create}}
+\index{heap\_create@{heap\_create}!heap.h@{heap.h}}
+\doxysubsubsection{\texorpdfstring{heap\_create()}{heap\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$ heap\+\_\+create (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{grow\+\_\+increment }\end{DoxyParamCaption})}
+
+
+
+Create and return an empty heap with minimum grow increment grow\+\_\+increment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grow\+\_\+increment} & The minimum number of bytes that a newly-\/created arena may contain. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The newly-\/created heap. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{heap_8h_af8c6e8c6fa5933de699ded23aa83774f}\label{heap_8h_af8c6e8c6fa5933de699ded23aa83774f}} 
+\index{heap.h@{heap.h}!heap\_destroy@{heap\_destroy}}
+\index{heap\_destroy@{heap\_destroy}!heap.h@{heap.h}}
+\doxysubsubsection{\texorpdfstring{heap\_destroy()}{heap\_destroy()}}
+{\footnotesize\ttfamily void heap\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$}]{heap }\end{DoxyParamCaption})}
+
+
+
+Destroys \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} heap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heap} & The heap to be destroyed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{heap_8h_a1d24a2df5996245973d7711842d55b9d}\label{heap_8h_a1d24a2df5996245973d7711842d55b9d}} 
+\index{heap.h@{heap.h}!heap\_free@{heap\_free}}
+\index{heap\_free@{heap\_free}!heap.h@{heap.h}}
+\doxysubsubsection{\texorpdfstring{heap\_free()}{heap\_free()}}
+{\footnotesize\ttfamily void heap\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structheap__t}{heap\+\_\+t}} $\ast$}]{heap,  }\item[{void $\ast$}]{address }\end{DoxyParamCaption})}
+
+
+
+Frees the memory block at address in \mbox{\hyperlink{structheap__t}{heap\+\_\+t}} heap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heap} & The heap in which the block to be freed is located. \\
+\hline
+{\em address} & The address of the memory block to be freed. \\
+\hline
+\end{DoxyParams}

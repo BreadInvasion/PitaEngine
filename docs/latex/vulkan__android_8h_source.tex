@@ -1,0 +1,131 @@
+\hypertarget{vulkan__android_8h_source}{}\doxysection{vulkan\+\_\+android.\+h}
+\label{vulkan__android_8h_source}\index{src/vulkan/vulkan\_android.h@{src/vulkan/vulkan\_android.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VULKAN\_ANDROID\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VULKAN\_ANDROID\_H\_ 1}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{** Copyright 2015-\/2022 The Khronos Group Inc.}}
+\DoxyCodeLine{6 \textcolor{comment}{**}}
+\DoxyCodeLine{7 \textcolor{comment}{** SPDX-\/License-\/Identifier: Apache-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*}}
+\DoxyCodeLine{11 \textcolor{comment}{** This header is generated from the Khronos Vulkan XML API Registry.}}
+\DoxyCodeLine{12 \textcolor{comment}{**}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VK\_KHR\_android\_surface 1}}
+\DoxyCodeLine{23 \textcolor{keyword}{struct }ANativeWindow;}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VK\_KHR\_ANDROID\_SURFACE\_SPEC\_VERSION 6}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define VK\_KHR\_ANDROID\_SURFACE\_EXTENSION\_NAME "{}VK\_KHR\_android\_surface"{}}}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} VkFlags VkAndroidSurfaceCreateFlagsKHR;}
+\DoxyCodeLine{27 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_android_surface_create_info_k_h_r}{VkAndroidSurfaceCreateInfoKHR}} \{}
+\DoxyCodeLine{28     VkStructureType                   sType;}
+\DoxyCodeLine{29     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                       pNext;}
+\DoxyCodeLine{30     VkAndroidSurfaceCreateFlagsKHR    flags;}
+\DoxyCodeLine{31     \textcolor{keyword}{struct }ANativeWindow*             window;}
+\DoxyCodeLine{32 \} \mbox{\hyperlink{struct_vk_android_surface_create_info_k_h_r}{VkAndroidSurfaceCreateInfoKHR}};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkCreateAndroidSurfaceKHR)(VkInstance instance, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_android_surface_create_info_k_h_r}{VkAndroidSurfaceCreateInfoKHR}}* pCreateInfo, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}* pAllocator, VkSurfaceKHR* pSurface);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{37 VKAPI\_ATTR VkResult VKAPI\_CALL vkCreateAndroidSurfaceKHR(}
+\DoxyCodeLine{38     VkInstance                                  instance,}
+\DoxyCodeLine{39     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_android_surface_create_info_k_h_r}{VkAndroidSurfaceCreateInfoKHR}}*        pCreateInfo,}
+\DoxyCodeLine{40     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*                pAllocator,}
+\DoxyCodeLine{41     VkSurfaceKHR*                               pSurface);}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define VK\_ANDROID\_external\_memory\_android\_hardware\_buffer 1}}
+\DoxyCodeLine{46 \textcolor{keyword}{struct }AHardwareBuffer;}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define VK\_ANDROID\_EXTERNAL\_MEMORY\_ANDROID\_HARDWARE\_BUFFER\_SPEC\_VERSION 5}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define VK\_ANDROID\_EXTERNAL\_MEMORY\_ANDROID\_HARDWARE\_BUFFER\_EXTENSION\_NAME "{}VK\_ANDROID\_external\_memory\_android\_hardware\_buffer"{}}}
+\DoxyCodeLine{49 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_android_hardware_buffer_usage_a_n_d_r_o_i_d}{VkAndroidHardwareBufferUsageANDROID}} \{}
+\DoxyCodeLine{50     VkStructureType    sType;}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{52     uint64\_t           androidHardwareBufferUsage;}
+\DoxyCodeLine{53 \} \mbox{\hyperlink{struct_vk_android_hardware_buffer_usage_a_n_d_r_o_i_d}{VkAndroidHardwareBufferUsageANDROID}};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_android_hardware_buffer_properties_a_n_d_r_o_i_d}{VkAndroidHardwareBufferPropertiesANDROID}} \{}
+\DoxyCodeLine{56     VkStructureType    sType;}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{58     VkDeviceSize       allocationSize;}
+\DoxyCodeLine{59     uint32\_t           memoryTypeBits;}
+\DoxyCodeLine{60 \} \mbox{\hyperlink{struct_vk_android_hardware_buffer_properties_a_n_d_r_o_i_d}{VkAndroidHardwareBufferPropertiesANDROID}};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_android_hardware_buffer_format_properties_a_n_d_r_o_i_d}{VkAndroidHardwareBufferFormatPropertiesANDROID}} \{}
+\DoxyCodeLine{63     VkStructureType                  sType;}
+\DoxyCodeLine{64     \textcolor{keywordtype}{void}*                            pNext;}
+\DoxyCodeLine{65     VkFormat                         format;}
+\DoxyCodeLine{66     uint64\_t                         externalFormat;}
+\DoxyCodeLine{67     VkFormatFeatureFlags             formatFeatures;}
+\DoxyCodeLine{68     \mbox{\hyperlink{struct_vk_component_mapping}{VkComponentMapping}}               samplerYcbcrConversionComponents;}
+\DoxyCodeLine{69     VkSamplerYcbcrModelConversion    suggestedYcbcrModel;}
+\DoxyCodeLine{70     VkSamplerYcbcrRange              suggestedYcbcrRange;}
+\DoxyCodeLine{71     VkChromaLocation                 suggestedXChromaOffset;}
+\DoxyCodeLine{72     VkChromaLocation                 suggestedYChromaOffset;}
+\DoxyCodeLine{73 \} \mbox{\hyperlink{struct_vk_android_hardware_buffer_format_properties_a_n_d_r_o_i_d}{VkAndroidHardwareBufferFormatPropertiesANDROID}};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_import_android_hardware_buffer_info_a_n_d_r_o_i_d}{VkImportAndroidHardwareBufferInfoANDROID}} \{}
+\DoxyCodeLine{76     VkStructureType            sType;}
+\DoxyCodeLine{77     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*                pNext;}
+\DoxyCodeLine{78     \textcolor{keyword}{struct }AHardwareBuffer*    buffer;}
+\DoxyCodeLine{79 \} \mbox{\hyperlink{struct_vk_import_android_hardware_buffer_info_a_n_d_r_o_i_d}{VkImportAndroidHardwareBufferInfoANDROID}};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_memory_get_android_hardware_buffer_info_a_n_d_r_o_i_d}{VkMemoryGetAndroidHardwareBufferInfoANDROID}} \{}
+\DoxyCodeLine{82     VkStructureType    sType;}
+\DoxyCodeLine{83     \textcolor{keyword}{const} \textcolor{keywordtype}{void}*        pNext;}
+\DoxyCodeLine{84     VkDeviceMemory     memory;}
+\DoxyCodeLine{85 \} \mbox{\hyperlink{struct_vk_memory_get_android_hardware_buffer_info_a_n_d_r_o_i_d}{VkMemoryGetAndroidHardwareBufferInfoANDROID}};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_external_format_a_n_d_r_o_i_d}{VkExternalFormatANDROID}} \{}
+\DoxyCodeLine{88     VkStructureType    sType;}
+\DoxyCodeLine{89     \textcolor{keywordtype}{void}*              pNext;}
+\DoxyCodeLine{90     uint64\_t           externalFormat;}
+\DoxyCodeLine{91 \} \mbox{\hyperlink{struct_vk_external_format_a_n_d_r_o_i_d}{VkExternalFormatANDROID}};}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vk_android_hardware_buffer_format_properties2_a_n_d_r_o_i_d}{VkAndroidHardwareBufferFormatProperties2ANDROID}} \{}
+\DoxyCodeLine{94     VkStructureType                  sType;}
+\DoxyCodeLine{95     \textcolor{keywordtype}{void}*                            pNext;}
+\DoxyCodeLine{96     VkFormat                         format;}
+\DoxyCodeLine{97     uint64\_t                         externalFormat;}
+\DoxyCodeLine{98     VkFormatFeatureFlags2            formatFeatures;}
+\DoxyCodeLine{99     \mbox{\hyperlink{struct_vk_component_mapping}{VkComponentMapping}}               samplerYcbcrConversionComponents;}
+\DoxyCodeLine{100     VkSamplerYcbcrModelConversion    suggestedYcbcrModel;}
+\DoxyCodeLine{101     VkSamplerYcbcrRange              suggestedYcbcrRange;}
+\DoxyCodeLine{102     VkChromaLocation                 suggestedXChromaOffset;}
+\DoxyCodeLine{103     VkChromaLocation                 suggestedYChromaOffset;}
+\DoxyCodeLine{104 \} \mbox{\hyperlink{struct_vk_android_hardware_buffer_format_properties2_a_n_d_r_o_i_d}{VkAndroidHardwareBufferFormatProperties2ANDROID}};}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetAndroidHardwareBufferPropertiesANDROID)(VkDevice device, \textcolor{keyword}{const} \textcolor{keyword}{struct }AHardwareBuffer* buffer, \mbox{\hyperlink{struct_vk_android_hardware_buffer_properties_a_n_d_r_o_i_d}{VkAndroidHardwareBufferPropertiesANDROID}}* pProperties);}
+\DoxyCodeLine{107 \textcolor{keyword}{typedef} VkResult (VKAPI\_PTR *PFN\_vkGetMemoryAndroidHardwareBufferANDROID)(VkDevice device, \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_memory_get_android_hardware_buffer_info_a_n_d_r_o_i_d}{VkMemoryGetAndroidHardwareBufferInfoANDROID}}* pInfo, \textcolor{keyword}{struct }AHardwareBuffer** pBuffer);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#ifndef VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{110 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetAndroidHardwareBufferPropertiesANDROID(}
+\DoxyCodeLine{111     VkDevice                                    device,}
+\DoxyCodeLine{112     \textcolor{keyword}{const} \textcolor{keyword}{struct} AHardwareBuffer*               buffer,}
+\DoxyCodeLine{113     \mbox{\hyperlink{struct_vk_android_hardware_buffer_properties_a_n_d_r_o_i_d}{VkAndroidHardwareBufferPropertiesANDROID}}*   pProperties);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 VKAPI\_ATTR VkResult VKAPI\_CALL vkGetMemoryAndroidHardwareBufferANDROID(}
+\DoxyCodeLine{116     VkDevice                                    device,}
+\DoxyCodeLine{117     \textcolor{keyword}{const} \mbox{\hyperlink{struct_vk_memory_get_android_hardware_buffer_info_a_n_d_r_o_i_d}{VkMemoryGetAndroidHardwareBufferInfoANDROID}}* pInfo,}
+\DoxyCodeLine{118     \textcolor{keyword}{struct} AHardwareBuffer**                    pBuffer);}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{122 \}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
